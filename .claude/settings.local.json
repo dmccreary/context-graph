@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -la /Users/dan/.claude/skills/init-textbook/assets/templates/)",
+      "Bash(cp /Users/dan/.claude/skills/init-textbook/assets/templates/docs/img/cover.png /Users/dan/Documents/ws/context-graph/docs/img/cover.png)",
+      "Bash(cp /Users/dan/.claude/skills/init-textbook/assets/templates/docs/img/license.png /Users/dan/Documents/ws/context-graph/docs/img/license.png)",
+      "WebFetch(domain:foundationcapital.com)",
+      "Bash(ls /Users/dan/.claude/skills/learning-graph-generator/)",
+      "Bash(cp /Users/dan/.claude/skills/learning-graph-generator/analyze-graph.py /Users/dan/Documents/ws/context-graph/docs/learning-graph/)",
+      "Bash(cp /Users/dan/.claude/skills/learning-graph-generator/csv-to-json.py /Users/dan/Documents/ws/context-graph/docs/learning-graph/)",
+      "Bash(cp /Users/dan/.claude/skills/learning-graph-generator/add-taxonomy.py /Users/dan/Documents/ws/context-graph/docs/learning-graph/)",
+      "Bash(cp /Users/dan/.claude/skills/learning-graph-generator/taxonomy-distribution.py /Users/dan/Documents/ws/context-graph/docs/learning-graph/)",
+      "Bash(cp /Users/dan/.claude/skills/learning-graph-generator/index-template.md /Users/dan/Documents/ws/context-graph/docs/learning-graph/)"
+    ]
+  }
+}

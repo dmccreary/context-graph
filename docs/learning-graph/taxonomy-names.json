@@ -1,0 +1,14 @@
+{
+  "GRAPH": "Graph Fundamentals",
+  "EKG":   "Enterprise Knowledge Graphs",
+  "DATA":  "Data and Semantic Layers",
+  "META":  "Metadata Standards",
+  "PROV":  "Process Mining and Provenance",
+  "CNTX":  "Context Problem and Context Graphs",
+  "DTRC":  "Decision Traces and Graph Modeling",
+  "LLMI":  "LLM Foundations and Integration",
+  "BUILD": "Building and Deploying Systems",
+  "USE":   "Enterprise Use Cases",
+  "COMP":  "Compliance, Market, and Adoption",
+  "INFRA": "Data Infrastructure and Security"
+}

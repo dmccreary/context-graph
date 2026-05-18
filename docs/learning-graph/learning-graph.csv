@@ -1,0 +1,497 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,Knowledge Graph,3|9,GRAPH
+2,Labeled Property Graph,3|6|7|8,GRAPH
+3,Graph Database,4|5,GRAPH
+4,Node,,GRAPH
+5,Edge,,GRAPH
+6,Node Label,4,GRAPH
+7,Edge Type,5,GRAPH
+8,Graph Property,4|5,GRAPH
+9,Graph Schema,6|7|8,GRAPH
+10,Cypher Query Language,2|9,GRAPH
+11,openCypher Standard,10,GRAPH
+12,GQL Standard,10,GRAPH
+13,Graph Pattern Matching,9|10,GRAPH
+14,Graph Traversal,4|5|3,GRAPH
+15,Path Query,14|13,GRAPH
+16,Graph Index,3|8,GRAPH
+17,Graph Algorithm,14|16,GRAPH
+18,RDF Lacks Scalability,1|2,GRAPH
+19,Open World Assumption,1,GRAPH
+20,Closed World Assumption,1,GRAPH
+21,Graph vs Relational Model,3,GRAPH
+22,Graph vs Vector Store,3,GRAPH
+23,Graph Serialization Format,2,GRAPH
+24,GraphML,23,GRAPH
+25,GraphSON,23,GRAPH
+26,Enterprise Knowledge Graph,1|2,EKG
+27,Entity,4,EKG
+28,Entity Resolution,27|420,EKG
+29,Master Data Management,28,EKG
+30,Canonical Entity Model,29,EKG
+31,Hub-and-Spoke Graph Architecture,26,EKG
+32,Federated Graph Architecture,26,EKG
+33,Graph Schema Governance,9|26,EKG
+34,Schema Drift,33,EKG
+35,Stale Edge Detection,5|26,EKG
+36,Missing Provenance,26,EKG
+37,HR Data Graph,26,EKG
+38,Finance Data Graph,26,EKG
+39,CRM Graph Integration,26,EKG
+40,ERP Graph Integration,26,EKG
+41,Product Catalog Graph,26,EKG
+42,Operational Log Graph,26,EKG
+43,Cross-System Entity Linking,28|26|421|422,EKG
+44,Graph ETL Pipeline,45|26,EKG
+45,Graph Ingestion Pattern,26,EKG
+46,Property Graph Scale,2,EKG
+47,Billion-Edge Graph,46,EKG
+48,Graph Sharding,47,EKG
+49,Graph Replication,3,EKG
+50,Graph Deduplication,28,EKG
+51,Knowledge Graph Quality,26|428|431,EKG
+52,Ontology,1,EKG
+53,Taxonomy vs Ontology,52,EKG
+54,Graph Data Catalog,26,EKG
+55,SKOS,52|1,EKG
+56,Data Lake,,DATA
+57,Data Lakehouse,56,DATA
+58,Semantic Layer,56,DATA
+59,Business Metric,58,DATA
+60,Dimension,58,DATA
+61,Logical Data Model,58,DATA
+62,Virtual View,61,DATA
+63,Metric Store,59|58,DATA
+64,SQL-Based Semantic Layer,58|63,DATA
+65,OLAP Semantic Layer Tool,58,DATA
+66,Cube (Semantic Layer),58|60,DATA
+67,Business Glossary,58,DATA
+68,Query Federation,58|56,DATA
+69,Data Virtualization,62|68,DATA
+70,Naming Convention Standard,67,DATA
+71,Join Path Discovery,61,DATA
+72,Undocumented Join,71,DATA
+73,Source System Mapping,58|56,DATA
+74,Semantic Search,58,DATA
+75,Vocabulary Alignment,67|58,DATA
+76,Column Naming Standard,70,DATA
+77,Semantic Consistency,58|75,DATA
+78,Table Discovery,56|58,DATA
+79,Schema Registry,9|58,DATA
+80,Data Dictionary,67|58,DATA
+81,Metadata,,DATA
+82,Technical Metadata,81,DATA
+83,Business Metadata,81,DATA
+84,Operational Metadata,81,DATA
+85,Active Metadata Management,81,DATA
+86,Passive Metadata Cataloging,81,DATA
+87,Data Quality,81,DATA
+88,Data Completeness,87,DATA
+89,Data Accuracy,87,DATA
+90,Data Consistency,87,DATA
+91,Data Timeliness,87,DATA
+92,Data Stewardship,81|96,DATA
+93,Data Ownership,96,DATA
+94,Data Classification,81,DATA
+95,Access Control,94,DATA
+96,Data Governance Framework,81,DATA
+97,Metadata Catalog Platform,85|82|83,DATA
+98,Automated Metadata Discovery,97,DATA
+99,Metadata Tagging,81,DATA
+100,Policy Enforcement,96|95|482|483,DATA
+101,Governance Role,96,DATA
+102,Data Quality Rule,87,DATA
+103,Metadata Registry,81,META
+104,ISO 11179 Standard,103,META
+105,Data Element,104,META
+106,Data Element Concept,105,META
+107,Conceptual Domain,106,META
+108,Value Domain,107,META
+109,Object Class,104,META
+110,Property (ISO 11179),109,META
+111,Permissible Value,108,META
+112,Data Definition,105,META
+113,Authoritative Source,103,META
+114,Registry Entry,104,META
+115,Administered Item,114,META
+116,Registration Authority,103,META
+117,ISO 11179 Naming Convention,104,META
+118,Data Element Versioning,105,META
+119,Concept Harmonization,106|75|433|434,META
+120,Registry Search API,103,META
+121,Context Binding,114|105,META
+122,Registry vs Catalog,103|97,META
+123,Data Standardization,104,META
+124,Reference Data Management,96,META
+125,Code List,108,META
+126,Unit of Measure Registry,103,META
+127,Cross-Enterprise Data Dictionary,80|103,META
+128,Metadata Thesaurus,103|67,META
+129,UMLS,128,META
+130,NIEM,104|123,META
+131,Process Mining,132|133,PROV
+132,Event Log,,PROV
+133,IEEE XES Standard,132,PROV
+134,Process Discovery,131|132,PROV
+135,Conformance Checking,134,PROV
+136,Process Enhancement,131|135,PROV
+137,Structured Logging,132,PROV
+138,Log Schema,137,PROV
+139,Event Stream,132,PROV
+140,Graph-Ingestible Log,137|138,PROV
+141,Upstream Lineage,144,PROV
+142,Downstream Lineage,144,PROV
+143,Column-Level Lineage,141|142,PROV
+144,Data Provenance,132,PROV
+145,Custody Chain,144,PROV
+146,Transformation History,144,PROV
+147,OpenLineage Standard,141|142,PROV
+148,Lineage vs Provenance,141|144,PROV
+149,Event Sourcing,132|139,PROV
+150,CQRS Pattern,149,PROV
+151,Append-Only Log,132|149,PROV
+152,Change Data Capture,139|137,PROV
+153,Temporal Versioning,144,PROV
+154,Lineage Graph,141|142|3,PROV
+155,Provenance Record,144,PROV
+156,Context Problem,26|58|103,CNTX
+157,LLM Context Window,,CNTX
+158,Retrieval-Augmented Generation,157,CNTX
+159,RAG Limitations,158,CNTX
+160,Static vs Dynamic Knowledge,26,CNTX
+161,Hallucination,157,CNTX
+162,Organizational Knowledge Gap,156|26|164,CNTX
+163,Decision Context,162,CNTX
+164,Tacit Knowledge,,CNTX
+165,Implicit Organizational Knowledge,164,CNTX
+166,Context Freshness,157|160,CNTX
+167,Context Relevance,157,CNTX
+168,Context Window Management,157,CNTX
+169,Long-Term Memory for AI,157|156,CNTX
+170,Short-Term vs Long-Term Memory,169,CNTX
+171,Grounding,158|156,CNTX
+172,Knowledge Staleness,166|160,CNTX
+173,Missing Context Failure Mode,156|159,CNTX
+174,Context Completeness,156,CNTX
+175,Context Poisoning,157|156,CNTX
+176,Context Graph Definition,1|2|156,CNTX
+177,Decision Trace,176,CNTX
+178,Living Record,176,CNTX
+179,Entity-Time Linkage,27|176,CNTX
+180,Context Graph vs Knowledge Graph,176|1,CNTX
+181,Context Graph vs Vector Store,176,CNTX
+182,Context Graph vs Database,176,CNTX
+183,Context Graph as Memory Layer,176|169,CNTX
+184,Complementary Knowledge Layers,26|176,CNTX
+185,Context Graph Schema,176|9,CNTX
+186,Decision Node,185|177,CNTX
+187,Approval Edge,185|177,CNTX
+188,Precedent Link,185|177,CNTX
+189,Context Graph Lifecycle,176,CNTX
+190,Context Graph Update Pattern,176,CNTX
+191,Context Graph Query Pattern,185|10|11|12,CNTX
+192,Context Graph API,176,CNTX
+193,Context Graph Read Path,192,CNTX
+194,Context Graph Write Path,192,CNTX
+195,Context Graph Access Control,95|192,CNTX
+196,Decision Trace Anatomy,177,DTRC
+197,Exception Logic,196,DTRC
+198,Historical Precedent,196,DTRC
+199,Cross-System Synthesis,196|26,DTRC
+200,Out-of-Band Approval,196,DTRC
+201,Approval Chain,200|187,DTRC
+202,Decision Justification,196,DTRC
+203,Decision Actor,196,DTRC
+204,Decision Timestamp,196,DTRC
+205,Decision Outcome,196,DTRC
+206,Linked Precedent,198|188,DTRC
+207,Exception Pattern,197,DTRC
+208,Policy Version Reference,196,DTRC
+209,Decision Context Capture,196|194,DTRC
+210,Real-Time Trace Recording,209,DTRC
+211,Trace Completeness,196,DTRC
+212,Trace Replay,177|151,DTRC
+213,Trace Indexing,177|16,DTRC
+214,Counterfactual Trace,177,DTRC
+215,Judgment Call,197|198,DTRC
+216,Decision Trace Node Schema,177|185|6,DTRC
+217,Decision Trace Edge Types,216|7,DTRC
+218,Trace-to-Entity Relationship,217|27,DTRC
+219,Actor Node Pattern,217|203,DTRC
+220,Policy Version Edge,217|208,DTRC
+221,Precedent Chain Pattern,217|206|14,DTRC
+222,Legacy System Bias,156,DTRC
+223,Current State Bias,222,DTRC
+224,Read-Path Limitation,222,DTRC
+225,Write-Path Advantage,194|224,DTRC
+226,Data Warehouse Gap,222|156,DTRC
+227,AI Agent Execution Path,176,DTRC
+228,System of Record Gap,222,DTRC
+229,Incumbent Architecture Constraint,222|226,DTRC
+230,Structural Advantage,176|229,DTRC
+231,Purpose-Built System,230,DTRC
+232,Integration Tax,229,DTRC
+233,Data Silo,222,DTRC
+234,Post-Hoc Context Capture,156|222,DTRC
+235,Real-Time Context Capture,194|210,DTRC
+236,Competitive Moat,176|230,DTRC
+237,Context Graph Node Types,185|6,DTRC
+238,Context Graph Edge Types,185|7,DTRC
+239,Temporal Edge,5|185,DTRC
+240,Time-Stamped Property,8|239,DTRC
+241,Bitemporal Modeling,239,DTRC
+242,Slowly Changing Dimension,60|239,DTRC
+243,Entity Linking in Context Graph,43|185,DTRC
+244,Cross-Graph Reference,185|26,DTRC
+245,Context Graph Index Design,16|185,DTRC
+246,Context Graph Constraint,9|185,DTRC
+247,Context Graph Migration,185,DTRC
+248,Context Graph Versioning,185|153|258|259,DTRC
+249,Context Graph Snapshot,248,DTRC
+250,Subgraph Extraction,185|13,DTRC
+251,Context Graph Merge,185,DTRC
+252,Property Normalization,8|185,DTRC
+253,Context Graph Cardinality,185,DTRC
+254,Context Graph Relationship Design,238,DTRC
+255,Event-Driven Graph Update,139|194,DTRC
+256,Context Graph Test Pattern,185,DTRC
+257,Bitemporal Query,241|10,DTRC
+258,Valid Time,241,DTRC
+259,Transaction Time,241,DTRC
+260,Graph Constraint Enforcement,246,DTRC
+261,Graph Schema Evolution,247|34,DTRC
+262,LLM Integration Pattern,176|157,LLMI
+263,Context Retrieval,262|191,LLMI
+264,Relevance Ranking,263|265,LLMI
+265,Semantic Similarity,157,LLMI
+266,Vector Embedding,157,LLMI
+267,Hybrid Retrieval,263|266|494|495,LLMI
+268,Context Window Budget,157|176,LLMI
+269,Context Compression,268,LLMI
+270,Context Pruning,268|264,LLMI
+271,Grounding Strategy,171|263,LLMI
+272,Prompt Engineering with Context,157|263,LLMI
+273,Few-Shot Context Injection,272,LLMI
+274,Chain-of-Thought with Context,272,LLMI
+275,Context Reranking,264|263,LLMI
+276,Multi-Hop Retrieval,263|14|426|427,LLMI
+277,Context Freshness Check,166|263,LLMI
+278,Context Conflict Resolution,263,LLMI
+279,LLM Output Validation,262,LLMI
+280,Hallucination Mitigation,161|271,LLMI
+281,Context-Aware Generation,262|263,LLMI
+282,Structured Output with Context,281,LLMI
+283,Function Calling Pattern,262,LLMI
+284,Context Graph Tool Definition,283|192,LLMI
+285,Streaming Context Retrieval,263,LLMI
+286,Context Graph Prompt Template,272|176,LLMI
+287,Context Graph Storage Layer,176|3,BUILD
+288,Property Graph Database Selection,287|2,BUILD
+289,Vector Index Layer,287|266,BUILD
+290,Hybrid Storage Architecture,288|289,BUILD
+291,Ingestion Pipeline Design,287,BUILD
+292,Real-Time Ingestion,291|139,BUILD
+293,Batch Ingestion,291,BUILD
+294,Backfill Strategy,293|287,BUILD
+295,Schema Evolution,261|287,BUILD
+296,Context Graph SDK,192|23,BUILD
+297,Context Graph REST API,192,BUILD
+298,Context Graph GraphQL API,192,BUILD
+299,Event-Driven Ingestion,291|139|150,BUILD
+300,Event Streaming Integration,139|291,BUILD
+301,Message Queue Pattern,139,BUILD
+302,Context Graph Caching,287,BUILD
+303,Context Graph Replication,287|49,BUILD
+304,Context Graph Monitoring,287,BUILD
+305,Context Graph Alerting,304,BUILD
+306,Context Graph Performance Tuning,304|287,BUILD
+307,Context Graph SLA,304,BUILD
+308,Context Graph Deployment Pattern,287,BUILD
+309,Context Graph Testing Strategy,185,BUILD
+310,Context Graph Observability,304|441,BUILD
+311,Context Graph Cost Model,287,BUILD
+312,AI Agent Loop,262|176,BUILD
+313,Agent Planning,312,BUILD
+314,Agent Memory Architecture,312|169,BUILD
+315,Tool Use,312|283,BUILD
+316,Agent Orchestration,312,BUILD
+317,Multi-Agent System,316,BUILD
+318,Agent Write-Back,312|194,BUILD
+319,Agent Read Pattern,312|193,BUILD
+320,Graduated Autonomy,312|321,BUILD
+321,Human-in-the-Loop,312,BUILD
+322,Agent Feedback Loop,312|318,BUILD
+323,Agent Trace,312|177,BUILD
+324,Agent Decision Log,323|194,BUILD
+325,Agent Error Recovery,312,BUILD
+326,Agent Retry Pattern,325,BUILD
+327,Agent Rate Limiting,312,BUILD
+328,Agent Authentication,95|312,BUILD
+329,Agent Authorization,328,BUILD
+330,Agent Sandboxing,329,BUILD
+331,ReAct Pattern,312|313,BUILD
+332,Plan-and-Execute Pattern,313,BUILD
+333,Reflection Pattern,322,BUILD
+334,Agent Evaluation,312,BUILD
+335,Agent Benchmarking,334,BUILD
+336,Agent Context Budget,268|312,BUILD
+337,Finance Automation Use Case,176|177,USE
+338,Revenue Reporting Exception,337|197,USE
+339,ARR Definition Conflict,338,USE
+340,Sales Engagement Use Case,176,USE
+341,Sales Playbook Precedent,340|198,USE
+342,Engineering Incident Use Case,176,USE
+343,Production Decision Record,342|177,USE
+344,Legal Compliance Use Case,176,USE
+345,Regulatory Audit Automation,344|177,USE
+346,Customer Success Use Case,176,USE
+347,Account History Graph,346|26,USE
+348,Escalation Logic,346|197,USE
+349,HR Workflow Automation,176,USE
+350,Procurement Use Case,176,USE
+351,Supply Chain Use Case,176|26,USE
+352,Marketing Attribution Use Case,176,USE
+353,Risk Management Use Case,176,USE
+354,IT Operations Use Case,176,USE
+355,Healthcare Workflow Use Case,176,USE
+356,Financial Services Compliance,176,USE
+357,Retail Personalization Use Case,176,USE
+358,Manufacturing Quality Use Case,176,USE
+359,Insurance Claims Use Case,176,USE
+360,Government Process Automation,176,USE
+361,Cross-Department Use Case,176|26,USE
+362,Regulatory Compliance,96,COMP
+363,Automated Decision Regulation,362|176,COMP
+364,GDPR Explainability Requirement,363,COMP
+365,Right to Explanation,364,COMP
+366,Audit Log,177|151,COMP
+367,Audit Trail Design,366,COMP
+368,Explainability by Design,176|177,COMP
+369,Post-Hoc Explainability,176,COMP
+370,Model Card,368,COMP
+371,Decision Record Format,196|366,COMP
+372,Data Retention Policy,96,COMP
+373,Data Purge Policy,372,COMP
+374,Compliance Reporting,362|366|135,COMP
+375,Algorithmic Accountability,363|177,COMP
+376,Bias Detection,375,COMP
+377,Fairness Audit,375,COMP
+378,Explainability Test,368,COMP
+379,Compliance Gap Analysis,362|486,COMP
+380,Governance Report,374|96,COMP
+381,EU AI Act,363,COMP
+382,Full System Replacement Strategy,176|230,COMP
+383,Module Replacement Strategy,176|230,COMP
+384,New System Creation Strategy,176|230,COMP
+385,Beachhead Workflow,176,COMP
+386,Glue Function,176,COMP
+387,Exception-Heavy Workflow,197|176,COMP
+388,High-Headcount Signal,176,COMP
+389,Context Graph Startup,176|236,COMP
+390,Enterprise AI Market,176,COMP
+391,Trillion-Dollar Opportunity,390|176,COMP
+392,Sales Workflow AI System,382|340,COMP
+393,Finance Workflow AI System,382|337,COMP
+394,Engineering Workflow AI System,384|342,COMP
+395,Go-To-Market Strategy,389|385,COMP
+396,Startup Competitive Analysis,389|236,COMP
+397,First Workflow Selection,176|385,COMP
+398,Change Management,176,COMP
+399,Stakeholder Alignment,398,COMP
+400,Decision Quality Metric,177|334,COMP
+401,Adoption Roadmap,397|398|136,COMP
+402,Pilot Program Design,397,COMP
+403,Success Criteria Definition,402|400,COMP
+404,ROI Measurement,400|403,COMP
+405,User Trust Building,320|321,COMP
+406,Human Review Workflow,321|177,COMP
+407,Escalation Policy,406|197,COMP
+408,Model Improvement Feedback,322|177,COMP
+409,Training Data from Traces,177|408,COMP
+410,Organizational Memory,176|169,COMP
+411,Knowledge Transfer,410,COMP
+412,Cross-Functional AI Team,176,COMP
+413,Center of Excellence,412,COMP
+414,Executive Sponsorship,398,COMP
+415,Adoption Barrier,397|398,COMP
+416,Adoption Accelerator,397|405|320,COMP
+417,Graph Neural Network,1|2,GRAPH
+418,Knowledge Graph Embedding,1|417,GRAPH
+419,Entity Disambiguation,28,GRAPH
+420,Named Entity Recognition,27,GRAPH
+421,Information Extraction,81|27,GRAPH
+422,Relation Extraction,421,GRAPH
+423,Semantic Triple,52,GRAPH
+424,Inference Engine,52,GRAPH
+425,Rule-Based Reasoning,424,GRAPH
+426,Transitive Closure,14,GRAPH
+427,Shortest Path Algorithm,17|14,GRAPH
+428,Community Detection,17,GRAPH
+429,Centrality Measure,17,GRAPH
+430,PageRank,429,GRAPH
+431,Graph Clustering,17,GRAPH
+432,Subgraph Matching,13|17,GRAPH
+433,Schema Matching,9,GRAPH
+434,Ontology Mapping,52|433,GRAPH
+435,Dublin Core Metadata,81,GRAPH
+436,JSON-LD,52|435,GRAPH
+437,Data Mesh,56|96,INFRA
+438,Data Product,437,INFRA
+439,Data Contract,438|81,INFRA
+440,Data SLA,307|439|438,INFRA
+441,Data Observability,304|87,INFRA
+442,SQL Transformation Tool,64|56,INFRA
+443,Workflow Orchestration Tool,291,INFRA
+444,Event Streaming Platform,139,INFRA
+445,Graph Batch Processing,293|3,INFRA
+446,Streaming Graph Update,292|3|456,INFRA
+447,Multi-Model Database,3,INFRA
+448,Document Store Integration,3,INFRA
+449,Time-Series Integration,3|239,INFRA
+450,Feature Engineering from Graph,26,INFRA
+451,Knowledge Graph as Feature Store,26|450|418,INFRA
+452,Graph-Based Recommendation,26|429|430,INFRA
+453,Personalization Graph,452|454|455,INFRA
+454,Session Graph,26,INFRA
+455,User Journey Graph,454,INFRA
+456,Change Data Feed,152,INFRA
+457,Large Language Model,,LLMI
+458,Transformer Architecture,457,LLMI
+459,Token,457,LLMI
+460,Tokenization,459,LLMI
+461,Prompt,457,LLMI
+462,System Prompt,461,LLMI
+463,Context Window Limit,157,LLMI
+464,Temperature Parameter,457,LLMI
+465,Top-P Sampling,457,LLMI
+466,Fine-Tuning,457,LLMI
+467,Reinforcement Learning from Human Feedback,466,LLMI
+468,Instruction Tuning,466,LLMI
+469,In-Context Learning,157|461,LLMI
+470,Zero-Shot Prompting,461|457,LLMI
+471,Few-Shot Prompting,461|457,LLMI
+472,Prompt Injection Risk,461,LLMI
+473,Context Injection Attack,472|176,LLMI
+474,LLM Evaluation Metric,457,LLMI
+475,BLEU Score,474,LLMI
+476,Faithfulness Score,474|171,LLMI
+477,Graph Security Model,3|95,INFRA
+478,Row-Level Security in Graph,477,INFRA
+479,Attribute-Based Access Control,95,INFRA
+480,Zero-Trust Graph Architecture,477|479,INFRA
+481,Data Masking,94,INFRA
+482,Data Anonymization,481,INFRA
+483,Differential Privacy,482,INFRA
+484,Federated Learning,457|466,INFRA
+485,Model Audit Trail,366|177,INFRA
+486,AI Red Teaming,472,INFRA
+487,Vector Database,266,INFRA
+488,HNSW Index,487,INFRA
+489,Product Quantization,487,INFRA
+490,Approximate Nearest Neighbor,487,INFRA
+491,Embedding Model,266,INFRA
+492,Sentence Transformer,491,INFRA
+493,Dense Retrieval,263|491|492,INFRA
+494,Sparse Retrieval,263,INFRA
+495,BM25,494,INFRA
+496,Context Graph ROI Model,404|311,INFRA

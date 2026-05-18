@@ -1,0 +1,14 @@
+{
+  "GRAPH": "SteelBlue",
+  "EKG":   "DarkSlateBlue",
+  "DATA":  "Gold",
+  "META":  "DarkGoldenrod",
+  "PROV":  "Teal",
+  "CNTX":  "DarkGreen",
+  "DTRC":  "Indigo",
+  "LLMI":  "Orange",
+  "BUILD": "DodgerBlue",
+  "USE":   "LimeGreen",
+  "COMP":  "Crimson",
+  "INFRA": "DimGray"
+}
