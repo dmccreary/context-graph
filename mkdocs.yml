@@ -179,7 +179,7 @@ extra:
   textbook_name: 'Context Graph'
   textbook_version: '0.1'
 
-  # Google Analytics — uncomment once a property ID exists:
-  # analytics:
-  #   provider: google
-  #   property: G-XXXXXXXXXX
+  # Google Analytics — uncomment once a property ID exists: G-7RZYM87NB1
+  analytics:
+    provider: google
+    property: G-7RZYM87NB1
