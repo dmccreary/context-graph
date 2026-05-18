@@ -32,8 +32,28 @@ nav:
 
   - Chapters:
       - List of Chapters: chapters/index.md
-      # Add chapter entries here as content is generated, e.g.:
-      # - 1. Introduction: chapters/01-introduction/index.md
+      - 1. Knowledge Graphs and LPGs: chapters/01-knowledge-graphs-lpg/index.md
+      - 2. Semantic Layers: chapters/02-semantic-layers/index.md
+      - 3. Metadata Management: chapters/03-metadata-management/index.md
+      - 4. Enterprise Knowledge Graphs: chapters/04-enterprise-knowledge-graphs/index.md
+      - 5. Graph Theory and Algorithms: chapters/05-graph-theory-algorithms/index.md
+      - 6. Metadata Registries: chapters/06-metadata-registries/index.md
+      - 7. Process Mining and Lineage: chapters/07-process-mining-lineage/index.md
+      - 8. The Context Problem: chapters/08-context-problem/index.md
+      - 9. What a Context Graph Is: chapters/09-context-graph-definition/index.md
+      - 10. LLM and AI Foundations: chapters/10-llm-ai-foundations/index.md
+      - 11. Decision Traces: chapters/11-decision-traces/index.md
+      - 12. Incumbent Challenges: chapters/12-incumbent-challenges/index.md
+      - 13. Graph Data Modeling: chapters/13-graph-data-modeling/index.md
+      - 14. Integrating LLMs: chapters/14-llm-integration/index.md
+      - 15. Building and Deploying: chapters/15-building-deploying/index.md
+      - 16. AI Agent Architecture: chapters/16-ai-agent-architecture/index.md
+      - 17. Enterprise Use Cases: chapters/17-enterprise-use-cases/index.md
+      - 18. Compliance and Audit: chapters/18-compliance-explainability/index.md
+      - 19. Market Strategy: chapters/19-market-strategy/index.md
+      - 20. Organizational Adoption: chapters/20-organizational-adoption/index.md
+      - 21. Data Engineering: chapters/21-data-engineering/index.md
+      - 22. Security and Vector Search: chapters/22-security-vector-search/index.md
 
   - Learning Graph:
       - Introduction: learning-graph/index.md
