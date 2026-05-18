@@ -3,8 +3,9 @@
     padding: 0;
 }
 .md-header__button.md-logo img, .md-header__button.md-logo svg {
-    height: 55px;
-    width: 55px;
+  /* the spider is wide and short, so we give it a fixed size and let the image scale to fit */
+    height: 50px;
+    width: 65px;
      /* background-color: #ffffff; */
     background-color: #aaaaaa;
     border-radius: 50%;

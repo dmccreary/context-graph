@@ -8,12 +8,6 @@ site_description: 'An interactive intelligent textbook on the contact graph and 
 site_author: 'Dan Mccreary'
 site_url: 'https://dmccreary.github.io/context-graph/'
 
-# Hooks — runs local Python before/after page processing
-# social_override.py lets per-page `image:` frontmatter override the auto-
-# generated social card URL for og:image and twitter:image meta tags.
-hooks:
-  - plugins/social_override.py
-
 # Repository
 repo_name: 'GitHub Repo'
 repo_url: 'https://github.com/dmccreary/context-graph'
@@ -75,8 +69,8 @@ nav:
 theme:
   name: material
   # Once a logo is generated, point this at docs/img/logo.png or a mascot pose:
-  # logo: img/logo.png
-  # favicon: img/favicon.ico
+  logo: img/mascot/neutral.png
+  favicon: img/favicon.ico
   palette:
     primary: 'indigo'
     accent: 'orange'
@@ -99,21 +93,27 @@ theme:
 plugins:
   - search
   # Uncomment after running `pip install "mkdocs-material[imaging]"`:
-  # - social
+  - social
   # Uncomment after running `pip install mkdocs-glightbox`:
-  # - glightbox:
-  #     touchNavigation: true
-  #     loop: false
-  #     effect: zoom
-  #     slide_effect: slide
-  #     width: 100%
-  #     height: auto
-  #     zoomable: true
-  #     draggable: true
-  #     auto_caption: false
-  #     caption_position: bottom
-  #     skip_classes:
-  #       - mascot-admonition-img   # keep mascot poses out of the lightbox gallery
+  - glightbox:
+      touchNavigation: true
+      loop: false
+      effect: zoom
+      slide_effect: slide
+      width: 100%
+      height: auto
+      zoomable: true
+      draggable: true
+      auto_caption: false
+      caption_position: bottom
+      skip_classes:
+        - mascot-admonition-img   # keep mascot poses out of the lightbox gallery
+
+# Hooks — runs local Python before/after page processing
+# social_override.py lets per-page `image:` frontmatter override the auto-
+# generated social card URL for og:image and twitter:image meta tags.
+hooks:
+  - plugins/social_override.py
 
 # Markdown extensions
 markdown_extensions:
@@ -134,15 +134,20 @@ markdown_extensions:
   - pymdownx.snippets
   - pymdownx.arithmatex:
       generic: true
+      inline_syntax: ['round']
+      block_syntax: ['dollar', 'square']
 
 # Custom CSS — file is created by init-textbook
 extra_css:
   - css/extra.css
   - css/mascot.css
+  - https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css
 
-# Custom JavaScript — uncomment once a corresponding file exists
-# extra_javascript:
-#   - js/extra.js
+# KaTeX math rendering — local init script must load before the CDN libraries
+extra_javascript:
+  - js/katex.js
+  - https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js
+  - https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js
 
 # Exclude prompt scratch files and TODOs from build/search/sitemap
 exclude_docs: |

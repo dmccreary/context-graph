@@ -6,9 +6,15 @@ Context Graph: How Organizations Use LLMs Cost Effectively
 
 ## Description
 
-Context graphs are structured, persistent records of decision traces—capturing
+Context graphs are enterprise graph data structures designed to
+get the right content into a prompt in the fewest tokens. 
+
+Context graphs are structured, persistent records of information
+such as product data, customer data, ontologies and decision traces—capturing
 not just *what* happened inside an enterprise, but *why* it happened, *who*
-approved it, and *which precedents* justified it. This textbook explains what
+approved it, and *which precedents* justified it. 
+
+This textbook explains what
 context graphs are, why large language models (LLMs) desperately need them to
 work reliably inside organizations, and how practitioners can design, build,
 and deploy them. The core thesis, drawn from Foundation Capital's analysis of
