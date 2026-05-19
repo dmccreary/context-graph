@@ -99,6 +99,8 @@ For context graphs specifically, a decision-weighted PageRank variant — where 
 
 #### Diagram: PageRank Visualization on a Small Supplier Graph
 
+<iframe src="../../sims/pagerank-supplier-graph/main.html" width="100%" height="542px" scrolling="no"></iframe>
+
 <details markdown="1">
 <summary>Interactive vis-network MicroSim showing PageRank scores on a supplier dependency graph</summary>
 Type: graph-model
@@ -172,6 +174,8 @@ Together, NER, disambiguation, and relation extraction form a pipeline for conve
 **Graph deduplication** is the ongoing process of finding and merging duplicate nodes that have accumulated in the graph over time — due to imperfect entity resolution at ingestion time, manual data entry from multiple sources, or race conditions during parallel ingestion. Deduplication runs on a schedule, scanning for node pairs that share high-similarity properties and flagging them for automated merge or human review.
 
 #### Diagram: Information Extraction Pipeline to Graph
+
+<iframe src="../../sims/ie-pipeline-to-graph/main.html" width="100%" height="622px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Interactive step-through MicroSim showing how an incident report is converted to semantic triples and loaded into a knowledge graph</summary>
@@ -255,6 +259,8 @@ Enterprise knowledge graphs do not live in isolation — they exchange data with
 **Ontology mapping** is the higher-level version of schema matching: aligning two ontologies (rather than two flat schemas) by finding equivalent or overlapping concept types and relationship types. Organizations that federate multiple graph instances often need ontology mapping to translate queries from one graph's vocabulary into another's.
 
 #### Diagram: Knowledge Graph Embedding Space Explorer
+
+<iframe src="../../sims/kg-embedding-explorer/main.html" width="100%" height="582px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Interactive 2D scatter plot showing knowledge graph embedding positions for enterprise entities</summary>

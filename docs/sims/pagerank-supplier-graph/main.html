@@ -1,127 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PageRank Visualization on a Small Supplier Graph</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f8f9fa;
-            color: #212529;
-        }
-        #container {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background: white;
-        }
-        h1 {
-            font-size: 22px;
-            margin-bottom: 10px;
-            color: #1a3a6c;
-        }
-        .placeholder {
-            border: 2px dashed #adb5bd;
-            border-radius: 8px;
-            padding: 40px 20px;
-            text-align: center;
-            color: #6c757d;
-            margin: 20px 0;
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .placeholder .badge {
-            display: inline-block;
-            background: #ffc107;
-            color: #212529;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-        .placeholder h2 {
-            font-size: 18px;
-            color: #495057;
-            margin-bottom: 8px;
-        }
-        .placeholder p {
-            font-size: 14px;
-            max-width: 480px;
-        }
-        .meta {
-            margin-top: 20px;
-            font-size: 13px;
-            color: #6c757d;
-            border-top: 1px solid #dee2e6;
-            padding-top: 12px;
-        }
-        .meta strong { color: #495057; }
-    </style>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
+    <title>PageRank Supplier Graph</title>
+    <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/vis-network/styles/vis-network.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="container">
-        <h1>PageRank Visualization on a Small Supplier Graph</h1>
-        <div class="placeholder">
-            <span class="badge">SCAFFOLD</span>
-            <h2>MicroSim Not Yet Implemented</h2>
-            <p>This MicroSim has been scaffolded from its specification but the
-            interactive content has not been built yet. See the chapter source
-            and the <code>index.md</code> in this directory for the full spec.</p>
-        </div>
-        <div class="meta">
-            <p><strong>Sim ID:</strong> pagerank-supplier-graph</p>
-            <p><strong>Library:</strong> vis-network</p>
-            <p><strong>Bloom Level:</strong> Understand (L2)</p>
-            <p><strong>Learning Objective:</strong> Learners can interpret PageRank scores on a graph by identifying which nodes are structurally influential and explaining why their position makes them influential.</p>
+    <div class="container">
+        <div id="network"></div>
+        <div class="title">PageRank on a Supply Chain — node size ∝ score</div>
+        <div class="right-panel">
+            <div class="detail-panel" id="dp">
+                <div class="dt">Node details</div>
+                <div class="db" id="db">Click any node to see its PageRank score and supply-chain interpretation.</div>
+            </div>
+            <button class="btn" id="scores-btn">Show Scores</button>
+            <button class="btn" id="critical-btn">Highlight Critical (&gt; 0.15)</button>
+            <button class="btn" id="reset-btn">Reset View</button>
         </div>
     </div>
-
-    <!--
-    SPECIFICATION (from chapter index.md):
-
-    Type: graph-model
-    **sim-id:** pagerank-supplier-graph
-    **Library:** vis-network
-    **Status:** Specified
-    
-    Bloom Level: Understand (L2)
-    Bloom Verb: interpret
-    Learning Objective: Learners can interpret PageRank scores on a graph by identifying which nodes are structurally influential and explaining why their position makes them influential.
-    
-    Instructional Rationale: An interactive vis-network graph where node size reflects PageRank score is appropriate for the Understand objective — learners can click nodes to see their score and read an explanation connecting the score to the node's structural position.
-    
-    Canvas: responsive width, 480px height. Light gray background.
-    
-    Nodes (8 total, representing a simplified supply chain):
-    - "Tier-1 Distributor" — large node (PageRank: 0.28), indigo, ellipse
-    - "Raw Material A" — medium-large (PageRank: 0.19), teal
-    - "Raw Material B" — medium (PageRank: 0.14), teal
-    - "Manufacturer X" — medium (PageRank: 0.13), gold
-    - "Manufacturer Y" — small-medium (PageRank: 0.10), gold
-    - "Product Line 1" — small (PageRank: 0.07), orange
-    - "Product Line 2" — small (PageRank: 0.06), orange
-    - "Logistics Partner" — small (PageRank: 0.03), steel blue
-    
-    Node sizes scale linearly with PageRank: largest node = 50px radius, smallest = 18px radius.
-    
-    Edges (directed, representing supply/dependency flow):
-    Raw Material A → Manufacturer X, Raw Material A → Manufacturer Y, Raw Material B → Manufacturer X, Manufacturer X → Tier-1 Distributor, Manufacturer Y → Tier-1 Distributor, Tier-1 Distributor → Product Line 1, Tier-1 Distributor → Product Line 2, Logistics Partner → Tier-1 Distributor
-    
-    Click on any node: opens an infobox panel below the canvas showing:
-    - Node name
-    - PageRank score (formatted as 0.XX)
-    - Why this score: e.g., for Tier-1 Distributor: "Highest PageRank (0.28) because three manufacturers and one logistics partner all supply into this node — it is the critical bridge before final products. Removing it disconnects all product lines."
-    - Risk implication: one sentence on what high PageRank means for supply chain risk
-    
-    Toggle button "Show/Hide PageRank Scores" displays score labels above each node.
-    Toggle button "Highlight Critical Nodes" colors nodes above 0.15 PageRank in red to visualize the top tier.
-    -->
+    <script src="pagerank-supplier-graph.js"></script>
 </body>
 </html>

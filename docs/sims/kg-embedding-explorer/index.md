@@ -1,7 +1,7 @@
 ---
 title: Knowledge Graph Embedding Space Explorer
 description: Learners can explain how knowledge graph embeddings place semantically related entities near each other in a continuous space, enabling similarity-based retrieval.
-status: scaffold
+status: implemented
 library: p5.js
 bloom_level: Understand (L2)
 ---
@@ -10,7 +10,7 @@ bloom_level: Understand (L2)
 
 
 
-<iframe src="main.html" width="100%" height="600"></iframe>
+<iframe src="main.html" width="100%" height="582" scrolling="no"></iframe>
 
 [Run MicroSim in Fullscreen](main.html){ .md-button .md-button--primary }
 

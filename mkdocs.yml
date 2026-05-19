@@ -81,6 +81,9 @@ nav:
       - Graph ETL Pipeline Stages: sims/graph-etl-pipeline/index.md
       - Hub-and-Spoke vs Federated: sims/hub-spoke-vs-federated/index.md
       - Taxonomy vs Ontology: sims/taxonomy-vs-ontology/index.md
+      - IE Pipeline to Graph: sims/ie-pipeline-to-graph/index.md
+      - KG Embedding Explorer: sims/kg-embedding-explorer/index.md
+      - PageRank Supplier Graph: sims/pagerank-supplier-graph/index.md
 
   - License: license.md
   - Contact: contact.md

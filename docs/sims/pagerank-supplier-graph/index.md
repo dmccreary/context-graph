@@ -1,7 +1,7 @@
 ---
 title: PageRank Visualization on a Small Supplier Graph
 description: Learners can interpret PageRank scores on a graph by identifying which nodes are structurally influential and explaining why their position makes them influential.
-status: scaffold
+status: implemented
 library: vis-network
 bloom_level: Understand (L2)
 ---
@@ -10,7 +10,7 @@ bloom_level: Understand (L2)
 
 
 
-<iframe src="main.html" width="100%" height="600"></iframe>
+<iframe src="main.html" width="100%" height="542" scrolling="no"></iframe>
 
 [Run MicroSim in Fullscreen](main.html){ .md-button .md-button--primary }
 

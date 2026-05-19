@@ -117,4 +117,25 @@ Plotly, Venn.js).
     Contrast a hierarchy-only taxonomy with a richly-typed ontology for
     the same product domain. **Chapter 4 · vis-network**
 
+-   __[IE Pipeline to Graph](ie-pipeline-to-graph/index.md)__
+
+    ![IE Pipeline to Graph](ie-pipeline-to-graph/ie-pipeline-to-graph.png)
+
+    Walk an unstructured sentence through NER → disambiguation → relation
+    extraction into a small RDF-style graph. **Chapter 5 · p5.js**
+
+-   __[KG Embedding Space Explorer](kg-embedding-explorer/index.md)__
+
+    ![KG Embedding Explorer](kg-embedding-explorer/kg-embedding-explorer.png)
+
+    Click points in a 2D embedding scatter to see nearest neighbors and
+    cluster meaning; slide the similarity threshold. **Chapter 5 · p5.js**
+
+-   __[PageRank Supplier Graph](pagerank-supplier-graph/index.md)__
+
+    ![PageRank Supplier Graph](pagerank-supplier-graph/pagerank-supplier-graph.png)
+
+    Eight-node supply chain with node size proportional to PageRank score;
+    click any node for its risk interpretation. **Chapter 5 · vis-network**
+
 </div>

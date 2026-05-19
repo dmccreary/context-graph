@@ -14,7 +14,7 @@
   "library": "p5.js",
   "bloomLevel": "Understand (L2)",
   "bloomVerb": "explain",
-  "completion_status": "scaffold",
+  "completion_status": "implemented",
   "chapter_number": 5,
   "chapter_title": "\"Chapter 5: Graph Theory, Algorithms, and Advanced Enterprise KG\"",
   "chapter_dir": "05-graph-theory-algorithms"
