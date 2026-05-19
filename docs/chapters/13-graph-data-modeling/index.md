@@ -95,6 +95,8 @@ Because transaction time is immutable, the context graph can support audit queri
 
 #### Diagram: Bitemporal Modeling — Two Time Dimensions
 
+<iframe src="../../sims/bitemporal-explorer/main.html" width="100%" height="602px" scrolling="no"></iframe>
+
 <details markdown="1">
 <summary>Interactive MicroSim showing valid time vs. transaction time for a credit tier change, with a slider to explore the two-dimensional time space</summary>
 Type: microsim
@@ -206,6 +208,8 @@ A **context graph snapshot** is a point-in-time export of a portion of the conte
 **Context graph merge** is the process of combining two context graph instances — typically when two organizational units have been operating separate context graphs and need to merge after a reorganization, or when a trial deployment is promoted to production. Merging requires: resolving canonical entity ID conflicts, deduplicating decision traces that were recorded in both graphs for the same event, and reconciling schema differences between the two graph versions.
 
 #### Diagram: Subgraph Extraction for LLM Context Assembly
+
+<iframe src="../../sims/subgraph-extraction/main.html" width="100%" height="602px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Interactive vis-network diagram showing how a subgraph is extracted from the full context graph for a specific entity query, and how it is serialized for the LLM</summary>

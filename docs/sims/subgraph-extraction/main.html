@@ -1,130 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subgraph Extraction for LLM Context Assembly</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f8f9fa;
-            color: #212529;
-        }
-        #container {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background: white;
-        }
-        h1 {
-            font-size: 22px;
-            margin-bottom: 10px;
-            color: #1a3a6c;
-        }
-        .placeholder {
-            border: 2px dashed #adb5bd;
-            border-radius: 8px;
-            padding: 40px 20px;
-            text-align: center;
-            color: #6c757d;
-            margin: 20px 0;
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .placeholder .badge {
-            display: inline-block;
-            background: #ffc107;
-            color: #212529;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-        .placeholder h2 {
-            font-size: 18px;
-            color: #495057;
-            margin-bottom: 8px;
-        }
-        .placeholder p {
-            font-size: 14px;
-            max-width: 480px;
-        }
-        .meta {
-            margin-top: 20px;
-            font-size: 13px;
-            color: #6c757d;
-            border-top: 1px solid #dee2e6;
-            padding-top: 12px;
-        }
-        .meta strong { color: #495057; }
-    </style>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
+    <title>Subgraph Extraction</title>
+    <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/vis-network/styles/vis-network.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="container">
-        <h1>Subgraph Extraction for LLM Context Assembly</h1>
-        <div class="placeholder">
-            <span class="badge">SCAFFOLD</span>
-            <h2>MicroSim Not Yet Implemented</h2>
-            <p>This MicroSim has been scaffolded from its specification but the
-            interactive content has not been built yet. See the chapter source
-            and the <code>index.md</code> in this directory for the full spec.</p>
-        </div>
-        <div class="meta">
-            <p><strong>Sim ID:</strong> subgraph-extraction</p>
-            <p><strong>Library:</strong> vis-network</p>
-            <p><strong>Bloom Level:</strong> Understand (L2)</p>
-            <p><strong>Learning Objective:</strong> Learners can explain how a subgraph extraction query traverses from an entity node to decision traces to their associated actors, policies, and precedents, and explain why the resulting subgraph is serialized into prose for the LLM.</p>
+    <div class="container">
+        <div id="network"></div>
+        <div class="title">Subgraph Extraction — Selecting a Focused View for the LLM</div>
+        <div class="right-panel">
+            <div class="detail-panel" id="dp">
+                <div class="dt">Serialized LLM context</div>
+                <pre class="db" id="db">Decision Trace DT-4482 (2025-10-31):
+  Type: pricing_exception
+  Decided by: J. Smith (Account Manager)
+  Approved by: M. Williams (VP Sales)
+  Policy: Pricing Policy v3.2
+    (effective 2024-01-01)
+  Cited precedents: DT-3891, DT-2204
+  Summary: 15% discount for Acme
+    Q4 renewal; strategic account.</pre>
+            </div>
+            <button class="btn" id="reset-btn">Reset View</button>
         </div>
     </div>
-
-    <!--
-    SPECIFICATION (from chapter index.md):
-
-    Type: graph-model
-    **sim-id:** subgraph-extraction
-    **Library:** vis-network
-    **Status:** Specified
-    
-    Bloom Level: Understand (L2)
-    Bloom Verb: explain
-    Learning Objective: Learners can explain how a subgraph extraction query traverses from an entity node to decision traces to their associated actors, policies, and precedents, and explain why the resulting subgraph is serialized into prose for the LLM.
-    
-    Instructional Rationale: A two-panel interactive diagram — full graph on left, extracted subgraph on right — is appropriate for the Understand objective because learners can see the selection process visually: which nodes are included and which are excluded from the extraction.
-    
-    Canvas: responsive width, 560px height. White background. Two panels.
-    
-    **Left panel — Full Context Graph (schematic):**
-    Shows ~15 nodes of various types with many edges. Most nodes are light gray (not selected). A few nodes are highlighted:
-    - Target entity: "Customer: Acme Corp" (indigo, bright)
-    - Three Decision Trace Nodes connected to this customer (gold)
-    - Actors, policy versions, and precedent nodes connected to the decision traces (teal, smaller)
-    
-    The highlighted nodes form the subgraph to be extracted.
-    
-    **Right panel — Extracted Subgraph:**
-    Shows only the highlighted nodes from the left panel, arranged more cleanly. Edge labels visible.
-    Below the subgraph: a serialized LLM context block showing the prose format:
-    ```
-    Decision Trace DT-4482 (2025-10-31):
-      Type: pricing_exception
-      Decided by: J. Smith (Account Manager)
-      Approved by: M. Williams (VP Sales)
-      Policy: Pricing Policy v3.2 (effective 2024-01-01)
-      Cited precedents: DT-3891 (Q2-2024, favorable), DT-2204 (Q4-2023, favorable)
-      Summary: 15% discount approved for Q4 renewal. Strategic account justification.
-    ```
-    
-    A "Extract" button (createButton) triggers a brief animation where the highlighted nodes in the left panel "fly" to the right panel and the serialized block appears below.
-    
-    Click on any extracted node in the right panel: shows the raw JSON for that node alongside the prose serialization, illustrating the transformation.
-    
-    Annotation: "The LLM receives the prose block, not the raw JSON. Structured prose matches the model's training distribution and improves reasoning quality."
-    -->
+    <script src="subgraph-extraction.js"></script>
 </body>
 </html>

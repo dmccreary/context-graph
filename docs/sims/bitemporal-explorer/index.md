@@ -1,7 +1,7 @@
 ---
 title: Bitemporal Modeling — Two Time Dimensions
 description: Learners can use the bitemporal time model to answer a point-in-time query by correctly filtering on both valid time and transaction time.
-status: scaffold
+status: implemented
 library: p5.js
 bloom_level: Apply (L3)
 ---
@@ -10,7 +10,7 @@ bloom_level: Apply (L3)
 
 
 
-<iframe src="main.html" width="100%" height="600"></iframe>
+<iframe src="main.html" width="100%" height="602" scrolling="no"></iframe>
 
 [Run MicroSim in Fullscreen](main.html){ .md-button .md-button--primary }
 

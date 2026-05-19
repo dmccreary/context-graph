@@ -14,7 +14,7 @@
   "library": "vis-network",
   "bloomLevel": "Understand (L2)",
   "bloomVerb": "explain",
-  "completion_status": "scaffold",
+  "completion_status": "implemented",
   "chapter_number": 13,
   "chapter_title": "\"Chapter 13: Graph Data Modeling for Context\"",
   "chapter_dir": "13-graph-data-modeling"
