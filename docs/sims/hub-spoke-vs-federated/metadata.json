@@ -14,7 +14,7 @@
   "library": "vis-network",
   "bloomLevel": "Analyze (L4)",
   "bloomVerb": "compare",
-  "completion_status": "scaffold",
+  "completion_status": "implemented",
   "chapter_number": 4,
   "chapter_title": "\"Chapter 4: Enterprise Knowledge Graphs — Core Patterns\"",
   "chapter_dir": "04-enterprise-knowledge-graphs"

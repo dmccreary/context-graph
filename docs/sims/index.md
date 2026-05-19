@@ -96,4 +96,25 @@ Plotly, Venn.js).
     Radial diagram showing technical, business, and operational metadata
     attached to a single Customer Table. **Chapter 3 · vis-network**
 
+-   __[Graph ETL Pipeline Stages](graph-etl-pipeline/index.md)__
+
+    ![Graph ETL Pipeline](graph-etl-pipeline/graph-etl-pipeline.png)
+
+    Step a Customer record through Extract → Resolve → Transform → Validate
+    → Load with a failure-mode toggle. **Chapter 4 · p5.js**
+
+-   __[Hub-and-Spoke vs Federated](hub-spoke-vs-federated/index.md)__
+
+    ![Hub-and-Spoke vs Federated](hub-spoke-vs-federated/hub-spoke-vs-federated.png)
+
+    Side-by-side knowledge-graph architectures; click any node to surface
+    the trade-offs each side encodes. **Chapter 4 · vis-network**
+
+-   __[Taxonomy vs Ontology](taxonomy-vs-ontology/index.md)__
+
+    ![Taxonomy vs Ontology](taxonomy-vs-ontology/taxonomy-vs-ontology.png)
+
+    Contrast a hierarchy-only taxonomy with a richly-typed ontology for
+    the same product domain. **Chapter 4 · vis-network**
+
 </div>

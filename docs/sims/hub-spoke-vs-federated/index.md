@@ -1,7 +1,7 @@
 ---
 title: Hub-and-Spoke vs. Federated Architecture
 description: Learners can compare hub-and-spoke and federated graph architectures by identifying the trade-offs in governance, autonomy, and query complexity.
-status: scaffold
+status: implemented
 library: vis-network
 bloom_level: Analyze (L4)
 ---
@@ -10,7 +10,7 @@ bloom_level: Analyze (L4)
 
 
 
-<iframe src="main.html" width="100%" height="600"></iframe>
+<iframe src="main.html" width="100%" height="582" scrolling="no"></iframe>
 
 [Run MicroSim in Fullscreen](main.html){ .md-button .md-button--primary }
 

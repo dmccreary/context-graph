@@ -78,6 +78,9 @@ nav:
       - Governance Framework Concept Map: sims/governance-concept-map/index.md
       - Governance Role Graph: sims/governance-role-graph/index.md
       - Three Metadata Layers: sims/three-metadata-layers/index.md
+      - Graph ETL Pipeline Stages: sims/graph-etl-pipeline/index.md
+      - Hub-and-Spoke vs Federated: sims/hub-spoke-vs-federated/index.md
+      - Taxonomy vs Ontology: sims/taxonomy-vs-ontology/index.md
 
   - License: license.md
   - Contact: contact.md

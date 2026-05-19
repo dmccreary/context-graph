@@ -91,6 +91,8 @@ The choice of architecture has direct consequences for context graph design. A h
 
 #### Diagram: Hub-and-Spoke vs. Federated Architecture
 
+<iframe src="../../sims/hub-spoke-vs-federated/main.html" width="100%" height="582px" scrolling="no"></iframe>
+
 <details markdown="1">
 <summary>Interactive vis-network diagram comparing hub-and-spoke and federated graph architectures</summary>
 Type: graph-model
@@ -162,6 +164,8 @@ The pipeline must run continuously for high-velocity sources (like operational e
 
 #### Diagram: Graph ETL Pipeline Stages
 
+<iframe src="../../sims/graph-etl-pipeline/main.html" width="100%" height="582px" scrolling="no"></iframe>
+
 <details markdown="1">
 <summary>Interactive step-through MicroSim showing the five stages of a graph ingestion pipeline</summary>
 Type: microsim
@@ -224,6 +228,8 @@ An **ontology** is a richer formalism. It defines not just the types that exist 
 The relationship between an ontology and a knowledge graph is: the ontology defines the schema (what types and relationships are allowed), and the knowledge graph instantiates the schema (stores the actual entities and relationships). A **graph data catalog** combines both: it stores the ontology, the instance data, and the metadata about both — providing a unified, queryable repository that an LLM can use to understand what a graph contains before querying it.
 
 #### Diagram: Taxonomy vs. Ontology in a Product Graph
+
+<iframe src="../../sims/taxonomy-vs-ontology/main.html" width="100%" height="542px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Interactive vis-network diagram contrasting a product taxonomy with a product ontology</summary>

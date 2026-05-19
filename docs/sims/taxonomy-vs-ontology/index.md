@@ -1,7 +1,7 @@
 ---
 title: Taxonomy vs. Ontology in a Product Graph
 description: Learners can contrast a taxonomy (hierarchy of types) with an ontology (network of type relationships and constraints) by examining example graphs for the same product domain.
-status: scaffold
+status: implemented
 library: vis-network
 bloom_level: Understand (L2)
 ---
@@ -10,7 +10,7 @@ bloom_level: Understand (L2)
 
 
 
-<iframe src="main.html" width="100%" height="600"></iframe>
+<iframe src="main.html" width="100%" height="542" scrolling="no"></iframe>
 
 [Run MicroSim in Fullscreen](main.html){ .md-button .md-button--primary }
 
