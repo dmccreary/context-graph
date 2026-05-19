@@ -271,4 +271,11 @@ Plotly, Venn.js).
     Step through Query Interp → Graph Traversal → Vector Search → Composite
     Rank → Cross-Encoder Rerank with per-stage latency budget. **Chapter 14 · p5.js**
 
+-   __[Ingestion Pipeline Architecture](ingestion-pipeline-architecture/index.md)__
+
+    ![Ingestion Pipeline Architecture](ingestion-pipeline-architecture/ingestion-pipeline-architecture.png)
+
+    Sources (agents, humans, CDC, batch) → event stream + batch ETL →
+    ingestion service → graph DB + vector index, with monitoring. **Chapter 15 · vis-network**
+
 </div>

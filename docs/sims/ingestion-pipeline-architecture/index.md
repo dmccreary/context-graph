@@ -1,7 +1,7 @@
 ---
 title: Ingestion Pipeline Architecture
 description: Learners can explain how decision events flow from source systems through the real-time and batch ingestion pipelines to the graph database and vector index.
-status: scaffold
+status: implemented
 library: vis-network
 bloom_level: Understand (L2)
 ---
@@ -10,7 +10,7 @@ bloom_level: Understand (L2)
 
 
 
-<iframe src="main.html" width="100%" height="600"></iframe>
+<iframe src="main.html" width="100%" height="602" scrolling="no"></iframe>
 
 [Run MicroSim in Fullscreen](main.html){ .md-button .md-button--primary }
 

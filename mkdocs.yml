@@ -103,6 +103,7 @@ nav:
       - Subgraph Extraction: sims/subgraph-extraction/index.md
       - Context Budget Visualizer: sims/context-budget-visualizer/index.md
       - Hybrid Retrieval Pipeline: sims/hybrid-retrieval-pipeline/index.md
+      - Ingestion Pipeline Architecture: sims/ingestion-pipeline-architecture/index.md
 
   - License: license.md
   - Contact: contact.md

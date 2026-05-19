@@ -106,6 +106,8 @@ Backfill requires a priority ordering: fill the highest-volume, highest-value de
 
 #### Diagram: Ingestion Pipeline Architecture
 
+<iframe src="../../sims/ingestion-pipeline-architecture/main.html" width="100%" height="602px" scrolling="no"></iframe>
+
 <details markdown="1">
 <summary>Interactive vis-network architecture diagram showing the real-time and batch ingestion pipelines feeding the hybrid storage architecture</summary>
 Type: graph-model
