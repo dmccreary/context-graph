@@ -14,7 +14,7 @@
   "library": "p5.js",
   "bloomLevel": "Apply (L3)",
   "bloomVerb": "use",
-  "completion_status": "scaffold",
+  "completion_status": "implemented",
   "chapter_number": 14,
   "chapter_title": "\"Chapter 14: Integrating LLMs with Context Graphs\"",
   "chapter_dir": "14-llm-integration"

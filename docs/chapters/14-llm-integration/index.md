@@ -110,6 +110,8 @@ Cross-encoder reranking is more accurate than embedding similarity because it co
 
 #### Diagram: Hybrid Retrieval and Reranking Pipeline
 
+<iframe src="../../sims/hybrid-retrieval-pipeline/main.html" width="100%" height="582px" scrolling="no"></iframe>
+
 <details markdown="1">
 <summary>Interactive step-through MicroSim showing the five-stage hybrid retrieval and reranking pipeline for context graph queries</summary>
 Type: microsim
@@ -222,6 +224,8 @@ Outputs that fail validation are either corrected (by re-prompting with the vali
     The integration patterns in this chapter might feel like engineering detail after the architectural clarity of earlier chapters. They are — but they are the engineering detail that determines whether your context graph system is trusted by its users. A context graph with poor retrieval, poor ranking, or poor output validation will produce wrong answers. The architecture is the vision; the integration engineering is the execution. Both matter equally.
 
 #### Diagram: Context Window Budget Visualizer
+
+<iframe src="../../sims/context-budget-visualizer/main.html" width="100%" height="622px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Interactive MicroSim allowing learners to allocate a context window budget across prompt components and see the impact on available retrieval slots</summary>

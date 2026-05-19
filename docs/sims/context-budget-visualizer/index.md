@@ -1,7 +1,7 @@
 ---
 title: Context Window Budget Visualizer
 description: Learners can calculate the context window allocation for a specific decision support application by adjusting component budgets and observing the trade-offs on retrieval capacity.
-status: scaffold
+status: implemented
 library: p5.js
 bloom_level: Apply (L3)
 ---
@@ -10,7 +10,7 @@ bloom_level: Apply (L3)
 
 
 
-<iframe src="main.html" width="100%" height="600"></iframe>
+<iframe src="main.html" width="100%" height="622" scrolling="no"></iframe>
 
 [Run MicroSim in Fullscreen](main.html){ .md-button .md-button--primary }
 
