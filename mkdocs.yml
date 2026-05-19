@@ -94,6 +94,8 @@ nav:
       - Four Missing Layers: sims/four-missing-layers/index.md
       - Context Graph Schema: sims/context-graph-schema/index.md
       - Five Knowledge Layers: sims/five-knowledge-layers/index.md
+      - LLM Evaluation Pipeline: sims/llm-evaluation-pipeline/index.md
+      - Prompt Anatomy Explorer: sims/prompt-anatomy-explorer/index.md
 
   - License: license.md
   - Contact: contact.md

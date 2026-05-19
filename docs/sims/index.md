@@ -208,4 +208,18 @@ Plotly, Venn.js).
     Five-layer enterprise AI stack: LLM Reasoning → Context Graph →
     Semantic → Knowledge Graph → Raw Data. **Chapter 9 · vis-network**
 
+-   __[LLM Evaluation Pipeline](llm-evaluation-pipeline/index.md)__
+
+    ![LLM Evaluation Pipeline](llm-evaluation-pipeline/llm-evaluation-pipeline.png)
+
+    Compare BLEU and Faithfulness evaluators; both feed a quality monitor
+    that fires alerts when scores drop. **Chapter 10 · vis-network**
+
+-   __[Prompt Anatomy Explorer](prompt-anatomy-explorer/index.md)__
+
+    ![Prompt Anatomy](prompt-anatomy-explorer/prompt-anatomy-explorer.png)
+
+    Stack of system prompt + few-shot + context + query blocks with a
+    live token-budget chart and toggle buttons. **Chapter 10 · p5.js**
+
 </div>
