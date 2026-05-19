@@ -162,6 +162,8 @@ The `CITES` edge is the most analytically valuable: it is the edge that builds t
 
 #### Diagram: Complete Decision Trace LPG Schema
 
+<iframe src="../../sims/decision-trace-full-schema/main.html" width="100%" height="662px" scrolling="no"></iframe>
+
 <details markdown="1">
 <summary>Interactive vis-network diagram showing all node types and edge types in a fully populated decision trace, with a concrete pricing exception example</summary>
 Type: graph-model
@@ -265,6 +267,8 @@ The decision trace for an invoice exception has the following implementation:
 With this template populated from system data, the context summary is an LLM-ready narrative that an agent can use directly for reasoning about future similar exceptions.
 
 #### Diagram: Precedent Chain Pattern
+
+<iframe src="../../sims/precedent-chain-pattern/main.html" width="100%" height="562px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Interactive vis-network graph showing a precedent citation chain for invoice exceptions, with in-degree centrality visible on precedent nodes</summary>

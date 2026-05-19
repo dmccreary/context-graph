@@ -1,7 +1,7 @@
 ---
 title: Complete Decision Trace LPG Schema
 description: Learners can implement a complete decision trace schema by identifying the required node types, property lists, and edge types for a given enterprise decision scenario.
-status: scaffold
+status: implemented
 library: vis-network
 bloom_level: Apply (L3)
 ---
@@ -10,7 +10,7 @@ bloom_level: Apply (L3)
 
 
 
-<iframe src="main.html" width="100%" height="600"></iframe>
+<iframe src="main.html" width="100%" height="662" scrolling="no"></iframe>
 
 [Run MicroSim in Fullscreen](main.html){ .md-button .md-button--primary }
 

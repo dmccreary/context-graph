@@ -1,7 +1,7 @@
 ---
 title: Precedent Chain Pattern
 description: Learners can organize a set of decision trace nodes into a precedent citation chain, identify the most influential foundational precedents by in-degree, and explain why high-in-degree nodes should be retrieved first for LLM context.
-status: scaffold
+status: implemented
 library: vis-network
 bloom_level: Analyze (L4)
 ---
@@ -10,7 +10,7 @@ bloom_level: Analyze (L4)
 
 
 
-<iframe src="main.html" width="100%" height="600"></iframe>
+<iframe src="main.html" width="100%" height="562" scrolling="no"></iframe>
 
 [Run MicroSim in Fullscreen](main.html){ .md-button .md-button--primary }
 
