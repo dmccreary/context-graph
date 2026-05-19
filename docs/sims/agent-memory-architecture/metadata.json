@@ -14,7 +14,7 @@
   "library": "vis-network",
   "bloomLevel": "Understand (L2)",
   "bloomVerb": "explain",
-  "completion_status": "scaffold",
+  "completion_status": "implemented",
   "chapter_number": 16,
   "chapter_title": "\"Chapter 16: AI Agent Architecture\"",
   "chapter_dir": "16-ai-agent-architecture"

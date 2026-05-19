@@ -278,4 +278,18 @@ Plotly, Venn.js).
     Sources (agents, humans, CDC, batch) → event stream + batch ETL →
     ingestion service → graph DB + vector index, with monitoring. **Chapter 15 · vis-network**
 
+-   __[Agent Memory Architecture](agent-memory-architecture/index.md)__
+
+    ![Agent Memory Architecture](agent-memory-architecture/agent-memory-architecture.png)
+
+    Three-tier memory: in-context (ephemeral), session (per-loop), long-term
+    (context graph) with the agent write-back loop. **Chapter 16 · vis-network**
+
+-   __[Graduated Autonomy Model](graduated-autonomy-model/index.md)__
+
+    ![Graduated Autonomy Model](graduated-autonomy-model/graduated-autonomy-model.png)
+
+    Four-level autonomy ladder (Draft → Full Autonomy) with promotion
+    criteria and rollback rules; click any transition to see the rationale. **Chapter 16 · vis-network**
+
 </div>

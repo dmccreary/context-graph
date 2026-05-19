@@ -104,6 +104,8 @@ nav:
       - Context Budget Visualizer: sims/context-budget-visualizer/index.md
       - Hybrid Retrieval Pipeline: sims/hybrid-retrieval-pipeline/index.md
       - Ingestion Pipeline Architecture: sims/ingestion-pipeline-architecture/index.md
+      - Agent Memory Architecture: sims/agent-memory-architecture/index.md
+      - Graduated Autonomy Model: sims/graduated-autonomy-model/index.md
 
   - License: license.md
   - Contact: contact.md

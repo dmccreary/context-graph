@@ -134,6 +134,8 @@ The **agent write-back** is the write to the context graph that records the agen
 
 #### Diagram: Agent Memory Architecture and Write-Back Loop
 
+<iframe src="../../sims/agent-memory-architecture/main.html" width="100%" height="602px" scrolling="no"></iframe>
+
 <details markdown="1">
 <summary>Interactive vis-network diagram showing the three-tier agent memory architecture and the write-back loop that connects agent decisions to the shared context graph</summary>
 Type: graph-model
@@ -201,6 +203,8 @@ The context graph is what makes this progression possible. The precision with wh
 The **agent feedback loop** is the continuous improvement cycle: agent decisions are monitored, outcomes are tracked, quality metrics are computed, and autonomy levels are adjusted (up or down) based on measured performance. This feedback loop must be explicit and automated — manual monitoring at scale is not feasible.
 
 #### Diagram: Graduated Autonomy Model
+
+<iframe src="../../sims/graduated-autonomy-model/main.html" width="100%" height="582px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Interactive vis-network diagram showing the four autonomy levels, the transition criteria between them, and the role of the context graph in enabling each transition</summary>

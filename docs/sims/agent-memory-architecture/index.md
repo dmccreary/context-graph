@@ -1,7 +1,7 @@
 ---
 title: Agent Memory Architecture and Write-Back Loop
 description: Learners can explain how the three tiers of agent memory (in-context, session, long-term) relate to each other and how agent write-back connects the agent's decisions to the shared organizational memory.
-status: scaffold
+status: implemented
 library: vis-network
 bloom_level: Understand (L2)
 ---
@@ -10,7 +10,7 @@ bloom_level: Understand (L2)
 
 
 
-<iframe src="main.html" width="100%" height="600"></iframe>
+<iframe src="main.html" width="100%" height="602" scrolling="no"></iframe>
 
 [Run MicroSim in Fullscreen](main.html){ .md-button .md-button--primary }
 
