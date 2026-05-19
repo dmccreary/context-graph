@@ -73,6 +73,11 @@ nav:
       - Query Federation Flow: sims/query-federation-flow/index.md
       - Semantic Consistency Explorer: sims/semantic-consistency-explorer/index.md
       - Semantic Layer Architecture: sims/semantic-layer-architecture/index.md
+      - Metadata Catalog to Context Graph Flow: sims/catalog-to-context-graph-flow/index.md
+      - Differential Privacy Explorer: sims/differential-privacy-explorer/index.md
+      - Governance Framework Concept Map: sims/governance-concept-map/index.md
+      - Governance Role Graph: sims/governance-role-graph/index.md
+      - Three Metadata Layers: sims/three-metadata-layers/index.md
 
   - License: license.md
   - Contact: contact.md

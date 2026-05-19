@@ -1,132 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
     <title>Governance Framework Concept Map</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f8f9fa;
-            color: #212529;
-        }
-        #container {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background: white;
-        }
-        h1 {
-            font-size: 22px;
-            margin-bottom: 10px;
-            color: #1a3a6c;
-        }
-        .placeholder {
-            border: 2px dashed #adb5bd;
-            border-radius: 8px;
-            padding: 40px 20px;
-            text-align: center;
-            color: #6c757d;
-            margin: 20px 0;
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .placeholder .badge {
-            display: inline-block;
-            background: #ffc107;
-            color: #212529;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-        .placeholder h2 {
-            font-size: 18px;
-            color: #495057;
-            margin-bottom: 8px;
-        }
-        .placeholder p {
-            font-size: 14px;
-            max-width: 480px;
-        }
-        .meta {
-            margin-top: 20px;
-            font-size: 13px;
-            color: #6c757d;
-            border-top: 1px solid #dee2e6;
-            padding-top: 12px;
-        }
-        .meta strong { color: #495057; }
-    </style>
+    <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/vis-network/styles/vis-network.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="container">
-        <h1>Governance Framework Concept Map</h1>
-        <div class="placeholder">
-            <span class="badge">SCAFFOLD</span>
-            <h2>MicroSim Not Yet Implemented</h2>
-            <p>This MicroSim has been scaffolded from its specification but the
-            interactive content has not been built yet. See the chapter source
-            and the <code>index.md</code> in this directory for the full spec.</p>
+    <div class="container">
+        <div id="network"></div>
+        <div class="title">Governance Framework — 25 Concepts</div>
+        <div class="legend">
+            <div class="li"><span class="sw" style="background:#5b7fbd"></span>Metadata types</div>
+            <div class="li"><span class="sw" style="background:#2a9d8f"></span>Management approaches</div>
+            <div class="li"><span class="sw" style="background:#e9c46a"></span>Quality dimensions</div>
+            <div class="li"><span class="sw" style="background:#3949ab"></span>Governance structure</div>
+            <div class="li"><span class="sw" style="background:#e76f51"></span>Access & protection</div>
         </div>
-        <div class="meta">
-            <p><strong>Sim ID:</strong> governance-concept-map</p>
-            <p><strong>Library:</strong> vis-network</p>
-            <p><strong>Bloom Level:</strong> Analyze (L4)</p>
-            <p><strong>Learning Objective:</strong> Learners can organize the 25 governance concepts from this chapter into a structured relationship map showing how each concept connects to the others.</p>
+        <div class="right-panel">
+            <div class="detail-panel" id="dp">
+                <div class="dt">Concept details</div>
+                <div class="db" id="db">Click any concept to see its definition and connected neighbors.</div>
+            </div>
+            <button class="btn" id="reset-btn">Reset View</button>
         </div>
     </div>
-
-    <!--
-    SPECIFICATION (from chapter index.md):
-
-    Type: graph-model
-    **sim-id:** governance-concept-map
-    **Library:** vis-network
-    **Status:** Specified
-    
-    Bloom Level: Analyze (L4)
-    Bloom Verb: organize
-    Learning Objective: Learners can organize the 25 governance concepts from this chapter into a structured relationship map showing how each concept connects to the others.
-    
-    Instructional Rationale: A clickable concept map is appropriate for the Analyze objective because it requires learners to see structure in a set of related ideas — clicking any concept node reveals its definition and its connections, reinforcing both recall and relationship understanding simultaneously.
-    
-    Canvas: responsive width, 600px height. Light gray background (#F8F8F8).
-    
-    Nodes (25 total, color-coded by theme cluster):
-    Cluster 1 — Metadata Types (steel blue): Metadata, Technical Metadata, Business Metadata, Operational Metadata
-    Cluster 2 — Management Approaches (teal): Active Metadata Management, Passive Metadata Cataloging, Metadata Catalog Platform, Automated Metadata Discovery, Metadata Tagging
-    Cluster 3 — Quality Dimensions (gold): Data Quality, Data Completeness, Data Accuracy, Data Consistency, Data Timeliness, Data Quality Rule
-    Cluster 4 — Governance Structure (indigo): Data Governance Framework, Data Stewardship, Data Ownership, Governance Role
-    Cluster 5 — Access & Protection (orange): Data Classification, Access Control, Policy Enforcement, Data Masking, Data Anonymization, Differential Privacy
-    
-    Edges (selected key relationships):
-    - Metadata → Technical Metadata, Business Metadata, Operational Metadata (is-type-of)
-    - Active Metadata Management → Metadata Catalog Platform (implemented-by)
-    - Metadata Catalog Platform → Automated Metadata Discovery (enables)
-    - Automated Metadata Discovery → Metadata Tagging (produces)
-    - Data Quality → Data Completeness, Data Accuracy, Data Consistency, Data Timeliness (measured-by)
-    - Data Quality Rule → Data Quality (enforces)
-    - Data Governance Framework → Data Stewardship, Data Ownership, Data Classification, Access Control, Policy Enforcement (includes)
-    - Data Stewardship → Data Ownership (escalates-to)
-    - Data Stewardship → Governance Role (is-a)
-    - Data Classification → Access Control (drives)
-    - Access Control → Policy Enforcement (implemented-by)
-    - Policy Enforcement → Data Masking, Data Anonymization, Differential Privacy (uses-technique)
-    
-    Click handler on each node: opens a side panel with the concept name, a two-sentence definition, and a list of its connected neighbor concept names. The panel appears below the canvas.
-    
-    Physics: cluster layout using vis-network's hierarchical or force-directed with cluster repulsion. Each color cluster gravitates together. 
-    
-    Hover over edges shows edge label. Hover over nodes highlights all adjacent edges in orange.
-    
-    Initial state: all nodes visible, no selections. Instructions: "Click any concept to see its definition and connections."
-    -->
+    <script src="governance-concept-map.js"></script>
 </body>
 </html>

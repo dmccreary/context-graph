@@ -1,7 +1,7 @@
 ---
 title: Governance Framework Concept Map
 description: Learners can organize the 25 governance concepts from this chapter into a structured relationship map showing how each concept connects to the others.
-status: scaffold
+status: implemented
 library: vis-network
 bloom_level: Analyze (L4)
 ---
@@ -10,7 +10,7 @@ bloom_level: Analyze (L4)
 
 
 
-<iframe src="main.html" width="100%" height="600"></iframe>
+<iframe src="main.html" width="100%" height="762" scrolling="no"></iframe>
 
 [Run MicroSim in Fullscreen](main.html){ .md-button .md-button--primary }
 

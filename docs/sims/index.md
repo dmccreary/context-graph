@@ -61,4 +61,39 @@ Plotly, Venn.js).
     Click any element across the Query Interface, Semantic Layer, and Physical
     Storage bands to trace its references. **Chapter 2 · p5.js**
 
+-   __[Metadata Catalog to Context Graph Flow](catalog-to-context-graph-flow/index.md)__
+
+    ![Catalog to Context Graph Flow](catalog-to-context-graph-flow/catalog-to-context-graph-flow.png)
+
+    Step through how metadata moves from source systems through a catalog
+    platform and into a context graph. **Chapter 3 · p5.js**
+
+-   __[Differential Privacy Explorer](differential-privacy-explorer/index.md)__
+
+    ![Differential Privacy Explorer](differential-privacy-explorer/differential-privacy-explorer.png)
+
+    Drag the epsilon slider and feel the trade-off between privacy and result
+    accuracy via Laplace-noise simulation. **Chapter 3 · p5.js**
+
+-   __[Governance Framework Concept Map](governance-concept-map/index.md)__
+
+    ![Governance Concept Map](governance-concept-map/governance-concept-map.png)
+
+    Explore 25 governance concepts in five color-coded clusters; click any
+    concept to see its definition and connections. **Chapter 3 · vis-network**
+
+-   __[Governance Role Graph](governance-role-graph/index.md)__
+
+    ![Governance Role Graph](governance-role-graph/governance-role-graph.png)
+
+    Trace the accountability chain from a dataset to steward, owner,
+    producer, consumers, and the governance board. **Chapter 3 · vis-network**
+
+-   __[Three Metadata Layers](three-metadata-layers/index.md)__
+
+    ![Three Metadata Layers](three-metadata-layers/three-metadata-layers.png)
+
+    Radial diagram showing technical, business, and operational metadata
+    attached to a single Customer Table. **Chapter 3 · vis-network**
+
 </div>

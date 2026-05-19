@@ -79,6 +79,8 @@ The three types are complementary, not competing. A fully described enterprise d
 
 #### Diagram: Three Metadata Layers
 
+<iframe src="../../sims/three-metadata-layers/main.html" width="100%" height="542px" scrolling="no"></iframe>
+
 <details markdown="1">
 <summary>Interactive diagram showing technical, business, and operational metadata layers on a graph node</summary>
 Type: graph-model
@@ -179,6 +181,8 @@ Recording all these roles as nodes and edges in a context graph creates a querya
 
 #### Diagram: Governance Role Graph
 
+<iframe src="../../sims/governance-role-graph/main.html" width="100%" height="542px" scrolling="no"></iframe>
+
 <details markdown="1">
 <summary>Interactive vis-network graph showing governance roles and their relationships to a dataset</summary>
 Type: graph-model
@@ -257,6 +261,8 @@ The connection between a metadata catalog and a context graph is not optional â€
 
 #### Diagram: Metadata Catalog to Context Graph Flow
 
+<iframe src="../../sims/catalog-to-context-graph-flow/main.html" width="100%" height="542px" scrolling="no"></iframe>
+
 <details markdown="1">
 <summary>Interactive workflow diagram showing how metadata catalog platforms feed context graphs</summary>
 Type: microsim
@@ -329,6 +335,8 @@ The implementation lives at the policy enforcement layer: the context graph tags
 
 #### Diagram: Differential Privacy Noise Mechanism Explorer
 
+<iframe src="../../sims/differential-privacy-explorer/main.html" width="100%" height="542px" scrolling="no"></iframe>
+
 <details markdown="1">
 <summary>Interactive MicroSim showing how epsilon controls the privacy-accuracy trade-off</summary>
 Type: microsim
@@ -369,6 +377,8 @@ The governance framework also provides the feedback loop that improves AI qualit
     Twenty-five concepts in one chapter is a lot to absorb, graph builder. The good news: these concepts form a tightly connected cluster. Once you see that metadata types feed quality dimensions, quality dimensions are monitored by stewards, stewards operate under governance frameworks, and frameworks are enforced through classification, access control, and masking â€” the whole structure clicks into place. You have just learned the vocabulary that every senior data practitioner uses daily.
 
 #### Diagram: Governance Framework Concept Map
+
+<iframe src="../../sims/governance-concept-map/main.html" width="100%" height="762px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Interactive vis-network concept map connecting all 25 governance concepts from this chapter</summary>

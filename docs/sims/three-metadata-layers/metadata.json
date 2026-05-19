@@ -14,7 +14,7 @@
   "library": "vis-network",
   "bloomLevel": "Understand (L2)",
   "bloomVerb": "classify",
-  "completion_status": "scaffold",
+  "completion_status": "implemented",
   "chapter_number": 3,
   "chapter_title": "\"Chapter 3: Metadata Management and Data Governance\"",
   "chapter_dir": "03-metadata-management"
