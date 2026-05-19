@@ -1,0 +1,21 @@
+{
+  "title": "Information Extraction Pipeline to Graph",
+  "description": "Learners can use the three-stage information extraction pipeline (NER → disambiguation → relation extraction) to trace how an unstructured text sentence becomes a set of graph edges.",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-19",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "ie-pipeline-to-graph",
+  "library": "p5.js",
+  "bloomLevel": "Apply (L3)",
+  "bloomVerb": "use",
+  "completion_status": "scaffold",
+  "chapter_number": 5,
+  "chapter_title": "\"Chapter 5: Graph Theory, Algorithms, and Advanced Enterprise KG\"",
+  "chapter_dir": "05-graph-theory-algorithms"
+}

@@ -1,0 +1,21 @@
+{
+  "title": "Data Model Comparison Explorer",
+  "description": "Learners can compare the Relational, RDF, LPG, and Vector Store data models across five performance dimensions and justify which model is appropriate for a given enterprise query type.",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-19",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "data-model-comparison",
+  "library": "p5.js",
+  "bloomLevel": "Analyze (L4)",
+  "bloomVerb": "Compare and differentiate",
+  "completion_status": "scaffold",
+  "chapter_number": 1,
+  "chapter_title": "\"Chapter 1: Knowledge Graphs and Labeled Property Graphs\"",
+  "chapter_dir": "01-knowledge-graphs-lpg"
+}

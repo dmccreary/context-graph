@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluation Pipeline for Context Graph Systems</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        #container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        h1 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #1a3a6c;
+        }
+        .placeholder {
+            border: 2px dashed #adb5bd;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #6c757d;
+            margin: 20px 0;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .placeholder .badge {
+            display: inline-block;
+            background: #ffc107;
+            color: #212529;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .placeholder h2 {
+            font-size: 18px;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+        .placeholder p {
+            font-size: 14px;
+            max-width: 480px;
+        }
+        .meta {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
+            padding-top: 12px;
+        }
+        .meta strong { color: #495057; }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Evaluation Pipeline for Context Graph Systems</h1>
+        <div class="placeholder">
+            <span class="badge">SCAFFOLD</span>
+            <h2>MicroSim Not Yet Implemented</h2>
+            <p>This MicroSim has been scaffolded from its specification but the
+            interactive content has not been built yet. See the chapter source
+            and the <code>index.md</code> in this directory for the full spec.</p>
+        </div>
+        <div class="meta">
+            <p><strong>Sim ID:</strong> llm-evaluation-pipeline</p>
+            <p><strong>Library:</strong> vis-network</p>
+            <p><strong>Bloom Level:</strong> Evaluate (L5)</p>
+            <p><strong>Learning Objective:</strong> Learners can assess the quality of a context-graph-powered LLM system by identifying which evaluation metric (BLEU vs. faithfulness) is appropriate for a given quality concern.</p>
+        </div>
+    </div>
+
+    <!--
+    SPECIFICATION (from chapter index.md):
+
+    Type: graph-model
+    **sim-id:** llm-evaluation-pipeline
+    **Library:** vis-network
+    **Status:** Specified
+    
+    Bloom Level: Evaluate (L5)
+    Bloom Verb: assess
+    Learning Objective: Learners can assess the quality of a context-graph-powered LLM system by identifying which evaluation metric (BLEU vs. faithfulness) is appropriate for a given quality concern.
+    
+    Instructional Rationale: An interactive evaluation pipeline diagram is appropriate for the Evaluate objective — learners must match quality concerns to metrics, which requires judgment rather than recall.
+    
+    Canvas: responsive width, 480px height. White background.
+    
+    Pipeline nodes (left to right):
+    1. "User Query" (orange, ellipse)
+    2. "Context Graph Retrieval" (indigo, box) — retrieves decision traces
+    3. "LLM Response Generation" (gold, box)
+    4. "Evaluation Layer" (teal, large box, highlighted with border) — split into two sub-nodes:
+       4a. "BLEU Evaluator" (teal, small box within Evaluation Layer)
+       4b. "Faithfulness Evaluator" (teal, small box within Evaluation Layer)
+    5. "Quality Monitor" (steel blue, box) — receives both metric outputs
+    6. "Alert / Log" (red, diamond) — triggered when metrics drop below threshold
+    
+    Edges:
+    - User Query → Context Graph Retrieval
+    - Context Graph Retrieval → LLM Response Generation, label "injects context"
+    - LLM Response Generation → Evaluation Layer, label "generated response"
+    - Context Graph Retrieval → Evaluation Layer, label "retrieved context (for faithfulness)"
+    - Evaluation Layer → Quality Monitor
+    - Quality Monitor → Alert / Log, label "if score < threshold"
+    
+    Click on BLEU Evaluator:
+    "**BLEU Score** — measures lexical similarity to reference responses. Use when: you have a test set of queries with known correct responses. Limitation: does not catch hallucinations that use different words than the reference but state correct facts, or hallucinations that match the reference's words but are factually wrong."
+    
+    Click on Faithfulness Evaluator:
+    "**Faithfulness Score** — measures whether every factual claim in the response is supported by the retrieved context. Use when: you care about grounding quality and hallucination detection. Implementation: send (response, retrieved context) to an evaluator LLM. Limitation: evaluator LLMs have their own failure modes."
+    
+    Click on Alert / Log:
+    "**Quality Alert** — triggers when faithfulness score drops below threshold (typical: 0.85 for decision support). First investigation step: check whether context graph retrieval quality has degraded (freshness, relevance, coverage)."
+    
+    Hover over each edge shows edge label.
+    -->
+</body>
+</html>

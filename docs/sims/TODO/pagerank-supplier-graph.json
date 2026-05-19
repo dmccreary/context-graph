@@ -1,0 +1,14 @@
+{
+  "sim_id": "pagerank-supplier-graph",
+  "diagram_name": "PageRank Visualization on a Small Supplier Graph",
+  "chapter_number": 5,
+  "chapter_title": "\"Chapter 5: Graph Theory, Algorithms, and Advanced Enterprise KG\"",
+  "chapter_dir": "05-graph-theory-algorithms",
+  "library": "vis-network",
+  "bloom_level": "Understand (L2)",
+  "bloom_verb": "interpret",
+  "learning_objective": "Learners can interpret PageRank scores on a graph by identifying which nodes are structurally influential and explaining why their position makes them influential.",
+  "completion_status": "specified",
+  "extracted_date": "2026-05-19",
+  "specification": "Type: graph-model\n**sim-id:** pagerank-supplier-graph\n**Library:** vis-network\n**Status:** Specified\n\nBloom Level: Understand (L2)\nBloom Verb: interpret\nLearning Objective: Learners can interpret PageRank scores on a graph by identifying which nodes are structurally influential and explaining why their position makes them influential.\n\nInstructional Rationale: An interactive vis-network graph where node size reflects PageRank score is appropriate for the Understand objective — learners can click nodes to see their score and read an explanation connecting the score to the node's structural position.\n\nCanvas: responsive width, 480px height. Light gray background.\n\nNodes (8 total, representing a simplified supply chain):\n- \"Tier-1 Distributor\" — large node (PageRank: 0.28), indigo, ellipse\n- \"Raw Material A\" — medium-large (PageRank: 0.19), teal\n- \"Raw Material B\" — medium (PageRank: 0.14), teal\n- \"Manufacturer X\" — medium (PageRank: 0.13), gold\n- \"Manufacturer Y\" — small-medium (PageRank: 0.10), gold\n- \"Product Line 1\" — small (PageRank: 0.07), orange\n- \"Product Line 2\" — small (PageRank: 0.06), orange\n- \"Logistics Partner\" — small (PageRank: 0.03), steel blue\n\nNode sizes scale linearly with PageRank: largest node = 50px radius, smallest = 18px radius.\n\nEdges (directed, representing supply/dependency flow):\nRaw Material A → Manufacturer X, Raw Material A → Manufacturer Y, Raw Material B → Manufacturer X, Manufacturer X → Tier-1 Distributor, Manufacturer Y → Tier-1 Distributor, Tier-1 Distributor → Product Line 1, Tier-1 Distributor → Product Line 2, Logistics Partner → Tier-1 Distributor\n\nClick on any node: opens an infobox panel below the canvas showing:\n- Node name\n- PageRank score (formatted as 0.XX)\n- Why this score: e.g., for Tier-1 Distributor: \"Highest PageRank (0.28) because three manufacturers and one logistics partner all supply into this node — it is the critical bridge before final products. Removing it disconnects all product lines.\"\n- Risk implication: one sentence on what high PageRank means for supply chain risk\n\nToggle button \"Show/Hide PageRank Scores\" displays score labels above each node.\nToggle button \"Highlight Critical Nodes\" colors nodes above 0.15 PageRank in red to visualize the top tier."
+}

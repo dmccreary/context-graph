@@ -1,0 +1,21 @@
+{
+  "title": "ISO 11179 Component Hierarchy",
+  "description": "Learners can identify all six ISO 11179 components and state the relationship between each adjacent pair in the hierarchy.",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-19",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "iso11179-hierarchy",
+  "library": "vis-network",
+  "bloomLevel": "Remember (L1)",
+  "bloomVerb": "identify",
+  "completion_status": "scaffold",
+  "chapter_number": 6,
+  "chapter_title": "\"Chapter 6: Metadata Registries and ISO 11179\"",
+  "chapter_dir": "06-metadata-registries"
+}

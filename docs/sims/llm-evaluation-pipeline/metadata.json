@@ -1,0 +1,21 @@
+{
+  "title": "Evaluation Pipeline for Context Graph Systems",
+  "description": "Learners can assess the quality of a context-graph-powered LLM system by identifying which evaluation metric (BLEU vs. faithfulness) is appropriate for a given quality concern.",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-19",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "llm-evaluation-pipeline",
+  "library": "vis-network",
+  "bloomLevel": "Evaluate (L5)",
+  "bloomVerb": "assess",
+  "completion_status": "scaffold",
+  "chapter_number": 10,
+  "chapter_title": "\"Chapter 10: LLM and AI Foundations\"",
+  "chapter_dir": "10-llm-ai-foundations"
+}

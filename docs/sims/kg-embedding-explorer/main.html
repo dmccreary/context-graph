@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Graph Embedding Space Explorer</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        #container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        h1 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #1a3a6c;
+        }
+        .placeholder {
+            border: 2px dashed #adb5bd;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #6c757d;
+            margin: 20px 0;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .placeholder .badge {
+            display: inline-block;
+            background: #ffc107;
+            color: #212529;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .placeholder h2 {
+            font-size: 18px;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+        .placeholder p {
+            font-size: 14px;
+            max-width: 480px;
+        }
+        .meta {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
+            padding-top: 12px;
+        }
+        .meta strong { color: #495057; }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Knowledge Graph Embedding Space Explorer</h1>
+        <div class="placeholder">
+            <span class="badge">SCAFFOLD</span>
+            <h2>MicroSim Not Yet Implemented</h2>
+            <p>This MicroSim has been scaffolded from its specification but the
+            interactive content has not been built yet. See the chapter source
+            and the <code>index.md</code> in this directory for the full spec.</p>
+        </div>
+        <div class="meta">
+            <p><strong>Sim ID:</strong> kg-embedding-explorer</p>
+            <p><strong>Library:</strong> p5.js</p>
+            <p><strong>Bloom Level:</strong> Understand (L2)</p>
+            <p><strong>Learning Objective:</strong> Learners can explain how knowledge graph embeddings place semantically related entities near each other in a continuous space, enabling similarity-based retrieval.</p>
+        </div>
+    </div>
+
+    <!--
+    SPECIFICATION (from chapter index.md):
+
+    Type: microsim
+    **sim-id:** kg-embedding-explorer
+    **Library:** p5.js
+    **Status:** Specified
+    
+    Bloom Level: Understand (L2)
+    Bloom Verb: explain
+    Learning Objective: Learners can explain how knowledge graph embeddings place semantically related entities near each other in a continuous space, enabling similarity-based retrieval.
+    
+    Instructional Rationale: An interactive 2D scatter plot is appropriate because the Understand objective requires learners to see that proximity in the embedding space corresponds to semantic relatedness — clicking nearby points and reading their relationship descriptions builds the core intuition.
+    
+    Canvas: responsive width via updateCanvasSize() first in setup(). Height: 480px. White background with light grid.
+    
+    Display: 2D scatter plot. X and Y axes labeled "Embedding Dimension 1" and "Embedding Dimension 2" with thin gray grid lines. Each entity is a colored dot (radius 8px) at pre-set coordinates designed to show natural clustering.
+    
+    Entity clusters (pre-set positions to illustrate meaningful groupings):
+    Cluster A — Customer entities (teal dots): "Acme Corp" (0.2, 0.8), "GlobalTech Ltd" (0.25, 0.72), "NordicMfg" (0.18, 0.76)
+    Cluster B — Contract entities (gold dots): "Acme MSA" (0.35, 0.78), "GlobalTech SLA" (0.40, 0.71), "NordicMfg Order" (0.37, 0.80)
+    Cluster C — Policy documents (indigo dots): "Data Processing Policy" (0.62, 0.35), "Information Security Policy" (0.68, 0.40), "Privacy Policy" (0.60, 0.42)
+    Cluster D — Incidents (orange dots): "Incident-447" (0.78, 0.20), "Incident-891" (0.82, 0.18), "Incident-332" (0.76, 0.25)
+    
+    Scattered bridging entities (steel blue diamonds): "IT Department" at (0.5, 0.5), "Finance Team" at (0.55, 0.45) — positioned between clusters, illustrating that organizational entities link multiple domains.
+    
+    Click on any dot: displays an infobox at bottom of canvas:
+    - Entity name and type
+    - "Nearest neighbors in embedding space: [list 2 nearest dots by Euclidean distance]"
+    - "Why they are close: [one sentence explanation based on entity types]"
+    - For bridging entities: "Bridge position: connected to both Customer cluster and Policy cluster — reflects this department's role in both contracting and compliance."
+    
+    Slider: "Similarity Threshold" (createSlider, 0.0 to 0.5, step 0.05, default 0.2). When adjusted, draws thin gray lines between all dot pairs within the threshold distance — visualizing the similarity neighborhood. Fewer lines at low threshold, more at high threshold.
+    
+    Label: "KG Embedding Space (2D projection for visualization — real embeddings have hundreds of dimensions)"
+    
+    Canvas responds to window resize.
+    -->
+</body>
+</html>

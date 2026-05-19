@@ -1,0 +1,21 @@
+{
+  "title": "Five Complementary Knowledge Layers",
+  "description": "Learners can summarize the role of each of the five knowledge layers in an enterprise AI architecture and explain how the context graph bridges the structured data layers and the LLM reasoning layer.",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-19",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "five-knowledge-layers",
+  "library": "vis-network",
+  "bloomLevel": "Understand (L2)",
+  "bloomVerb": "summarize",
+  "completion_status": "scaffold",
+  "chapter_number": 9,
+  "chapter_title": "\"Chapter 9: What a Context Graph Is\"",
+  "chapter_dir": "09-context-graph-definition"
+}

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Structural Gap Analysis — Incumbent Systems vs. Context Graph Requirements</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        #container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        h1 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #1a3a6c;
+        }
+        .placeholder {
+            border: 2px dashed #adb5bd;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #6c757d;
+            margin: 20px 0;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .placeholder .badge {
+            display: inline-block;
+            background: #ffc107;
+            color: #212529;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .placeholder h2 {
+            font-size: 18px;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+        .placeholder p {
+            font-size: 14px;
+            max-width: 480px;
+        }
+        .meta {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
+            padding-top: 12px;
+        }
+        .meta strong { color: #495057; }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Structural Gap Analysis — Incumbent Systems vs. Context Graph Requirements</h1>
+        <div class="placeholder">
+            <span class="badge">SCAFFOLD</span>
+            <h2>MicroSim Not Yet Implemented</h2>
+            <p>This MicroSim has been scaffolded from its specification but the
+            interactive content has not been built yet. See the chapter source
+            and the <code>index.md</code> in this directory for the full spec.</p>
+        </div>
+        <div class="meta">
+            <p><strong>Sim ID:</strong> incumbent-gap-analysis</p>
+            <p><strong>Library:</strong> vis-network</p>
+            <p><strong>Bloom Level:</strong> Evaluate (L5)</p>
+            <p><strong>Learning Objective:</strong> Learners can assess each category of incumbent enterprise system against the four requirements of a context graph, identifying the structural constraint that prevents full compliance.</p>
+        </div>
+    </div>
+
+    <!--
+    SPECIFICATION (from chapter index.md):
+
+    Type: graph-model
+    **sim-id:** incumbent-gap-analysis
+    **Library:** vis-network
+    **Status:** Specified
+    
+    Bloom Level: Evaluate (L5)
+    Bloom Verb: assess
+    Learning Objective: Learners can assess each category of incumbent enterprise system against the four requirements of a context graph, identifying the structural constraint that prevents full compliance.
+    
+    Instructional Rationale: An interactive gap matrix visualization is appropriate for the Evaluate objective — learners must judge each incumbent's fitness for purpose, which requires comparing capabilities against requirements rather than just recalling facts.
+    
+    Canvas: responsive width, 560px height. White background.
+    
+    Layout: Grid with 4 rows (context graph requirements) and 4 columns (incumbent categories) plus a 5th column for Purpose-Built. Total: 4 × 5 grid of colored cells.
+    
+    Rows (requirements):
+    1. "Real-Time Decision Capture"
+    2. "Graph-Native Traversal"
+    3. "Cross-Silo Entity Linking"
+    4. "Temporal Versioning"
+    
+    Columns (systems):
+    A. "Data Warehouse" (gray header)
+    B. "CRM System" (gray header)
+    C. "ERP System" (gray header)
+    D. "AI Agent Platform" (gray header)
+    E. "Purpose-Built CG" (indigo header, highlighted)
+    
+    Cell colors:
+    - Red (cannot meet): Data Warehouse × Real-Time Capture, Data Warehouse × Cross-Silo, CRM × Graph-Native, CRM × Temporal Versioning, ERP × Cross-Silo, ERP × Graph-Native, AI Agent × Temporal Versioning, AI Agent × Cross-Silo
+    - Yellow (partial / with significant effort): Data Warehouse × Graph-Native, Data Warehouse × Temporal Versioning, CRM × Real-Time, CRM × Cross-Silo, ERP × Real-Time, ERP × Temporal Versioning, AI Agent × Real-Time, AI Agent × Graph-Native
+    - Green (can meet): Purpose-Built CG × all four requirements (all green)
+    
+    Click on any cell: opens infobox explaining WHY the cell is red, yellow, or green — including the specific architectural constraint that causes the red/yellow rating and the specific design feature that makes the purpose-built system green.
+    
+    Legend at bottom: Red = "Structural constraint — cannot meet without fundamental redesign", Yellow = "Partial — achievable with significant integration tax", Green = "Native capability".
+    
+    Canvas responds to window resize.
+    -->
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "title": "Context Failure Mode Explorer",
+  "description": "Learners can examine each of the five RAG failure modes and connect each to a specific property that context graphs are designed to address.",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-19",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "context-failure-modes",
+  "library": "p5.js",
+  "bloomLevel": "Analyze (L4)",
+  "bloomVerb": "examine",
+  "completion_status": "scaffold",
+  "chapter_number": 8,
+  "chapter_title": "\"Chapter 8: The Context Problem and RAG Limitations\"",
+  "chapter_dir": "08-context-problem"
+}

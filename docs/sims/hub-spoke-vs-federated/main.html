@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hub-and-Spoke vs. Federated Architecture</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        #container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        h1 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #1a3a6c;
+        }
+        .placeholder {
+            border: 2px dashed #adb5bd;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #6c757d;
+            margin: 20px 0;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .placeholder .badge {
+            display: inline-block;
+            background: #ffc107;
+            color: #212529;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .placeholder h2 {
+            font-size: 18px;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+        .placeholder p {
+            font-size: 14px;
+            max-width: 480px;
+        }
+        .meta {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
+            padding-top: 12px;
+        }
+        .meta strong { color: #495057; }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Hub-and-Spoke vs. Federated Architecture</h1>
+        <div class="placeholder">
+            <span class="badge">SCAFFOLD</span>
+            <h2>MicroSim Not Yet Implemented</h2>
+            <p>This MicroSim has been scaffolded from its specification but the
+            interactive content has not been built yet. See the chapter source
+            and the <code>index.md</code> in this directory for the full spec.</p>
+        </div>
+        <div class="meta">
+            <p><strong>Sim ID:</strong> hub-spoke-vs-federated</p>
+            <p><strong>Library:</strong> vis-network</p>
+            <p><strong>Bloom Level:</strong> Analyze (L4)</p>
+            <p><strong>Learning Objective:</strong> Learners can compare hub-and-spoke and federated graph architectures by identifying the trade-offs in governance, autonomy, and query complexity.</p>
+        </div>
+    </div>
+
+    <!--
+    SPECIFICATION (from chapter index.md):
+
+    Type: graph-model
+    **sim-id:** hub-spoke-vs-federated
+    **Library:** vis-network
+    **Status:** Specified
+    
+    Bloom Level: Analyze (L4)
+    Bloom Verb: compare
+    Learning Objective: Learners can compare hub-and-spoke and federated graph architectures by identifying the trade-offs in governance, autonomy, and query complexity.
+    
+    Instructional Rationale: A side-by-side interactive network diagram is appropriate for the Analyze objective because learners must examine structural differences — clicking architecture nodes surfaces the trade-offs that a static diagram cannot convey.
+    
+    Canvas: responsive width, 520px height. Two side-by-side panels separated by a vertical divider line.
+    
+    **Left panel — Hub-and-Spoke:**
+    - Central "Knowledge Graph Hub" node: large, indigo, shape ellipse
+    - 5 surrounding domain nodes (smaller, teal): "HR System", "Finance System", "CRM System", "ERP System", "Product Catalog"
+    - Edges: all domain nodes → Hub, label "ingests to"
+    - "LLM Query" node (orange, small) → Hub, label "queries"
+    - Panel title: "Hub-and-Spoke"
+    
+    **Right panel — Federated:**
+    - "Federation Layer" node: indigo, shape box, central-top
+    - 5 domain nodes (teal, same labels) arranged below
+    - Edges: Federation Layer → each domain, label "routes to"
+    - "LLM Query" node (orange) → Federation Layer, label "queries"
+    - Panel title: "Federated"
+    
+    Click on Hub node: "**Hub Trade-offs:** Pro: single source of truth, easy governance, consistent schema. Con: ingestion bottleneck, hub schema must evolve carefully, single point of failure."
+    Click on Federation Layer: "**Federation Trade-offs:** Pro: domain autonomy, no central bottleneck, diverse stacks welcome. Con: complex cross-domain queries, heterogeneous schemas, partial failure handling."
+    Click on any domain node (either panel): "**Domain System** — In hub-and-spoke, this system pushes data to the hub via an ETL pipeline. In federation, this system exposes its own graph API and the federation layer routes queries to it directly."
+    Click on LLM Query node: "**LLM Query** — The LLM agent issues a graph query. In hub-and-spoke, the query always hits the same hub. In federated mode, the federation layer must determine which domain graphs to consult and join the results."
+    
+    Hover over any edge shows the edge label. Both panels share the same node click handler logic, dispatching on node group.
+    -->
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "title": "Ingestion Pipeline Architecture",
+  "description": "Learners can explain how decision events flow from source systems through the real-time and batch ingestion pipelines to the graph database and vector index.",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-19",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "ingestion-pipeline-architecture",
+  "library": "vis-network",
+  "bloomLevel": "Understand (L2)",
+  "bloomVerb": "explain",
+  "completion_status": "scaffold",
+  "chapter_number": 15,
+  "chapter_title": "\"Chapter 15: Building and Deploying Context Graph Systems\"",
+  "chapter_dir": "15-building-deploying"
+}

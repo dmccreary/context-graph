@@ -1,0 +1,21 @@
+{
+  "title": "Semantic Consistency Explorer",
+  "description": "Learners can identify semantic inconsistency across two data sources and explain how a semantic layer resolves it by providing a single canonical definition.",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-19",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "semantic-consistency-explorer",
+  "library": "p5.js",
+  "bloomLevel": "Analyze (L4)",
+  "bloomVerb": "Compare and examine",
+  "completion_status": "scaffold",
+  "chapter_number": 2,
+  "chapter_title": "\"Chapter 2: Semantic Layers for Data Lakes\"",
+  "chapter_dir": "02-semantic-layers"
+}

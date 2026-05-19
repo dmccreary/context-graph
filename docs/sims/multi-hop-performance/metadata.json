@@ -1,0 +1,21 @@
+{
+  "title": "Multi-Hop Query Performance",
+  "description": "Learners can explain why native graph traversal performance grows linearly with hop count while relational JOIN performance degrades super-linearly, and identify the crossover point where graph performance becomes practically necessary.",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-19",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "multi-hop-performance",
+  "library": "Chart.js",
+  "bloomLevel": "Analyze (L4)",
+  "bloomVerb": "Compare and contrast",
+  "completion_status": "scaffold",
+  "chapter_number": 1,
+  "chapter_title": "\"Chapter 1: Knowledge Graphs and Labeled Property Graphs\"",
+  "chapter_dir": "01-knowledge-graphs-lpg"
+}

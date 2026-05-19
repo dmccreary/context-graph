@@ -1,0 +1,21 @@
+{
+  "title": "Query Federation Flow",
+  "description": "Learners can trace a federated query from the user interface through the federation engine to multiple source systems and back, explaining what happens at each step.",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-19",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "query-federation-flow",
+  "library": "p5.js",
+  "bloomLevel": "Understand (L2)",
+  "bloomVerb": "Explain and trace",
+  "completion_status": "scaffold",
+  "chapter_number": 2,
+  "chapter_title": "\"Chapter 2: Semantic Layers for Data Lakes\"",
+  "chapter_dir": "02-semantic-layers"
+}

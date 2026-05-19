@@ -1,0 +1,21 @@
+{
+  "title": "Graph Traversal Explorer",
+  "description": "Learners can trace the step-by-step execution of BFS and DFS traversal on a sample enterprise graph and explain why the two algorithms produce different node visit orderings.",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-19",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "graph-traversal-explorer",
+  "library": "p5.js",
+  "bloomLevel": "Understand (L2)",
+  "bloomVerb": "Explain and trace",
+  "completion_status": "scaffold",
+  "chapter_number": 1,
+  "chapter_title": "\"Chapter 1: Knowledge Graphs and Labeled Property Graphs\"",
+  "chapter_dir": "01-knowledge-graphs-lpg"
+}

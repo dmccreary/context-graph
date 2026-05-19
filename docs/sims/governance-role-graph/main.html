@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Governance Role Graph</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        #container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        h1 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #1a3a6c;
+        }
+        .placeholder {
+            border: 2px dashed #adb5bd;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #6c757d;
+            margin: 20px 0;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .placeholder .badge {
+            display: inline-block;
+            background: #ffc107;
+            color: #212529;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .placeholder h2 {
+            font-size: 18px;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+        .placeholder p {
+            font-size: 14px;
+            max-width: 480px;
+        }
+        .meta {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
+            padding-top: 12px;
+        }
+        .meta strong { color: #495057; }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Governance Role Graph</h1>
+        <div class="placeholder">
+            <span class="badge">SCAFFOLD</span>
+            <h2>MicroSim Not Yet Implemented</h2>
+            <p>This MicroSim has been scaffolded from its specification but the
+            interactive content has not been built yet. See the chapter source
+            and the <code>index.md</code> in this directory for the full spec.</p>
+        </div>
+        <div class="meta">
+            <p><strong>Sim ID:</strong> governance-role-graph</p>
+            <p><strong>Library:</strong> vis-network</p>
+            <p><strong>Bloom Level:</strong> Analyze (L4)</p>
+            <p><strong>Learning Objective:</strong> Learners can examine a governance role graph and trace the accountability chain from a data quality problem to the correct escalation contact.</p>
+        </div>
+    </div>
+
+    <!--
+    SPECIFICATION (from chapter index.md):
+
+    Type: graph-model
+    **sim-id:** governance-role-graph
+    **Library:** vis-network
+    **Status:** Specified
+    
+    Bloom Level: Analyze (L4)
+    Bloom Verb: examine
+    Learning Objective: Learners can examine a governance role graph and trace the accountability chain from a data quality problem to the correct escalation contact.
+    
+    Instructional Rationale: A network graph with clickable role nodes is appropriate because the Analyze objective requires learners to trace relationships — following edges from dataset to steward to owner to producer mirrors the real escalation path they would follow in practice.
+    
+    Canvas: responsive width, 500px height. White background.
+    
+    Nodes (color-coded by role type):
+    - "Revenue Dataset": shape ellipse, color indigo (#4B4EFC), size 44, central position
+    - "Steward: Maya Chen": shape circle, color teal (#2A9D8F), size 32
+    - "Owner: VP Revenue Ops": shape circle, color gold (#E9C46A), size 32
+    - "Producer: ERP System": shape circle, color steel (#5B7FBD), size 32
+    - "Consumer: Finance LLM": shape circle, color orange (#E76F51), size 28
+    - "Consumer: Reporting Dashboard": shape circle, color orange (#E76F51), size 28
+    - "Governance Board": shape box, color gray (#888), size 28
+    
+    Edges:
+    - Revenue Dataset ← Steward: Maya Chen, label "maintains"
+    - Revenue Dataset ← Owner: VP Revenue Ops, label "accountable for"
+    - Producer: ERP System → Revenue Dataset, label "generates"
+    - Revenue Dataset → Consumer: Finance LLM, label "consumed by"
+    - Revenue Dataset → Consumer: Reporting Dashboard, label "consumed by"
+    - Owner: VP Revenue Ops → Governance Board, label "reports to"
+    
+    Click handlers on each node:
+    - Revenue Dataset: "This is the dataset node in the context graph. It carries technical, business, and operational metadata. Click other nodes to see their relationship to this data."
+    - Steward: Maya Chen: "**Data Steward** — Maya does the day-to-day quality work: reviewing field definitions, investigating quality alerts, resolving cross-system conflicts. When an LLM flags a suspicious value, the context graph routes the alert here first."
+    - Owner: VP Revenue Ops: "**Data Owner** — sets policy for what this dataset means and approves definition changes. Escalation path: if Maya cannot resolve a quality problem with the producer, it goes here."
+    - Producer: ERP System: "**Data Producer** — the upstream system that generates records. When quality drops, the steward investigates here. The ERP system's pipeline metadata is tracked in the context graph."
+    - Consumer: Finance LLM: "**LLM Consumer** — reads revenue data from the context graph for automated analysis. The consumer's access rights are controlled by the access control policy attached to this dataset node."
+    - Governance Board: "**Data Governance Board** — sets enterprise-wide data policy. The owner escalates unresolvable conflicts here. Board decisions are recorded as decision traces in the context graph."
+    
+    Hover over any edge highlights the source and target nodes.
+    Physics: hierarchical layout, Revenue Dataset at center, producers on left, consumers on right, governance roles above.
+    -->
+</body>
+</html>

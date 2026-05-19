@@ -1,0 +1,21 @@
+{
+  "title": "Graph ETL Pipeline Stages",
+  "description": "Learners can explain what happens to a source record at each stage of a graph ingestion pipeline, from raw extraction to loaded graph node.",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-19",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "graph-etl-pipeline",
+  "library": "p5.js",
+  "bloomLevel": "Understand (L2)",
+  "bloomVerb": "explain",
+  "completion_status": "scaffold",
+  "chapter_number": 4,
+  "chapter_title": "\"Chapter 4: Enterprise Knowledge Graphs — Core Patterns\"",
+  "chapter_dir": "04-enterprise-knowledge-graphs"
+}

@@ -1,0 +1,21 @@
+{
+  "title": "Context Graph Schema — Core Node and Edge Types",
+  "description": "Learners can identify the four core schema elements of a context graph (Decision Node, Entity Link, Approval Edge, Precedent Link) and state what information each carries.",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-19",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "context-graph-schema",
+  "library": "vis-network",
+  "bloomLevel": "Remember (L1)",
+  "bloomVerb": "identify",
+  "completion_status": "scaffold",
+  "chapter_number": 9,
+  "chapter_title": "\"Chapter 9: What a Context Graph Is\"",
+  "chapter_dir": "09-context-graph-definition"
+}

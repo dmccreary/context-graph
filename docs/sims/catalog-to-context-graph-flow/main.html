@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metadata Catalog to Context Graph Flow</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        #container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        h1 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #1a3a6c;
+        }
+        .placeholder {
+            border: 2px dashed #adb5bd;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #6c757d;
+            margin: 20px 0;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .placeholder .badge {
+            display: inline-block;
+            background: #ffc107;
+            color: #212529;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .placeholder h2 {
+            font-size: 18px;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+        .placeholder p {
+            font-size: 14px;
+            max-width: 480px;
+        }
+        .meta {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
+            padding-top: 12px;
+        }
+        .meta strong { color: #495057; }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Metadata Catalog to Context Graph Flow</h1>
+        <div class="placeholder">
+            <span class="badge">SCAFFOLD</span>
+            <h2>MicroSim Not Yet Implemented</h2>
+            <p>This MicroSim has been scaffolded from its specification but the
+            interactive content has not been built yet. See the chapter source
+            and the <code>index.md</code> in this directory for the full spec.</p>
+        </div>
+        <div class="meta">
+            <p><strong>Sim ID:</strong> catalog-to-context-graph-flow</p>
+            <p><strong>Library:</strong> p5.js</p>
+            <p><strong>Bloom Level:</strong> Understand (L2)</p>
+            <p><strong>Learning Objective:</strong> Learners can explain the flow of metadata from source systems through a catalog platform into a context graph.</p>
+        </div>
+    </div>
+
+    <!--
+    SPECIFICATION (from chapter index.md):
+
+    Type: microsim
+    **sim-id:** catalog-to-context-graph-flow
+    **Library:** p5.js
+    **Status:** Specified
+    
+    Bloom Level: Understand (L2)
+    Bloom Verb: explain
+    Learning Objective: Learners can explain the flow of metadata from source systems through a catalog platform into a context graph.
+    
+    Instructional Rationale: An animated step-through MicroSim is appropriate because the Understand objective requires learners to trace a concrete data transformation — seeing metadata move through each stage makes the pipeline tangible rather than abstract.
+    
+    Canvas: responsive width via updateCanvasSize() as first line of setup(). Height: 480px. White background with subtle light gray (#F5F5F5) panel backgrounds.
+    
+    Layout: Three horizontal panels arranged left-to-right:
+    1. "Source Systems" panel (left): 4 small labeled boxes — "ERP", "CRM", "Data Warehouse", "Streaming Events" — stacked vertically
+    2. "Metadata Catalog" panel (center): labeled with icon-like boxes — "Schema Crawler", "Business Terms", "Quality Scores", "Lineage Graph"
+    3. "Context Graph" panel (right): shows 4 node types — "Dataset Node", "Quality Node", "Owner Node", "Decision Trace Node" — connected by edges
+    
+    Animation: Clicking a "Step Forward" button reveals one stage at a time:
+    - Step 1: Source Systems light up, label "1. Source systems store data across dozens of systems"
+    - Step 2: Animated arrows flow left→center, label "2. Schema crawler discovers structure (automated)"
+    - Step 3: Business Terms lights up, label "3. Stewards review and approve business metadata (human-in-loop)"
+    - Step 4: Arrows flow from Catalog → Context Graph, label "4. Context graph ingests metadata as nodes and edges"
+    - Step 5: Decision Trace Node lights up, label "5. Context graph adds decision history — the catalog cannot"
+    
+    Controls: "Next Step" button (p5.js createButton), "Reset" button. Current step shown as "Step N of 5" text below canvas.
+    
+    Color coding: source systems in steel blue, catalog in teal, context graph in indigo. Arrows are orange (#E76F51) when active.
+    
+    The canvas must respond to window resize events by recalculating panel widths proportionally.
+    -->
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "title": "Lineage vs. Provenance in Context",
+  "description": "Learners can differentiate data lineage from data provenance by identifying which question each answers for a specific data value in a pipeline graph.",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-19",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "lineage-vs-provenance",
+  "library": "vis-network",
+  "bloomLevel": "Analyze (L4)",
+  "bloomVerb": "differentiate",
+  "completion_status": "scaffold",
+  "chapter_number": 7,
+  "chapter_title": "\"Chapter 7: Process Mining, Data Lineage, and Provenance\"",
+  "chapter_dir": "07-process-mining-lineage"
+}

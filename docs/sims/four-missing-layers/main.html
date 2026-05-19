@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Four Missing Layers — Why RAG Is Not Enough</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        #container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        h1 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #1a3a6c;
+        }
+        .placeholder {
+            border: 2px dashed #adb5bd;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #6c757d;
+            margin: 20px 0;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .placeholder .badge {
+            display: inline-block;
+            background: #ffc107;
+            color: #212529;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .placeholder h2 {
+            font-size: 18px;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+        .placeholder p {
+            font-size: 14px;
+            max-width: 480px;
+        }
+        .meta {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
+            padding-top: 12px;
+        }
+        .meta strong { color: #495057; }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>The Four Missing Layers — Why RAG Is Not Enough</h1>
+        <div class="placeholder">
+            <span class="badge">SCAFFOLD</span>
+            <h2>MicroSim Not Yet Implemented</h2>
+            <p>This MicroSim has been scaffolded from its specification but the
+            interactive content has not been built yet. See the chapter source
+            and the <code>index.md</code> in this directory for the full spec.</p>
+        </div>
+        <div class="meta">
+            <p><strong>Sim ID:</strong> four-missing-layers</p>
+            <p><strong>Library:</strong> vis-network</p>
+            <p><strong>Bloom Level:</strong> Evaluate (L5)</p>
+            <p><strong>Learning Objective:</strong> Learners can assess whether a proposed AI system architecture addresses all four missing knowledge layers by mapping each layer to either a RAG component or a context graph component.</p>
+        </div>
+    </div>
+
+    <!--
+    SPECIFICATION (from chapter index.md):
+
+    Type: graph-model
+    **sim-id:** four-missing-layers
+    **Library:** vis-network
+    **Status:** Specified
+    
+    Bloom Level: Evaluate (L5)
+    Bloom Verb: assess
+    Learning Objective: Learners can assess whether a proposed AI system architecture addresses all four missing knowledge layers by mapping each layer to either a RAG component or a context graph component.
+    
+    Instructional Rationale: A two-column interactive diagram — "RAG Covers" vs. "Context Graph Adds" — is appropriate for the Evaluate objective because learners must judge the completeness of each approach, which requires comparing specific capabilities against the four named gaps.
+    
+    Canvas: responsive width, 500px height. Two panels with distinct background colors.
+    
+    **Left panel — "Standard RAG Covers"** (light blue background):
+    Nodes: "Document Archive", "Semantic Search Index", "Embedding Similarity", "Top-K Retrieval"
+    All nodes teal, boxes. Edges showing the RAG pipeline (left to right). All nodes have a green checkmark drawn in p5.js.
+    
+    **Right panel — "Context Graph Adds"** (light indigo background):
+    Nodes: "Exception Logic (decision patterns)", "Historical Precedents (why + who)", "Cross-System Synthesis (canonical entities)", "Approval Chains (out-of-band record)"
+    All nodes indigo, ellipses. A connecting bridge edge from RAG panel to Context Graph panel labeled "extends".
+    Each missing layer node has a brief icon (p5.js drawn): exclamation mark for exception logic, clock for precedents, link symbol for cross-system, chain symbol for approval chains.
+    
+    Click each RAG node: "Standard RAG addresses [component]. It is necessary but not sufficient for enterprise reasoning."
+    Click each Context Graph node: "Context graphs capture [layer]. This addresses the [specific] failure mode that RAG cannot handle alone."
+    Click the bridge edge: "Context graphs do not replace RAG — they extend it. RAG retrieves documents; the context graph provides the organizational intelligence that makes those documents interpretable and trustworthy."
+    
+    Summary text at bottom of canvas: "Enterprise AI requires both: RAG for document retrieval, context graphs for organizational intelligence."
+    -->
+</body>
+</html>

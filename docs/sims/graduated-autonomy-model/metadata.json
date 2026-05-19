@@ -1,0 +1,21 @@
+{
+  "title": "Graduated Autonomy Model",
+  "description": "Learners can justify the transition criteria between autonomy levels by explaining how context graph depth (number of relevant precedents) relates to agent reliability and warranted trust expansion.",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-19",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "graduated-autonomy-model",
+  "library": "vis-network",
+  "bloomLevel": "Evaluate (L5)",
+  "bloomVerb": "justify",
+  "completion_status": "scaffold",
+  "chapter_number": 16,
+  "chapter_title": "\"Chapter 16: AI Agent Architecture\"",
+  "chapter_dir": "16-ai-agent-architecture"
+}

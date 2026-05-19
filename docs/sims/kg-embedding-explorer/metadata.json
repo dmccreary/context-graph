@@ -1,0 +1,21 @@
+{
+  "title": "Knowledge Graph Embedding Space Explorer",
+  "description": "Learners can explain how knowledge graph embeddings place semantically related entities near each other in a continuous space, enabling similarity-based retrieval.",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-19",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "kg-embedding-explorer",
+  "library": "p5.js",
+  "bloomLevel": "Understand (L2)",
+  "bloomVerb": "explain",
+  "completion_status": "scaffold",
+  "chapter_number": 5,
+  "chapter_title": "\"Chapter 5: Graph Theory, Algorithms, and Advanced Enterprise KG\"",
+  "chapter_dir": "05-graph-theory-algorithms"
+}

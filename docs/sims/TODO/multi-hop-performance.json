@@ -1,0 +1,14 @@
+{
+  "sim_id": "multi-hop-performance",
+  "diagram_name": "Multi-Hop Query Performance",
+  "chapter_number": 1,
+  "chapter_title": "\"Chapter 1: Knowledge Graphs and Labeled Property Graphs\"",
+  "chapter_dir": "01-knowledge-graphs-lpg",
+  "library": "Chart.js",
+  "bloom_level": "Analyze (L4)",
+  "bloom_verb": "Compare and contrast",
+  "learning_objective": "Learners can explain why native graph traversal performance grows linearly with hop count while relational JOIN performance degrades super-linearly, and identify the crossover point where graph performance becomes practically necessary.",
+  "completion_status": "specified",
+  "extracted_date": "2026-05-19",
+  "specification": "Type: chart\n**sim-id:** multi-hop-performance<br/>\n**Library:** Chart.js<br/>\n**Status:** Specified\n\nBloom Level: Analyze (L4)\nBloom Verb: Compare and contrast\nLearning Objective: Learners can explain why native graph traversal performance grows linearly with hop count while relational JOIN performance degrades super-linearly, and identify the crossover point where graph performance becomes practically necessary.\n\nChart type: Grouped bar chart\n\nX-axis label: \"Number of Hops\"\nX-axis values: 1, 2, 3, 4, 5\nY-axis label: \"Query Response Time (ms)\"\nY-axis: Logarithmic scale, range 1ms to 1,000,000ms\n\nData series:\n1. Relational Database (orange bars):\n   - 1 hop: 8ms\n   - 2 hops: 90ms\n   - 3 hops: 1,400ms\n   - 4 hops: 28,000ms\n   - 5 hops: 650,000ms\n\n2. Native Graph Database (indigo bars):\n   - 1 hop: 4ms\n   - 2 hops: 7ms\n   - 3 hops: 11ms\n   - 4 hops: 15ms\n   - 5 hops: 19ms\n\nInteractive behavior:\n- Hover any bar: tooltip shows exact milliseconds formatted for readability (e.g., \"28,000 ms ≈ 28 seconds\")\n- Click a hop's bar pair: highlight both bars at that hop count; display a callout showing the ratio (e.g., \"At 4 hops: relational is 1,867× slower\")\n- Toggle button below chart: switch Y-axis between logarithmic and linear scales. On linear scale the relational 5-hop bar visually dominates the entire chart area, making the practical consequence visceral.\n- Annotation on relational 5-hop bar: \"~11 minutes — effectively unusable for real-time queries\"\n- Annotation on graph series line: \"~4ms per additional hop — near-linear growth\"\n\nTitle: \"Multi-Hop Query Performance: Native Graph vs Relational\"\nLegend: Top-right\n\nColor palette: Indigo (#3949ab) for graph, orange (#f57c00) for relational.\nCanvas: Responsive width, 480px height."
+}

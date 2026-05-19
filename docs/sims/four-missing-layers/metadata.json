@@ -1,0 +1,21 @@
+{
+  "title": "The Four Missing Layers — Why RAG Is Not Enough",
+  "description": "Learners can assess whether a proposed AI system architecture addresses all four missing knowledge layers by mapping each layer to either a RAG component or a context graph component.",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-19",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "four-missing-layers",
+  "library": "vis-network",
+  "bloomLevel": "Evaluate (L5)",
+  "bloomVerb": "assess",
+  "completion_status": "scaffold",
+  "chapter_number": 8,
+  "chapter_title": "\"Chapter 8: The Context Problem and RAG Limitations\"",
+  "chapter_dir": "08-context-problem"
+}

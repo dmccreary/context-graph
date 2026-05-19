@@ -1,0 +1,21 @@
+{
+  "title": "Bitemporal Modeling — Two Time Dimensions",
+  "description": "Learners can use the bitemporal time model to answer a point-in-time query by correctly filtering on both valid time and transaction time.",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-19",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "bitemporal-explorer",
+  "library": "p5.js",
+  "bloomLevel": "Apply (L3)",
+  "bloomVerb": "use",
+  "completion_status": "scaffold",
+  "chapter_number": 13,
+  "chapter_title": "\"Chapter 13: Graph Data Modeling for Context\"",
+  "chapter_dir": "13-graph-data-modeling"
+}
