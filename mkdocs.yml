@@ -90,6 +90,8 @@ nav:
       - Event Sourcing Architecture: sims/event-sourcing-context-graph/index.md
       - Lineage vs Provenance: sims/lineage-vs-provenance/index.md
       - Process Discovery Sim: sims/process-discovery-sim/index.md
+      - Context Failure Modes: sims/context-failure-modes/index.md
+      - Four Missing Layers: sims/four-missing-layers/index.md
 
   - License: license.md
   - Contact: contact.md

@@ -14,7 +14,7 @@
   "library": "p5.js",
   "bloomLevel": "Analyze (L4)",
   "bloomVerb": "examine",
-  "completion_status": "scaffold",
+  "completion_status": "implemented",
   "chapter_number": 8,
   "chapter_title": "\"Chapter 8: The Context Problem and RAG Limitations\"",
   "chapter_dir": "08-context-problem"

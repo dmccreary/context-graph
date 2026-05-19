@@ -180,4 +180,18 @@ Plotly, Venn.js).
     Watch a directly-follows graph build itself from an event log of three
     purchase-order cases, flagging deviations in orange. **Chapter 7 · p5.js**
 
+-   __[Context Failure Modes](context-failure-modes/index.md)__
+
+    ![Context Failure Modes](context-failure-modes/context-failure-modes.png)
+
+    Click through five RAG failure modes and the context-graph fix for each:
+    decision context, staleness, synthesis, tacit knowledge, poisoning. **Chapter 8 · p5.js**
+
+-   __[Four Missing Layers](four-missing-layers/index.md)__
+
+    ![Four Missing Layers](four-missing-layers/four-missing-layers.png)
+
+    Two-panel diagram contrasting what RAG covers with the four
+    organizational layers context graphs add. **Chapter 8 · vis-network**
+
 </div>

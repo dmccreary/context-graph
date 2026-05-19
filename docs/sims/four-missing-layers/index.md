@@ -1,7 +1,7 @@
 ---
 title: The Four Missing Layers — Why RAG Is Not Enough
 description: Learners can assess whether a proposed AI system architecture addresses all four missing knowledge layers by mapping each layer to either a RAG component or a context graph component.
-status: scaffold
+status: implemented
 library: vis-network
 bloom_level: Evaluate (L5)
 ---
@@ -10,7 +10,7 @@ bloom_level: Evaluate (L5)
 
 
 
-<iframe src="main.html" width="100%" height="600"></iframe>
+<iframe src="main.html" width="100%" height="562" scrolling="no"></iframe>
 
 [Run MicroSim in Fullscreen](main.html){ .md-button .md-button--primary }
 

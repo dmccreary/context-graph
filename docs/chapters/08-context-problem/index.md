@@ -143,6 +143,8 @@ Context poisoning in enterprise settings takes several forms:
 
 #### Diagram: Context Failure Mode Explorer
 
+<iframe src="../../sims/context-failure-modes/main.html" width="100%" height="582px" scrolling="no"></iframe>
+
 <details markdown="1">
 <summary>Interactive MicroSim showing the five RAG failure modes and their impact on LLM answer quality</summary>
 Type: microsim
@@ -202,6 +204,8 @@ These four missing layers are not incidental gaps. They are systematic gaps that
 **Long-term memory for AI** in the enterprise context means a persistent store of decision context, precedents, and organizational knowledge that survives across LLM sessions, accumulates over time, and can be retrieved by any agent or query that needs it. A context graph is the architectural form that long-term organizational memory takes. It is not the same as an LLM's context window (which is short-term, per-session), nor is it the same as the training data baked into model weights (which is static after training). It is a dynamic, queryable, growing record of organizational knowledge that complements both.
 
 #### Diagram: The Four Missing Layers — Why RAG Is Not Enough
+
+<iframe src="../../sims/four-missing-layers/main.html" width="100%" height="562px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Interactive vis-network diagram contrasting what standard RAG captures vs. what context graphs add</summary>
