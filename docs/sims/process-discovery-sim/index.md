@@ -1,7 +1,7 @@
 ---
 title: Process Discovery — From Event Log to Process Graph
 description: Learners can explain how a directly-follows graph is derived from event log data by tracing which activity transitions occur in the log.
-status: scaffold
+status: implemented
 library: p5.js
 bloom_level: Understand (L2)
 ---
@@ -10,7 +10,7 @@ bloom_level: Understand (L2)
 
 
 
-<iframe src="main.html" width="100%" height="600"></iframe>
+<iframe src="main.html" width="100%" height="562" scrolling="no"></iframe>
 
 [Run MicroSim in Fullscreen](main.html){ .md-button .md-button--primary }
 

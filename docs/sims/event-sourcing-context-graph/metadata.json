@@ -14,7 +14,7 @@
   "library": "vis-network",
   "bloomLevel": "Apply (L3)",
   "bloomVerb": "use",
-  "completion_status": "scaffold",
+  "completion_status": "implemented",
   "chapter_number": 7,
   "chapter_title": "\"Chapter 7: Process Mining, Data Lineage, and Provenance\"",
   "chapter_dir": "07-process-mining-lineage"

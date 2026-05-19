@@ -1,7 +1,7 @@
 ---
 title: Lineage vs. Provenance in Context
 description: Learners can differentiate data lineage from data provenance by identifying which question each answers for a specific data value in a pipeline graph.
-status: scaffold
+status: implemented
 library: vis-network
 bloom_level: Analyze (L4)
 ---
@@ -10,7 +10,7 @@ bloom_level: Analyze (L4)
 
 
 
-<iframe src="main.html" width="100%" height="600"></iframe>
+<iframe src="main.html" width="100%" height="562" scrolling="no"></iframe>
 
 [Run MicroSim in Fullscreen](main.html){ .md-button .md-button--primary }
 

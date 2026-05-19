@@ -111,6 +111,8 @@ Conformance checking is the bridge between process mining and compliance. A cont
 
 #### Diagram: Process Discovery — From Event Log to Process Graph
 
+<iframe src="../../sims/process-discovery-sim/main.html" width="100%" height="562px" scrolling="no"></iframe>
+
 <details markdown="1">
 <summary>Interactive step-through MicroSim showing how an invoice approval event log is converted to a directly-follows process graph</summary>
 Type: microsim
@@ -186,6 +188,8 @@ For context graphs, OpenLineage events are a natural ingestion source: each Open
 
 #### Diagram: Lineage vs. Provenance in Context
 
+<iframe src="../../sims/lineage-vs-provenance/main.html" width="100%" height="562px" scrolling="no"></iframe>
+
 <details markdown="1">
 <summary>Interactive vis-network graph showing the difference between lineage (where data came from) and provenance (whether it can be trusted) for a specific dashboard value</summary>
 Type: graph-model
@@ -245,6 +249,8 @@ An **append-only log** is a data structure where records can be added to the end
 **Temporal versioning** is the practice of attaching validity time ranges to graph nodes and edges: `valid_from` and `valid_to` timestamps that record when a fact was true. Combined with event sourcing and CDC, temporal versioning allows a context graph to represent not just the current state of the enterprise but any past state — answering questions like "what did we know about this customer on the day the contract was signed?" or "which version of the pricing policy was in effect when this order was placed?"
 
 #### Diagram: Event Sourcing Architecture for Context Graph
+
+<iframe src="../../sims/event-sourcing-context-graph/main.html" width="100%" height="602px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Interactive architecture diagram showing how an event-sourced system feeds lineage data and decision traces into a context graph</summary>
