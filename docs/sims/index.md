@@ -236,4 +236,11 @@ Plotly, Venn.js).
     Seven-decision citation chain with node size proportional to in-degree;
     toggle degree labels and top-precedent highlighting. **Chapter 11 · vis-network**
 
+-   __[Incumbent Gap Analysis](incumbent-gap-analysis/index.md)__
+
+    ![Incumbent Gap Analysis](incumbent-gap-analysis/incumbent-gap-analysis.png)
+
+    4×5 ratings grid scoring incumbent systems (Data Warehouse, CRM, ERP,
+    AI Agent, Purpose-Built CG) against the four context-graph requirements. **Chapter 12 · HTML**
+
 </div>

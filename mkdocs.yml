@@ -98,6 +98,7 @@ nav:
       - Prompt Anatomy Explorer: sims/prompt-anatomy-explorer/index.md
       - Decision Trace Full Schema: sims/decision-trace-full-schema/index.md
       - Precedent Chain Pattern: sims/precedent-chain-pattern/index.md
+      - Incumbent Gap Analysis: sims/incumbent-gap-analysis/index.md
 
   - License: license.md
   - Contact: contact.md

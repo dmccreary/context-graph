@@ -1,7 +1,7 @@
 ---
 title: Structural Gap Analysis — Incumbent Systems vs. Context Graph Requirements
 description: Learners can assess each category of incumbent enterprise system against the four requirements of a context graph, identifying the structural constraint that prevents full compliance.
-status: scaffold
+status: implemented
 library: vis-network
 bloom_level: Evaluate (L5)
 ---
@@ -10,7 +10,7 @@ bloom_level: Evaluate (L5)
 
 
 
-<iframe src="main.html" width="100%" height="600"></iframe>
+<iframe src="main.html" width="100%" height="542" scrolling="no"></iframe>
 
 [Run MicroSim in Fullscreen](main.html){ .md-button .md-button--primary }
 

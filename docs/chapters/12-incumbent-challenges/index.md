@@ -121,6 +121,8 @@ A **competitive moat** emerges from an additional source: the value of a context
 
 #### Diagram: Structural Gap Analysis — Incumbent Systems vs. Context Graph Requirements
 
+<iframe src="../../sims/incumbent-gap-analysis/main.html" width="100%" height="542px" scrolling="no"></iframe>
+
 <details markdown="1">
 <summary>Interactive vis-network diagram showing which context graph requirements each incumbent system category can and cannot address</summary>
 Type: graph-model
