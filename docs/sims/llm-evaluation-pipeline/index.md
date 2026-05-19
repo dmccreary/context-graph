@@ -1,7 +1,7 @@
 ---
 title: Evaluation Pipeline for Context Graph Systems
 description: Learners can assess the quality of a context-graph-powered LLM system by identifying which evaluation metric (BLEU vs. faithfulness) is appropriate for a given quality concern.
-status: scaffold
+status: implemented
 library: vis-network
 bloom_level: Evaluate (L5)
 ---
@@ -10,7 +10,7 @@ bloom_level: Evaluate (L5)
 
 
 
-<iframe src="main.html" width="100%" height="600"></iframe>
+<iframe src="main.html" width="100%" height="542" scrolling="no"></iframe>
 
 [Run MicroSim in Fullscreen](main.html){ .md-button .md-button--primary }
 

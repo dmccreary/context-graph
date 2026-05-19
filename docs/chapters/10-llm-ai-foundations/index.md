@@ -100,6 +100,8 @@ For context graph integration, few-shot prompting is particularly useful for tea
 
 #### Diagram: Prompt Anatomy for Context Graph Integration
 
+<iframe src="../../sims/prompt-anatomy-explorer/main.html" width="100%" height="602px" scrolling="no"></iframe>
+
 <details markdown="1">
 <summary>Interactive MicroSim showing the anatomy of a well-structured LLM prompt for context graph retrieval, with labeled sections and token budget display</summary>
 Type: microsim
@@ -192,6 +194,8 @@ Faithfulness scoring can be automated using a second LLM call: send the generate
 For production context graph systems, a monitoring pipeline that continuously samples LLM outputs, computes faithfulness scores, and alerts when scores drop below a threshold is an operational necessity — not an optional feature. Drops in faithfulness score often indicate that the retrieval quality has degraded (stale context, relevance regression) before users notice incorrect recommendations.
 
 #### Diagram: Evaluation Pipeline for Context Graph Systems
+
+<iframe src="../../sims/llm-evaluation-pipeline/main.html" width="100%" height="542px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Interactive vis-network diagram showing the end-to-end evaluation pipeline for a context-graph-powered LLM system</summary>

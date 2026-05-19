@@ -1,7 +1,7 @@
 ---
 title: Prompt Anatomy for Context Graph Integration
 description: Learners can use the prompt anatomy diagram to design a structured LLM prompt that correctly positions the system prompt, few-shot examples, retrieved context, and user query within the token budget.
-status: scaffold
+status: implemented
 library: p5.js
 bloom_level: Apply (L3)
 ---
@@ -10,7 +10,7 @@ bloom_level: Apply (L3)
 
 
 
-<iframe src="main.html" width="100%" height="600"></iframe>
+<iframe src="main.html" width="100%" height="602" scrolling="no"></iframe>
 
 [Run MicroSim in Fullscreen](main.html){ .md-button .md-button--primary }
 
