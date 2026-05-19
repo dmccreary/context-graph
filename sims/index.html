@@ -737,6 +737,34 @@
           
         
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
     
     
     
@@ -1834,6 +1862,202 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ingestion-pipeline-architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ingestion Pipeline Architecture
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--implemented"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="agent-memory-architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Agent Memory Architecture
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--implemented"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="graduated-autonomy-model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Graduated Autonomy Model
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--implemented"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cross-domain-use-case-comparison/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cross-Domain Use Cases
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--implemented"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="incident-response-graph/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Incident Response Graph
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--implemented"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="audit-trail-architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Audit Trail Architecture
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--implemented"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="compliance-lifecycle/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compliance Lifecycle
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--implemented"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2170,6 +2394,48 @@ and output reservation with three use-case presets. <strong>Chapter 14 · p5.js<
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="hybrid-retrieval-pipeline/hybrid-retrieval-pipeline.png" data-desc-position="bottom"><img alt="Hybrid Retrieval Pipeline" src="hybrid-retrieval-pipeline/hybrid-retrieval-pipeline.png"></a></p>
 <p>Step through Query Interp → Graph Traversal → Vector Search → Composite
 Rank → Cross-Encoder Rerank with per-stage latency budget. <strong>Chapter 14 · p5.js</strong></p>
+</li>
+<li>
+<p><strong><a href="ingestion-pipeline-architecture/">Ingestion Pipeline Architecture</a></strong></p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="ingestion-pipeline-architecture/ingestion-pipeline-architecture.png" data-desc-position="bottom"><img alt="Ingestion Pipeline Architecture" src="ingestion-pipeline-architecture/ingestion-pipeline-architecture.png"></a></p>
+<p>Sources (agents, humans, CDC, batch) → event stream + batch ETL →
+ingestion service → graph DB + vector index, with monitoring. <strong>Chapter 15 · vis-network</strong></p>
+</li>
+<li>
+<p><strong><a href="agent-memory-architecture/">Agent Memory Architecture</a></strong></p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="agent-memory-architecture/agent-memory-architecture.png" data-desc-position="bottom"><img alt="Agent Memory Architecture" src="agent-memory-architecture/agent-memory-architecture.png"></a></p>
+<p>Three-tier memory: in-context (ephemeral), session (per-loop), long-term
+(context graph) with the agent write-back loop. <strong>Chapter 16 · vis-network</strong></p>
+</li>
+<li>
+<p><strong><a href="graduated-autonomy-model/">Graduated Autonomy Model</a></strong></p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="graduated-autonomy-model/graduated-autonomy-model.png" data-desc-position="bottom"><img alt="Graduated Autonomy Model" src="graduated-autonomy-model/graduated-autonomy-model.png"></a></p>
+<p>Four-level autonomy ladder (Draft → Full Autonomy) with promotion
+criteria and rollback rules; click any transition to see the rationale. <strong>Chapter 16 · vis-network</strong></p>
+</li>
+<li>
+<p><strong><a href="cross-domain-use-case-comparison/">Cross-Domain Use Cases</a></strong></p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="cross-domain-use-case-comparison/cross-domain-use-case-comparison.png" data-desc-position="bottom"><img alt="Cross-Domain Use Cases" src="cross-domain-use-case-comparison/cross-domain-use-case-comparison.png"></a></p>
+<p>Same decision trace schema instantiated across Finance, Sales,
+Engineering, Legal, and Healthcare. <strong>Chapter 17 · vis-network</strong></p>
+</li>
+<li>
+<p><strong><a href="incident-response-graph/">Incident Response Graph</a></strong></p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="incident-response-graph/incident-response-graph.png" data-desc-position="bottom"><img alt="Incident Response Graph" src="incident-response-graph/incident-response-graph.png"></a></p>
+<p>Fully-instantiated engineering incident trace: alert → rollback decision
+→ service/deployment entities → resolution. <strong>Chapter 17 · vis-network</strong></p>
+</li>
+<li>
+<p><strong><a href="audit-trail-architecture/">Audit Trail Architecture</a></strong></p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="audit-trail-architecture/audit-trail-architecture.png" data-desc-position="bottom"><img alt="Audit Trail Architecture" src="audit-trail-architecture/audit-trail-architecture.png"></a></p>
+<p>Components meeting three audit requirements (tamper evidence, temporal
+completeness, searchability) for regulated context graph systems. <strong>Chapter 18 · vis-network</strong></p>
+</li>
+<li>
+<p><strong><a href="compliance-lifecycle/">Compliance Lifecycle</a></strong></p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="compliance-lifecycle/compliance-lifecycle.png" data-desc-position="bottom"><img alt="Compliance Lifecycle" src="compliance-lifecycle/compliance-lifecycle.png"></a></p>
+<p>Six-phase circular lifecycle (Design → Deploy → Monitor → Audit →
+Govern → Red Team) around the context graph. <strong>Chapter 18 · vis-network</strong></p>
 </li>
 </ul>
 </div>

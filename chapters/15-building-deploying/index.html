@@ -1401,6 +1401,34 @@
           
         
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
     
     
     
@@ -1742,6 +1770,8 @@ Welcome to Chapter 15! The design is complete. Now we build and ship it. This ch
 <p>A <strong>backfill strategy</strong> is a batch ingestion plan for loading historical decision data that predates the context graph deployment. Most organizations have years of decision history that can be partially reconstructed from operational system records: approval logs, email threads, change management tickets, audit trails. Backfilling this history significantly accelerates the context graph's time-to-value by providing precedents from day one rather than requiring months of live capture.</p>
 <p>Backfill requires a priority ordering: fill the highest-volume, highest-value decision types first (pricing exceptions, procurement approvals, incident escalations), since these are the domains where LLM context retrieval provides the most immediate value. Full historical reconstruction is rarely necessary — 2-3 years of backfill typically provides sufficient precedent depth for most decision types.</p>
 <h4 id="diagram-ingestion-pipeline-architecture">Diagram: Ingestion Pipeline Architecture<a class="headerlink" href="#diagram-ingestion-pipeline-architecture" title="Permanent link">¶</a></h4>
+<iframe src="../../sims/ingestion-pipeline-architecture/main.html" width="100%" height="602px" scrolling="no"></iframe>
+
 <details>
 <summary>Interactive vis-network architecture diagram showing the real-time and batch ingestion pipelines feeding the hybrid storage architecture</summary>
 <p>Type: graph-model
