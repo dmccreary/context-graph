@@ -1,12 +1,9 @@
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
+<!DOCTYPE html><html lang="en" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="An interactive intelligent textbook on the contact graph and how the contact graphs helps organization use LLMs cost effectively">
+        <meta name="description" content="Why LLMs fail at enterprise tasks even with knowledge graphs, semantic layers, and metadata in place — and why RAG alone is insufficient to close the gap.">
       
       
         <meta name="author" content="Dan Mccreary">
@@ -21,12 +18,12 @@
         <link rel="next" href="../09-context-graph-definition/">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../img/favicon.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
     
     
       
-        <title>8. The Context Problem - Context Graph</title>
+        <title>Chapter 8: The Context Problem and RAG Limitations - Context Graph</title>
       
     
     
@@ -47,7 +44,7 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -55,6 +52,8 @@
       <link rel="stylesheet" href="../../css/extra.css">
     
       <link rel="stylesheet" href="../../css/mascot.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -72,8 +71,44 @@
 
     
     
+      
+        <meta property="og:type" content="website">
+      
+        <meta property="og:title" content="Chapter 8: The Context Problem and RAG Limitations - Context Graph">
+      
+        <meta property="og:description" content="Why LLMs fail at enterprise tasks even with knowledge graphs, semantic layers, and metadata in place — and why RAG alone is insufficient to close the gap.">
+      
+        <meta property="og:image" content="https://dmccreary.github.io/context-graph/assets/images/social/chapters/08-context-problem/index.png">
+      
+        <meta property="og:image:type" content="image/png">
+      
+        <meta property="og:image:width" content="1200">
+      
+        <meta property="og:image:height" content="630">
+      
+        <meta property="og:url" content="https://dmccreary.github.io/context-graph/chapters/08-context-problem/">
+      
+        <meta name="twitter:card" content="summary_large_image">
+      
+        <meta name="twitter:title" content="Chapter 8: The Context Problem and RAG Limitations - Context Graph">
+      
+        <meta name="twitter:description" content="Why LLMs fail at enterprise tasks even with knowledge graphs, semantic layers, and metadata in place — and why RAG alone is insufficient to close the gap.">
+      
+        <meta name="twitter:image" content="https://dmccreary.github.io/context-graph/assets/images/social/chapters/08-context-problem/index.png">
+      
     
-  </head>
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     
@@ -108,13 +143,12 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Context Graph" class="md-header__button md-logo" aria-label="Context Graph" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -126,7 +160,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              8. The Context Problem
+              Chapter 8: The Context Problem and RAG Limitations
             
           </span>
         </div>
@@ -140,7 +174,7 @@
     
       <label class="md-header__button md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -149,20 +183,20 @@
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
           <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
             
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
           </a>
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
@@ -187,7 +221,7 @@
         <a href="https://github.com/dmccreary/context-graph" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -211,7 +245,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -222,8 +256,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Context Graph" class="md-nav__button md-logo" aria-label="Context Graph" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     Context Graph
@@ -233,7 +266,7 @@
       <a href="https://github.com/dmccreary/context-graph" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -672,6 +705,159 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-an-llm-context-window-is-and-is-not" class="md-nav__link">
+    <span class="md-ellipsis">
+      What an LLM Context Window Is and Is Not
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#retrieval-augmented-generation-power-and-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Retrieval-Augmented Generation: Power and Limits
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Retrieval-Augmented Generation: Power and Limits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#limitation-1-rag-retrieves-documents-not-decisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Limitation 1: RAG Retrieves Documents, Not Decisions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limitation-2-rag-cannot-reason-about-freshness" class="md-nav__link">
+    <span class="md-ellipsis">
+      Limitation 2: RAG Cannot Reason About Freshness
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limitation-3-rag-retrieves-fragments-not-reasoning-chains" class="md-nav__link">
+    <span class="md-ellipsis">
+      Limitation 3: RAG Retrieves Fragments, Not Reasoning Chains
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limitation-4-rag-cannot-represent-tacit-knowledge" class="md-nav__link">
+    <span class="md-ellipsis">
+      Limitation 4: RAG Cannot Represent Tacit Knowledge
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limitation-5-hallucination-from-partial-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      Limitation 5: Hallucination from Partial Context
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#context-poisoning-when-retrieval-goes-wrong" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context Poisoning: When Retrieval Goes Wrong
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Context Poisoning: When Retrieval Goes Wrong">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-context-failure-mode-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Context Failure Mode Explorer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-four-missing-layers-in-enterprise-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Four Missing Layers in Enterprise AI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Four Missing Layers in Enterprise AI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-the-four-missing-layers-why-rag-is-not-enough" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: The Four Missing Layers — Why RAG Is Not Enough
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#static-vs-dynamic-knowledge" class="md-nav__link">
+    <span class="md-ellipsis">
+      Static vs. Dynamic Knowledge
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#short-term-vs-long-term-memory-in-enterprise-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      Short-Term vs. Long-Term Memory in Enterprise AI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-and-key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary and Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1007,6 +1193,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1035,6 +1225,46 @@
   
 
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1136,7 +1366,7 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -1181,6 +1411,159 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-an-llm-context-window-is-and-is-not" class="md-nav__link">
+    <span class="md-ellipsis">
+      What an LLM Context Window Is and Is Not
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#retrieval-augmented-generation-power-and-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Retrieval-Augmented Generation: Power and Limits
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Retrieval-Augmented Generation: Power and Limits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#limitation-1-rag-retrieves-documents-not-decisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Limitation 1: RAG Retrieves Documents, Not Decisions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limitation-2-rag-cannot-reason-about-freshness" class="md-nav__link">
+    <span class="md-ellipsis">
+      Limitation 2: RAG Cannot Reason About Freshness
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limitation-3-rag-retrieves-fragments-not-reasoning-chains" class="md-nav__link">
+    <span class="md-ellipsis">
+      Limitation 3: RAG Retrieves Fragments, Not Reasoning Chains
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limitation-4-rag-cannot-represent-tacit-knowledge" class="md-nav__link">
+    <span class="md-ellipsis">
+      Limitation 4: RAG Cannot Represent Tacit Knowledge
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limitation-5-hallucination-from-partial-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      Limitation 5: Hallucination from Partial Context
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#context-poisoning-when-retrieval-goes-wrong" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context Poisoning: When Retrieval Goes Wrong
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Context Poisoning: When Retrieval Goes Wrong">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-context-failure-mode-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Context Failure Mode Explorer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-four-missing-layers-in-enterprise-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Four Missing Layers in Enterprise AI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Four Missing Layers in Enterprise AI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-the-four-missing-layers-why-rag-is-not-enough" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: The Four Missing Layers — Why RAG Is Not Enough
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#static-vs-dynamic-knowledge" class="md-nav__link">
+    <span class="md-ellipsis">
+      Static vs. Dynamic Knowledge
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#short-term-vs-long-term-memory-in-enterprise-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      Short-Term vs. Long-Term Memory in Enterprise AI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-and-key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary and Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1198,16 +1581,16 @@
   
     <a href="https://github.com/dmccreary/context-graph/blob/main/docs/chapters/08-context-problem/index.md" title="Edit this page" class="md-content__button md-icon">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
     </a>
   
   
 
 
-<h1 id="chapter-8-the-context-problem-and-rag-limitations">Chapter 8: The Context Problem and RAG Limitations<a class="headerlink" href="#chapter-8-the-context-problem-and-rag-limitations" title="Permanent link">&para;</a></h1>
-<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<h1 id="chapter-8-the-context-problem-and-rag-limitations">Chapter 8: The Context Problem and RAG Limitations<a class="headerlink" href="#chapter-8-the-context-problem-and-rag-limitations" title="Permanent link">¶</a></h1>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">¶</a></h2>
 <p>Makes the case for context graphs by explaining why LLMs fail at enterprise tasks even with RAG: tacit knowledge gaps, context freshness, relevance limits, and context poisoning.</p>
-<h2 id="concepts-covered">Concepts Covered<a class="headerlink" href="#concepts-covered" title="Permanent link">&para;</a></h2>
+<h2 id="concepts-covered">Concepts Covered<a class="headerlink" href="#concepts-covered" title="Permanent link">¶</a></h2>
 <p>This chapter covers the following 20 concepts from the learning graph:</p>
 <ol>
 <li>Context Problem</li>
@@ -1231,7 +1614,7 @@
 <li>Context Completeness</li>
 <li>Context Poisoning</li>
 </ol>
-<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">¶</a></h2>
 <p>This chapter builds on concepts from:</p>
 <ul>
 <li><a href="../02-semantic-layers/">Chapter 2: Semantic Layers for Data Lakes</a></li>
@@ -1241,14 +1624,167 @@
 <li><a href="../06-metadata-registries/">Chapter 6: Metadata Registries and ISO 11179</a></li>
 <li><a href="../07-process-mining-lineage/">Chapter 7: Process Mining, Data Lineage, and Provenance</a></li>
 </ul>
-<hr />
-<p>TODO: Generate Chapter Content</p>
+<hr>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Here is the problem this book is solving.</p>
+<p><img src="../../img/mascot/welcome.png" class="mascot-admonition-img" alt="Nexus waves welcome">
+Welcome to Chapter 8 — the pivot chapter. Everything we have built so far (knowledge graphs, semantic layers, metadata registries, lineage) is preparation for this moment: understanding exactly <em>why</em> LLMs fail at enterprise tasks even when organizations have sophisticated data infrastructure. The solution — the context graph — will make complete sense once you see the problem clearly. Let's trace the why!</p>
+</div>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">¶</a></h2>
+<p>Here is a scenario that plays out in enterprise AI projects every day. A team deploys a retrieval-augmented generation (RAG) system to answer questions about their product line. The system has access to thousands of internal documents: product specifications, pricing guides, support runbooks, and policy documents. In the demo, it works beautifully. In production, it starts giving subtly wrong answers within weeks. It cites a pricing schedule that was updated after the demo. It recommends a support procedure that was superseded. It confidently combines facts from two different product generations as if they were contemporaneous. The team adds more documents. The answers get worse.</p>
+<p>This scenario has a name: the <strong>context problem</strong>. It is not a bug in the LLM. It is not a failure of document indexing. It is the fundamental mismatch between what LLMs need to reason correctly over organizational data and what current retrieval systems provide.</p>
+<p>This chapter names the failure modes precisely so that the rest of the book can address them directly. Each failure mode corresponds to a specific property of context graphs — a design decision that addresses the failure rather than working around it.</p>
+<h2 id="what-an-llm-context-window-is-and-is-not">What an LLM Context Window Is and Is Not<a class="headerlink" href="#what-an-llm-context-window-is-and-is-not" title="Permanent link">¶</a></h2>
+<p>Before diagnosing the failure modes, we need to be precise about the <strong>LLM context window</strong> — because misunderstanding it is the source of most bad architecture decisions in enterprise AI.</p>
+<p>An LLM generates text by predicting the next token given all previous tokens in a sequence. The context window is the maximum sequence length the model can process in a single call — typically measured in tokens, where a token is approximately four characters of English text. Modern LLMs have context windows ranging from tens of thousands to hundreds of thousands of tokens. This capacity is sometimes described as "the model's memory," but that description is misleading in a critical way.</p>
+<p>The context window is <strong>not</strong> long-term memory. It is working memory — the information available to the model for a single inference call. When the call ends, the context window is empty. The next call starts fresh, with whatever the application sends as input. There is no persistence between calls, no accumulation of learned facts, no updating of model weights from runtime interactions. Everything an LLM knows during an enterprise task is contained in:</p>
+<ol>
+<li>The <strong>training data</strong> baked into its weights at training time</li>
+<li>The <strong>context window content</strong> provided at inference time — which is the application's responsibility to assemble</li>
+</ol>
+<p>This distinction is crucial. It means that the quality of an LLM's enterprise reasoning is entirely a function of the quality of the context the application assembles and injects. The model is not failing when it gives wrong answers about enterprise specifics — it simply was not given the right context. The <strong>context problem</strong> is therefore an engineering problem, not a model problem.</p>
+<p><strong>Grounding</strong> is the practice of injecting relevant, accurate, and current organizational context into the LLM's context window before generating a response. A grounded LLM is constrained to reason from verified organizational facts rather than from training data generalizations. Grounding is what transforms a general-purpose language model into a trustworthy enterprise reasoning engine — but only if the grounding mechanism is well-designed.</p>
+<h2 id="retrieval-augmented-generation-power-and-limits">Retrieval-Augmented Generation: Power and Limits<a class="headerlink" href="#retrieval-augmented-generation-power-and-limits" title="Permanent link">¶</a></h2>
+<p><strong>Retrieval-Augmented Generation (RAG)</strong> is the dominant technique for grounding LLMs in external knowledge. The RAG pipeline has three stages: at query time, the user's question is encoded as an embedding vector; a semantic search over a pre-indexed document store finds documents whose embedding vectors are closest to the query vector; those documents are injected into the LLM's context window as the grounding context for the response.</p>
+<p>RAG was a major advance over naive prompt engineering. It enables LLMs to draw on large knowledge bases without requiring the full corpus to fit in a single context window. It allows organizations to deploy LLMs over proprietary documents that were not part of the training data. When the document store is kept current, it enables answers that reflect recent organizational knowledge rather than training-data knowledge that may be months or years old.</p>
+<p>The problem is what RAG cannot do — and enterprise tasks constantly require exactly what RAG cannot do.</p>
+<h3 id="limitation-1-rag-retrieves-documents-not-decisions">Limitation 1: RAG Retrieves Documents, Not Decisions<a class="headerlink" href="#limitation-1-rag-retrieves-documents-not-decisions" title="Permanent link">¶</a></h3>
+<p>RAG systems index documents: PDFs, wiki pages, support tickets, policy documents, product specifications. These documents record <em>what the organization decided</em> — but rarely <em>why</em>, <em>by whom</em>, <em>under what circumstances</em>, or <em>whether the decision was later reviewed and overturned</em>. An LLM answering "should we approve this exception?" needs the precedent decision AND its context: was the original exception approved because the customer was a strategic account, because it was Q4 close, or because the approving manager was later found to have violated policy? RAG retrieves the decision record; the decision context is almost never in the document.</p>
+<p>This gap — between static documentary knowledge and dynamic organizational decision context — is the core of the <strong>organizational knowledge gap</strong>.</p>
+<h3 id="limitation-2-rag-cannot-reason-about-freshness">Limitation 2: RAG Cannot Reason About Freshness<a class="headerlink" href="#limitation-2-rag-cannot-reason-about-freshness" title="Permanent link">¶</a></h3>
+<p>A RAG system retrieves the documents most semantically similar to the query. It has no native mechanism to reason about when those documents were written, whether they are still authoritative, or whether more recent documents have superseded them. A pricing document from last quarter and a pricing document from this quarter may have very similar embeddings — but one is current policy and one is outdated. Without explicit freshness metadata attached to retrieval results, the LLM cannot tell the difference.</p>
+<p><strong>Knowledge staleness</strong> is the failure mode where an LLM answers from outdated context without flagging the uncertainty. It is particularly dangerous because the model's confidence in its answer does not decline just because the source is old. A stale answer and a current answer may be expressed with identical confidence levels.</p>
+<p><strong>Context freshness</strong> is the property of a retrieval system that ensures every piece of context delivered to an LLM is either current or explicitly annotated as historical with a timestamp and a currency indicator. Achieving context freshness requires operational metadata (covered in Chapter 3) attached to every retrieval result — metadata that a basic document embedding index does not maintain.</p>
+<h3 id="limitation-3-rag-retrieves-fragments-not-reasoning-chains">Limitation 3: RAG Retrieves Fragments, Not Reasoning Chains<a class="headerlink" href="#limitation-3-rag-retrieves-fragments-not-reasoning-chains" title="Permanent link">¶</a></h3>
+<p>Enterprise decisions often require synthesizing information from multiple sources across organizational boundaries: a customer's revenue history (CRM), their current contract terms (contract management), their payment behavior (billing), and their open support escalations (support system). RAG retrieves the most relevant individual documents. It does not automatically retrieve the cross-system synthesis. An LLM that receives four separate document excerpts may fail to connect them because the connecting structure — the fact that all four records relate to the same canonical customer entity — is not in any of the documents.</p>
+<p><strong>Context completeness</strong> is the property of a retrieval mechanism that ensures all relevant information is present in the context window — not just the most individually similar documents. Achieving context completeness requires a retrieval system that can follow relationship chains across entity types, tracking the connected subgraph of relevant context rather than a flat list of similar documents.</p>
+<h3 id="limitation-4-rag-cannot-represent-tacit-knowledge">Limitation 4: RAG Cannot Represent Tacit Knowledge<a class="headerlink" href="#limitation-4-rag-cannot-represent-tacit-knowledge" title="Permanent link">¶</a></h3>
+<p><strong>Tacit knowledge</strong> is the kind of knowledge that experts carry in their heads but never fully articulate in documents: the rule of thumb that this particular customer always needs a human review on orders above $100,000, even though the written policy only requires review above $250,000; the awareness that the data quality from this source system degrades significantly in the last two days of each quarter; the understanding that "approved" in the old CRM system sometimes meant "approved pending VP sign-off" rather than "fully approved." None of this appears in any document. It lives in the decision history — in the pattern of how past exceptions were handled, in the annotations on past decisions, in the precedent traces that experienced practitioners consult before making calls.</p>
+<p><strong>Implicit organizational knowledge</strong> is tacit knowledge that has been partially externalized — it exists somewhere in the organization's systems as patterns in historical data, as annotations on past decisions, or as informal notes in case management systems — but has never been explicitly documented and is therefore invisible to a document-retrieval system.</p>
+<p>Capturing tacit and implicit knowledge requires a retrieval mechanism that can access and reason over the decision history, not just the document archive. This is the fundamental capability that distinguishes a context graph from a RAG document store.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">RAG is a flashlight; a context graph is a map.</p>
+<p><img src="../../img/mascot/thinking.png" class="mascot-admonition-img" alt="Nexus thinking">
+A RAG system is excellent at finding the document most similar to your question — like pointing a flashlight at the most relevant part of a library shelf. A context graph provides a navigable map: it knows how entities relate to each other, which decisions were made under which circumstances, and how the organization's knowledge is structured and connected. A flashlight finds a fact. A map supports reasoning.</p>
+</div>
+<h3 id="limitation-5-hallucination-from-partial-context">Limitation 5: Hallucination from Partial Context<a class="headerlink" href="#limitation-5-hallucination-from-partial-context" title="Permanent link">¶</a></h3>
+<p><strong>Hallucination</strong> occurs when an LLM generates confident-sounding text that is factually incorrect or unsupported by the provided context. In enterprise settings, hallucination is most dangerous not when the model invents facts that are obviously wrong, but when it extrapolates plausibly from partial context.</p>
+<p>When an LLM receives a context window that is partially relevant but incomplete — missing the cross-system synthesis, missing the decision precedents, missing the freshness metadata — it must fill the gaps to produce a coherent answer. It fills those gaps by drawing on training data generalizations, by interpolating from the patterns in the partial context, or by confabulating plausible-sounding facts. Each gap in the context window is an opportunity for hallucination.</p>
+<p>The <strong>missing context failure mode</strong> is the systematic pattern where partial retrieval results lead to confident but wrong answers. It is distinguished from random hallucination by its predictability: the model will systematically hallucinate in the same direction for any query that exercises the same retrieval gap.</p>
+<h2 id="context-poisoning-when-retrieval-goes-wrong">Context Poisoning: When Retrieval Goes Wrong<a class="headerlink" href="#context-poisoning-when-retrieval-goes-wrong" title="Permanent link">¶</a></h2>
+<p>A less discussed but equally important failure mode is <strong>context poisoning</strong> — when the information injected into an LLM's context window is incorrect, outdated, or adversarially manipulated. A poisoned context produces wrong answers with high confidence, which is worse than no answer at all.</p>
+<p>Context poisoning in enterprise settings takes several forms:</p>
+<p><strong>Stale document injection</strong>: a RAG system retrieves a document that was once correct but has since been superseded. The LLM reasons from the stale document and produces an outdated answer. Without freshness metadata, neither the model nor the user can detect the problem.</p>
+<p><strong>Adversarial injection</strong>: in a system where users can submit documents that enter the retrieval index, a malicious or simply mistaken document can be engineered to be retrieved for certain queries and to override correct information. This is particularly dangerous for policy queries.</p>
+<p><strong>Schema mismatch poisoning</strong>: a retrieved document uses the same field name as the current schema but under an older definition. The LLM interprets the value under the current definition, producing a semantically incorrect synthesis.</p>
+<p><strong>Over-retrieval poisoning</strong>: a context window that is so full of marginally relevant documents that the truly relevant information is diluted. Statistical averaging over too many documents can push the LLM's attention toward common-case patterns and away from the specific exception case that the query is actually about.</p>
+<p><strong>Context window management</strong> is the practice of selecting, filtering, ranking, and sizing the context injected into an LLM call to maximize relevance and minimize the risk of poisoning. Good context window management requires not just a retrieval system but a context assembly layer that: filters retrieved results for freshness, ranks them by relevance to the specific query, deduplicates overlapping content, and sizes the assembled context to fit the query's complexity without over-filling the window.</p>
+<h4 id="diagram-context-failure-mode-explorer">Diagram: Context Failure Mode Explorer<a class="headerlink" href="#diagram-context-failure-mode-explorer" title="Permanent link">¶</a></h4>
+<details>
+<summary>Interactive MicroSim showing the five RAG failure modes and their impact on LLM answer quality</summary>
+<p>Type: microsim
+<strong>sim-id:</strong> context-failure-modes
+<strong>Library:</strong> p5.js
+<strong>Status:</strong> Specified</p>
+<p>Bloom Level: Analyze (L4)
+Bloom Verb: examine
+Learning Objective: Learners can examine each of the five RAG failure modes and connect each to a specific property that context graphs are designed to address.</p>
+<p>Instructional Rationale: A failure mode selector MicroSim is appropriate for the Analyze objective — clicking through failure modes with concrete before/after examples makes abstract concepts tangible and supports recognition of the pattern in practice.</p>
+<p>Canvas: responsive width via updateCanvasSize() first in setup(). Height: 520px. White background.</p>
+<p>Layout: Left column (30%): clickable list of failure modes (5 buttons created with createButton). Right panel (70%): detail view that changes when a failure mode is selected.</p>
+<p><strong>Failure modes (5 buttons):</strong>
+1. "Missing Decision Context"
+2. "Knowledge Staleness"
+3. "Incomplete Cross-System Synthesis"
+4. "Tacit Knowledge Gap"
+5. "Context Poisoning"</p>
+<p>Each button highlights in indigo when selected.</p>
+<p><strong>Right panel for each failure mode</strong> shows three rows:
+- Row 1 "What RAG does": description of what a standard RAG system retrieves
+- Row 2 "What the LLM gets": the partial or incorrect context that reaches the model
+- Row 3 "Result": the type of wrong answer produced, with a concrete example snippet</p>
+<p>Example for "Knowledge Staleness":
+- What RAG does: "Retrieves top-3 documents by semantic similarity to 'What is our discount tier for Acme Corp?'"
+- What the LLM gets: "Pricing document v4.1 (published 14 months ago, similarity score: 0.91)"
+- Result: "LLM answers with old Tier 2 discount. Acme Corp was upgraded to Tier 1 six months ago. The new pricing doc has a slightly different title and lower similarity score."</p>
+<p>Bottom panel: "Context Graph Solution" — a one-sentence description of how a context graph addresses this specific failure mode. For Knowledge Staleness: "Context graph attaches freshness scores and version history to every retrieval result, enabling the LLM to detect that a more recent document exists even if it has a lower raw similarity score."</p>
+<p>Color coding: failure mode descriptions in orange/red palette. Solution descriptions in teal.
+Canvas responds to window resize.</p>
+</details>
+<h2 id="the-four-missing-layers-in-enterprise-ai">The Four Missing Layers in Enterprise AI<a class="headerlink" href="#the-four-missing-layers-in-enterprise-ai" title="Permanent link">¶</a></h2>
+<p>Synthesizing the failure modes above, we can identify four categories of organizational knowledge that enterprise AI systems consistently fail to capture:</p>
+<p><strong>1. Exception logic</strong>: the informal rules and thresholds that govern how the organization handles cases that fall outside normal parameters. These rules exist in the heads of experienced practitioners and in the patterns of past decisions — but almost never in formal documentation.</p>
+<p><strong>2. Historical precedents</strong>: the record of how similar situations were handled in the past, including the rationale that was applied, who approved the handling, and whether it was later reviewed. Precedent reasoning is the foundation of experienced judgment — but document archives make precedent search expensive and unreliable.</p>
+<p><strong>3. Cross-system synthesis</strong>: the organizational understanding that entity X in System A is the same as entity Y in System B, and that the combination of their records creates a complete picture that neither system alone provides. Cross-system synthesis requires canonical entity resolution and a relationship model that spans system boundaries.</p>
+<p><strong>4. Out-of-band approval chains</strong>: the informal communication channels (conversations, emails, Slack messages, committee discussions) through which decisions are actually made — channels that leave little or no record in formal systems. An approval that was negotiated verbally and ratified in a brief email is structurally invisible to a document retrieval system.</p>
+<p>These four missing layers are not incidental gaps. They are systematic gaps that exist because enterprise systems are designed to record <em>what was decided</em> in a structured transactional format, not <em>why it was decided</em> in a context-rich narrative format. The <strong>decision context</strong> — the organizational knowledge that explains why a specific decision was made the way it was — is the missing layer that context graphs are specifically designed to capture and preserve.</p>
+<p><strong>Long-term memory for AI</strong> in the enterprise context means a persistent store of decision context, precedents, and organizational knowledge that survives across LLM sessions, accumulates over time, and can be retrieved by any agent or query that needs it. A context graph is the architectural form that long-term organizational memory takes. It is not the same as an LLM's context window (which is short-term, per-session), nor is it the same as the training data baked into model weights (which is static after training). It is a dynamic, queryable, growing record of organizational knowledge that complements both.</p>
+<h4 id="diagram-the-four-missing-layers-why-rag-is-not-enough">Diagram: The Four Missing Layers — Why RAG Is Not Enough<a class="headerlink" href="#diagram-the-four-missing-layers-why-rag-is-not-enough" title="Permanent link">¶</a></h4>
+<details>
+<summary>Interactive vis-network diagram contrasting what standard RAG captures vs. what context graphs add</summary>
+<p>Type: graph-model
+<strong>sim-id:</strong> four-missing-layers
+<strong>Library:</strong> vis-network
+<strong>Status:</strong> Specified</p>
+<p>Bloom Level: Evaluate (L5)
+Bloom Verb: assess
+Learning Objective: Learners can assess whether a proposed AI system architecture addresses all four missing knowledge layers by mapping each layer to either a RAG component or a context graph component.</p>
+<p>Instructional Rationale: A two-column interactive diagram — "RAG Covers" vs. "Context Graph Adds" — is appropriate for the Evaluate objective because learners must judge the completeness of each approach, which requires comparing specific capabilities against the four named gaps.</p>
+<p>Canvas: responsive width, 500px height. Two panels with distinct background colors.</p>
+<p><strong>Left panel — "Standard RAG Covers"</strong> (light blue background):
+Nodes: "Document Archive", "Semantic Search Index", "Embedding Similarity", "Top-K Retrieval"
+All nodes teal, boxes. Edges showing the RAG pipeline (left to right). All nodes have a green checkmark drawn in p5.js.</p>
+<p><strong>Right panel — "Context Graph Adds"</strong> (light indigo background):
+Nodes: "Exception Logic (decision patterns)", "Historical Precedents (why + who)", "Cross-System Synthesis (canonical entities)", "Approval Chains (out-of-band record)"
+All nodes indigo, ellipses. A connecting bridge edge from RAG panel to Context Graph panel labeled "extends".
+Each missing layer node has a brief icon (p5.js drawn): exclamation mark for exception logic, clock for precedents, link symbol for cross-system, chain symbol for approval chains.</p>
+<p>Click each RAG node: "Standard RAG addresses [component]. It is necessary but not sufficient for enterprise reasoning."
+Click each Context Graph node: "Context graphs capture [layer]. This addresses the [specific] failure mode that RAG cannot handle alone."
+Click the bridge edge: "Context graphs do not replace RAG — they extend it. RAG retrieves documents; the context graph provides the organizational intelligence that makes those documents interpretable and trustworthy."</p>
+<p>Summary text at bottom of canvas: "Enterprise AI requires both: RAG for document retrieval, context graphs for organizational intelligence."</p>
+</details>
+<h2 id="static-vs-dynamic-knowledge">Static vs. Dynamic Knowledge<a class="headerlink" href="#static-vs-dynamic-knowledge" title="Permanent link">¶</a></h2>
+<p>One of the most important distinctions in enterprise AI architecture is between <strong>static knowledge</strong> and <strong>dynamic knowledge</strong>.</p>
+<p>Static knowledge is information that changes slowly or not at all: the text of a regulatory requirement, the historical definition of an accounting standard, the specification of a product that is no longer being modified. Static knowledge can be indexed once and queried for months before it needs to be refreshed. RAG systems are well-suited for static knowledge.</p>
+<p>Dynamic knowledge is information that changes frequently and where currency is critical: the current price of a product, the open purchase orders for a supplier, the approval status of an exception request, the current organizational reporting structure. Dynamic knowledge requires retrieval mechanisms that access current state — not cached snapshots from days or weeks ago. An LLM answering "what is the status of this customer's open exception?" must read current state, not a search index last updated on Sunday evening.</p>
+<p>The organizational knowledge that most commonly determines the outcome of a complex enterprise decision is dynamic, not static. The precedent that most applies to an exception request was probably created last month. The cross-system synthesis that reveals a customer's risk profile draws on account status from yesterday. The approval chain that governs a workflow decision reflects the organizational structure as of this week.</p>
+<p>A context graph is designed for dynamic knowledge. Because it is a live graph database rather than a pre-built document index, it can be queried against current state. Because it is continuously updated by event streams, CDC pipelines, and agent write-backs, it reflects organizational reality at query time. This is the architectural property that RAG document stores cannot easily replicate.</p>
+<h2 id="short-term-vs-long-term-memory-in-enterprise-ai">Short-Term vs. Long-Term Memory in Enterprise AI<a class="headerlink" href="#short-term-vs-long-term-memory-in-enterprise-ai" title="Permanent link">¶</a></h2>
+<p>The final piece of the context problem is the memory architecture. An LLM session is an episode of short-term memory: everything needed for a single interaction is assembled in the context window, the interaction occurs, and the context is discarded. If the same question is asked again in a new session, the assembly process must start from scratch. If an agent takes an action and then needs to reference that action in a later session, it cannot — unless the action was recorded somewhere persistent.</p>
+<p><strong>Long-term memory for AI</strong> is the persistent, session-independent store of organizational knowledge that allows AI agents to accumulate experience over time, reference past actions in later sessions, and improve decision quality as more precedents are recorded. A context graph is the natural implementation of long-term organizational memory: every decision trace written to the context graph is available to every future query, by any agent, in any session.</p>
+<p><strong>Short-term vs. long-term memory</strong> in AI architecture maps to a practical division of responsibilities. The context window (short-term) holds the immediate context for the current task: the user's query, the retrieved facts, the conversation history. The context graph (long-term) holds the organizational knowledge, precedents, and decision history that must persist across sessions. The retrieval mechanism is the bridge: it queries the long-term memory (context graph) and selects the most relevant content for injection into the short-term memory (context window).</p>
+<p>Getting this architecture right — deciding what belongs in the context graph vs. the context window, how to retrieve relevant subsets efficiently, and how to keep the long-term memory accurate and current — is the central design challenge of enterprise AI. The remaining chapters address it directly.</p>
+<h2 id="summary-and-key-takeaways">Summary and Key Takeaways<a class="headerlink" href="#summary-and-key-takeaways" title="Permanent link">¶</a></h2>
+<p>The context problem is not a problem with LLMs. It is a problem with the systems built around them. RAG is a necessary component of enterprise AI architecture, but it is not sufficient. The four missing layers — exception logic, historical precedents, cross-system synthesis, and approval chains — cannot be captured by document retrieval. They require a new architectural element: the context graph.</p>
+<p>By the end of this chapter, you should be able to:</p>
+<ul>
+<li>Explain the <strong>context window</strong> as working memory (not long-term memory) and why this matters for architecture</li>
+<li>Define <strong>grounding</strong> and explain why it is an engineering problem, not a model problem</li>
+<li>Name and explain the five <strong>RAG limitations</strong>: missing decision context, knowledge staleness, incomplete cross-system synthesis, tacit knowledge gap, and context poisoning</li>
+<li>Define <strong>hallucination</strong> in the enterprise context and explain how partial context causes systematic hallucination</li>
+<li>Name the <strong>four missing layers</strong> in enterprise AI: exception logic, historical precedents, cross-system synthesis, and approval chains</li>
+<li>Distinguish <strong>static knowledge</strong> (well-suited for RAG) from <strong>dynamic knowledge</strong> (requires a live context graph)</li>
+<li>Explain the difference between <strong>short-term memory</strong> (context window) and <strong>long-term memory</strong> (context graph) in AI architecture</li>
+</ul>
+<details class="question">
+<summary>Quick Check</summary>
+<p>An enterprise LLM system uses RAG to answer questions about customer contract terms. The document index is updated weekly. A customer asks for an exception to their standard pricing terms. The LLM recommends approving the exception, citing a precedent from similar accounts. Later, the approvals team discovers that the cited precedent was for a customer in a different regulatory jurisdiction, and that the last three similar exceptions in this jurisdiction were denied. What failure mode(s) occurred, and which of the four missing layers was responsible?</p>
+<p><em>(Answer: Missing decision context (the exception's jurisdiction context was not retrieved), tacit knowledge gap (the pattern that this jurisdiction requires different treatment is not in any document), and historical precedent gap (the context graph would have held the three recent denials as searchable precedent nodes, but the RAG system returned only the approval case because it had higher document similarity to the query text.)</em></p>
+</details>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">Chapter 8: Complete!</p>
+<p><img src="../../img/mascot/celebration.png" class="mascot-admonition-img" alt="Nexus celebrating">
+You now understand the problem at the heart of this book, precisely and completely. The failure is not random — it is structural, and it has a structural solution. Chapter 9 defines that solution: the context graph. After seven chapters of foundation, you are finally ready to see exactly what it is, how it extends the enterprise knowledge graph, and what properties it must have to close the gaps we just named. Let's trace the why!</p>
+</div>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -1267,7 +1803,7 @@
         
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
   Back to top
 </button>
         
@@ -1277,13 +1813,13 @@
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
           <a href="../07-process-mining-lineage/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 7. Process Mining and Lineage">
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
@@ -1308,7 +1844,7 @@
             </div>
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
             </div>
           </a>
         
@@ -1320,7 +1856,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2026 Dan Mccreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+      Copyright © 2026 Dan Mccreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
     </div>
   
   
@@ -1341,6 +1877,14 @@
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
+        <script src="../../js/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+      
     
-  </body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

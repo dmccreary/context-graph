@@ -1,12 +1,9 @@
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
+<!DOCTYPE html><html lang="en" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="An interactive intelligent textbook on the contact graph and how the contact graphs helps organization use LLMs cost effectively">
+        <meta name="description" content="Agent loop design, planning, memory, tool use, multi-agent orchestration, graduated autonomy, human-in-the-loop write-back, and the ReAct/Plan-and-Execute/Reflection agent patterns.">
       
       
         <meta name="author" content="Dan Mccreary">
@@ -21,12 +18,12 @@
         <link rel="next" href="../17-enterprise-use-cases/">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../img/favicon.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
     
     
       
-        <title>16. AI Agent Architecture - Context Graph</title>
+        <title>Chapter 16: AI Agent Architecture - Context Graph</title>
       
     
     
@@ -47,7 +44,7 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -55,6 +52,8 @@
       <link rel="stylesheet" href="../../css/extra.css">
     
       <link rel="stylesheet" href="../../css/mascot.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -72,8 +71,44 @@
 
     
     
+      
+        <meta property="og:type" content="website">
+      
+        <meta property="og:title" content="Chapter 16: AI Agent Architecture - Context Graph">
+      
+        <meta property="og:description" content="Agent loop design, planning, memory, tool use, multi-agent orchestration, graduated autonomy, human-in-the-loop write-back, and the ReAct/Plan-and-Execute/Reflection agent patterns.">
+      
+        <meta property="og:image" content="https://dmccreary.github.io/context-graph/assets/images/social/chapters/16-ai-agent-architecture/index.png">
+      
+        <meta property="og:image:type" content="image/png">
+      
+        <meta property="og:image:width" content="1200">
+      
+        <meta property="og:image:height" content="630">
+      
+        <meta property="og:url" content="https://dmccreary.github.io/context-graph/chapters/16-ai-agent-architecture/">
+      
+        <meta name="twitter:card" content="summary_large_image">
+      
+        <meta name="twitter:title" content="Chapter 16: AI Agent Architecture - Context Graph">
+      
+        <meta name="twitter:description" content="Agent loop design, planning, memory, tool use, multi-agent orchestration, graduated autonomy, human-in-the-loop write-back, and the ReAct/Plan-and-Execute/Reflection agent patterns.">
+      
+        <meta name="twitter:image" content="https://dmccreary.github.io/context-graph/assets/images/social/chapters/16-ai-agent-architecture/index.png">
+      
     
-  </head>
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     
@@ -108,13 +143,12 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Context Graph" class="md-header__button md-logo" aria-label="Context Graph" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -126,7 +160,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              16. AI Agent Architecture
+              Chapter 16: AI Agent Architecture
             
           </span>
         </div>
@@ -140,7 +174,7 @@
     
       <label class="md-header__button md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -149,20 +183,20 @@
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
           <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
             
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
           </a>
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
@@ -187,7 +221,7 @@
         <a href="https://github.com/dmccreary/context-graph" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -211,7 +245,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -222,8 +256,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Context Graph" class="md-nav__button md-logo" aria-label="Context Graph" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     Context Graph
@@ -233,7 +266,7 @@
       <a href="https://github.com/dmccreary/context-graph" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -840,6 +873,150 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-ai-agent-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      The AI Agent Loop
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#three-agent-reasoning-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Three Agent Reasoning Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Three Agent Reasoning Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-react-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      The ReAct Pattern
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-plan-and-execute-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Plan-and-Execute Pattern
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-reflection-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Reflection Pattern
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agent-memory-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Agent Memory Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Agent Memory Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-agent-memory-architecture-and-write-back-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Agent Memory Architecture and Write-Back Loop
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multi-agent-systems-and-orchestration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-Agent Systems and Orchestration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#graduated-autonomy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graduated Autonomy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Graduated Autonomy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-graduated-autonomy-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Graduated Autonomy Model
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agent-security-authentication-authorization-and-sandboxing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Agent Security: Authentication, Authorization, and Sandboxing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agent-evaluation-and-benchmarking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Agent Evaluation and Benchmarking
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-and-key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary and Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1007,6 +1184,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1035,6 +1216,46 @@
   
 
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1136,7 +1357,7 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -1181,6 +1402,150 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-ai-agent-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      The AI Agent Loop
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#three-agent-reasoning-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Three Agent Reasoning Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Three Agent Reasoning Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-react-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      The ReAct Pattern
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-plan-and-execute-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Plan-and-Execute Pattern
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-reflection-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Reflection Pattern
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agent-memory-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Agent Memory Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Agent Memory Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-agent-memory-architecture-and-write-back-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Agent Memory Architecture and Write-Back Loop
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multi-agent-systems-and-orchestration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-Agent Systems and Orchestration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#graduated-autonomy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graduated Autonomy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Graduated Autonomy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-graduated-autonomy-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Graduated Autonomy Model
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agent-security-authentication-authorization-and-sandboxing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Agent Security: Authentication, Authorization, and Sandboxing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agent-evaluation-and-benchmarking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Agent Evaluation and Benchmarking
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-and-key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary and Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1198,16 +1563,16 @@
   
     <a href="https://github.com/dmccreary/context-graph/blob/main/docs/chapters/16-ai-agent-architecture/index.md" title="Edit this page" class="md-content__button md-icon">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
     </a>
   
   
 
 
-<h1 id="chapter-16-ai-agent-architecture">Chapter 16: AI Agent Architecture<a class="headerlink" href="#chapter-16-ai-agent-architecture" title="Permanent link">&para;</a></h1>
-<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<h1 id="chapter-16-ai-agent-architecture">Chapter 16: AI Agent Architecture<a class="headerlink" href="#chapter-16-ai-agent-architecture" title="Permanent link">¶</a></h1>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">¶</a></h2>
 <p>Covers agent loop design, planning, memory, tool use, multi-agent orchestration, graduated autonomy, human-in-the-loop, write-back, and the ReAct/Plan-and-Execute/Reflection agent patterns.</p>
-<h2 id="concepts-covered">Concepts Covered<a class="headerlink" href="#concepts-covered" title="Permanent link">&para;</a></h2>
+<h2 id="concepts-covered">Concepts Covered<a class="headerlink" href="#concepts-covered" title="Permanent link">¶</a></h2>
 <p>This chapter covers the following 25 concepts from the learning graph:</p>
 <ol>
 <li>AI Agent Loop</li>
@@ -1236,7 +1601,7 @@
 <li>Agent Benchmarking</li>
 <li>Agent Context Budget</li>
 </ol>
-<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">¶</a></h2>
 <p>This chapter builds on concepts from:</p>
 <ul>
 <li><a href="../09-context-graph-definition/">Chapter 9: What a Context Graph Is</a></li>
@@ -1244,14 +1609,175 @@
 <li><a href="../14-llm-integration/">Chapter 14: Integrating LLMs with Context Graphs</a></li>
 <li><a href="../15-building-deploying/">Chapter 15: Building and Deploying Context Graph Systems</a></li>
 </ul>
-<hr />
-<p>TODO: Generate Chapter Content</p>
+<hr>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Agents that learn from their own history.</p>
+<p><img src="../../img/mascot/welcome.png" class="mascot-admonition-img" alt="Nexus waves welcome">
+Welcome to Chapter 16! Context graphs give AI agents something most agents lack: long-term memory that accumulates with every decision. This chapter shows how to design agents that read from that memory, write back to it, and become more capable over time through a graduated autonomy model. Let's trace the why!</p>
+</div>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">¶</a></h2>
+<p>An AI agent without a context graph is like a new employee without access to the company's institutional knowledge — technically capable, but operating without the organizational context that experienced practitioners take for granted. With each decision, such an agent makes no contribution to the organization's collective intelligence; its reasoning evaporates the moment the session ends.</p>
+<p>An AI agent integrated with a context graph is fundamentally different. Before each decision, it reads from the organization's accumulated decision history. After each decision, it writes back — contributing a new precedent to the record. Over time, the agent becomes more effective because the context it draws on grows richer with each cycle. And critically, the organization's knowledge grows too: the agent's decisions become part of the precedent base that future agents and human practitioners will consult.</p>
+<p>This chapter covers the architectural patterns that make this learning loop work: how agents are designed to operate in cycles, how they read and write to context graphs, how multiple agents collaborate in orchestrated workflows, and how graduated autonomy models allow organizations to trust agents with progressively more consequential actions as the precedent base deepens.</p>
+<h2 id="the-ai-agent-loop">The AI Agent Loop<a class="headerlink" href="#the-ai-agent-loop" title="Permanent link">¶</a></h2>
+<p>The <strong>AI agent loop</strong> is the fundamental cycle of an autonomous agent: observe, plan, act, record, repeat. Each pass through the loop is a decision step. The loop runs until the agent's task is complete, an error condition is reached, or a human-in-the-loop checkpoint requires approval before proceeding.</p>
+<p>Before we walk through each phase, it is important to understand what makes an agent different from a simple LLM API call. An LLM API call is stateless: it receives a prompt, generates a response, and terminates. An agent is stateful: it maintains a working context across multiple LLM calls, executes real-world actions (writing to databases, calling APIs, sending notifications), and persists the results of its actions into the context graph so that future agents (and future cycles of the same agent) can benefit from them.</p>
+<p><strong>Phase 1: Observe.</strong> The agent receives a task specification (from a human, from an orchestration system, or from a triggering event in an operational system). It queries the context graph for relevant decision history and precedents using the hybrid retrieval pipeline from Chapter 14. It also queries any other tool sources needed for the current task (the enterprise knowledge graph for entity data, the metadata registry for field definitions, operational systems for current state). The outputs of this phase are: a structured task context assembled from graph retrievals and tool calls.</p>
+<p><strong>Phase 2: Plan.</strong> The agent uses the assembled context to construct a plan for completing the task. Planning involves: identifying what information is still needed, what constraints apply (from retrieved policy versions), what the most relevant precedents suggest, and what actions are available. The plan is expressed as a sequence of steps, each of which may involve additional tool calls, additional retrieval queries, or a decision point that produces a recommendation or action.</p>
+<p><strong>Phase 3: Act.</strong> The agent executes the plan — making tool calls, generating outputs, and producing decisions. For each decision point in the plan, the agent generates a structured decision recommendation backed by specific precedent citations from the retrieved context.</p>
+<p><strong>Phase 4: Record.</strong> This is the phase that most agent implementations omit — and the phase that is most critical for context graph integration. After acting, the agent writes a decision trace to the context graph: what decision was made, by whom (the agent's identity), at what time, based on what context (links to the retrieved precedents), under what policy, and with what confidence level. This write-back is the mechanism by which the agent contributes to the organization's growing institutional memory.</p>
+<p><strong>Phase 5: Repeat or terminate.</strong> If the task is not complete, the loop repeats from Phase 1 with the updated context (the new decision trace is now visible to the next retrieval query, enabling the next loop cycle to build on this one). If the task is complete or an escalation condition is met, the agent terminates and returns its final output.</p>
+<h2 id="three-agent-reasoning-patterns">Three Agent Reasoning Patterns<a class="headerlink" href="#three-agent-reasoning-patterns" title="Permanent link">¶</a></h2>
+<p>The <strong>AI agent loop</strong> is the outer structure. The reasoning pattern is the inner logic — how the agent moves from context to plan to action within each loop cycle. Three patterns have proven effective for enterprise decision support tasks.</p>
+<h3 id="the-react-pattern">The ReAct Pattern<a class="headerlink" href="#the-react-pattern" title="Permanent link">¶</a></h3>
+<p><strong>ReAct</strong> (Reasoning + Acting) interleaves reasoning steps and action steps in the agent's output. The agent explicitly records its reasoning before each action, and the reasoning becomes part of the agent trace. A ReAct agent processing a pricing exception request might produce:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Thought: I need to find the most relevant pricing exception precedents for this customer.
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Action: retrieve_context(entity_id="ENT-00441872", decision_type="pricing_exception", recency=24mo)
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Observation: Found 8 precedents. Top precedent DT-4482 (Q4-2025) approved 15% discount for same customer under Pricing Policy v3.2.
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Thought: The precedent supports approval. But I should check whether the policy has changed since then.
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>Action: get_policy_version(policy_id="PRICING", as_of="today")
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>Observation: Current version is v3.2 (unchanged). This precedent is directly applicable.
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>Thought: Strong precedent, unchanged policy. Recommend approval with conditions from precedent DT-4482.
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>Action: write_decision_trace(type="pricing_exception", recommendation="approve", cited_precedents=["DT-4482"], policy_version="PRICING-v3.2")
+</span></code></pre></div>
+<p>ReAct is effective because the explicit reasoning chain makes the agent's logic transparent, auditable, and debuggable. The agent trace (the full sequence of thoughts, actions, and observations) is a natural decision trace candidate — it can be written to the context graph as both the agent decision trace and the reasoning record.</p>
+<h3 id="the-plan-and-execute-pattern">The Plan-and-Execute Pattern<a class="headerlink" href="#the-plan-and-execute-pattern" title="Permanent link">¶</a></h3>
+<p><strong>Plan-and-Execute</strong> separates the planning phase from the execution phase. First, the agent generates a complete multi-step plan using the retrieved context. Then, it executes the plan step by step, with each step potentially triggering new tool calls and observations that may require the plan to be revised.</p>
+<p>Plan-and-Execute is more efficient than ReAct for complex multi-step tasks because it avoids the overhead of deciding what to do next after each step — the plan is already determined. It is more appropriate for tasks with long, well-defined execution sequences (a regulatory compliance review that must check 12 specific criteria in a specified order) than for exploratory tasks where the next step depends heavily on what was just discovered.</p>
+<h3 id="the-reflection-pattern">The Reflection Pattern<a class="headerlink" href="#the-reflection-pattern" title="Permanent link">¶</a></h3>
+<p><strong>Reflection</strong> adds a self-evaluation step after the initial reasoning and action. The agent generates an initial recommendation, then reviews its own output against the retrieved context (a self-faithfulness check), identifies potential gaps or contradictions, and revises its recommendation before writing the final decision trace. This pattern significantly reduces hallucination and overconfident recommendations at the cost of additional LLM calls.</p>
+<p>Reflection is most valuable for high-stakes decisions where the cost of an incorrect recommendation is high. For routine decisions with strong precedent coverage, the overhead may not be justified.</p>
+<h2 id="agent-memory-architecture">Agent Memory Architecture<a class="headerlink" href="#agent-memory-architecture" title="Permanent link">¶</a></h2>
+<p>An <strong>agent memory architecture</strong> defines how the agent manages information across the multiple phases of its loop and across multiple loop cycles. For context-graph-integrated agents, memory is organized into three tiers.</p>
+<p><strong>In-context memory</strong> (working memory): the information currently in the agent's context window. This includes the task specification, retrieved decision traces, tool call results, and the conversation history of the current loop cycle. In-context memory is fast to access but limited in size (the context window budget from Chapter 14).</p>
+<p><strong>Session memory</strong>: information persisted across multiple loop cycles within a single agent session, but not across sessions. Implemented as a session state object stored outside the context window (in the application layer) and summarized/injected at the start of each new loop cycle. Useful for long-running tasks that span many loop cycles.</p>
+<p><strong>Long-term memory</strong> (the context graph): the persistent organizational memory that is shared across all agents, all sessions, and all time. The context graph is the agent's long-term memory in exactly the same way that it is the organization's institutional memory — it accumulates, is queryable, and grows richer with each new decision trace. An agent's write-back to the context graph is its contribution to long-term memory.</p>
+<p>The <strong>agent read pattern</strong> is the retrieval query sequence that an agent executes at the start of each loop cycle to populate its in-context memory from the long-term memory (context graph). The read pattern must be: targeted (retrieve only what is relevant to the current task), fresh (check freshness scores before including any context), and budget-aware (respect the context window budget, compressing or pruning as needed).</p>
+<p>The <strong>agent write-back</strong> is the write to the context graph that records the agent's decision trace at the end of each successful loop cycle. Write-back must be: atomic (the trace node and all its required edges are written in a single transaction), validated (schema constraints are checked before the write succeeds), and timely (written before the session ends, so the trace is available to future agents).</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Write-back is what makes agents a collective intelligence.</p>
+<p><img src="../../img/mascot/thinking.png" class="mascot-admonition-img" alt="Nexus thinking">
+Here is the key insight about agent write-back: each individual agent's write-back makes every subsequent agent slightly more effective. If agent A writes a decision trace that becomes a high-value precedent, agent B can retrieve it in its next loop cycle and make a better decision. Agent B's trace, if it extends or refines agent A's reasoning, improves the precedent for agent C. Over time, the collective intelligence of the agent population grows through the shared long-term memory of the context graph. This is the mechanism by which the accumulation dynamic (from Chapter 12) compounds.</p>
+</div>
+<h4 id="diagram-agent-memory-architecture-and-write-back-loop">Diagram: Agent Memory Architecture and Write-Back Loop<a class="headerlink" href="#diagram-agent-memory-architecture-and-write-back-loop" title="Permanent link">¶</a></h4>
+<details>
+<summary>Interactive vis-network diagram showing the three-tier agent memory architecture and the write-back loop that connects agent decisions to the shared context graph</summary>
+<p>Type: graph-model
+<strong>sim-id:</strong> agent-memory-architecture
+<strong>Library:</strong> vis-network
+<strong>Status:</strong> Specified</p>
+<p>Bloom Level: Understand (L2)
+Bloom Verb: explain
+Learning Objective: Learners can explain how the three tiers of agent memory (in-context, session, long-term) relate to each other and how agent write-back connects the agent's decisions to the shared organizational memory.</p>
+<p>Instructional Rationale: A hierarchical vis-network diagram with labeled data flows is appropriate for the Understand objective — learners trace information flowing in (read pattern) and out (write-back) across the three memory tiers, building a mental model of the memory architecture.</p>
+<p>Canvas: responsive width, 520px height. White background.</p>
+<p>Layout: Three horizontal bands stacked top-to-bottom, separated by labeled dividers.</p>
+<p><strong>Top band — In-Context Memory:</strong>
+Nodes: "Task Specification" (orange, small box), "Retrieved Traces" (indigo, box), "Tool Results" (teal, box), "Loop History" (steel blue, box). All inside a labeled band "In-Context (Working Memory, ~8K tokens, ephemeral)".</p>
+<p><strong>Middle band — Session Memory:</strong>
+Node: "Session State Object" (gold, box). Inside a labeled band "Session Memory (persisted across loop cycles, summarized at loop start)".</p>
+<p><strong>Bottom band — Long-Term Memory (Context Graph):</strong>
+Nodes: "Decision Trace Nodes" (indigo, ellipse, large), "Entity Nodes" (teal, ellipse), "Policy Versions" (steel blue, box), "Precedent Links" (orange, dashed edges between decision nodes). Inside a labeled band "Long-Term Memory (shared, persistent, queryable by all agents)".</p>
+<p><strong>Data flow edges:</strong>
+- Context Graph → In-Context Memory: orange arrow, label "Agent Read Pattern (retrieval queries)"
+- Session State → In-Context Memory: gold arrow, label "Session summary injected at loop start"
+- In-Context Memory → Session State: gold dashed arrow, label "Updated after each loop cycle"
+- In-Context Memory → Context Graph: large indigo arrow, label "Agent Write-Back (decision trace)" — this arrow is highlighted prominently</p>
+<p>Click on Agent Write-Back arrow: "<strong>Agent Write-Back</strong> — the most important data flow. After each decision, the agent writes a complete decision trace to the context graph: the decision, the actor (agent identity), the retrieved precedents cited, the policy version, and the reasoning summary. This trace immediately becomes available to all future agents and human queries."
+Click on Agent Read Pattern arrow: "<strong>Agent Read Pattern</strong> — the retrieval query sequence that populates the agent's working memory at the start of each loop cycle. Uses hybrid retrieval (graph traversal + vector search) to find the most relevant decision history and precedents for the current task."
+Click on each memory tier band: shows definition, capacity, and lifecycle (ephemeral vs. persistent).</p>
+</details>
+<h2 id="multi-agent-systems-and-orchestration">Multi-Agent Systems and Orchestration<a class="headerlink" href="#multi-agent-systems-and-orchestration" title="Permanent link">¶</a></h2>
+<p>Enterprise decision workflows often require more than one agent. A complex compliance review might involve: a data extraction agent (gathering relevant records from multiple systems), a policy analysis agent (interpreting which policies apply), a precedent research agent (finding relevant historical decisions), a recommendation synthesis agent (combining the above into a recommendation), and a quality validation agent (checking the recommendation for faithfulness and completeness). Each agent is specialized; together they form a <strong>multi-agent system</strong>.</p>
+<p><strong>Agent orchestration</strong> is the coordination layer that manages multi-agent systems: deciding which agent to invoke when, passing context between agents, handling failures, and assembling final outputs from multiple agent contributions. An orchestrator is itself an LLM-powered agent or a rule-based system, depending on the predictability of the workflow.</p>
+<p>For context graph integration, multi-agent systems introduce a coordination opportunity: the context graph serves as the shared blackboard. Agent A writes its intermediate findings as a specialized trace node; Agent B reads that node as part of its own context retrieval. The context graph is not just the long-term memory for the final decision — it is the shared working memory for the entire multi-agent workflow.</p>
+<p>The <strong>agent context budget</strong> in a multi-agent system must be managed at the orchestration level. If each of five agents uses 4,000 tokens of retrieved context, and they are operating sequentially, the total token cost per workflow is 5 × (4,000 context + ~500 output) = ~22,500 tokens per workflow. At scale (1,000 workflows per day), this drives significant LLM API costs. The orchestrator should assign each agent the minimum context necessary for its specific subtask — a data extraction agent does not need the full precedent chain; a recommendation synthesis agent does.</p>
+<h2 id="graduated-autonomy">Graduated Autonomy<a class="headerlink" href="#graduated-autonomy" title="Permanent link">¶</a></h2>
+<p><strong>Graduated autonomy</strong> is the model for expanding an AI agent's decision-making authority over time as its decision quality is validated. Rather than deploying an agent with full autonomy immediately (high risk) or with no autonomy at all (no value), graduated autonomy starts at the lowest useful autonomy level and increases it as the context graph accumulates evidence of decision quality.</p>
+<p>Autonomy levels for a pricing exception agent might look like:</p>
+<ul>
+<li><strong>Level 1: Draft only.</strong> The agent generates a draft recommendation that is always reviewed by a human before any action is taken. The agent writes a trace for its draft recommendation. Human reviewers validate or override.</li>
+<li><strong>Level 2: Auto-approve with human review.</strong> For decisions that match a high-confidence pattern (strongly supported by recent precedents, within well-defined parameter ranges), the agent approves automatically but notifies a human reviewer who has 24 hours to override.</li>
+<li><strong>Level 3: Auto-approve for routine decisions.</strong> For the subset of decisions that are clearly within established policy with strong precedent support, the agent approves without notification. Edge cases, flagged confidence levels, and policy boundary cases still escalate to Level 2.</li>
+<li><strong>Level 4: Full autonomy within policy.</strong> The agent handles all in-policy decisions automatically, escalating only when the case falls outside any established precedent or when the applicable policy is ambiguous.</li>
+</ul>
+<p>The transition between levels is triggered by measured decision quality metrics: if the agent's Level 1 recommendations are validated by human reviewers at a rate above a threshold (say, 95%) for at least N decisions, it is promoted to Level 2. If its Level 2 auto-approvals are reversed by human reviewers at a rate below a threshold (say, 2%) for at least M decisions, it is promoted to Level 3.</p>
+<p>The context graph is what makes this progression possible. The precision with which the agent can draw on relevant precedents determines its reliability on novel cases. As the precedent base grows and the agent's retrieval quality improves, its reliability on edge cases increases — justifying the expansion of autonomy.</p>
+<p><strong>Human-in-the-loop</strong> is the mechanism by which human judgment is retained at each autonomy level. At Level 1, every output is reviewed. At Level 2, auto-approvals are notified and reversible. At Level 3, escalation paths remain open. At Level 4, the agent's decisions are continuously monitored and any anomalous pattern triggers an immediate autonomy rollback to Level 2 pending investigation.</p>
+<p>The <strong>agent feedback loop</strong> is the continuous improvement cycle: agent decisions are monitored, outcomes are tracked, quality metrics are computed, and autonomy levels are adjusted (up or down) based on measured performance. This feedback loop must be explicit and automated — manual monitoring at scale is not feasible.</p>
+<h4 id="diagram-graduated-autonomy-model">Diagram: Graduated Autonomy Model<a class="headerlink" href="#diagram-graduated-autonomy-model" title="Permanent link">¶</a></h4>
+<details>
+<summary>Interactive vis-network diagram showing the four autonomy levels, the transition criteria between them, and the role of the context graph in enabling each transition</summary>
+<p>Type: graph-model
+<strong>sim-id:</strong> graduated-autonomy-model
+<strong>Library:</strong> vis-network
+<strong>Status:</strong> Specified</p>
+<p>Bloom Level: Evaluate (L5)
+Bloom Verb: justify
+Learning Objective: Learners can justify the transition criteria between autonomy levels by explaining how context graph depth (number of relevant precedents) relates to agent reliability and warranted trust expansion.</p>
+<p>Instructional Rationale: A hierarchical vis-network diagram with clickable transition conditions is appropriate for the Evaluate objective — learners must evaluate whether a specific condition (e.g., 95% validation rate over 200 decisions) justifies an autonomy expansion, which requires judgment rather than recall.</p>
+<p>Canvas: responsive width, 520px height. Light gray background.</p>
+<p>Nodes (4 autonomy level nodes, stacked top-to-bottom):
+- "Level 1: Draft Only" (steel blue, large box)
+- "Level 2: Auto-Approve w/ Review" (teal, large box)
+- "Level 3: Auto-Approve Routine" (gold, large box)
+- "Level 4: Full Autonomy In-Policy" (indigo, large box)</p>
+<p>Vertical edges between adjacent levels, labeled:
+- L1 → L2: "≥ 95% human validation rate over 200+ decisions"
+- L2 → L3: "≤ 2% reversal rate over 500+ decisions"
+- L3 → L4: "≤ 0.5% reversal rate, P95 faithfulness &gt; 0.92, over 2,000+ decisions"</p>
+<p>Reverse edges (rollback):
+- L2 → L1 (red, dashed): "reversal rate spike &gt; 5% in any 7-day window"
+- L3 → L2 (red, dashed): "reversal rate spike &gt; 3% or anomalous decision pattern detected"
+- L4 → L2 (red, large, dashed): "any compliance violation or regulatory alert"</p>
+<p>Small "Context Graph Depth" annotation node (orange) connected to each transition edge: "Required precedent depth: L1→L2: 50+ relevant precedents, L2→L3: 200+ relevant precedents, L3→L4: 1,000+ relevant precedents."</p>
+<p>Click on each level node: shows what the agent does at this level, what human oversight remains, and what LLM metrics to monitor.
+Click on each transition edge: shows the exact measurement method for the transition criterion and explains why that threshold was chosen.
+Click on each rollback edge: shows the trigger condition and the investigation protocol that must complete before re-promotion.</p>
+<p>Physics: hierarchical layout, top-to-bottom. Fixed vertical positions.</p>
+</details>
+<h2 id="agent-security-authentication-authorization-and-sandboxing">Agent Security: Authentication, Authorization, and Sandboxing<a class="headerlink" href="#agent-security-authentication-authorization-and-sandboxing" title="Permanent link">¶</a></h2>
+<p>AI agents that write to enterprise systems — including the context graph — must operate under the same security model as human users. An agent that can write arbitrary data to the context graph can corrupt the organization's institutional memory; an agent that can execute arbitrary tool calls can take actions with real business consequences.</p>
+<p><strong>Agent authentication</strong> establishes the agent's identity to the systems it interacts with. Each agent instance should have a unique service identity (a service account or OAuth client) that is authenticated using the same standards as human users (client credentials, mutual TLS). The agent's identity is recorded in every decision trace it writes, providing a clear audit trail of which agent made which decision.</p>
+<p><strong>Agent authorization</strong> restricts what actions an agent can take based on its identity and role. A pricing exception recommendation agent should be authorized to read the context graph and write pricing exception decision traces — but not to write compliance audit traces, modify entity records, or call external systems. Authorization is enforced by the context graph API (which checks the calling agent's authorization before processing write requests) and by the orchestration layer (which restricts which tools an agent is allowed to call).</p>
+<p><strong>Agent sandboxing</strong> isolates agent execution from the production environment during testing and evaluation. A sandboxed agent can call tool definitions that behave identically to production tools but operate against test fixtures rather than live data. Sandboxing enables: safe testing of new agent versions before production deployment, reproducible benchmarking (agents can be tested against the same fixed test cases), and safe evaluation of new autonomy level promotions (the agent is tested at the proposed higher autonomy level against historical cases before being promoted).</p>
+<p><strong>Agent rate limiting</strong> prevents runaway agent loops (infinite loops, excessive tool calls, accidental fan-out amplification) from consuming excessive resources. Rate limits are applied at: the number of LLM calls per minute per agent instance, the number of write operations per minute per agent identity, and the number of external API calls per minute. Rate limit violations cause the agent loop to pause and escalate to the orchestrator rather than terminating abruptly.</p>
+<p><strong>Agent error recovery</strong> and the <strong>agent retry pattern</strong> handle transient failures in the agent loop. Tool calls can fail for many reasons: API timeouts, authentication token expiration, rate limit hits, transient network errors. A well-designed agent retries failed tool calls with exponential backoff and jitter, distinguishes transient errors (retryable) from permanent errors (escalate to human), and records the failure as part of the agent trace so that the failure mode is visible in the context graph.</p>
+<h2 id="agent-evaluation-and-benchmarking">Agent Evaluation and Benchmarking<a class="headerlink" href="#agent-evaluation-and-benchmarking" title="Permanent link">¶</a></h2>
+<p><strong>Agent evaluation</strong> measures the quality of an agent's decisions against a ground truth set of historical cases. For a pricing exception agent, evaluation might use: 500 historical pricing exception cases where the correct decision (approved vs. denied, and the reasoning) is known from the historical record. The agent is run against each case, its recommendation is compared to the historical ground truth, and accuracy, precision, recall, and faithfulness scores are computed.</p>
+<p><strong>Agent benchmarking</strong> compares agent versions or configurations against a standardized benchmark suite: fixed test cases with known correct answers, measured in a sandboxed environment with fixed context graph state. Benchmarking enables: comparison of different agent architectures (ReAct vs. Plan-and-Execute for the same task), measurement of the impact of context graph depth on agent quality (more precedents → better recommendations?), and regression detection when agent code changes.</p>
+<p>For context-graph-powered agents, a key benchmarking dimension is <strong>context sensitivity</strong>: how much does agent decision quality improve as more relevant precedents are available? An agent that shows large quality improvements from a 100-precedent context graph to a 1,000-precedent context graph has high context sensitivity — meaning the context graph's accumulation dynamic will drive significant quality improvement over time. An agent with low context sensitivity may need different design approaches.</p>
+<h2 id="summary-and-key-takeaways">Summary and Key Takeaways<a class="headerlink" href="#summary-and-key-takeaways" title="Permanent link">¶</a></h2>
+<p>AI agent architecture with context graphs creates a self-improving system: agents read organizational memory, make better decisions, write those decisions back as new precedents, and the shared memory grows richer with each cycle. Graduated autonomy enables organizations to expand agent authority safely as decision quality is validated by the growing precedent base.</p>
+<p>By the end of this chapter, you should be able to:</p>
+<ul>
+<li>Describe the five phases of the <strong>AI agent loop</strong> and explain the role of each phase for context graph integration</li>
+<li>Explain the <strong>ReAct</strong>, <strong>Plan-and-Execute</strong>, and <strong>Reflection</strong> reasoning patterns and give an enterprise use case for each</li>
+<li>Describe the three tiers of <strong>agent memory architecture</strong> (in-context, session, long-term) and explain how agent write-back contributes to long-term memory</li>
+<li>Explain <strong>multi-agent orchestration</strong> and describe how the context graph serves as a shared blackboard in multi-agent workflows</li>
+<li>Describe the four levels of <strong>graduated autonomy</strong> and explain what transition criteria must be met before each promotion</li>
+<li>Explain the role of <strong>agent authentication</strong>, <strong>authorization</strong>, and <strong>sandboxing</strong> in enterprise agent deployment</li>
+<li>Describe <strong>agent evaluation</strong> and <strong>benchmarking</strong> and explain the significance of the context sensitivity metric</li>
+</ul>
+<details class="question">
+<summary>Quick Check</summary>
+<p>An agent processing a contract renewal exception has completed its ReAct loop and produced a recommendation. Describe what information should be included in the agent write-back decision trace, and explain why writing the trace before session termination (rather than at the end of the day in a batch process) is critical for the context graph's effectiveness.</p>
+<p><em>(Answer: The write-back trace should include: agent identity (service account ID and version), task specification (contract renewal exception for entity ENT-XXXXX), the recommendation (approve/deny with rationale), the specific precedent decision trace IDs that were cited in the recommendation, the policy version that governed the recommendation, the confidence level, the loop cycle count, and a flag if any human review was invoked. Writing before session termination is critical because: the trace is immediately available to subsequent agents processing related requests (e.g., a second agent processing a related exception from the same counterparty can see this decision in its retrieval); if the session terminates abnormally, a batch write would miss the trace entirely; and real-time freshness is required for any autonomy-level escalation logic that depends on seeing recent decisions from the same agent.)</em></p>
+</details>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">Chapter 16: Complete!</p>
+<p><img src="../../img/mascot/celebration.png" class="mascot-admonition-img" alt="Nexus celebrating">
+The agent architecture is complete. You now have the full picture: context graphs as long-term memory, agents as the readers and writers of that memory, and graduated autonomy as the trust-building mechanism. Chapter 17 brings this to life with specific enterprise use cases — finance, sales, engineering, legal, and customer success — showing exactly what context graph deployments look like in each domain. Let's trace the why!</p>
+</div>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -1270,7 +1796,7 @@
         
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
   Back to top
 </button>
         
@@ -1280,13 +1806,13 @@
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
           <a href="../15-building-deploying/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 15. Building and Deploying">
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
@@ -1311,7 +1837,7 @@
             </div>
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
             </div>
           </a>
         
@@ -1323,7 +1849,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2026 Dan Mccreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+      Copyright © 2026 Dan Mccreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
     </div>
   
   
@@ -1344,6 +1870,14 @@
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
+        <script src="../../js/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+      
     
-  </body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

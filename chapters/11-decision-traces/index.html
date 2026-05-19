@@ -1,12 +1,9 @@
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
+<!DOCTYPE html><html lang="en" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="An interactive intelligent textbook on the contact graph and how the contact graphs helps organization use LLMs cost effectively">
+        <meta name="description" content="The complete anatomy of a decision trace — exception logic, approval chains, out-of-band approvals, precedent chains — with the full LPG node schema and edge-type vocabulary for implementation.">
       
       
         <meta name="author" content="Dan Mccreary">
@@ -21,12 +18,12 @@
         <link rel="next" href="../12-incumbent-challenges/">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../img/favicon.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
     
     
       
-        <title>11. Decision Traces - Context Graph</title>
+        <title>Chapter 11: Decision Traces: Anatomy and LPG Patterns - Context Graph</title>
       
     
     
@@ -47,7 +44,7 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -55,6 +52,8 @@
       <link rel="stylesheet" href="../../css/extra.css">
     
       <link rel="stylesheet" href="../../css/mascot.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -72,8 +71,44 @@
 
     
     
+      
+        <meta property="og:type" content="website">
+      
+        <meta property="og:title" content="Chapter 11: Decision Traces: Anatomy and LPG Patterns - Context Graph">
+      
+        <meta property="og:description" content="The complete anatomy of a decision trace — exception logic, approval chains, out-of-band approvals, precedent chains — with the full LPG node schema and edge-type vocabulary for implementation.">
+      
+        <meta property="og:image" content="https://dmccreary.github.io/context-graph/assets/images/social/chapters/11-decision-traces/index.png">
+      
+        <meta property="og:image:type" content="image/png">
+      
+        <meta property="og:image:width" content="1200">
+      
+        <meta property="og:image:height" content="630">
+      
+        <meta property="og:url" content="https://dmccreary.github.io/context-graph/chapters/11-decision-traces/">
+      
+        <meta name="twitter:card" content="summary_large_image">
+      
+        <meta name="twitter:title" content="Chapter 11: Decision Traces: Anatomy and LPG Patterns - Context Graph">
+      
+        <meta name="twitter:description" content="The complete anatomy of a decision trace — exception logic, approval chains, out-of-band approvals, precedent chains — with the full LPG node schema and edge-type vocabulary for implementation.">
+      
+        <meta name="twitter:image" content="https://dmccreary.github.io/context-graph/assets/images/social/chapters/11-decision-traces/index.png">
+      
     
-  </head>
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     
@@ -108,13 +143,12 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Context Graph" class="md-header__button md-logo" aria-label="Context Graph" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -126,7 +160,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              11. Decision Traces
+              Chapter 11: Decision Traces: Anatomy and LPG Patterns
             
           </span>
         </div>
@@ -140,7 +174,7 @@
     
       <label class="md-header__button md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -149,20 +183,20 @@
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
           <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
             
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
           </a>
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
@@ -187,7 +221,7 @@
         <a href="https://github.com/dmccreary/context-graph" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -211,7 +245,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -222,8 +256,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Context Graph" class="md-nav__button md-logo" aria-label="Context Graph" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     Context Graph
@@ -233,7 +266,7 @@
       <a href="https://github.com/dmccreary/context-graph" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -735,6 +768,150 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-four-layers-of-a-decision-trace" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Four Layers of a Decision Trace
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Four Layers of a Decision Trace">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#layer-1-exception-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Layer 1: Exception Logic
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#layer-2-historical-precedents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Layer 2: Historical Precedents
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#layer-3-cross-system-synthesis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Layer 3: Cross-System Synthesis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#layer-4-out-of-band-approvals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Layer 4: Out-of-Band Approvals
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-complete-lpg-node-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Complete LPG Node Schema
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-complete-lpg-edge-type-vocabulary" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Complete LPG Edge Type Vocabulary
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Complete LPG Edge Type Vocabulary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-complete-decision-trace-lpg-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Complete Decision Trace LPG Schema
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trace-completeness-indexing-and-replay" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trace Completeness, Indexing, and Replay
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#real-time-trace-recording" class="md-nav__link">
+    <span class="md-ellipsis">
+      Real-Time Trace Recording
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementing-decision-traces-for-a-domain" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementing Decision Traces for a Domain
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementing Decision Traces for a Domain">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-precedent-chain-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Precedent Chain Pattern
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-and-key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary and Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1007,6 +1184,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1035,6 +1216,46 @@
   
 
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1136,7 +1357,7 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -1181,6 +1402,150 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-four-layers-of-a-decision-trace" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Four Layers of a Decision Trace
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Four Layers of a Decision Trace">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#layer-1-exception-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Layer 1: Exception Logic
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#layer-2-historical-precedents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Layer 2: Historical Precedents
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#layer-3-cross-system-synthesis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Layer 3: Cross-System Synthesis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#layer-4-out-of-band-approvals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Layer 4: Out-of-Band Approvals
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-complete-lpg-node-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Complete LPG Node Schema
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-complete-lpg-edge-type-vocabulary" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Complete LPG Edge Type Vocabulary
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Complete LPG Edge Type Vocabulary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-complete-decision-trace-lpg-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Complete Decision Trace LPG Schema
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trace-completeness-indexing-and-replay" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trace Completeness, Indexing, and Replay
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#real-time-trace-recording" class="md-nav__link">
+    <span class="md-ellipsis">
+      Real-Time Trace Recording
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementing-decision-traces-for-a-domain" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementing Decision Traces for a Domain
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementing Decision Traces for a Domain">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-precedent-chain-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Precedent Chain Pattern
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-and-key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary and Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1198,16 +1563,16 @@
   
     <a href="https://github.com/dmccreary/context-graph/blob/main/docs/chapters/11-decision-traces/index.md" title="Edit this page" class="md-content__button md-icon">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
     </a>
   
   
 
 
-<h1 id="chapter-11-decision-traces-anatomy-and-lpg-patterns">Chapter 11: Decision Traces: Anatomy and LPG Patterns<a class="headerlink" href="#chapter-11-decision-traces-anatomy-and-lpg-patterns" title="Permanent link">&para;</a></h1>
-<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<h1 id="chapter-11-decision-traces-anatomy-and-lpg-patterns">Chapter 11: Decision Traces: Anatomy and LPG Patterns<a class="headerlink" href="#chapter-11-decision-traces-anatomy-and-lpg-patterns" title="Permanent link">¶</a></h1>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">¶</a></h2>
 <p>Dissects the decision trace — exception logic, historical precedents, approval chains, out-of-band approvals — and shows the complete LPG node schema and edge-type vocabulary for implementing them.</p>
-<h2 id="concepts-covered">Concepts Covered<a class="headerlink" href="#concepts-covered" title="Permanent link">&para;</a></h2>
+<h2 id="concepts-covered">Concepts Covered<a class="headerlink" href="#concepts-covered" title="Permanent link">¶</a></h2>
 <p>This chapter covers the following 26 concepts from the learning graph:</p>
 <ol>
 <li>Decision Trace Anatomy</li>
@@ -1237,19 +1602,285 @@
 <li>Policy Version Edge</li>
 <li>Precedent Chain Pattern</li>
 </ol>
-<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">¶</a></h2>
 <p>This chapter builds on concepts from:</p>
 <ul>
 <li><a href="../09-context-graph-definition/">Chapter 9: What a Context Graph Is</a></li>
 </ul>
-<hr />
-<p>TODO: Generate Chapter Content</p>
+<hr>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Every decision, fully documented.</p>
+<p><img src="../../img/mascot/welcome.png" class="mascot-admonition-img" alt="Nexus waves welcome">
+Welcome to Chapter 11! We defined the context graph in Chapter 9. Now we go deep into its most important element: the decision trace. This chapter is the implementation guide — you will leave with a complete LPG schema you can actually deploy. Let's trace the why!</p>
+</div>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">¶</a></h2>
+<p>The decision trace is where organizational knowledge becomes computational. Everything we have discussed — knowledge graphs, metadata, lineage, provenance, process mining — exists to answer questions. The decision trace records the answers: specific organizational decisions, made by specific actors, at specific times, based on specific context, under specific policies, citing specific precedents. It is the atomic unit of organizational intelligence.</p>
+<p>This chapter dissects the decision trace in detail. We examine each layer of content it must capture, the LPG node schema that stores it, the edge types that connect it to the rest of the context graph, and the patterns for building complete, indexable, replayable trace records. By the end, you will have a complete implementation blueprint for decision traces in any enterprise domain.</p>
+<h2 id="the-four-layers-of-a-decision-trace">The Four Layers of a Decision Trace<a class="headerlink" href="#the-four-layers-of-a-decision-trace" title="Permanent link">¶</a></h2>
+<p>A decision trace captures four distinct layers of information that together constitute the full organizational context of a decision. These four layers correspond directly to the four missing layers identified in Chapter 8 — each layer is designed to fill one of the gaps that RAG document retrieval cannot bridge.</p>
+<h3 id="layer-1-exception-logic">Layer 1: Exception Logic<a class="headerlink" href="#layer-1-exception-logic" title="Permanent link">¶</a></h3>
+<p><strong>Exception logic</strong> is the set of rules, thresholds, and judgment calls that govern how the organization handles cases falling outside normal parameters. Most business processes have a "happy path" — the standard flow for standard cases. The happy path is usually documented. The exception paths are usually not.</p>
+<p>When an invoice arrives for an amount 40% above the contracted maximum, someone decides what to do. When a customer requests a contract modification outside the standard amendment window, someone decides how to handle it. These decisions are not random — experienced practitioners apply informal rules: "amounts up to 50% above contract maximum are usually approved if the customer is strategic and the explanation is operational," "end-of-quarter exceptions are treated differently than mid-quarter ones." This informal rule set is exception logic.</p>
+<p>A decision trace captures exception logic by recording: what the normal rule was (with a policy version reference), why the case was identified as an exception (the triggering condition), what exception-specific reasoning was applied (the justification text), and what the outcome was. Over hundreds of similar exception decisions, the pattern of exception logic becomes visible and queryable — an LLM can retrieve the pattern and apply it consistently rather than requiring a human expert to recall it from memory.</p>
+<p><strong>Exception patterns</strong> emerge when multiple decision traces share similar triggering conditions and similar outcomes. Detecting exception patterns is a graph analytics operation: cluster decision nodes by their triggering condition properties, and summarize the majority justification and outcome within each cluster. The resulting exception pattern nodes are high-value additions to the context graph — they represent crystallized organizational policy that was never formally documented.</p>
+<h3 id="layer-2-historical-precedents">Layer 2: Historical Precedents<a class="headerlink" href="#layer-2-historical-precedents" title="Permanent link">¶</a></h3>
+<p><strong>Historical precedents</strong> are prior decisions that were consulted, cited, or otherwise influential in making the current decision. Precedent reasoning is how experienced practitioners apply consistency: "we handled the same situation last year this way, and it worked out, so let's apply the same reasoning here." Without explicit precedent links in the decision trace, this reasoning chain is invisible.</p>
+<p>A <strong>linked precedent</strong> is a specific prior decision node in the context graph, connected to the current decision by a <code>CITES</code> edge. The precedent link carries properties: how was the precedent found (manual lookup, system recommendation, collegial consultation), how similar was the precedent's context to the current case, and whether the precedent's outcome was favorable (making it a positive precedent) or unfavorable (making it a cautionary one).</p>
+<p><strong>Precedent chain patterns</strong> emerge when multiple decisions each cite a common ancestor — a small set of foundational decisions that have propagated their reasoning through many subsequent decisions. These high-in-degree precedent nodes represent the most influential organizational rulings. When the policy underlying a foundational precedent changes, the impact propagates through all decisions that cited it — a traversal query can immediately identify all affected decisions.</p>
+<p>A <strong>counterfactual trace</strong> is a special type of trace that records what would have happened if a different decision had been made. Counterfactual traces are generated retrospectively when an exception decision is later reviewed: "if we had applied the standard rule rather than the exception, the outcome would have been X." Counterfactual traces are valuable for training and for evaluating the quality of exception logic — they provide labeled examples of correct and incorrect decision paths.</p>
+<h3 id="layer-3-cross-system-synthesis">Layer 3: Cross-System Synthesis<a class="headerlink" href="#layer-3-cross-system-synthesis" title="Permanent link">¶</a></h3>
+<p><strong>Cross-system synthesis</strong> is the combination of information from multiple systems that together provide the full context for a decision. A pricing exception decision draws on: the customer's revenue history (CRM), the current contract terms (contract management system), the account's payment history (billing system), any open escalations (support system), and the current pricing policy (policy document management). No single system has all of this information.</p>
+<p>A decision trace records the cross-system synthesis that went into a decision by linking to the source data nodes that were consulted. Each link carries: the system of origin, the data element consulted (linked to the metadata registry), the value at the time of the decision, and the quality score and provenance annotation for that value at that time.</p>
+<p>This cross-system synthesis record is what enables the context graph to answer: "when the pricing team made this exception decision, what did they know about the customer's payment history, and was that data current?" It is also what enables the LLM to reproduce the synthesis when a similar decision comes up in the future: retrieve not just the decision outcome but the full cross-system context that led to it.</p>
+<h3 id="layer-4-out-of-band-approvals">Layer 4: Out-of-Band Approvals<a class="headerlink" href="#layer-4-out-of-band-approvals" title="Permanent link">¶</a></h3>
+<p><strong>Out-of-band approvals</strong> are authorizations made outside the formal approval workflow systems — via email, phone conversation, Slack message, or in-person discussion. They are extremely common in enterprise decision-making, particularly for high-stakes exceptions where decision-makers want to consult informally before committing to a formal record.</p>
+<p>An <strong>approval chain</strong> is the full sequence of authorizations required for a decision, from the initiating actor through every required approving authority. The chain may be linear (A approves, then B countersigns, then C ratifies) or branching (either A or B may approve, then C ratifies). The approval chain defines not just who authorized the decision but the order in which authorizations were obtained — which matters for audit trails and compliance verification.</p>
+<p><strong>Out-of-band approvals</strong> become invisible to compliance systems unless they are explicitly captured in the decision trace. A decision trace records out-of-band approvals as approval edge nodes with: the approver's actor ID, the timestamp, the channel (<code>email</code>, <code>verbal</code>, <code>messaging-platform</code>, <code>committee</code>), and a reference to any documentary evidence (a forwarded email, a meeting summary, a recorded call). These records are the difference between "we have no evidence this was approved" and "the approval was obtained verbally by J. Smith from VP Williams on 2025-10-31 at 14:30, referenced in email thread ETH-44821."</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">The four layers are why context graphs beat document archives.</p>
+<p><img src="../../img/mascot/thinking.png" class="mascot-admonition-img" alt="Nexus thinking">
+Here is the synthesis: a document archive captures "what we decided" in the form of output artifacts — the approval letter, the contract amendment, the exception notification. A decision trace captures "why we decided it" in the form of the four layers above: the exception logic applied, the precedents cited, the cross-system data consulted, and the full approval chain including out-of-band authorization. The "what" is useful for record-keeping. The "why" is what enables consistent, grounded AI reasoning over future decisions.</p>
+</div>
+<h2 id="the-complete-lpg-node-schema">The Complete LPG Node Schema<a class="headerlink" href="#the-complete-lpg-node-schema" title="Permanent link">¶</a></h2>
+<p>The decision trace is represented in the LPG model as a cluster of nodes connected by typed edges. The central <strong>Decision Trace Node</strong> is the core entity; the surrounding nodes represent actors, policies, cited precedents, and source data. Before we examine the schema, here is the complete list of node types in a canonical decision trace:</p>
+<p><strong>Decision Trace Node</strong> (required): the central node representing the decision itself.</p>
+<p>Required properties:
+- <code>trace_id</code>: globally unique identifier (UUID or domain-specific format)
+- <code>decision_type</code>: category label — one of: <code>pricing_exception</code>, <code>approval</code>, <code>escalation</code>, <code>configuration</code>, <code>exception_override</code>, <code>policy_application</code>, <code>judgment_call</code>
+- <code>timestamp_created</code>: ISO 8601 timestamp of when the trace was recorded
+- <code>timestamp_decision</code>: ISO 8601 timestamp of when the actual decision was made (may differ from recording time)
+- <code>status</code>: lifecycle state — one of: <code>active</code>, <code>superseded</code>, <code>under_review</code>, <code>overturned</code>
+- <code>context_summary</code>: natural-language description (50–200 words) written for LLM retrieval
+- <code>decision_outcome</code>: the actual outcome of the decision, recorded retrospectively when available
+- <code>confidence_level</code>: self-assessed confidence of the decision actor (high / medium / low), useful for future retrieval ranking</p>
+<p>Optional properties:
+- <code>exception_flag</code>: boolean — was this decision an exception to the normal rule?
+- <code>urgency</code>: boolean — was this decision made under time pressure?
+- <code>judgment_call_flag</code>: boolean — was this a case where reasonable people might disagree?</p>
+<p><strong>Actor Node</strong>: represents a person or system that participated in the decision.</p>
+<p>A <strong>decision actor</strong> can be: the initiating analyst who proposed the exception, the approving manager, a countersigning authority, or an automated system that triggered the decision workflow. Actor nodes are shared across all decision traces involving the same person or system — there is one actor node per person in the enterprise, not one per decision.</p>
+<p>Actor node properties: <code>actor_id</code> (canonical ID from HR or service registry), <code>actor_type</code> (human / automated-system / committee), <code>name</code>, <code>role_at_time</code> (the actor's role when the decision was made — important because roles change over time).</p>
+<p><strong>Policy Version Node</strong>: represents the specific version of a governing policy that was in effect at decision time.</p>
+<p>Policy version node properties: <code>policy_id</code>, <code>version_string</code>, <code>effective_from</code>, <code>effective_to</code>, <code>document_reference</code> (link to the policy document in the content management system).</p>
+<p><strong>Source Data Node</strong>: represents a specific piece of data consulted during the decision.</p>
+<p>Source data node properties: <code>data_element_id</code> (link to the metadata registry), <code>system_of_origin</code>, <code>value_at_decision_time</code>, <code>freshness_at_decision_time</code>, <code>quality_score_at_decision_time</code>.</p>
+<h2 id="the-complete-lpg-edge-type-vocabulary">The Complete LPG Edge Type Vocabulary<a class="headerlink" href="#the-complete-lpg-edge-type-vocabulary" title="Permanent link">¶</a></h2>
+<p>The nodes in a decision trace are connected by a specific vocabulary of typed edges. Each edge type encodes a specific semantic relationship. Here is the complete canonical edge type vocabulary:</p>
+<table>
+<thead>
+<tr>
+<th>Edge Type</th>
+<th>From</th>
+<th>To</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DECIDED_BY</code></td>
+<td>Decision Trace</td>
+<td>Actor Node</td>
+<td>This actor made or initiated the decision</td>
+</tr>
+<tr>
+<td><code>APPROVED_BY</code></td>
+<td>Decision Trace</td>
+<td>Actor Node</td>
+<td>This actor formally authorized the decision</td>
+</tr>
+<tr>
+<td><code>COUNTERSIGNED_BY</code></td>
+<td>Decision Trace</td>
+<td>Actor Node</td>
+<td>This actor provided secondary authorization</td>
+</tr>
+<tr>
+<td><code>GOVERNED_BY</code></td>
+<td>Decision Trace</td>
+<td>Policy Version Node</td>
+<td>This policy version governed the decision</td>
+</tr>
+<tr>
+<td><code>APPLIES_TO</code></td>
+<td>Decision Trace</td>
+<td>Entity Node (KG)</td>
+<td>This decision applies to this business entity</td>
+</tr>
+<tr>
+<td><code>CONSULTED</code></td>
+<td>Decision Trace</td>
+<td>Source Data Node</td>
+<td>This data was consulted in making the decision</td>
+</tr>
+<tr>
+<td><code>CITES</code></td>
+<td>Decision Trace</td>
+<td>Prior Decision Trace</td>
+<td>This prior decision was cited as a precedent</td>
+</tr>
+<tr>
+<td><code>SUPERSEDED_BY</code></td>
+<td>Decision Trace</td>
+<td>Later Decision Trace</td>
+<td>This decision has been replaced by a later one</td>
+</tr>
+<tr>
+<td><code>OVERTURNED_BY</code></td>
+<td>Decision Trace</td>
+<td>Later Decision Trace</td>
+<td>This decision was found incorrect and reversed</td>
+</tr>
+<tr>
+<td><code>TRIGGERED_BY</code></td>
+<td>Decision Trace</td>
+<td>Event Node</td>
+<td>This external event triggered the decision process</td>
+</tr>
+<tr>
+<td><code>RESULTED_IN</code></td>
+<td>Decision Trace</td>
+<td>Outcome Node</td>
+<td>This decision produced this documented outcome</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>CITES</code> edge is the most analytically valuable: it is the edge that builds the precedent citation network. The <code>GOVERNS_BY</code> edge with specific policy version nodes is what enables temporally correct policy interpretation. The <code>APPLIES_TO</code> edge is what makes decision traces traversable from entity nodes in the enterprise knowledge graph.</p>
+<h4 id="diagram-complete-decision-trace-lpg-schema">Diagram: Complete Decision Trace LPG Schema<a class="headerlink" href="#diagram-complete-decision-trace-lpg-schema" title="Permanent link">¶</a></h4>
+<details>
+<summary>Interactive vis-network diagram showing all node types and edge types in a fully populated decision trace, with a concrete pricing exception example</summary>
+<p>Type: graph-model
+<strong>sim-id:</strong> decision-trace-full-schema
+<strong>Library:</strong> vis-network
+<strong>Status:</strong> Specified</p>
+<p>Bloom Level: Apply (L3)
+Bloom Verb: implement
+Learning Objective: Learners can implement a complete decision trace schema by identifying the required node types, property lists, and edge types for a given enterprise decision scenario.</p>
+<p>Instructional Rationale: A fully-populated clickable schema diagram is appropriate for the Apply objective — learners see all schema elements instantiated with concrete example values, then can click each element to read the property list they would need to populate for their own implementation.</p>
+<p>Canvas: responsive width, 600px height. White background with soft grid.</p>
+<p>Nodes and positions:
+Central: "Decision: Pricing Exception DT-4482" (indigo, large ellipse, center)
+Left: "Initiator: J. Smith (Account Mgr)" (gold, circle)
+Left-upper: "Approver: M. Williams (VP Sales)" (gold, circle, slightly above J. Smith)
+Right: "Customer: Acme Corp" (teal, ellipse) — entity node from KG
+Lower-left: "Policy: Pricing Policy v3.2" (steel blue, box)
+Lower-right: "Precedent: DT-3891 (Q2-2024 exception)" (indigo, smaller ellipse)
+Lower-far-right: "Precedent: DT-2204 (Q4-2023 exception)" (indigo, smallest ellipse)
+Upper-right: "Source: CRM Revenue Data" (orange, diamond) — source data node
+Upper-far-right: "Source: Billing Payment History" (orange, diamond)</p>
+<p>Edges (with labels and colors matching the edge type vocabulary table):
+- Decision ← J. Smith: label "DECIDED_BY", gray
+- Decision ← M. Williams: label "APPROVED_BY", gold
+- Decision → Customer: Acme Corp: label "APPLIES_TO", teal
+- Decision → Policy v3.2: label "GOVERNED_BY", steel blue
+- Decision → DT-3891: label "CITES", orange dashed
+- Decision → DT-2204: label "CITES", orange dashed
+- Decision → CRM Revenue Data: label "CONSULTED", orange
+- Decision → Billing Payment History: label "CONSULTED", orange</p>
+<p>Click on Decision node: shows full property list with example values for all required and optional properties.
+Click on each Actor node: shows actor properties and the DECIDED_BY vs. APPROVED_BY distinction.
+Click on Policy Version node: shows policy version properties and why the specific version (not the current version) is stored.
+Click on each Precedent node: shows CITES edge properties (similarity score, finding method, favorability).
+Click on each Source Data node: shows source data properties including <code>value_at_decision_time</code> and <code>quality_score_at_decision_time</code>.
+Click on Customer entity node: "This node lives in the enterprise knowledge graph. The APPLIES_TO edge makes this decision discoverable from the customer entity without duplicating customer data in the decision trace."</p>
+<p>Hover over edges: shows edge type name and a one-sentence description.</p>
+</details>
+<h2 id="trace-completeness-indexing-and-replay">Trace Completeness, Indexing, and Replay<a class="headerlink" href="#trace-completeness-indexing-and-replay" title="Permanent link">¶</a></h2>
+<p>A decision trace that is missing required fields is not just incomplete — it is potentially misleading. An LLM retrieving a trace with a missing <code>governed_by</code> edge will not know which policy was in effect, and may incorrectly apply the current policy to a historical decision context. A trace with a missing <code>approved_by</code> edge is an unverifiable claim.</p>
+<p><strong>Trace completeness</strong> is a measurable property: for a given decision type, a completeness schema defines which nodes and edges are required and which are optional. The context graph write API validates new traces against the completeness schema before accepting them, returning errors that list the missing required fields. Validation at write time is far less costly than detecting incomplete traces during retrieval.</p>
+<p>For a pricing exception decision, a minimal complete trace requires: Decision Node (with all required properties), at least one DECIDED_BY edge, at least one APPROVED_BY edge (for approved decisions), one GOVERNED_BY edge to a specific policy version, one APPLIES_TO edge to the relevant entity, and at least one CITES edge if any precedents were consulted. Decision traces that fail completeness validation are quarantined in a review queue for steward remediation before entering the live context graph.</p>
+<p><strong>Trace indexing</strong> is the practice of creating queryable indexes on the most frequently accessed decision trace properties. For the read path performance targets typical in enterprise AI (&lt; 200ms context retrieval latency), the following indexes are standard: index on <code>decision_type</code> (for type-filtered queries), index on <code>timestamp_decision</code> (for recency-ranked queries), index on the <code>APPLIES_TO</code> entity node ID (for entity-specific decision history queries), and a full-text index on <code>context_summary</code> (for semantic keyword searches over decision descriptions).</p>
+<p>For high-volume context graphs (millions of decision traces), a vector embedding of the <code>context_summary</code> text enables approximate nearest-neighbor search over the semantic space of decisions — finding precedents that are semantically similar to the current case without requiring exact keyword matches. This embedding-augmented retrieval is the bridge between graph traversal and semantic search, combining the precision of graph structure with the flexibility of embedding similarity.</p>
+<p><strong>Trace replay</strong> is the ability to reconstruct the organizational context that existed at any past point in time by replaying the sequence of decision trace events up to that point. Trace replay enables historical audit queries ("what did the decision-making system know and decide on January 15th?") and counterfactual analysis ("if the policy had been different on that date, what decisions would have been made differently?"). Replay requires that the context graph stores event-ordered, immutable decision traces — a property ensured by the append-only write path described in Chapter 7.</p>
+<h2 id="real-time-trace-recording">Real-Time Trace Recording<a class="headerlink" href="#real-time-trace-recording" title="Permanent link">¶</a></h2>
+<p>One of the most common implementation failures in decision trace systems is the delay between when a decision is made and when the trace is recorded. A trace recorded three days after the decision is missing the real-time context: the specific data values consulted at decision time, the urgency signals that may have influenced the judgment, the out-of-band conversations that informed the approval chain. <strong>Real-time trace recording</strong> — capturing the trace at the moment of decision — is the only reliable way to ensure completeness.</p>
+<p><strong>Decision context capture</strong> is the technical mechanism for real-time recording. In automated systems (AI agents, workflow automation platforms), the agent's decision state — including all context retrieved, all reasoning steps taken, and all outputs produced — is serialized and written to the context graph as a decision trace node as the final step of the action execution. No separate recording step is required because the system captures the state it is already computing.</p>
+<p>For human-in-the-loop decisions, real-time capture requires a user interface integrated into the decision workflow. Rather than requiring humans to fill in a separate trace form after the decision, the trace is assembled from the system context (who is logged in, what entity they are reviewing, which policy version is current, which precedents the system surfaced) and the human provides only the incremental information: the decision outcome, the free-text justification, and acknowledgment of any out-of-band approvals. This design minimizes the additional burden on the decision-maker while maximizing trace completeness.</p>
+<p><strong>Judgment calls</strong> are decisions where reasonable practitioners might disagree — where the right answer depends on contextual factors that are difficult to fully articulate. Judgment call decision traces are particularly important to capture because they represent the tacit expertise that the organization most needs to preserve. They should be flagged with the <code>judgment_call_flag</code> property and given higher weight in precedent retrieval — a subsequent LLM agent or human reviewer who is facing a similarly ambiguous case should see these traces prominently.</p>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Capture the judgment call while the context is hot.</p>
+<p><img src="../../img/mascot/tip.png" class="mascot-admonition-img" alt="Nexus giving a tip">
+Judgment call decision traces are most valuable when captured immediately — while the decision-maker can articulate the non-obvious factors that influenced their reasoning. Even a brief free-text note in the <code>context_summary</code> field ("approved despite the payment delinquency because the customer's CTO personally confirmed a restructuring is underway") is far more useful than a perfectly structured trace recorded two weeks later from an incomplete memory.</p>
+</div>
+<h2 id="implementing-decision-traces-for-a-domain">Implementing Decision Traces for a Domain<a class="headerlink" href="#implementing-decision-traces-for-a-domain" title="Permanent link">¶</a></h2>
+<p>To make these patterns concrete, let's walk through the implementation of decision traces for a specific enterprise domain: invoice exception handling. An invoice exception occurs when an invoice is received for an amount, date, or supplier that differs from the purchase order terms.</p>
+<p>The decision trace for an invoice exception has the following implementation:</p>
+<p><strong>Decision Type</strong>: <code>invoice_exception</code></p>
+<p><strong>Required nodes</strong>:
+- Decision Trace Node with: <code>trace_id</code>, <code>decision_type = invoice_exception</code>, <code>timestamp_decision</code>, <code>status</code>, <code>exception_flag = true</code>, <code>context_summary</code>
+- Actor nodes: the AP specialist (initiator), the AP manager or controller (approver)
+- Policy Version Node: link to Accounts Payable Policy, section "Invoice Variance Tolerance," version in effect at decision time
+- Entity nodes: the supplier entity (from procurement graph), the purchase order entity (from ERP)</p>
+<p><strong>Required edges</strong>:
+- <code>DECIDED_BY</code> → AP Specialist
+- <code>APPROVED_BY</code> → Controller
+- <code>APPLIES_TO</code> → Supplier Entity
+- <code>APPLIES_TO</code> → Purchase Order Entity
+- <code>GOVERNED_BY</code> → AP Policy version
+- <code>CONSULTED</code> → Source Data Node (invoice amount, PO amount, variance percentage)
+- <code>CITES</code> → prior invoice exceptions for the same supplier (if any)</p>
+<p><strong>Context summary template</strong>:
+"Invoice INV-{id} from Supplier {name} received for ${amount}, exceeding PO-{id} by ${variance} ({pct}%). Exception approved by {controller} based on {justification_type}. Precedents cited: {list}. Outcome: payment authorized within {days} days of approval."</p>
+<p>With this template populated from system data, the context summary is an LLM-ready narrative that an agent can use directly for reasoning about future similar exceptions.</p>
+<h4 id="diagram-precedent-chain-pattern">Diagram: Precedent Chain Pattern<a class="headerlink" href="#diagram-precedent-chain-pattern" title="Permanent link">¶</a></h4>
+<details>
+<summary>Interactive vis-network graph showing a precedent citation chain for invoice exceptions, with in-degree centrality visible on precedent nodes</summary>
+<p>Type: graph-model
+<strong>sim-id:</strong> precedent-chain-pattern
+<strong>Library:</strong> vis-network
+<strong>Status:</strong> Specified</p>
+<p>Bloom Level: Analyze (L4)
+Bloom Verb: organize
+Learning Objective: Learners can organize a set of decision trace nodes into a precedent citation chain, identify the most influential foundational precedents by in-degree, and explain why high-in-degree nodes should be retrieved first for LLM context.</p>
+<p>Instructional Rationale: A vis-network graph where node size reflects citation count (in-degree) is appropriate for the Analyze objective — learners must examine the citation structure to identify influential precedents, which is the same analytical task an LLM retrieval system performs.</p>
+<p>Canvas: responsive width, 520px height. White background.</p>
+<p>Nodes (7 decision traces, representing a chain of invoice exceptions over 18 months):
+- "DT-1001 Q1-2024" (small, gray, ellipse) — oldest, foundational
+- "DT-1580 Q2-2024" (medium, indigo) — cites DT-1001
+- "DT-2204 Q4-2024" (large, indigo) — cites DT-1001, DT-1580 — high in-degree
+- "DT-2891 Q1-2025" (medium, indigo) — cites DT-2204
+- "DT-3105 Q2-2025" (small, indigo) — cites DT-2204
+- "DT-3891 Q3-2025" (medium, indigo) — cites DT-2204, DT-2891
+- "DT-4482 Q4-2025" (small, indigo, latest) — cites DT-2204, DT-3891</p>
+<p>Node sizes scale with in-degree: DT-2204 is largest (cited by 4 others), DT-1001 is next (cited by 2 others).</p>
+<p>CITES edges (orange, dashed): drawn as directed arrows from citing to cited node.</p>
+<p>Toggle button "Show In-Degree Labels": displays in-degree count above each node (DT-2204: in-degree 4, DT-1001: in-degree 2, others: in-degree 0 or 1).</p>
+<p>Toggle button "Highlight Top Precedents": colors nodes with in-degree ≥ 2 in bright indigo with a gold outline — the "should retrieve first" set.</p>
+<p>Click any node: shows infobox with decision type, date, brief context summary, and "cited-by" count. For DT-2204: "This is the most influential precedent in this chain. When an LLM encounters a new invoice exception, this trace should appear in the top-3 context results."</p>
+<p>Click any CITES edge: shows edge properties: "Similarity to citing case: 0.87. Found via: system recommendation. Favorability: positive (positive outcome confirmed retroactively)."</p>
+</details>
+<h2 id="summary-and-key-takeaways">Summary and Key Takeaways<a class="headerlink" href="#summary-and-key-takeaways" title="Permanent link">¶</a></h2>
+<p>The decision trace is the most important data structure in the context graph, and implementing it well requires attention to all four content layers, a complete node schema, a precise edge type vocabulary, and real-time recording practices that preserve the context that only exists at decision time.</p>
+<p>By the end of this chapter, you should be able to:</p>
+<ul>
+<li>Name the four layers of a decision trace and explain what organizational knowledge each captures</li>
+<li>Define <strong>exception logic</strong>, <strong>historical precedents</strong>, <strong>cross-system synthesis</strong>, and <strong>out-of-band approvals</strong> as distinct information types in a decision trace</li>
+<li>Specify the full <strong>Decision Trace Node Schema</strong> including all required and optional properties</li>
+<li>Name and define all eleven <strong>edge types</strong> in the decision trace vocabulary</li>
+<li>Explain <strong>trace completeness</strong> validation and why validation at write time is more effective than at read time</li>
+<li>Describe <strong>trace indexing</strong> and the four standard indexes for read-path performance</li>
+<li>Explain <strong>real-time trace recording</strong> and why delay between decision and recording degrades trace quality</li>
+<li>Define a <strong>counterfactual trace</strong> and explain its value for training and policy evaluation</li>
+<li>Define a <strong>judgment call</strong> trace and explain why it should have elevated weight in precedent retrieval</li>
+</ul>
+<details class="question">
+<summary>Quick Check</summary>
+<p>A compliance team asks: "For every pricing exception approved in the last 24 months, show me which policy version was in effect, who the approving authority was, and whether any of those decisions were later overturned." Write out the graph traversal logic (not code — just the sequence of node and edge types to traverse) that would answer this query from the context graph.</p>
+<p><em>(Answer: Start from Decision Trace Nodes with decision_type='pricing_exception' and timestamp_decision within last 24 months. For each node: follow GOVERNED_BY edge to Policy Version Node (retrieve version_string and effective_from). Follow APPROVED_BY edge to Actor Node (retrieve name and role_at_time). Check status property: if 'overturned', follow OVERTURNED_BY edge to the overturning Decision Trace Node (retrieve that trace's timestamp and actor). Aggregate results: list of (decision_id, policy_version, approver, overturned_flag) for the compliance report.)</em></p>
+</details>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">Chapter 11: Complete!</p>
+<p><img src="../../img/mascot/celebration.png" class="mascot-admonition-img" alt="Nexus celebrating">
+You now have a complete implementation blueprint for decision traces — every node, every edge, every property that matters. Chapter 12 shifts our lens from the solution to the landscape: why do the incumbents — legacy platforms, data warehouse players, and AI agent startups — struggle to build what you just designed? The structural analysis in Chapter 12 is what makes context graphs a durable competitive position rather than just a feature on an existing product. Let's trace the why!</p>
+</div>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -1268,7 +1899,7 @@
         
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
   Back to top
 </button>
         
@@ -1278,13 +1909,13 @@
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
           <a href="../10-llm-ai-foundations/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 10. LLM and AI Foundations">
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
@@ -1309,7 +1940,7 @@
             </div>
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
             </div>
           </a>
         
@@ -1321,7 +1952,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2026 Dan Mccreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+      Copyright © 2026 Dan Mccreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
     </div>
   
   
@@ -1342,6 +1973,14 @@
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
+        <script src="../../js/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+      
     
-  </body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

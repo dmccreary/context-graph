@@ -2,162 +2,178 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://dmccreary.github.io/context-graph/</loc>
-         <lastmod>2026-05-18</lastmod>
+         <lastmod>2026-05-19</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/context-graph/about/</loc>
-         <lastmod>2026-05-18</lastmod>
+         <lastmod>2026-05-19</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/context-graph/contact/</loc>
-         <lastmod>2026-05-18</lastmod>
+         <lastmod>2026-05-19</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/context-graph/course-description/</loc>
-         <lastmod>2026-05-18</lastmod>
+         <lastmod>2026-05-19</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/context-graph/faq/</loc>
+         <lastmod>2026-05-19</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/context-graph/glossary/</loc>
+         <lastmod>2026-05-19</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/context-graph/license/</loc>
-         <lastmod>2026-05-18</lastmod>
+         <lastmod>2026-05-19</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/context-graph/chapters/</loc>
-         <lastmod>2026-05-18</lastmod>
+         <lastmod>2026-05-19</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/context-graph/chapters/01-knowledge-graphs-lpg/</loc>
-         <lastmod>2026-05-18</lastmod>
+         <lastmod>2026-05-19</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/context-graph/chapters/02-semantic-layers/</loc>
-         <lastmod>2026-05-18</lastmod>
+         <lastmod>2026-05-19</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/context-graph/chapters/03-metadata-management/</loc>
-         <lastmod>2026-05-18</lastmod>
+         <lastmod>2026-05-19</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/context-graph/chapters/04-enterprise-knowledge-graphs/</loc>
-         <lastmod>2026-05-18</lastmod>
+         <lastmod>2026-05-19</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/context-graph/chapters/05-graph-theory-algorithms/</loc>
-         <lastmod>2026-05-18</lastmod>
+         <lastmod>2026-05-19</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/context-graph/chapters/06-metadata-registries/</loc>
-         <lastmod>2026-05-18</lastmod>
+         <lastmod>2026-05-19</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/context-graph/chapters/07-process-mining-lineage/</loc>
-         <lastmod>2026-05-18</lastmod>
+         <lastmod>2026-05-19</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/context-graph/chapters/08-context-problem/</loc>
-         <lastmod>2026-05-18</lastmod>
+         <lastmod>2026-05-19</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/context-graph/chapters/09-context-graph-definition/</loc>
-         <lastmod>2026-05-18</lastmod>
+         <lastmod>2026-05-19</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/context-graph/chapters/10-llm-ai-foundations/</loc>
-         <lastmod>2026-05-18</lastmod>
+         <lastmod>2026-05-19</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/context-graph/chapters/11-decision-traces/</loc>
-         <lastmod>2026-05-18</lastmod>
+         <lastmod>2026-05-19</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/context-graph/chapters/12-incumbent-challenges/</loc>
-         <lastmod>2026-05-18</lastmod>
+         <lastmod>2026-05-19</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/context-graph/chapters/13-graph-data-modeling/</loc>
-         <lastmod>2026-05-18</lastmod>
+         <lastmod>2026-05-19</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/context-graph/chapters/14-llm-integration/</loc>
-         <lastmod>2026-05-18</lastmod>
+         <lastmod>2026-05-19</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/context-graph/chapters/15-building-deploying/</loc>
-         <lastmod>2026-05-18</lastmod>
+         <lastmod>2026-05-19</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/context-graph/chapters/16-ai-agent-architecture/</loc>
-         <lastmod>2026-05-18</lastmod>
+         <lastmod>2026-05-19</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/context-graph/chapters/17-enterprise-use-cases/</loc>
-         <lastmod>2026-05-18</lastmod>
+         <lastmod>2026-05-19</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/context-graph/chapters/18-compliance-explainability/</loc>
-         <lastmod>2026-05-18</lastmod>
+         <lastmod>2026-05-19</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/context-graph/chapters/19-market-strategy/</loc>
-         <lastmod>2026-05-18</lastmod>
+         <lastmod>2026-05-19</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/context-graph/chapters/20-organizational-adoption/</loc>
-         <lastmod>2026-05-18</lastmod>
+         <lastmod>2026-05-19</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/context-graph/chapters/21-data-engineering/</loc>
-         <lastmod>2026-05-18</lastmod>
+         <lastmod>2026-05-19</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/context-graph/chapters/22-security-vector-search/</loc>
-         <lastmod>2026-05-18</lastmod>
+         <lastmod>2026-05-19</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/context-graph/img/mascot/character-sheet/</loc>
-         <lastmod>2026-05-18</lastmod>
+         <lastmod>2026-05-19</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/context-graph/learning-graph/</loc>
-         <lastmod>2026-05-18</lastmod>
+         <lastmod>2026-05-19</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/context-graph/learning-graph/concept-list/</loc>
-         <lastmod>2026-05-18</lastmod>
+         <lastmod>2026-05-19</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/context-graph/learning-graph/concept-taxonomy/</loc>
-         <lastmod>2026-05-18</lastmod>
+         <lastmod>2026-05-19</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/context-graph/learning-graph/course-description-assessment/</loc>
-         <lastmod>2026-05-18</lastmod>
+         <lastmod>2026-05-19</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/context-graph/learning-graph/faq-coverage-gaps/</loc>
+         <lastmod>2026-05-19</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/context-graph/learning-graph/faq-quality-report/</loc>
+         <lastmod>2026-05-19</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/context-graph/learning-graph/index-template/</loc>
-         <lastmod>2026-05-18</lastmod>
+         <lastmod>2026-05-19</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/context-graph/learning-graph/mascot-test/</loc>
-         <lastmod>2026-05-18</lastmod>
+         <lastmod>2026-05-19</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/context-graph/learning-graph/quality-metrics/</loc>
-         <lastmod>2026-05-18</lastmod>
+         <lastmod>2026-05-19</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/context-graph/learning-graph/taxonomy-distribution/</loc>
-         <lastmod>2026-05-18</lastmod>
+         <lastmod>2026-05-19</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/context-graph/sims/</loc>
-         <lastmod>2026-05-18</lastmod>
+         <lastmod>2026-05-19</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/context-graph/sims/decision-trace-schema/</loc>
-         <lastmod>2026-05-18</lastmod>
+         <lastmod>2026-05-19</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/context-graph/sims/graph-viewer/</loc>
-         <lastmod>2026-05-18</lastmod>
+         <lastmod>2026-05-19</lastmod>
     </url>
 </urlset>

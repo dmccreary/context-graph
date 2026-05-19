@@ -1,12 +1,9 @@
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
+<!DOCTYPE html><html lang="en" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="An interactive intelligent textbook on the contact graph and how the contact graphs helps organization use LLMs cost effectively">
+        <meta name="description" content="Introduces the Labeled Property Graph model — nodes, edges, labels, properties, Cypher — and explains why LPGs are the dominant enterprise choice over RDF and relational models.">
       
       
         <meta name="author" content="Dan Mccreary">
@@ -21,12 +18,12 @@
         <link rel="next" href="../02-semantic-layers/">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../img/favicon.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
     
     
       
-        <title>1. Knowledge Graphs and LPGs - Context Graph</title>
+        <title>Chapter 1: Knowledge Graphs and Labeled Property Graphs - Context Graph</title>
       
     
     
@@ -47,7 +44,7 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -55,6 +52,8 @@
       <link rel="stylesheet" href="../../css/extra.css">
     
       <link rel="stylesheet" href="../../css/mascot.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -72,8 +71,44 @@
 
     
     
+      
+        <meta property="og:type" content="website">
+      
+        <meta property="og:title" content="Chapter 1: Knowledge Graphs and Labeled Property Graphs - Context Graph">
+      
+        <meta property="og:description" content="Introduces the Labeled Property Graph model — nodes, edges, labels, properties, Cypher — and explains why LPGs are the dominant enterprise choice over RDF and relational models.">
+      
+        <meta property="og:image" content="https://dmccreary.github.io/context-graph/assets/images/social/chapters/01-knowledge-graphs-lpg/index.png">
+      
+        <meta property="og:image:type" content="image/png">
+      
+        <meta property="og:image:width" content="1200">
+      
+        <meta property="og:image:height" content="630">
+      
+        <meta property="og:url" content="https://dmccreary.github.io/context-graph/chapters/01-knowledge-graphs-lpg/">
+      
+        <meta name="twitter:card" content="summary_large_image">
+      
+        <meta name="twitter:title" content="Chapter 1: Knowledge Graphs and Labeled Property Graphs - Context Graph">
+      
+        <meta name="twitter:description" content="Introduces the Labeled Property Graph model — nodes, edges, labels, properties, Cypher — and explains why LPGs are the dominant enterprise choice over RDF and relational models.">
+      
+        <meta name="twitter:image" content="https://dmccreary.github.io/context-graph/assets/images/social/chapters/01-knowledge-graphs-lpg/index.png">
+      
     
-  </head>
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     
@@ -108,13 +143,12 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Context Graph" class="md-header__button md-logo" aria-label="Context Graph" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -126,7 +160,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              1. Knowledge Graphs and LPGs
+              Chapter 1: Knowledge Graphs and Labeled Property Graphs
             
           </span>
         </div>
@@ -140,7 +174,7 @@
     
       <label class="md-header__button md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -149,20 +183,20 @@
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
           <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
             
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
           </a>
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
@@ -187,7 +221,7 @@
         <a href="https://github.com/dmccreary/context-graph" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -211,7 +245,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -222,8 +256,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Context Graph" class="md-nav__button md-logo" aria-label="Context Graph" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     Context Graph
@@ -233,7 +266,7 @@
       <a href="https://github.com/dmccreary/context-graph" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -520,6 +553,198 @@
   <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
       Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-core-vocabulary-nodes-and-edges" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Core Vocabulary: Nodes and Edges
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Core Vocabulary: Nodes and Edges">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-interactive-lpg-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Interactive LPG Explorer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#labels-and-types-giving-the-graph-meaning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Labels and Types: Giving the Graph Meaning
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#properties-data-lives-on-the-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Properties: Data Lives on the Graph
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#graph-schema-flexible-yet-constrained" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph Schema: Flexible Yet Constrained
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#graph-databases-native-storage-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph Databases: Native Storage Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Graph Databases: Native Storage Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-multi-hop-query-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Multi-Hop Query Performance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cypher-the-language-of-graph-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cypher: The Language of Graph Queries
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#graph-pattern-matching-traversal-and-paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph Pattern Matching, Traversal, and Paths
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Graph Pattern Matching, Traversal, and Paths">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-graph-traversal-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Graph Traversal Explorer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-lpgs-win-comparisons-with-rdf-relational-and-vector-stores" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why LPGs Win: Comparisons with RDF, Relational, and Vector Stores
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Why LPGs Win: Comparisons with RDF, Relational, and Vector Stores">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-rdf-alternative-and-its-limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      The RDF Alternative and Its Limitations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graph-vs-relational-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph vs. Relational Model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graph-vs-vector-store" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph vs. Vector Store
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Graph vs. Vector Store">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-data-model-comparison-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Data Model Comparison Explorer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#serialization-moving-graphs-between-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Serialization: Moving Graphs Between Systems
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-and-key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary and Key Takeaways
     </span>
   </a>
   
@@ -1007,6 +1232,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1035,6 +1264,46 @@
   
 
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1136,7 +1405,7 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -1181,6 +1450,198 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-core-vocabulary-nodes-and-edges" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Core Vocabulary: Nodes and Edges
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Core Vocabulary: Nodes and Edges">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-interactive-lpg-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Interactive LPG Explorer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#labels-and-types-giving-the-graph-meaning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Labels and Types: Giving the Graph Meaning
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#properties-data-lives-on-the-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Properties: Data Lives on the Graph
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#graph-schema-flexible-yet-constrained" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph Schema: Flexible Yet Constrained
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#graph-databases-native-storage-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph Databases: Native Storage Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Graph Databases: Native Storage Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-multi-hop-query-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Multi-Hop Query Performance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cypher-the-language-of-graph-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cypher: The Language of Graph Queries
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#graph-pattern-matching-traversal-and-paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph Pattern Matching, Traversal, and Paths
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Graph Pattern Matching, Traversal, and Paths">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-graph-traversal-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Graph Traversal Explorer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-lpgs-win-comparisons-with-rdf-relational-and-vector-stores" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why LPGs Win: Comparisons with RDF, Relational, and Vector Stores
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Why LPGs Win: Comparisons with RDF, Relational, and Vector Stores">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-rdf-alternative-and-its-limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      The RDF Alternative and Its Limitations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graph-vs-relational-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph vs. Relational Model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graph-vs-vector-store" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph vs. Vector Store
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Graph vs. Vector Store">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-data-model-comparison-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Data Model Comparison Explorer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#serialization-moving-graphs-between-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Serialization: Moving Graphs Between Systems
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-and-key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary and Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1198,16 +1659,16 @@
   
     <a href="https://github.com/dmccreary/context-graph/blob/main/docs/chapters/01-knowledge-graphs-lpg/index.md" title="Edit this page" class="md-content__button md-icon">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
     </a>
   
   
 
 
-<h1 id="chapter-1-knowledge-graphs-and-labeled-property-graphs">Chapter 1: Knowledge Graphs and Labeled Property Graphs<a class="headerlink" href="#chapter-1-knowledge-graphs-and-labeled-property-graphs" title="Permanent link">&para;</a></h1>
-<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<h1 id="chapter-1-knowledge-graphs-and-labeled-property-graphs">Chapter 1: Knowledge Graphs and Labeled Property Graphs<a class="headerlink" href="#chapter-1-knowledge-graphs-and-labeled-property-graphs" title="Permanent link">¶</a></h1>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">¶</a></h2>
 <p>Introduces the Labeled Property Graph model — nodes, edges, labels, properties, Cypher — and explains why LPGs are the dominant enterprise choice over RDF and relational models.</p>
-<h2 id="concepts-covered">Concepts Covered<a class="headerlink" href="#concepts-covered" title="Permanent link">&para;</a></h2>
+<h2 id="concepts-covered">Concepts Covered<a class="headerlink" href="#concepts-covered" title="Permanent link">¶</a></h2>
 <p>This chapter covers the following 25 concepts from the learning graph:</p>
 <ol>
 <li>Knowledge Graph</li>
@@ -1236,17 +1697,415 @@
 <li>GraphML</li>
 <li>GraphSON</li>
 </ol>
-<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">¶</a></h2>
 <p>This chapter assumes only the prerequisites listed in the
 <a href="../../course-description/">course description</a>.</p>
-<hr />
-<p>TODO: Generate Chapter Content</p>
+<hr>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Hi! I'm Nexus.</p>
+<p><img src="../../img/mascot/welcome.png" class="mascot-admonition-img" alt="Nexus waves hello">
+Welcome to <em>Context Graph: How Organizations Use LLMs Cost Effectively</em>! I'm <strong>Nexus</strong>, a round-bodied spider with a fondness for connections and a deep belief that every edge in a graph exists for a reason. I'll be weaving through this book all the way to the end, but I don't appear randomly — I have exactly <strong>six jobs</strong>, and you'll learn to recognize which one I'm doing each time you see me:</p>
+<ol>
+<li><strong>Welcome you</strong> at the opening of every chapter — that's what I'm doing right now.</li>
+<li><strong>Help you think things through</strong> when an idea is the kind that graph builders wrestle with on a whiteboard for a while.</li>
+<li><strong>Give you tips</strong> — the practical moves a working context-graph architect would make that don't always make it into documentation.</li>
+<li><strong>Warn you gently</strong> about the places where smart projects and smart practitioners get into trouble.</li>
+<li><strong>Encourage you</strong> when a concept looks harder than it really is on first contact.</li>
+<li><strong>Celebrate with you</strong> at the end of each chapter when you've earned it.</li>
+</ol>
+<p>That's it. If I'm not doing one of those six things, I'm not in the chapter. Let's trace the why!</p>
+</div>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">¶</a></h2>
+<p>Most enterprise data systems are built around tables. A table is a rectangle: rows are instances, columns are attributes, and every attribute holds a scalar value. This model has served industry well for decades, but it encodes a subtle assumption — that the most important thing about data is <em>what</em> it describes, not <em>how</em> it connects to other things. When that assumption breaks down, so does the relational model.</p>
+<p>A <strong>knowledge graph</strong> is a different bet. It represents knowledge as a network of entities and relationships, where the connections between things are just as important — often more important — than the properties of the things themselves. Knowledge graphs power the systems that answer questions such as: which supplier affects the most revenue if it goes down, which engineer on-call is closest to this incident's blast radius, and which prior decision precedents justify this automated approval. These are not lookup questions. They are traversal questions. They require following chains of relationships through a network of entities.</p>
+<p>This chapter establishes the foundation: what a knowledge graph is, how the <strong>Labeled Property Graph (LPG)</strong> model implements it, what query languages operate on it, and why LPGs have decisively won the enterprise competition over the two main alternatives — RDF triplestores and relational databases. Every subsequent chapter builds on this vocabulary, so it is worth taking the time to internalize it here.</p>
+<h2 id="the-core-vocabulary-nodes-and-edges">The Core Vocabulary: Nodes and Edges<a class="headerlink" href="#the-core-vocabulary-nodes-and-edges" title="Permanent link">¶</a></h2>
+<p>Every graph consists of exactly two primitive types: <strong>nodes</strong> and <strong>edges</strong>.</p>
+<p>A <strong>node</strong> (also called a vertex in graph theory) represents an entity — a thing that exists and has identity. In an enterprise knowledge graph, nodes might represent employees, servers, invoices, suppliers, products, contracts, incidents, or any other object the organization tracks. A node is the anchor point for facts about that entity.</p>
+<p>An <strong>edge</strong> represents a relationship between two nodes. An edge is always directional: it has a source node (the <em>from</em> end) and a target node (the <em>to</em> end). This directionality is not a technicality — it encodes semantic meaning. The edge <code>(Employee)-[:REPORTS_TO]-&gt;(Manager)</code> means something fundamentally different from <code>(Manager)-[:REPORTS_TO]-&gt;(Employee)</code>. Every edge in a production knowledge graph carries a direction, and that direction is a claim about how the world is structured.</p>
+<p>Together, nodes and edges form a graph — a mathematical structure studied for nearly three centuries, since Euler's 1736 analysis of the Königsberg bridges. The enterprise knowledge graph is this same structure applied at organizational scale to answer operational questions in real time.</p>
+<p>The interactive diagram below shows a small but representative enterprise LPG. Click any node or edge to see its label, type, and properties.</p>
+<h4 id="diagram-interactive-lpg-explorer">Diagram: Interactive LPG Explorer<a class="headerlink" href="#diagram-interactive-lpg-explorer" title="Permanent link">¶</a></h4>
+<iframe src="../../sims/lpg-explorer/main.html" width="100%" height="520px" scrolling="no"></iframe>
+
+<details>
+<summary>Interactive LPG Explorer</summary>
+<p>Type: graph-model
+<strong>sim-id:</strong> lpg-explorer<br>
+<strong>Library:</strong> vis-network<br>
+<strong>Status:</strong> Specified</p>
+<p>Bloom Level: Understand (L2)
+Bloom Verb: Identify and describe
+Learning Objective: Learners can identify nodes, edges, labels, and properties in a Labeled Property Graph and explain the role of each element.</p>
+<p>Purpose: Show a small but realistic enterprise LPG (supply-chain scenario) with clickable nodes and edges that reveal labels, types, and properties in a side panel. The learner should be able to distinguish nodes from edges, labels from types, and properties on nodes from properties on edges.</p>
+<p>Sample graph scenario: A simplified supply chain with 10 nodes.</p>
+<p>Node types (distinct colors and shapes):
+- Supplier (orange ellipse): properties: name, country, risk_tier
+  - Examples: "Acme Components" (US, tier-1), "Bolts &amp; More" (MX, tier-2)
+- Product (blue rectangle): properties: sku, unit_cost
+  - Examples: "Widget-A" ($12.50), "Widget-B" ($7.20)
+- Warehouse (teal diamond): properties: location, capacity_units
+  - Examples: "Chicago DC" (50,000 units), "Atlanta DC" (32,000 units)
+- Order (gray circle): properties: order_id, amount_usd, status
+  - Examples: "ORD-2024-001" ($45,000, confirmed)</p>
+<p>Edge types (distinct arrow styles):
+- SUPPLIES (solid orange arrow): properties: lead_time_days
+  Direction: Supplier → Product
+- STOCKS (dashed teal arrow): properties: quantity_on_hand
+  Direction: Warehouse → Product
+- FULFILLS (solid blue arrow): properties: fulfillment_date
+  Direction: Warehouse → Order</p>
+<p>Interactive behavior:
+- Hover any node: tooltip showing all properties (key: value pairs)
+- Click a node: highlight all directly connected nodes and edges; right-side detail panel shows label, type, and full property list
+- Click an edge: highlight endpoint nodes; detail panel shows edge type, direction (from → to), and edge properties
+- Legend (top-right): node shapes and colors mapped to labels
+- Zoom via mouse wheel; pan by dragging background
+- "Reset View" button returns to default layout</p>
+<p>Layout: Force-directed, stabilized on load. Canvas fully responsive to window width; 520px height.
+Detail panel: 200px fixed right column, shows selected element's data.
+Color palette: Indigo (#3949ab) and orange (#f57c00) consistent with book theme.</p>
+</details>
+<h2 id="labels-and-types-giving-the-graph-meaning">Labels and Types: Giving the Graph Meaning<a class="headerlink" href="#labels-and-types-giving-the-graph-meaning" title="Permanent link">¶</a></h2>
+<p>The LPG model adds two organizing concepts on top of raw nodes and edges: <strong>node labels</strong> and <strong>edge types</strong>.</p>
+<p>A <strong>node label</strong> is a category tag attached to a node. In the supply chain example, <code>Supplier</code>, <code>Product</code>, <code>Warehouse</code>, and <code>Order</code> are node labels. Labels serve two functions simultaneously. First, they communicate the semantic role of the node — a node labeled <code>Supplier</code> participates in different relationships than one labeled <code>Order</code>. Second, they enable efficient filtering: a query that only needs suppliers tells the database to scan only nodes with the <code>Supplier</code> label, not every node in the graph. A single node may carry multiple labels — an entity might be both an <code>Employee</code> and a <code>Contractor</code> — making the LPG model naturally accommodating for entities that exist in multiple categories.</p>
+<p>An <strong>edge type</strong> is the analogous tag on a relationship. <code>SUPPLIES</code>, <code>STOCKS</code>, and <code>FULFILLS</code> are edge types. Edge types encode the verb — the nature of the relationship. A graph with richly typed edges reads almost like prose: "Acme Components SUPPLIES Widget-A; Chicago DC STOCKS Widget-A; Chicago DC FULFILLS ORD-2024-001." This readability is deliberate. It makes the graph self-documenting and reduces the cognitive overhead of schema interpretation when engineers are debugging a query or reviewing a decision trace.</p>
+<h2 id="properties-data-lives-on-the-graph">Properties: Data Lives on the Graph<a class="headerlink" href="#properties-data-lives-on-the-graph" title="Permanent link">¶</a></h2>
+<p>The third pillar of the LPG model is <strong>graph properties</strong>. A property is a key-value pair attached to a node or an edge. Node properties describe the entity: a <code>Supplier</code> node might carry <code>{name: "Acme Components", country: "US", risk_tier: "tier-1"}</code>. Edge properties describe the relationship itself: a <code>SUPPLIES</code> edge might carry <code>{lead_time_days: 14}</code>.</p>
+<p>This is where the LPG model diverges most sharply from earlier graph models. In a plain graph (just nodes and edges with no properties), all data about an entity must live in attached lookup tables or separate structures. In an LPG, properties are first-class inhabitants of the graph structure itself. This matters for traversal performance: when a query follows an edge and needs the edge's <code>lead_time_days</code> property, the database can return it directly from the edge object without issuing a secondary lookup.</p>
+<p>The table below maps LPG elements to their closest relational analogues. The analogy is imperfect but provides a useful orientation point for practitioners coming from a SQL background.</p>
+<table>
+<thead>
+<tr>
+<th>LPG Element</th>
+<th>Description</th>
+<th>Closest Relational Analogue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Node</td>
+<td>An entity with an identity</td>
+<td>A row in a table</td>
+</tr>
+<tr>
+<td>Node Label</td>
+<td>The entity's type category</td>
+<td>The table name</td>
+</tr>
+<tr>
+<td>Edge</td>
+<td>A named, directed relationship</td>
+<td>A foreign key constraint</td>
+</tr>
+<tr>
+<td>Edge Type</td>
+<td>The semantic role of the relationship</td>
+<td>The join table name</td>
+</tr>
+<tr>
+<td>Node Property</td>
+<td>An attribute of the entity</td>
+<td>A column value in the row</td>
+</tr>
+<tr>
+<td>Edge Property</td>
+<td>An attribute of the relationship</td>
+<td>A column in the junction table</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Key Insight: Properties on Edges</p>
+<p><img src="../../img/mascot/thinking.png" class="mascot-admonition-img" alt="Nexus thinking">
+In a relational schema, a many-to-many relationship with attributes requires an explicit junction table — for example, <code>order_line_items</code> with <code>quantity</code> and <code>unit_price</code> columns. In the LPG model, those attributes live directly on the edge. This sounds like a minor convenience, but it changes the traversal: edge properties are retrieved in the same step that crosses the edge, not in a separate join. For context graphs that frequently query decision traces — which are chains of attributed relationships — this is architecturally significant. Every node tells a story; so does every edge.</p>
+</div>
+<h2 id="graph-schema-flexible-yet-constrained">Graph Schema: Flexible Yet Constrained<a class="headerlink" href="#graph-schema-flexible-yet-constrained" title="Permanent link">¶</a></h2>
+<p>A <strong>graph schema</strong> defines the allowed node labels, edge types, and property keys in a graph, along with any constraints on their values. Graph databases vary widely in how strictly they enforce schemas.</p>
+<p>Schema-optional databases (sometimes called <em>schema-free</em> or <em>schema-agnostic</em>) allow any node to carry any label and any property without prior declaration. This flexibility accelerates early development and accommodates heterogeneous data sources — a common enterprise reality where incoming data from a CRM, an ERP, and a logging system may have inconsistent property vocabularies. The cost is that constraint enforcement falls to the application layer, which in practice means violations accumulate silently until they surface as query anomalies.</p>
+<p>Schema-full databases, and the property-graph type system formalized in the GQL standard, allow teams to declare that every <code>Supplier</code> node must have a <code>name</code> string property and a <code>risk_tier</code> enumeration drawn from an allowed set of values. Violations are rejected at write time, not discovered during an incident. For production enterprise context graphs where decision traces must be auditable, schema constraints are not optional — they are the mechanism by which the graph earns its role as a system of record.</p>
+<h2 id="graph-databases-native-storage-architecture">Graph Databases: Native Storage Architecture<a class="headerlink" href="#graph-databases-native-storage-architecture" title="Permanent link">¶</a></h2>
+<p>A <strong>graph database</strong> is a database management system designed around graph data as a first-class storage primitive. The term is often misused to describe any system that can query graph-shaped data, including relational databases with recursive SQL, document stores with reference fields, and search engines with relationship metadata. These are not graph databases in the architectural sense.</p>
+<p>A true graph database uses <strong>native graph storage</strong>, which means relationships (edges) are stored as physical pointers to their endpoint nodes rather than as data values that require index lookups at query time. This architecture enables <strong>index-free adjacency</strong>: traversing from one node to its neighbors is a pointer dereference, not a B-tree lookup. The cost of following one hop is independent of the total size of the graph — whether the graph contains ten thousand nodes or ten billion, following a single edge takes the same time.</p>
+<p>This property has dramatic consequences for multi-hop queries — queries that traverse two, three, or more relationships in sequence. In a relational database, each additional hop requires an additional JOIN, and each JOIN's cost grows with the size of the tables being joined. In a natively stored graph, each hop costs a constant-time pointer dereference, so a five-hop traversal costs roughly five times a one-hop traversal rather than five powers of the table size. The performance chart below quantifies the divergence.</p>
+<h4 id="diagram-multi-hop-query-performance">Diagram: Multi-Hop Query Performance<a class="headerlink" href="#diagram-multi-hop-query-performance" title="Permanent link">¶</a></h4>
+<iframe src="../../sims/multi-hop-performance/main.html" width="100%" height="480px" scrolling="no"></iframe>
+
+<details>
+<summary>Multi-Hop Query Performance: Native Graph vs Relational</summary>
+<p>Type: chart
+<strong>sim-id:</strong> multi-hop-performance<br>
+<strong>Library:</strong> Chart.js<br>
+<strong>Status:</strong> Specified</p>
+<p>Bloom Level: Analyze (L4)
+Bloom Verb: Compare and contrast
+Learning Objective: Learners can explain why native graph traversal performance grows linearly with hop count while relational JOIN performance degrades super-linearly, and identify the crossover point where graph performance becomes practically necessary.</p>
+<p>Chart type: Grouped bar chart</p>
+<p>X-axis label: "Number of Hops"
+X-axis values: 1, 2, 3, 4, 5
+Y-axis label: "Query Response Time (ms)"
+Y-axis: Logarithmic scale, range 1ms to 1,000,000ms</p>
+<p>Data series:
+1. Relational Database (orange bars):
+   - 1 hop: 8ms
+   - 2 hops: 90ms
+   - 3 hops: 1,400ms
+   - 4 hops: 28,000ms
+   - 5 hops: 650,000ms</p>
+<ol>
+<li>Native Graph Database (indigo bars):</li>
+<li>1 hop: 4ms</li>
+<li>2 hops: 7ms</li>
+<li>3 hops: 11ms</li>
+<li>4 hops: 15ms</li>
+<li>5 hops: 19ms</li>
+</ol>
+<p>Interactive behavior:
+- Hover any bar: tooltip shows exact milliseconds formatted for readability (e.g., "28,000 ms ≈ 28 seconds")
+- Click a hop's bar pair: highlight both bars at that hop count; display a callout showing the ratio (e.g., "At 4 hops: relational is 1,867× slower")
+- Toggle button below chart: switch Y-axis between logarithmic and linear scales. On linear scale the relational 5-hop bar visually dominates the entire chart area, making the practical consequence visceral.
+- Annotation on relational 5-hop bar: "~11 minutes — effectively unusable for real-time queries"
+- Annotation on graph series line: "~4ms per additional hop — near-linear growth"</p>
+<p>Title: "Multi-Hop Query Performance: Native Graph vs Relational"
+Legend: Top-right</p>
+<p>Color palette: Indigo (#3949ab) for graph, orange (#f57c00) for relational.
+Canvas: Responsive width, 480px height.</p>
+</details>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Not All 'Graph Databases' Are Architecturally Equal</p>
+<p><img src="../../img/mascot/warning.png" class="mascot-admonition-img" alt="Nexus warning">
+Several relational and document databases have added graph query layers or recursive-query extensions and now market themselves as "graph-capable." These systems do not use native graph storage — they translate graph traversals into table scans or B-tree lookups under the hood. For small graphs or shallow traversals, the distinction may not matter. For production context graphs with millions of decision traces and multi-hop audit queries, it matters enormously. When evaluating a graph platform, ask specifically: "Does the engine use index-free adjacency for edge traversal, or does it resolve relationships through index lookups?" That answer tells you whether you have a graph database or a relational database with graph syntax.</p>
+</div>
+<h2 id="cypher-the-language-of-graph-queries">Cypher: The Language of Graph Queries<a class="headerlink" href="#cypher-the-language-of-graph-queries" title="Permanent link">¶</a></h2>
+<p>To query a Labeled Property Graph, you need a language that can express graph patterns — not just row filters. <strong>Cypher</strong> is that language. Originally developed for Neo4j and later opened as a community standard, Cypher uses ASCII-art notation to represent graph patterns directly in the query text.</p>
+<p>Two constructs are fundamental. A node is written in parentheses: <code>(n:Supplier)</code> matches any node with the <code>Supplier</code> label and binds it to the variable <code>n</code>. A relationship is written in brackets flanked by dashes: <code>-[:SUPPLIES]-&gt;</code> matches any outgoing <code>SUPPLIES</code> edge. Chaining these together produces a path pattern: <code>(s:Supplier)-[:SUPPLIES]-&gt;(p:Product)</code> matches any supplier-product pair connected by a SUPPLIES relationship.</p>
+<p>A complete Cypher query follows the <code>MATCH … WHERE … RETURN</code> structure:</p>
+<div class="language-cypher highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="p">:</span><span class="n">Supplier</span><span class="p">)</span><span class="o">-[</span><span class="p">:</span><span class="n">SUPPLIES</span><span class="o">]-&gt;</span><span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Product</span><span class="p">)</span><span class="o">&lt;-[</span><span class="p">:</span><span class="n">STOCKS</span><span class="o">]-</span><span class="p">(</span><span class="n">w</span><span class="p">:</span><span class="n">Warehouse</span><span class="p">)</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">risk_tier</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">'tier-1'</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="n">AND</span><span class="w"> </span><span class="n">w</span><span class="p">.</span><span class="n">location</span><span class="w"> </span><span class="k">STARTS</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="s">'Chicago'</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">RETURN</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">supplier</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">sku</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">product</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">.</span><span class="n">location</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">warehouse</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">supplier</span>
+</span></code></pre></div>
+<p>This query traverses two hops — from supplier to product, then from product to warehouse — in a single readable pattern. There is no JOIN clause, no subquery, and no need to reason about join order. The pattern <em>is</em> the query plan.</p>
+<p>The <strong>openCypher Standard</strong> is an open specification of the Cypher language maintained by the openCypher project, decoupling the language from any single vendor's implementation. <strong>GQL (Graph Query Language)</strong> is the ISO/IEC international standard ratified in 2024, which incorporates the core of Cypher and adds richer compositional and procedural constructs. GQL occupies the same role for graph databases that SQL occupies for relational databases: a vendor-neutral standard that allows queries to be written once and executed on any conformant system.</p>
+<h2 id="graph-pattern-matching-traversal-and-paths">Graph Pattern Matching, Traversal, and Paths<a class="headerlink" href="#graph-pattern-matching-traversal-and-paths" title="Permanent link">¶</a></h2>
+<p>Three related but distinct concepts govern how queries navigate graph structure.</p>
+<p><strong>Graph pattern matching</strong> is the process of finding all subgraphs within a larger graph that match a specified template. The Cypher <code>MATCH</code> clause is a pattern matching operation. The pattern <code>(a)-[:REPORTS_TO*1..4]-&gt;(b)</code> instructs the database to find all pairs (a, b) connected by one to four <code>REPORTS_TO</code> edges — a variable-length path pattern that would require a recursive common table expression (CTE) in SQL and significant query-plan tuning effort.</p>
+<p><strong>Graph traversal</strong> is the lower-level process of systematically visiting nodes by following edges from a starting point. Two classic traversal algorithms underlie most graph query engines. Depth-first search (DFS) follows one path as far as possible before backtracking. Breadth-first search (BFS) explores all immediate neighbors before going deeper. For enterprise context graphs, BFS is often preferred for proximity queries — finding all decisions made within two hops of a given entity — because it naturally surfaces the closest results first.</p>
+<p>A <strong>path query</strong> is a query whose answer is not just a set of matching nodes but the sequence of nodes and edges connecting them — the path itself. Path queries are essential for audit and explainability use cases: when a compliance officer asks "show me the chain of decisions that authorized this payment," the answer is a path, not a set of matching nodes.</p>
+<div class="admonition mascot-encourage">
+<p class="admonition-title">Traversal Looks Harder Than It Is</p>
+<p><img src="../../img/mascot/encouraging.png" class="mascot-admonition-img" alt="Nexus encouraging">
+If you're coming from SQL, variable-length path queries feel strange at first — there is no direct analogue, and recursive CTEs are notoriously awkward. In Cypher, variable-length paths are first-class syntax: <code>[:APPROVES*1..5]</code> means "follow one to five APPROVES edges." The engine handles the traversal logic. Your job is to express the pattern you want, not the traversal strategy that finds it. Every graph builder reports the same experience after the first week: it clicks, and then SQL starts to feel like the awkward one. You've got this.</p>
+</div>
+<p>The MicroSim below lets you step through BFS and DFS traversals on a small enterprise graph and observe the visit ordering at each step.</p>
+<h4 id="diagram-graph-traversal-explorer">Diagram: Graph Traversal Explorer<a class="headerlink" href="#diagram-graph-traversal-explorer" title="Permanent link">¶</a></h4>
+<iframe src="../../sims/graph-traversal-explorer/main.html" width="100%" height="520px" scrolling="no"></iframe>
+
+<details>
+<summary>Graph Traversal Explorer MicroSim</summary>
+<p>Type: microsim
+<strong>sim-id:</strong> graph-traversal-explorer<br>
+<strong>Library:</strong> p5.js<br>
+<strong>Status:</strong> Specified</p>
+<p>Bloom Level: Understand (L2)
+Bloom Verb: Explain and trace
+Learning Objective: Learners can trace the step-by-step execution of BFS and DFS traversal on a sample enterprise graph and explain why the two algorithms produce different node visit orderings.</p>
+<p>Instructional Rationale: Step-through with worked examples is appropriate because the Understand/explain objective requires learners to observe concrete visit sequences with real node labels. Continuous animation would prevent prediction and obscure the actual decision logic at each step. Each step should give the learner a moment to predict the next node before the simulation reveals it.</p>
+<p>Canvas layout:
+- Main area (left ~68%): 12-node enterprise graph showing Employee and Department entities
+- Right panel (~32%): Step log showing nodes visited in order, plus current algorithm state (stack contents for DFS, queue contents for BFS)</p>
+<p>Graph structure (fixed, readable, enterprise scenario):
+Nodes:
+- E1: CEO (Employee), E2: VP-Engineering (Employee), E3: VP-Sales (Employee)
+- E4: Eng-Lead (Employee), E5: Eng-A (Employee), E6: Eng-B (Employee)
+- E7: Sales-Lead (Employee), E8: Sales-A (Employee)
+- D1: Engineering (Department), D2: Sales (Department), D3: Executive (Department)
+- P1: Project-Alpha (Project)</p>
+<p>Edges:
+- E2 REPORTS_TO E1, E3 REPORTS_TO E1
+- E4 REPORTS_TO E2, E5 REPORTS_TO E4, E6 REPORTS_TO E4
+- E7 REPORTS_TO E3, E8 REPORTS_TO E7
+- E2 BELONGS_TO D1, E4 BELONGS_TO D1, E5 BELONGS_TO D1, E6 BELONGS_TO D1
+- E3 BELONGS_TO D2, E7 BELONGS_TO D2, E8 BELONGS_TO D2
+- E1 BELONGS_TO D3
+- E4 OWNS P1</p>
+<p>Interactive controls:
+- Dropdown: Algorithm (BFS or DFS)
+- Dropdown: Start Node (any of the 12 nodes, labeled by name)
+- Button: "Next Step" — advance one traversal step
+- Button: "Run All" — complete traversal with 500ms delay between steps
+- Button: "Reset" — return to initial unvisited state</p>
+<p>Data visibility requirements:
+Stage 0: All nodes gray (unvisited). Right panel: Queue/Stack shows [start node name].
+Stage 1: Start node highlighted yellow. Right panel: "Visiting: [label]"; queue/stack updated after dequeue/pop.
+Stage N: Each new step: current node turns yellow → indigo (visited) after step completes. Newly discovered unvisited neighbors shown in orange (in-queue/stack). Right panel shows "Visiting: [node name]" and appends to the ordered visit list.
+Final: All reachable nodes indigo. Panel shows complete visit order as a numbered list of node labels.</p>
+<p>Node visual states:
+- Unvisited: gray fill, dark border
+- In queue/stack: orange fill
+- Currently visiting: yellow fill with subtle pulse border
+- Visited: indigo fill, white label text</p>
+<p>Hover behavior: Hovering any node shows a tooltip with label (name and type) and list of neighbor names.
+Edge hover: Shows edge type (REPORTS_TO / BELONGS_TO / OWNS).</p>
+<p>Canvas: Responsive width, 520px height. Right panel fixed 200px.</p>
+</details>
+<p><strong>Graph indexes</strong> are auxiliary data structures that accelerate graph queries without modifying the graph's topology. A node property index on the <code>name</code> property of <code>Employee</code> nodes allows the query engine to locate a specific employee in <span class="arithmatex">\(O(\log n)\)</span> time rather than scanning every employee node. Indexes are especially important for the entry point of a traversal — the query must first locate the starting node efficiently, after which index-free adjacency takes over.</p>
+<p><strong>Graph algorithms</strong> are higher-level computations on graph topology: PageRank measures node influence by iterating over the link structure, community detection identifies clusters of densely interconnected nodes, and shortest-path algorithms find the minimum-cost route between two nodes. These algorithms produce results that no single node's properties can yield alone — they emerge from the structure of the graph itself.</p>
+<h2 id="why-lpgs-win-comparisons-with-rdf-relational-and-vector-stores">Why LPGs Win: Comparisons with RDF, Relational, and Vector Stores<a class="headerlink" href="#why-lpgs-win-comparisons-with-rdf-relational-and-vector-stores" title="Permanent link">¶</a></h2>
+<p>Understanding LPGs' enterprise dominance requires understanding what they replaced and what they coexist with.</p>
+<h3 id="the-rdf-alternative-and-its-limitations">The RDF Alternative and Its Limitations<a class="headerlink" href="#the-rdf-alternative-and-its-limitations" title="Permanent link">¶</a></h3>
+<p><strong>Resource Description Framework (RDF)</strong> is a W3C standard for representing knowledge as triples: subject-predicate-object. An RDF statement might read <code>&lt;acme_components&gt; &lt;supplies&gt; &lt;widget_a&gt;</code>. RDF offers two theoretical advantages: formal semantics grounded in first-order logic, and the <strong>open world assumption</strong> — the principle that the absence of a fact from the database does not mean the fact is false, only that it is unknown.</p>
+<p>The <strong>open world assumption</strong> makes RDF well-suited for knowledge interchange between autonomous agents that may have incomplete views of the world. Two RDF stores can be merged without conflict because neither claims to have the complete picture. This is philosophically coherent and practically useful in certain research and linked-data contexts.</p>
+<p>Enterprise operations, however, require the opposite: the <strong>closed world assumption</strong>, which holds that what is not recorded is not true. When a compliance system queries whether a specific approval was granted, a "not found" result must mean "not approved," not "possibly approved somewhere we don't know about." This distinction is not academic — it determines whether automated decision systems can safely rely on negative query results. LPGs operate under the closed world assumption by default, aligning them with the semantics enterprise teams actually need.</p>
+<p><strong>RDF lacks scalability</strong> for the multi-hop query patterns enterprises run in production. The triple store data model requires every relationship attribute to be <em>reified</em> — turned into its own set of triples — because plain RDF triples have no properties. Encoding <code>{lead_time_days: 14}</code> on a <code>supplies</code> relationship requires four or more triples and a blank node, producing verbose graphs that are slow to store, slow to query, and difficult to maintain at scale. SPARQL, the RDF query language, lacks the variable-length path syntax and native edge-property access that Cypher provides. Real-world enterprise RDF graphs have hit practical ceilings at tens of millions of triples; commercial LPG databases routinely operate at tens of billions of edges.</p>
+<h3 id="graph-vs-relational-model">Graph vs. Relational Model<a class="headerlink" href="#graph-vs-relational-model" title="Permanent link">¶</a></h3>
+<p>The multi-hop performance gap is quantified in the chart above. The deeper architectural difference is that relational databases treat relationships as data — foreign key values resolved through B-tree index lookups at query time. Every additional hop in a query adds a JOIN, and each JOIN's cost is bounded below by the logarithm of the table size being scanned. For the vast majority of enterprise reporting queries — aggregations, point lookups, single-hop joins — this cost is acceptable. For the multi-hop traversal queries that context graphs exist to answer, it is not.</p>
+<h3 id="graph-vs-vector-store">Graph vs. Vector Store<a class="headerlink" href="#graph-vs-vector-store" title="Permanent link">¶</a></h3>
+<p>A <strong>vector store</strong> (also called a vector database) indexes high-dimensional embedding vectors and answers nearest-neighbor queries: given a query vector, find the <span class="arithmatex">\(K\)</span> stored vectors most similar to it. Vector stores excel at semantic similarity — finding documents, decisions, or entities that are conceptually related to a query even when they share no exact keywords. They are the backbone of retrieval-augmented generation (RAG) systems.</p>
+<p>The critical distinction from a knowledge graph is that vector similarity is <em>statistical</em>, not <em>structural</em>. A vector store can tell you that two decisions are semantically similar; it cannot tell you that one decision directly caused another, that one entity is the legal owner of another, or that a particular approval chain is required for a given transaction class. Knowledge graphs encode structural relationships with explicit semantics. Context graphs specifically encode the causal and procedural chains — the <em>why</em> — that vector similarity cannot reconstruct. Both technologies belong in a mature enterprise AI architecture; they answer different questions and are most powerful in combination.</p>
+<p>The interactive comparison below lets you examine all four data models side by side and test each against representative enterprise query types.</p>
+<h4 id="diagram-data-model-comparison-explorer">Diagram: Data Model Comparison Explorer<a class="headerlink" href="#diagram-data-model-comparison-explorer" title="Permanent link">¶</a></h4>
+<iframe src="../../sims/data-model-comparison/main.html" width="100%" height="500px" scrolling="no"></iframe>
+
+<details>
+<summary>Data Model Comparison Explorer</summary>
+<p>Type: infographic
+<strong>sim-id:</strong> data-model-comparison<br>
+<strong>Library:</strong> p5.js<br>
+<strong>Status:</strong> Specified</p>
+<p>Bloom Level: Analyze (L4)
+Bloom Verb: Compare and differentiate
+Learning Objective: Learners can compare the Relational, RDF, LPG, and Vector Store data models across five performance dimensions and justify which model is appropriate for a given enterprise query type.</p>
+<p>Layout: Two sections — a model visualizer (top ~60%) and a query benchmark table (bottom ~40%).</p>
+<p>Top section — four tab buttons:
+- "Relational", "RDF / Triplestore", "Labeled Property Graph", "Vector Store"
+- Active tab highlighted in indigo; inactive tabs in light gray
+- Clicking a tab animates transition to that model's visualization</p>
+<p>Model visualizations (supply-chain scenario, consistent across all four panels):
+- Relational: Three tables (Suppliers, Products, SuppliesJunction). Foreign key columns highlighted. A "relationship attribute" column (lead_time_days) shown in the junction table with a callout: "Attribute lives in a separate table — requires JOIN to retrieve."
+- RDF / Triplestore: Seven triples in <code>&lt;subject&gt; &lt;predicate&gt; &lt;object&gt;</code> notation. A reification block shows four additional triples plus a blank node required to encode a single edge property. Callout: "4+ triples needed to express one attributed relationship."
+- Labeled Property Graph: Three nodes (Supplier, Product, Warehouse) connected by two typed, directed edges. Each edge shows inline property badge (lead_time_days: 14). Callout: "Edge holds its own properties — retrieved in the same traversal step."
+- Vector Store: 2D t-SNE scatter of six document embedding points. Arrows show k-nearest-neighbor query result. Callout: "Finds semantically similar things — but cannot express why they connect."</p>
+<p>Bottom section — query benchmark table (5 rows × 4 columns):
+Query types (rows): Single-entity lookup | Two-hop traversal | Five-hop traversal | Semantic similarity | Causal chain audit
+Models (columns): Relational | RDF | LPG | Vector Store</p>
+<p>Cell values (color-coded: green=Fast, yellow=Moderate, orange=Slow, red=Very Slow, gray=N/A):
+- Single lookup: all four Fast
+- Two-hop traversal: Relational Moderate, RDF Moderate, LPG Fast, Vector N/A
+- Five-hop traversal: Relational Very Slow, RDF Slow, LPG Fast, Vector N/A
+- Semantic similarity: Relational Poor, RDF Poor, LPG Moderate, Vector Excellent
+- Causal chain audit: Relational Very Slow, RDF Slow, LPG Fast, Vector N/A</p>
+<p>Interactive behavior:
+- Hover any benchmark cell: one-sentence tooltip explaining the rating (e.g., "Five-hop traversal in a relational database requires five JOIN operations whose combined cost grows super-linearly with table size")
+- Hover any structural element in the visualization: tooltip showing its name and role in the model
+- Tab transitions use a 200ms crossfade animation</p>
+<p>Canvas: Responsive width, 500px height.
+Color palette: Indigo/orange/teal consistent with book.</p>
+</details>
+<p>The table below consolidates the three-way architectural comparison as a reference:</p>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Relational (RDBMS)</th>
+<th>RDF Triplestore</th>
+<th>Labeled Property Graph</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data model</td>
+<td>Tables, rows, columns</td>
+<td>Subject-predicate-object triples</td>
+<td>Nodes, edges, labels, properties</td>
+</tr>
+<tr>
+<td>Multi-hop performance</td>
+<td>Degrades super-linearly with hops</td>
+<td>Degrades with reification overhead</td>
+<td>Constant per hop (index-free adjacency)</td>
+</tr>
+<tr>
+<td>World assumption</td>
+<td>Closed</td>
+<td>Open</td>
+<td>Closed</td>
+</tr>
+<tr>
+<td>Edge properties</td>
+<td>Via junction table (separate JOIN)</td>
+<td>Requires blank-node reification</td>
+<td>Native — first-class on the edge</td>
+</tr>
+<tr>
+<td>Query language</td>
+<td>SQL</td>
+<td>SPARQL</td>
+<td>Cypher / GQL</td>
+</tr>
+<tr>
+<td>Schema flexibility</td>
+<td>Rigid (DDL required before write)</td>
+<td>Flexible</td>
+<td>Flexible with optional enforcement</td>
+</tr>
+<tr>
+<td>Practical enterprise scale</td>
+<td>Billions of rows</td>
+<td>Tens of millions of triples</td>
+<td>Tens of billions of edges</td>
+</tr>
+</tbody>
+</table>
+<h2 id="serialization-moving-graphs-between-systems">Serialization: Moving Graphs Between Systems<a class="headerlink" href="#serialization-moving-graphs-between-systems" title="Permanent link">¶</a></h2>
+<p>A <strong>graph serialization format</strong> is a file format for encoding a graph's structure and data as portable text or binary. Serialization enables import/export between databases, backup and restore, integration testing with fixture data, and API-based data exchange between graph platforms.</p>
+<p>Two formats dominate in enterprise LPG contexts. Both encode the same conceptual structure — serialized nodes carry their labels and properties; serialized edges carry their type, directionality, endpoint node identifiers, and edge properties. The difference is encoding syntax, tooling ecosystem, and verbosity at scale.</p>
+<p><strong>GraphML</strong> is an XML-based format originally developed for the yEd graph editor. GraphML encodes nodes and edges as XML elements with properties as nested child elements or attributes. Its verbosity makes it suitable for small and medium graphs but inefficient at large scale. GraphML is widely supported across graph visualization tools and is a reasonable choice for human-readable interchange and archival purposes.</p>
+<p><strong>GraphSON</strong> is a JSON-based format developed as part of the Apache TinkerPop framework. GraphSON is more compact than GraphML for large graphs and integrates naturally with web services and modern data pipelines that already process JSON. GraphSON version 3, which maps directly to the TinkerPop graph structure, is the current standard. Most major LPG databases — Neo4j, Amazon Neptune, TigerGraph — support GraphSON import and export out of the box.</p>
+<p>The choice between the two is primarily driven by tooling context: if the downstream consumer speaks XML (a legacy ETL pipeline, an XML-native integration platform), GraphML is the path of least resistance. If the downstream consumer speaks JSON (a REST API, a cloud data pipeline, a Python application), GraphSON is the natural choice.</p>
+<h2 id="summary-and-key-takeaways">Summary and Key Takeaways<a class="headerlink" href="#summary-and-key-takeaways" title="Permanent link">¶</a></h2>
+<p>This chapter has established the LPG vocabulary that every subsequent chapter builds on. The concepts covered, in pedagogical order, are:</p>
+<ul>
+<li>A <strong>knowledge graph</strong> represents entities and their relationships as a network, where connections carry as much meaning as the entities themselves.</li>
+<li>An LPG structures that network with <strong>nodes</strong> (entities), <strong>edges</strong> (named, directed relationships), <strong>node labels</strong> (type categories), <strong>edge types</strong> (relationship semantics), and <strong>properties</strong> (key-value attributes on both nodes and edges).</li>
+<li>A <strong>graph schema</strong> governs what labels, types, and properties are valid; the <strong>closed world assumption</strong> ensures that absent facts are treated as false, not unknown.</li>
+<li><strong>Native graph databases</strong> use index-free adjacency to achieve constant-time traversals regardless of hop count, enabling multi-hop queries that are practically impossible at scale in relational systems.</li>
+<li><strong>Cypher</strong> and its standards descendants (<strong>openCypher</strong> and <strong>GQL</strong>) express graph queries as ASCII-art patterns, separating the <em>what to find</em> from the <em>how to traverse</em>.</li>
+<li><strong>Graph pattern matching</strong> finds matching subgraphs; <strong>graph traversal</strong> visits nodes systematically; <strong>path queries</strong> return the sequence of nodes and edges between two endpoints.</li>
+<li><strong>Graph indexes</strong> accelerate entry-point lookups; <strong>graph algorithms</strong> (PageRank, shortest path, community detection) compute properties of graph topology that no single node's data can yield.</li>
+<li><strong>RDF lacks scalability</strong> because edge attributes require verbose reification, and its <strong>open world assumption</strong> makes negative query results semantically unreliable for enterprise automation.</li>
+<li><strong>LPGs</strong> and <strong>vector stores</strong> are complementary: LPGs answer structural, causal, and traversal questions; vector stores answer semantic-similarity questions.</li>
+<li><strong>GraphML</strong> and <strong>GraphSON</strong> are the dominant serialization formats for LPG portability, with GraphSON being the JSON-native choice for modern pipelines.</li>
+</ul>
+<details class="question">
+<summary>Quick Check: Which Data Model?</summary>
+<p>Three enterprise questions, three different data models. Which model is the right tool for each?</p>
+<ol>
+<li>"Find all products whose tier-1 suppliers are in the same country as an active regulatory investigation, where the warehouse stocking those products has capacity below 10,000 units."</li>
+<li>"Find the five compliance memos most semantically similar to this new regulation text."</li>
+<li>"Show the complete chain of approvals — with timestamps and approver names — that authorized this $2M contract."</li>
+</ol>
+<p>Click to reveal:</p>
+<p><strong>Answer:</strong>
+<strong>(1) Labeled Property Graph</strong> — this is a three-hop structural traversal (supplier → product → warehouse → regulatory flag) with property filters at each node. A relational JOIN chain would be slow at scale and the pattern would be brittle to maintain.
+<strong>(2) Vector store</strong> — this is a semantic similarity query over document embeddings. Knowledge graphs encode structural relationships, not semantic proximity between unstructured text.
+<strong>(3) LPG path query</strong> — the answer is not a set of matching nodes but the <em>path itself</em>: the ordered sequence of approval edges with their properties. Cypher's variable-length path syntax returns this naturally.</p>
+</details>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">Chapter 1 Complete!</p>
+<p><img src="../../img/mascot/celebration.png" class="mascot-admonition-img" alt="Nexus celebrating">
+You now hold the full LPG vocabulary: nodes, edges, labels, types, properties, schema, Cypher, GQL, traversal, path queries, indexes, and algorithms. You've seen why native graph storage beats relational databases at multi-hop traversal, why RDF's open world assumption is a liability in closed enterprise systems, and why vector stores and knowledge graphs answer fundamentally different questions. That is a rigorous foundation. Chapter 2 scales this model up to the enterprise level — multiple source systems, entity resolution across heterogeneous data, and federated graph architectures. Every node tells a story. Let's trace the why!</p>
+</div>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -1265,7 +2124,7 @@
         
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
   Back to top
 </button>
         
@@ -1275,13 +2134,13 @@
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
           <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: List of Chapters">
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
@@ -1306,7 +2165,7 @@
             </div>
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
             </div>
           </a>
         
@@ -1318,7 +2177,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2026 Dan Mccreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+      Copyright © 2026 Dan Mccreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
     </div>
   
   
@@ -1339,6 +2198,14 @@
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
+        <script src="../../js/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+      
     
-  </body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

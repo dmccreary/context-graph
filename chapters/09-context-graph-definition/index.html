@@ -1,12 +1,9 @@
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
+<!DOCTYPE html><html lang="en" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="An interactive intelligent textbook on the contact graph and how the contact graphs helps organization use LLMs cost effectively">
+        <meta name="description" content="The formal definition of a context graph — how it extends enterprise knowledge graphs with decision traces, its node-and-edge schema, read/write paths, lifecycle, and access-control model.">
       
       
         <meta name="author" content="Dan Mccreary">
@@ -21,12 +18,12 @@
         <link rel="next" href="../10-llm-ai-foundations/">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../img/favicon.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
     
     
       
-        <title>9. What a Context Graph Is - Context Graph</title>
+        <title>Chapter 9: What a Context Graph Is - Context Graph</title>
       
     
     
@@ -47,7 +44,7 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -55,6 +52,8 @@
       <link rel="stylesheet" href="../../css/extra.css">
     
       <link rel="stylesheet" href="../../css/mascot.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -72,8 +71,44 @@
 
     
     
+      
+        <meta property="og:type" content="website">
+      
+        <meta property="og:title" content="Chapter 9: What a Context Graph Is - Context Graph">
+      
+        <meta property="og:description" content="The formal definition of a context graph — how it extends enterprise knowledge graphs with decision traces, its node-and-edge schema, read/write paths, lifecycle, and access-control model.">
+      
+        <meta property="og:image" content="https://dmccreary.github.io/context-graph/assets/images/social/chapters/09-context-graph-definition/index.png">
+      
+        <meta property="og:image:type" content="image/png">
+      
+        <meta property="og:image:width" content="1200">
+      
+        <meta property="og:image:height" content="630">
+      
+        <meta property="og:url" content="https://dmccreary.github.io/context-graph/chapters/09-context-graph-definition/">
+      
+        <meta name="twitter:card" content="summary_large_image">
+      
+        <meta name="twitter:title" content="Chapter 9: What a Context Graph Is - Context Graph">
+      
+        <meta name="twitter:description" content="The formal definition of a context graph — how it extends enterprise knowledge graphs with decision traces, its node-and-edge schema, read/write paths, lifecycle, and access-control model.">
+      
+        <meta name="twitter:image" content="https://dmccreary.github.io/context-graph/assets/images/social/chapters/09-context-graph-definition/index.png">
+      
     
-  </head>
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     
@@ -108,13 +143,12 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Context Graph" class="md-header__button md-logo" aria-label="Context Graph" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -126,7 +160,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              9. What a Context Graph Is
+              Chapter 9: What a Context Graph Is
             
           </span>
         </div>
@@ -140,7 +174,7 @@
     
       <label class="md-header__button md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -149,20 +183,20 @@
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
           <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
             
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
           </a>
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
@@ -187,7 +221,7 @@
         <a href="https://github.com/dmccreary/context-graph" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -211,7 +245,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -222,8 +256,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Context Graph" class="md-nav__button md-logo" aria-label="Context Graph" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     Context Graph
@@ -233,7 +266,7 @@
       <a href="https://github.com/dmccreary/context-graph" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -693,6 +726,174 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-decision-trace-the-atomic-unit" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Decision Trace: The Atomic Unit
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#context-graph-schema-nodes-and-edges" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context Graph Schema: Nodes and Edges
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Context Graph Schema: Nodes and Edges">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-context-graph-schema-core-node-and-edge-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Context Graph Schema — Core Node and Edge Types
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#context-graph-vs-knowledge-graph-vector-store-and-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context Graph vs. Knowledge Graph, Vector Store, and Database
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Context Graph vs. Knowledge Graph, Vector Store, and Database">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#context-graph-vs-enterprise-knowledge-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context Graph vs. Enterprise Knowledge Graph
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#context-graph-vs-vector-store" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context Graph vs. Vector Store
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#context-graph-vs-traditional-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context Graph vs. Traditional Database
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-context-graph-as-memory-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Context Graph as Memory Layer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Context Graph as Memory Layer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-five-complementary-knowledge-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Five Complementary Knowledge Layers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#read-path-and-write-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read Path and Write Path
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Read Path and Write Path">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-context-graph-read-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Context Graph Read Path
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-context-graph-write-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Context Graph Write Path
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#context-graph-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context Graph Lifecycle
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#context-graph-access-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context Graph Access Control
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-and-key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary and Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1007,6 +1208,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1035,6 +1240,46 @@
   
 
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1136,7 +1381,7 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -1181,6 +1426,174 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-decision-trace-the-atomic-unit" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Decision Trace: The Atomic Unit
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#context-graph-schema-nodes-and-edges" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context Graph Schema: Nodes and Edges
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Context Graph Schema: Nodes and Edges">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-context-graph-schema-core-node-and-edge-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Context Graph Schema — Core Node and Edge Types
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#context-graph-vs-knowledge-graph-vector-store-and-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context Graph vs. Knowledge Graph, Vector Store, and Database
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Context Graph vs. Knowledge Graph, Vector Store, and Database">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#context-graph-vs-enterprise-knowledge-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context Graph vs. Enterprise Knowledge Graph
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#context-graph-vs-vector-store" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context Graph vs. Vector Store
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#context-graph-vs-traditional-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context Graph vs. Traditional Database
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-context-graph-as-memory-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Context Graph as Memory Layer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Context Graph as Memory Layer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-five-complementary-knowledge-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Five Complementary Knowledge Layers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#read-path-and-write-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read Path and Write Path
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Read Path and Write Path">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-context-graph-read-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Context Graph Read Path
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-context-graph-write-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Context Graph Write Path
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#context-graph-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context Graph Lifecycle
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#context-graph-access-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context Graph Access Control
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-and-key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary and Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1198,16 +1611,16 @@
   
     <a href="https://github.com/dmccreary/context-graph/blob/main/docs/chapters/09-context-graph-definition/index.md" title="Edit this page" class="md-content__button md-icon">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
     </a>
   
   
 
 
-<h1 id="chapter-9-what-a-context-graph-is">Chapter 9: What a Context Graph Is<a class="headerlink" href="#chapter-9-what-a-context-graph-is" title="Permanent link">&para;</a></h1>
-<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<h1 id="chapter-9-what-a-context-graph-is">Chapter 9: What a Context Graph Is<a class="headerlink" href="#chapter-9-what-a-context-graph-is" title="Permanent link">¶</a></h1>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">¶</a></h2>
 <p>Defines context graphs — how they extend enterprise knowledge graphs, their node-and-edge schema, API, read/write paths, lifecycle management, and access-control model.</p>
-<h2 id="concepts-covered">Concepts Covered<a class="headerlink" href="#concepts-covered" title="Permanent link">&para;</a></h2>
+<h2 id="concepts-covered">Concepts Covered<a class="headerlink" href="#concepts-covered" title="Permanent link">¶</a></h2>
 <p>This chapter covers the following 20 concepts from the learning graph:</p>
 <ol>
 <li>Context Graph Definition</li>
@@ -1231,7 +1644,7 @@
 <li>Context Graph Write Path</li>
 <li>Context Graph Access Control</li>
 </ol>
-<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">¶</a></h2>
 <p>This chapter builds on concepts from:</p>
 <ul>
 <li><a href="../01-knowledge-graphs-lpg/">Chapter 1: Knowledge Graphs and Labeled Property Graphs</a></li>
@@ -1239,14 +1652,219 @@
 <li><a href="../07-process-mining-lineage/">Chapter 7: Process Mining, Data Lineage, and Provenance</a></li>
 <li><a href="../08-context-problem/">Chapter 8: The Context Problem and RAG Limitations</a></li>
 </ul>
-<hr />
-<p>TODO: Generate Chapter Content</p>
+<hr>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">The moment the solution clicks.</p>
+<p><img src="../../img/mascot/welcome.png" class="mascot-admonition-img" alt="Nexus waves welcome">
+Welcome to Chapter 9 — the definition chapter. Every concept from Chapters 1 through 8 has been building toward this precise moment: what exactly is a context graph, how does it work, and how does it close the gaps that RAG cannot close? By the end of this chapter, you will have a complete mental model. Let's trace the why!</p>
+</div>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">¶</a></h2>
+<p>A <strong>context graph</strong> is a persistent, living record of organizational decision traces — stitched across entities, time, and the broader enterprise knowledge graph — designed to give LLMs the decision context they need to reason accurately about enterprise tasks.</p>
+<p>That definition is dense. Let's unpack it term by term, because every word is load-bearing.</p>
+<p><strong>Persistent</strong>: unlike an LLM context window, which evaporates at the end of a session, the context graph accumulates over time. Every decision trace written to the graph is available to every future query, by any agent or human, in any session. Persistence is what makes the context graph an organizational memory system rather than a session artifact.</p>
+<p><strong>Living record</strong>: the context graph reflects the current and historical state of organizational decisions. When a precedent is revised, the graph records the revision. When an approval is escalated, the graph records the escalation. When a policy changes, the graph links the change to all decisions it affects. The graph grows and evolves with the organization — it is not a snapshot.</p>
+<p><strong>Decision traces</strong>: the atomic unit of context graph content. A decision trace is a structured record of a specific organizational decision: what was decided, by whom, when, based on what information, under what policy, with what precedents cited, and whether the decision was later reviewed or overturned. Decision traces are the answer to the question "why was this done this way?"</p>
+<p><strong>Stitched across entities, time, and the broader enterprise knowledge graph</strong>: a context graph does not exist in isolation. It is anchored to the enterprise knowledge graph's entity nodes (customers, products, employees, contracts) and to timestamps. This stitching is what makes it possible to query: "show me all decisions involving this customer in the last 12 months" or "which product lines have the most exception-driven pricing decisions?"</p>
+<h2 id="the-decision-trace-the-atomic-unit">The Decision Trace: The Atomic Unit<a class="headerlink" href="#the-decision-trace-the-atomic-unit" title="Permanent link">¶</a></h2>
+<p>A <strong>decision trace</strong> is the fundamental data structure of a context graph. Before specifying its schema, it helps to understand what organizational problem it solves.</p>
+<p>Consider an experienced account manager deciding whether to approve a pricing exception for a specific customer. They know, from experience, that this customer is strategic, that the exception was approved three times before in similar circumstances, that the previous approvals were made at end-of-quarter under revenue pressure, and that one of them was later flagged by finance as a precedent they did not want repeated. None of this knowledge is in any formal system. It is in the account manager's head — and when they leave the company, it leaves with them.</p>
+<p>A decision trace captures all of this context at the moment the decision is made:</p>
+<ul>
+<li><strong>What was decided</strong>: "Exception approved: 15% discount on contract renewal for Acme Corp, Q4 2025"</li>
+<li><strong>By whom</strong>: "Approval: J. Smith (Account Manager), countersigned: M. Williams (VP Sales)"</li>
+<li><strong>When</strong>: ISO 8601 timestamp with timezone</li>
+<li><strong>Based on what information</strong>: links to the retrieved context (contract node, customer revenue node, previous pricing decisions)</li>
+<li><strong>Under what policy</strong>: link to the pricing policy version in effect at the time</li>
+<li><strong>Citing what precedents</strong>: links to the prior exception approvals that were consulted</li>
+<li><strong>With what outcome</strong>: the eventual business result, if recorded retrospectively</li>
+<li><strong>With any review flags</strong>: whether the decision was later reviewed, challenged, or overturned</li>
+</ul>
+<p>This is the full decision context that an LLM needs to make a well-grounded recommendation the next time a similar request arrives. The context graph stores it, indexes it, and makes it retrievable.</p>
+<h2 id="context-graph-schema-nodes-and-edges">Context Graph Schema: Nodes and Edges<a class="headerlink" href="#context-graph-schema-nodes-and-edges" title="Permanent link">¶</a></h2>
+<p>A context graph has a defined schema of node types and edge types. Here are the primary types in a canonical context graph schema.</p>
+<p><strong>Decision Node</strong> is the core entity type. A decision node represents a single organizational decision. Its required properties include: <code>decision_id</code> (globally unique), <code>decision_type</code> (the category of decision — pricing, approval, escalation, exception, configuration, etc.), <code>timestamp</code> (when the decision was made), <code>actor_id</code> (canonical entity ID of the person or system that made the decision), <code>status</code> (active, superseded, under-review, overturned), and <code>context_summary</code> (a brief natural-language description suitable for LLM retrieval).</p>
+<p><strong>Entity links</strong> connect a decision node to the business entities the decision was about. These are edges between the decision node and entity nodes in the enterprise knowledge graph. The edge type encodes the relationship: <code>APPLIES_TO</code> (this decision applies to this customer), <code>GOVERNS</code> (this decision governs this product line), <code>AFFECTS</code> (this decision affects this contract). Because context graph decision nodes live in the same graph database as the entity nodes, these links are native graph edges — traversable with zero additional infrastructure.</p>
+<p><strong>An approval edge</strong> represents the act of authorization. An approval edge runs from an approver's actor node to the decision node it authorized, with properties encoding: the approval timestamp, the approval channel (system, email, in-person, automated), and any conditions attached to the approval. The approval edge is what makes the out-of-band approval chain visible in the graph — even approvals that happened via conversation or email can be recorded as approval edges if the system that captures them is integrated with the context graph write path.</p>
+<p><strong>A precedent link</strong> is an edge from a decision node to an earlier decision node that was consulted or cited in making the current decision. Precedent links are how the context graph builds a citation network of organizational decisions — analogous to the citation graph of academic papers. High-in-degree decision nodes (those cited by many subsequent decisions) are the most influential precedents in the organization's decision history — exactly the nodes that should be surfaced first in LLM context retrieval.</p>
+<p><strong>A policy reference edge</strong> links a decision node to the specific version of the policy that governed it at the time. Because policy documents change over time, it is critical that the link points to the specific version in force when the decision was made — not the current version of the policy. This temporal specificity is what enables the context graph to correctly answer "what policy was in effect when this decision was made?" even years after the fact.</p>
+<p>A diagram will make this schema concrete. Before examining it, note the three types of edges we have now defined: entity links (from decision to business entity), approval edges (from approver to decision), and precedent links (from decision to earlier decision).</p>
+<h4 id="diagram-context-graph-schema-core-node-and-edge-types">Diagram: Context Graph Schema — Core Node and Edge Types<a class="headerlink" href="#diagram-context-graph-schema-core-node-and-edge-types" title="Permanent link">¶</a></h4>
+<details>
+<summary>Interactive vis-network diagram showing the core schema of a context graph: decision nodes, entity links, approval edges, and precedent links</summary>
+<p>Type: graph-model
+<strong>sim-id:</strong> context-graph-schema
+<strong>Library:</strong> vis-network
+<strong>Status:</strong> Specified</p>
+<p>Bloom Level: Remember (L1)
+Bloom Verb: identify
+Learning Objective: Learners can identify the four core schema elements of a context graph (Decision Node, Entity Link, Approval Edge, Precedent Link) and state what information each carries.</p>
+<p>Instructional Rationale: A clickable vis-network schema diagram is appropriate for the Remember objective — learners can click each node type and edge type to see its property list and role, reinforcing recall through active engagement with the schema structure.</p>
+<p>Canvas: responsive width, 560px height. White background with light gray grid.</p>
+<p>Nodes:
+- "Decision: Price Exception Q4-2025" (indigo, large ellipse, center-left) — represents a specific decision
+- "Customer: Acme Corp" (teal, ellipse, left) — business entity
+- "Approver: M. Williams (VP Sales)" (gold, circle, top-center)
+- "Policy: Pricing Policy v3.2" (steel blue, box, bottom-left)
+- "Precedent: Price Exception Q2-2024" (indigo, smaller ellipse, right) — earlier decision cited as precedent
+- "Precedent: Price Exception Q4-2023" (indigo, smallest ellipse, far-right) — second precedent</p>
+<p>Edges:
+- Decision → Customer: Acme Corp, label "APPLIES_TO", color dark gray
+- Approver → Decision, label "APPROVED", color gold, arrow at Decision end
+- Decision → Policy: Pricing Policy v3.2, label "GOVERNED_BY", color steel blue
+- Decision → Precedent Q2-2024, label "CITES", color orange, dashed
+- Decision → Precedent Q4-2023, label "CITES", color orange, dashed</p>
+<p>Click on "Decision: Price Exception Q4-2025":
+"<strong>Decision Node</strong> — the core schema element. Properties: decision_id (UID), decision_type ('pricing_exception'), timestamp ('2025-10-31T14:22:00Z'), actor_id ('EMP-J-SMITH'), status ('active'), context_summary ('15% discount approved for Acme Corp renewal, Q4 end-of-period, strategic account justification')."</p>
+<p>Click on "Customer: Acme Corp":
+"<strong>Entity Link (APPLIES_TO)</strong> — connects a decision node to the business entity it concerns. This entity lives in the enterprise knowledge graph. The link makes the decision discoverable through any query that starts from this customer entity."</p>
+<p>Click on "Approver: M. Williams":
+"<strong>Approval Edge (APPROVED)</strong> — records the authorization. Properties: approval_timestamp, approval_channel ('system: CRM approval workflow'), conditions ('no recurrence within 12 months'). Out-of-band approvals (verbal, email) can also be recorded here."</p>
+<p>Click on "Policy: Pricing Policy v3.2":
+"<strong>Policy Reference Edge (GOVERNED_BY)</strong> — links to the <em>specific version</em> of the policy in force at decision time. Critical for historical query accuracy: v3.2, not the current v4.1."</p>
+<p>Click on either Precedent node:
+"<strong>Precedent Link (CITES)</strong> — records which earlier decisions were consulted. High in-degree decisions (cited by many) are the most influential organizational precedents and are retrieved first in LLM context assembly."</p>
+<p>Hover over each edge: shows edge label and description.</p>
+</details>
+<h2 id="context-graph-vs-knowledge-graph-vector-store-and-database">Context Graph vs. Knowledge Graph, Vector Store, and Database<a class="headerlink" href="#context-graph-vs-knowledge-graph-vector-store-and-database" title="Permanent link">¶</a></h2>
+<p>The context graph is a specific architectural element. To position it correctly, we need to compare it clearly to the three data system types it is most commonly confused with.</p>
+<h3 id="context-graph-vs-enterprise-knowledge-graph">Context Graph vs. Enterprise Knowledge Graph<a class="headerlink" href="#context-graph-vs-enterprise-knowledge-graph" title="Permanent link">¶</a></h3>
+<p>The enterprise knowledge graph (covered in Chapters 4 and 5) is a representation of the organization's entities and the relationships between them: customers, products, employees, suppliers, contracts, and how they are connected. It is primarily a <em>current-state</em> system — it answers "what is the relationship between these entities today?"</p>
+<p>The context graph <em>extends</em> the knowledge graph rather than replacing it. Context graph decision nodes are anchored to knowledge graph entity nodes through entity link edges. The two graphs share the same graph database, so a traversal can move fluidly between the entity layer (is this customer strategic?) and the decision layer (what decisions have been made about this customer?). The knowledge graph answers "what exists and how is it connected"; the context graph answers "what has been decided and why."</p>
+<h3 id="context-graph-vs-vector-store">Context Graph vs. Vector Store<a class="headerlink" href="#context-graph-vs-vector-store" title="Permanent link">¶</a></h3>
+<p>A vector store indexes documents as embedding vectors and enables semantic similarity search. It is optimized for the question "what content is most semantically similar to this query?" It does not represent the structural relationships between entities, the temporal history of decisions, or the provenance and approval chains of retrieved content.</p>
+<p>The context graph is optimized for structured traversal: "starting from this entity, what decisions have been made about it, what precedents were cited, who approved them, and which policies governed them?" These are graph traversal queries, not similarity searches. A context graph can be augmented with vector embeddings (decision nodes can have embedding vectors that enable similarity search within the decision space), but the graph structure is what enables the multi-hop reasoning that distinguishes it from a flat vector index.</p>
+<h3 id="context-graph-vs-traditional-database">Context Graph vs. Traditional Database<a class="headerlink" href="#context-graph-vs-traditional-database" title="Permanent link">¶</a></h3>
+<p>A traditional relational database can store decision records — as rows in a decisions table. The limitation is in the query model. A relational database answers queries that are specified upfront and match the schema's join patterns. Asking "what is the precedent citation chain for this decision?" on a relational database requires recursive joins or CTEs that are complex to write and expensive to execute. Asking "find all decisions where the citing chain leads back to a policy that has since been updated" is a graph traversal query that maps naturally to a graph database and awkwardly to a relational one.</p>
+<p>The context graph uses a native graph database because the most valuable queries over decision history are graph traversal queries — multi-hop, relationship-following queries that are the natural idiom of graph databases.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Context graphs complement; they don't replace.</p>
+<p><img src="../../img/mascot/thinking.png" class="mascot-admonition-img" alt="Nexus thinking">
+This is a common source of confusion worth clarifying: a context graph is not an alternative to a data warehouse, a relational database, or a vector store. Each system has a role. The data warehouse answers aggregate analytical queries. The relational database handles transactional state. The vector store enables semantic document retrieval. The context graph provides decision context and organizational memory. In a well-designed enterprise AI architecture, all four work together.</p>
+</div>
+<h2 id="the-context-graph-as-memory-layer">The Context Graph as Memory Layer<a class="headerlink" href="#the-context-graph-as-memory-layer" title="Permanent link">¶</a></h2>
+<p>The cleanest conceptual framing for a context graph is as the <strong>memory layer</strong> of an enterprise AI system. Just as a human expert accumulates organizational knowledge over years — building up intuitions, precedents, and exception-handling patterns that inform future decisions — a context graph accumulates organizational knowledge as structured, queryable data that any AI agent can access.</p>
+<p><strong>Complementary knowledge layers</strong> in an enterprise AI architecture stack on top of each other:</p>
+<ol>
+<li><strong>Raw data layer</strong>: the transactional systems — ERP, CRM, HR, billing — that record operational facts</li>
+<li><strong>Knowledge graph layer</strong>: the entity-relationship model built over the raw data, providing a connected view of the organization</li>
+<li><strong>Semantic layer</strong>: the business concepts and definitions that give the knowledge graph its vocabulary (from the semantic layer and metadata registry work)</li>
+<li><strong>Context graph layer</strong>: the decision trace records layered on top of the entity graph, providing the <em>why</em> behind the <em>what</em></li>
+<li><strong>LLM reasoning layer</strong>: the language model that queries across all four lower layers to assemble relevant context and generate a grounded response</li>
+</ol>
+<p>The context graph sits at the critical junction between the structured organizational data below and the LLM reasoning above. It is the layer that translates organizational history into LLM-retrievable memory.</p>
+<h4 id="diagram-five-complementary-knowledge-layers">Diagram: Five Complementary Knowledge Layers<a class="headerlink" href="#diagram-five-complementary-knowledge-layers" title="Permanent link">¶</a></h4>
+<details>
+<summary>Interactive vis-network diagram showing the five knowledge layers of an enterprise AI architecture and how they relate</summary>
+<p>Type: graph-model
+<strong>sim-id:</strong> five-knowledge-layers
+<strong>Library:</strong> vis-network
+<strong>Status:</strong> Specified</p>
+<p>Bloom Level: Understand (L2)
+Bloom Verb: summarize
+Learning Objective: Learners can summarize the role of each of the five knowledge layers in an enterprise AI architecture and explain how the context graph bridges the structured data layers and the LLM reasoning layer.</p>
+<p>Instructional Rationale: A hierarchical vis-network diagram with clickable layer nodes is appropriate for the Understand objective — learners can click each layer to read its role description, building a structured mental model of the overall architecture.</p>
+<p>Canvas: responsive width, 520px height. Light gray background.</p>
+<p>Layout: Five nodes arranged vertically (top to bottom), like a stack:
+1. "LLM Reasoning Layer" (gold, large box, top)
+2. "Context Graph Layer" (indigo, large ellipse) — highlighted as the key layer
+3. "Semantic Layer" (teal, box)
+4. "Knowledge Graph Layer" (steel blue, box)
+5. "Raw Data Layer" (gray, box, bottom)</p>
+<p>Vertical edges connecting adjacent layers, labeled:
+- LLM Reasoning ↔ Context Graph: "queries for decision context"
+- Context Graph ↔ Semantic Layer: "uses definitions and governance"
+- Context Graph ↔ Knowledge Graph: "anchors decision nodes to entities"
+- Knowledge Graph ↔ Semantic Layer: "provides vocabulary"
+- Knowledge Graph ↔ Raw Data: "integrates via ETL pipelines"</p>
+<p>Click on each layer node: opens infobox with:
+- Layer name
+- What question it answers
+- What it stores / provides
+- Which earlier chapter covered it</p>
+<p>For "Context Graph Layer": highlighted in bright indigo border with additional text: "This is the layer this book is about. It is the bridge between what the organization knows (knowledge graph, semantic layer) and what the organization has decided (decision traces)."</p>
+<p>Two annotation labels:
+- Bracket spanning layers 3-5: "Covered in Chapters 1-7"
+- Bracket spanning layer 2: "This book's focus (Chapters 8-22)"
+- Bracket spanning layer 1: "The LLM that benefits from all layers below"</p>
+<p>Hover over any edge shows the label.</p>
+</details>
+<h2 id="read-path-and-write-path">Read Path and Write Path<a class="headerlink" href="#read-path-and-write-path" title="Permanent link">¶</a></h2>
+<p>A context graph system has two distinct operational paths: the read path (how decision context is retrieved for LLM consumption) and the write path (how new decision traces are recorded).</p>
+<h3 id="the-context-graph-read-path">The Context Graph Read Path<a class="headerlink" href="#the-context-graph-read-path" title="Permanent link">¶</a></h3>
+<p>The <strong>read path</strong> is the retrieval pipeline that assembles relevant decision context for an LLM query. A typical read path has four stages:</p>
+<ol>
+<li>
+<p><strong>Query interpretation</strong>: the LLM agent or application layer identifies the entity (or entities) the query is about and the type of decision context needed. "What are the most relevant pricing precedents for Acme Corp?" becomes a structured query: entity = Acme Corp (canonical ID: ENT-00441872), query type = pricing decisions, recency = last 24 months.</p>
+</li>
+<li>
+<p><strong>Graph traversal</strong>: the context graph database executes a traversal starting from the customer entity node, following decision link edges to pricing exception decision nodes, collecting their properties, cited precedents, and approval records. The traversal returns a subgraph of relevant decision nodes and their relationships.</p>
+</li>
+<li>
+<p><strong>Ranking</strong>: the retrieved decision nodes are ranked by relevance — a combination of recency, precedent in-degree (how often they have been cited), semantic similarity to the current query, and customer relationship match (were these decisions about the same customer, a similar customer, or a different entity type?).</p>
+</li>
+<li>
+<p><strong>Context assembly</strong>: the top-ranked decision nodes are serialized into a natural-language context block that is injected into the LLM's context window. The serialization format is designed for LLM consumption: each decision trace is rendered as a structured narrative with the key facts (what, who, when, why, outcome) in a consistent order.</p>
+</li>
+</ol>
+<p>A <strong>context graph query pattern</strong> is a reusable template for a specific type of context retrieval — pricing precedents, exception history, approval chain lookup, policy change impact. Query patterns are parameterized by entity ID and time range, enabling the context graph API to serve a wide range of retrieval needs without requiring ad hoc graph queries.</p>
+<h3 id="the-context-graph-write-path">The Context Graph Write Path<a class="headerlink" href="#the-context-graph-write-path" title="Permanent link">¶</a></h3>
+<p>The <strong>write path</strong> records new decision traces as they are made. A well-designed write path captures decision context at the moment of decision — not hours or days later when the details may be incomplete or forgotten.</p>
+<p>The <strong>context graph write pattern</strong> has three modes:</p>
+<ol>
+<li>
+<p><strong>Automated capture</strong>: for decisions made by AI agents or automated systems, the agent writes the decision trace directly to the context graph via the write API as part of its action execution. The trace is generated from the agent's decision state, which includes the query, the retrieved context, the reasoning steps, and the output action.</p>
+</li>
+<li>
+<p><strong>System integration</strong>: for decisions made in existing enterprise systems (CRM, ERP, approval workflow systems), integration connectors listen for decision events (webhook callbacks, event stream messages, CDC events) and automatically generate decision trace records for the context graph.</p>
+</li>
+<li>
+<p><strong>Facilitated manual capture</strong>: for decisions made in conversations, meetings, or email threads, a capture interface (often integrated into the communication tool) prompts participants to record the key decision metadata: what was decided, who approved it, what precedents were considered. This is the hardest mode because it requires human behavior change, but it is the only path to capturing decisions made outside automated systems.</p>
+</li>
+</ol>
+<h3 id="context-graph-lifecycle">Context Graph Lifecycle<a class="headerlink" href="#context-graph-lifecycle" title="Permanent link">¶</a></h3>
+<p>A <strong>context graph lifecycle</strong> defines how decision trace records evolve over time. Unlike most database records, decision traces should never be deleted — they are the historical record of organizational decisions, and deleting them destroys organizational memory. Instead, the lifecycle has four states:</p>
+<ul>
+<li><strong>Active</strong>: the decision is current and may be cited as a precedent for similar decisions</li>
+<li><strong>Superseded</strong>: the decision has been replaced by a new decision, but remains in the graph as a historical record. Superseded decisions are linked to their replacements by a <code>SUPERSEDED_BY</code> edge.</li>
+<li><strong>Under review</strong>: the decision is being re-evaluated. It can be cited as a precedent but with a caveat flag that the outcome is uncertain.</li>
+<li><strong>Overturned</strong>: the decision was found to be incorrect or policy-violating and has been reversed. Overturned decisions remain in the graph as cautionary precedents and are linked to the overturning record.</li>
+</ul>
+<p>The lifecycle state is stored as a property on the decision node and must be updated by the write path when the state changes. LLM retrieval queries should filter by lifecycle state: for active precedent retrieval, return only Active and Superseded nodes; for compliance audit queries, return all states including Overturned.</p>
+<h2 id="context-graph-access-control">Context Graph Access Control<a class="headerlink" href="#context-graph-access-control" title="Permanent link">¶</a></h2>
+<p>Decision traces contain sensitive organizational information: who approved what, under what circumstances, with what justifications. Access to this information must be governed by the same classification and access control framework described in Chapter 3.</p>
+<p><strong>Context graph access control</strong> operates at two levels. At the node level, individual decision nodes carry a classification label inherited from the entities they are linked to (a decision about a customer classified as Restricted carries Restricted classification itself). At the query level, the context graph API evaluates the requesting agent's identity and permissions against the classification of the requested decision nodes before returning results.</p>
+<p>The context graph also supports <strong>redaction modes</strong> for sensitive decision content: certain decision trace properties (the identity of the approver, the specific justification text) may be redacted for lower-privilege queries, while the structural metadata (that a decision was made, when, and what entities it applied to) remains visible. This allows compliance audit queries to verify that governance processes were followed without exposing the full decision content to unauthorized agents.</p>
+<h2 id="summary-and-key-takeaways">Summary and Key Takeaways<a class="headerlink" href="#summary-and-key-takeaways" title="Permanent link">¶</a></h2>
+<p>A context graph is a precise architectural element with a specific schema, two distinct operational paths, and a lifecycle model. It extends the enterprise knowledge graph by adding decision traces — the organizational memory of why things were done the way they were. It differs from knowledge graphs (current entity state), vector stores (document similarity), and relational databases (flat table queries) in ways that make it uniquely suited for grounding enterprise LLM applications.</p>
+<p>By the end of this chapter, you should be able to:</p>
+<ul>
+<li>Give the formal definition of a <strong>context graph</strong> and explain each term in the definition</li>
+<li>Define a <strong>decision trace</strong> and name its required schema fields</li>
+<li>Distinguish the three main edge types in a context graph schema: <strong>entity links</strong>, <strong>approval edges</strong>, and <strong>precedent links</strong></li>
+<li>Explain how a context graph differs from an enterprise knowledge graph, a vector store, and a relational database</li>
+<li>Describe the <strong>context graph as memory layer</strong> and its position in the five-layer enterprise AI architecture</li>
+<li>Explain the four stages of the <strong>context graph read path</strong> and the three modes of the <strong>context graph write path</strong></li>
+<li>Name the four states of the <strong>context graph lifecycle</strong> (Active, Superseded, Under Review, Overturned)</li>
+</ul>
+<details class="question">
+<summary>Quick Check</summary>
+<p>An LLM agent is processing a new pricing exception request for a customer. Describe the read path traversal the agent would execute against the context graph, starting from the customer entity node, and name the node and edge types it would encounter along the way. Then describe what the write path would record once the exception is approved.</p>
+<p><em>(Answer: Read path: start from customer entity node (e.g., ENT-00441872) → follow APPLIES_TO edges from decision nodes back to this customer → retrieve pricing exception decision nodes → follow CITES edges to their precedent links → follow GOVERNED_BY edges to policy versions → rank by recency and in-degree → serialize top results for the LLM context window. Write path: create new Decision Node with decision_type='pricing_exception', timestamp, actor_id; create entity link APPLIES_TO to customer node; create approval edge from approver node; create CITES edges to the precedents retrieved during read path; create GOVERNED_BY edge to current policy version; set lifecycle state to Active.)</em></p>
+</details>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">Chapter 9: Complete!</p>
+<p><img src="../../img/mascot/celebration.png" class="mascot-admonition-img" alt="Nexus celebrating">
+The context graph is defined. You now have a precise schema, a clear architectural position, and a concrete understanding of how it differs from everything else in the enterprise data stack. Chapter 10 asks a different question: why are the incumbent data platforms — data warehouses, existing knowledge graphs, AI agent startups — unable to provide this capability? The answer involves structural incentives, not just technical gaps, and it matters for understanding where context graphs create durable competitive advantage. Let's trace the why!</p>
+</div>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -1265,7 +1883,7 @@
         
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
   Back to top
 </button>
         
@@ -1275,13 +1893,13 @@
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
           <a href="../08-context-problem/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 8. The Context Problem">
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
@@ -1306,7 +1924,7 @@
             </div>
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
             </div>
           </a>
         
@@ -1318,7 +1936,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2026 Dan Mccreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+      Copyright © 2026 Dan Mccreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
     </div>
   
   
@@ -1339,6 +1957,14 @@
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
+        <script src="../../js/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+      
     
-  </body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

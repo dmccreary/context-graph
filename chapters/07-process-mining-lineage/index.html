@@ -1,12 +1,9 @@
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
+<!DOCTYPE html><html lang="en" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="An interactive intelligent textbook on the contact graph and how the contact graphs helps organization use LLMs cost effectively">
+        <meta name="description" content="How organizations reconstruct what actually happened from event logs — process mining, IEEE XES, conformance checking, OpenLineage, column-level lineage, event sourcing, and change data capture.">
       
       
         <meta name="author" content="Dan Mccreary">
@@ -21,12 +18,12 @@
         <link rel="next" href="../08-context-problem/">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../img/favicon.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
     
     
       
-        <title>7. Process Mining and Lineage - Context Graph</title>
+        <title>Chapter 7: Process Mining, Data Lineage, and Provenance - Context Graph</title>
       
     
     
@@ -47,7 +44,7 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -55,6 +52,8 @@
       <link rel="stylesheet" href="../../css/extra.css">
     
       <link rel="stylesheet" href="../../css/mascot.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -72,8 +71,44 @@
 
     
     
+      
+        <meta property="og:type" content="website">
+      
+        <meta property="og:title" content="Chapter 7: Process Mining, Data Lineage, and Provenance - Context Graph">
+      
+        <meta property="og:description" content="How organizations reconstruct what actually happened from event logs — process mining, IEEE XES, conformance checking, OpenLineage, column-level lineage, event sourcing, and change data capture.">
+      
+        <meta property="og:image" content="https://dmccreary.github.io/context-graph/assets/images/social/chapters/07-process-mining-lineage/index.png">
+      
+        <meta property="og:image:type" content="image/png">
+      
+        <meta property="og:image:width" content="1200">
+      
+        <meta property="og:image:height" content="630">
+      
+        <meta property="og:url" content="https://dmccreary.github.io/context-graph/chapters/07-process-mining-lineage/">
+      
+        <meta name="twitter:card" content="summary_large_image">
+      
+        <meta name="twitter:title" content="Chapter 7: Process Mining, Data Lineage, and Provenance - Context Graph">
+      
+        <meta name="twitter:description" content="How organizations reconstruct what actually happened from event logs — process mining, IEEE XES, conformance checking, OpenLineage, column-level lineage, event sourcing, and change data capture.">
+      
+        <meta name="twitter:image" content="https://dmccreary.github.io/context-graph/assets/images/social/chapters/07-process-mining-lineage/index.png">
+      
     
-  </head>
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     
@@ -108,13 +143,12 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Context Graph" class="md-header__button md-logo" aria-label="Context Graph" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -126,7 +160,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              7. Process Mining and Lineage
+              Chapter 7: Process Mining, Data Lineage, and Provenance
             
           </span>
         </div>
@@ -140,7 +174,7 @@
     
       <label class="md-header__button md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -149,20 +183,20 @@
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
           <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
             
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
           </a>
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
@@ -187,7 +221,7 @@
         <a href="https://github.com/dmccreary/context-graph" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -211,7 +245,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -222,8 +256,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Context Graph" class="md-nav__button md-logo" aria-label="Context Graph" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     Context Graph
@@ -233,7 +266,7 @@
       <a href="https://github.com/dmccreary/context-graph" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -651,6 +684,156 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#event-logs-the-raw-material-of-process-intelligence" class="md-nav__link">
+    <span class="md-ellipsis">
+      Event Logs: The Raw Material of Process Intelligence
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#process-mining-three-modes-of-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process Mining: Three Modes of Analysis
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Process Mining: Three Modes of Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#process-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process Discovery
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conformance-checking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conformance Checking
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#process-enhancement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process Enhancement
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Process Enhancement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-process-discovery-from-event-log-to-process-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Process Discovery — From Event Log to Process Graph
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-lineage-following-the-data-trail" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Lineage: Following the Data Trail
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-provenance-trust-and-accountability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Provenance: Trust and Accountability
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Provenance: Trust and Accountability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-lineage-vs-provenance-in-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Lineage vs. Provenance in Context
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#event-sourcing-cqrs-and-append-only-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Event Sourcing, CQRS, and Append-Only Logs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Event Sourcing, CQRS, and Append-Only Logs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-event-sourcing-architecture-for-context-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Event Sourcing Architecture for Context Graph
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bringing-lineage-and-provenance-into-the-context-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bringing Lineage and Provenance into the Context Graph
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-and-key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary and Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1007,6 +1190,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1035,6 +1222,46 @@
   
 
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1136,7 +1363,7 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -1181,6 +1408,156 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#event-logs-the-raw-material-of-process-intelligence" class="md-nav__link">
+    <span class="md-ellipsis">
+      Event Logs: The Raw Material of Process Intelligence
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#process-mining-three-modes-of-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process Mining: Three Modes of Analysis
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Process Mining: Three Modes of Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#process-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process Discovery
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conformance-checking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conformance Checking
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#process-enhancement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process Enhancement
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Process Enhancement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-process-discovery-from-event-log-to-process-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Process Discovery — From Event Log to Process Graph
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-lineage-following-the-data-trail" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Lineage: Following the Data Trail
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-provenance-trust-and-accountability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Provenance: Trust and Accountability
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Provenance: Trust and Accountability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-lineage-vs-provenance-in-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Lineage vs. Provenance in Context
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#event-sourcing-cqrs-and-append-only-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Event Sourcing, CQRS, and Append-Only Logs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Event Sourcing, CQRS, and Append-Only Logs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-event-sourcing-architecture-for-context-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Event Sourcing Architecture for Context Graph
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bringing-lineage-and-provenance-into-the-context-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bringing Lineage and Provenance into the Context Graph
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-and-key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary and Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1198,16 +1575,16 @@
   
     <a href="https://github.com/dmccreary/context-graph/blob/main/docs/chapters/07-process-mining-lineage/index.md" title="Edit this page" class="md-content__button md-icon">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
     </a>
   
   
 
 
-<h1 id="chapter-7-process-mining-data-lineage-and-provenance">Chapter 7: Process Mining, Data Lineage, and Provenance<a class="headerlink" href="#chapter-7-process-mining-data-lineage-and-provenance" title="Permanent link">&para;</a></h1>
-<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<h1 id="chapter-7-process-mining-data-lineage-and-provenance">Chapter 7: Process Mining, Data Lineage, and Provenance<a class="headerlink" href="#chapter-7-process-mining-data-lineage-and-provenance" title="Permanent link">¶</a></h1>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">¶</a></h2>
 <p>Reconstructs what actually happened from event logs using IEEE XES, process discovery, conformance checking, OpenLineage, column-level lineage, event sourcing, and change data capture.</p>
-<h2 id="concepts-covered">Concepts Covered<a class="headerlink" href="#concepts-covered" title="Permanent link">&para;</a></h2>
+<h2 id="concepts-covered">Concepts Covered<a class="headerlink" href="#concepts-covered" title="Permanent link">¶</a></h2>
 <p>This chapter covers the following 25 concepts from the learning graph:</p>
 <ol>
 <li>Process Mining</li>
@@ -1236,7 +1613,7 @@
 <li>Lineage Graph</li>
 <li>Provenance Record</li>
 </ol>
-<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">¶</a></h2>
 <p>This chapter builds on concepts from:</p>
 <ul>
 <li><a href="../02-semantic-layers/">Chapter 2: Semantic Layers for Data Lakes</a></li>
@@ -1244,14 +1621,215 @@
 <li><a href="../05-graph-theory-algorithms/">Chapter 5: Graph Theory, Algorithms, and Advanced Enterprise KG</a></li>
 <li><a href="../06-metadata-registries/">Chapter 6: Metadata Registries and ISO 11179</a></li>
 </ul>
-<hr />
-<p>TODO: Generate Chapter Content</p>
+<hr>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">The living history of enterprise activity.</p>
+<p><img src="../../img/mascot/welcome.png" class="mascot-admonition-img" alt="Nexus waves welcome">
+Welcome to Chapter 7! The previous chapters gave us structure: entities, relationships, definitions. This chapter gives us <em>history</em>: the record of what actually happened, when it happened, and why the data looks the way it does today. Process mining and data lineage are how organizations reconstruct their own story. Let's trace the why!</p>
+</div>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">¶</a></h2>
+<p>Organizations make decisions constantly — approving invoices, onboarding customers, routing incidents, deploying software, pricing orders. Most of these decisions leave traces in operational systems: database updates, log entries, transaction records, message queue events. Individually, each trace is a small, mundane record. Collectively, they constitute the empirical history of how the organization actually works — not how it thinks it works, not how the process documentation says it should work, but how it actually behaves under real conditions.</p>
+<p>Three disciplines extract value from this trace data. <strong>Process mining</strong> reconstructs process models from event logs — answering "what process did these transactions actually follow?" and "where did the process deviate from policy?" <strong>Data lineage</strong> tracks the flow of data from its origin through every transformation to its final destination — answering "where did this number come from?" <strong>Data provenance</strong> records the custody chain and transformation history of individual data values — answering "can I trust this value, and who is accountable for it?"</p>
+<p>All three feed naturally into context graphs. A context graph that incorporates process mining findings can surface when a decision was made outside the normal process flow — a signal of either genuine exception-handling or of a governance violation. A context graph enriched with lineage data can tell an LLM which data sources contributed to a calculated value — enabling the LLM to caveat its response based on the quality scores of those sources. A context graph with provenance records can answer "this value was touched by three transformations between its source and the LLM's context window — here is who performed each transformation and when."</p>
+<h2 id="event-logs-the-raw-material-of-process-intelligence">Event Logs: The Raw Material of Process Intelligence<a class="headerlink" href="#event-logs-the-raw-material-of-process-intelligence" title="Permanent link">¶</a></h2>
+<p>An <strong>event log</strong> is a structured record of events that occurred during the execution of a process. Each event in the log typically records: which case (process instance) the event belongs to, what activity was performed, when it was performed, and who or what performed it. An event log for a purchase order process might contain thousands of rows, each recording one step (created, approved, received, invoiced, paid) for one purchase order case.</p>
+<p>The key requirement for a useful event log is structure — specifically, three fields that must be present in every event record:</p>
+<ol>
+<li><strong>Case ID</strong>: identifies which process instance this event belongs to (e.g., purchase order number PO-44821)</li>
+<li><strong>Activity</strong>: identifies what happened (e.g., "Invoice Received," "Payment Approved," "Exception Flagged")</li>
+<li><strong>Timestamp</strong>: records when it happened (ideally with millisecond precision and timezone information)</li>
+</ol>
+<p>Optional but valuable fields include: the resource that performed the activity (person, system, or agent), additional attributes relevant to the case (amount, customer segment, product line), and outcome fields that record whether the activity succeeded or triggered an exception.</p>
+<p><strong>Structured logging</strong> is the engineering practice of emitting log records in a consistent, machine-readable format — typically JSON or a structured schema — rather than free-form text strings. A free-form log entry like <code>[2025-03-15 14:22:11] User john.smith@acme.com approved invoice INV-4482 for $52,000</code> is readable to a human but requires fragile regex parsing to extract the case ID, activity, timestamp, and resource. A structured log entry explicitly fields all of these as named attributes, making it directly ingestible by event log processing pipelines.</p>
+<p>A <strong>log schema</strong> formalizes the structure of log records — defining the required and optional fields, their data types, and their semantics. Log schemas should be registered in the metadata registry, versioned, and linked to data element definitions. When the log schema for an invoice processing system is linked to the registry definition of "Invoice Case ID," any downstream system that consumes those logs can interpret the case ID field correctly without additional documentation.</p>
+<p><strong>IEEE XES</strong> (Extensible Event Stream) is the international standard format for event logs, maintained by the Institute of Electrical and Electronics Engineers. XES defines an XML schema for representing event logs, including standardized attributes for case ID (concept:name), activity (concept:name on events), and timestamp (time:timestamp). Process mining tools that support XES can directly consume logs from any system that produces XES-format output, enabling a common toolchain regardless of the source system. The XES standard is the bridge between raw operational log data and the process mining algorithms that extract business insight from it.</p>
+<h2 id="process-mining-three-modes-of-analysis">Process Mining: Three Modes of Analysis<a class="headerlink" href="#process-mining-three-modes-of-analysis" title="Permanent link">¶</a></h2>
+<p><strong>Process mining</strong> is the discipline of applying data mining and machine learning techniques to event logs to discover, analyze, and improve process models. Wil van der Aalst at RWTH Aachen University pioneered the field and formalized its three core analysis modes.</p>
+<h3 id="process-discovery">Process Discovery<a class="headerlink" href="#process-discovery" title="Permanent link">¶</a></h3>
+<p><strong>Process discovery</strong> takes an event log as input and outputs a process model — a visualization of the actual process flow derived from the empirical trace data. The output is typically represented as a Petri net, a BPMN diagram, or a directly-follows graph: a graph where nodes represent activities and edges represent the "directly follows" relationship (activity B directly follows activity A if there exists a case where A was completed immediately before B).</p>
+<p>Process discovery is powerful because it reveals what actually happens rather than what the documentation says should happen. A team that believes its invoice approval process has three steps will often discover from event logs that the actual process has seven steps, three of which are informal workarounds that have accumulated over years and are not documented anywhere.</p>
+<p>For context graphs, process discovery results are a rich source of process topology data: the nodes (activities) and edges (sequence relationships) from a discovered process model map directly to a graph structure that can be queried by LLMs. "What is the standard approval path for a high-value purchase order?" can be answered by querying the process model graph derived from historical event logs.</p>
+<h3 id="conformance-checking">Conformance Checking<a class="headerlink" href="#conformance-checking" title="Permanent link">¶</a></h3>
+<p><strong>Conformance checking</strong> compares an actual event log against a reference process model (derived from policy documents, regulations, or best-practice specifications) and identifies deviations: cases where the actual process did not follow the intended model. Deviations might include skipped steps (a payment was made without an invoice being received), reversed steps (approval came before document submission), or unauthorized activities (a user who should not have access performed an activity).</p>
+<p>Conformance checking is the bridge between process mining and compliance. A context graph enriched with conformance checking results can surface, for any historical decision, whether it was made through a conformant or deviant process — critical information for an LLM answering questions about whether a past decision was procedurally sound.</p>
+<h3 id="process-enhancement">Process Enhancement<a class="headerlink" href="#process-enhancement" title="Permanent link">¶</a></h3>
+<p><strong>Process enhancement</strong> uses event log data to augment an existing process model with additional information: performance metrics (average time per activity, bottleneck identification), risk indicators (which paths are associated with exceptions or high error rates), and resource analysis (which teams handle which activities and what their capacity utilization is). Enhanced process models provide the richest context for AI-powered process optimization.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Process mining turns log data into graph data.</p>
+<p><img src="../../img/mascot/thinking.png" class="mascot-admonition-img" alt="Nexus thinking">
+Here's a connection worth making explicit: a directly-follows graph from process discovery is, literally, a graph — nodes are activities, edges are sequence relationships, and edge weights are the frequency with which each transition occurs. That graph can be stored directly in a graph database and queried with the same traversal algorithms we covered in Chapter 5. The process mining output and the context graph are naturally compatible data structures.</p>
+</div>
+<h4 id="diagram-process-discovery-from-event-log-to-process-graph">Diagram: Process Discovery — From Event Log to Process Graph<a class="headerlink" href="#diagram-process-discovery-from-event-log-to-process-graph" title="Permanent link">¶</a></h4>
+<details>
+<summary>Interactive step-through MicroSim showing how an invoice approval event log is converted to a directly-follows process graph</summary>
+<p>Type: microsim
+<strong>sim-id:</strong> process-discovery-sim
+<strong>Library:</strong> p5.js
+<strong>Status:</strong> Specified</p>
+<p>Bloom Level: Understand (L2)
+Bloom Verb: explain
+Learning Objective: Learners can explain how a directly-follows graph is derived from event log data by tracing which activity transitions occur in the log.</p>
+<p>Instructional Rationale: A two-panel step-through animation (event log on left, process graph building on right) is appropriate because the Understand objective requires learners to trace a concrete transformation — watching edges appear in the graph as transitions are counted from the log makes the derivation tangible.</p>
+<p>Canvas: responsive width via updateCanvasSize() first in setup(). Height: 500px. Light gray background.</p>
+<p><strong>Left panel</strong> (40% width): Event Log table showing 10 example events for 3 case IDs:
+- Case PO-001: Submit → Review → Approve → Pay
+- Case PO-002: Submit → Review → Reject → Revise → Review → Approve → Pay
+- Case PO-003: Submit → Approve (skip Review — deviant path)</p>
+<p>Each event row highlights in sequence as the animation progresses.</p>
+<p><strong>Right panel</strong> (60% width): Process graph building dynamically.
+Nodes (activities): "Submit", "Review", "Approve", "Reject", "Revise", "Pay"
+Edges appear one by one as each transition is processed from the event log:
+- Submit → Review (weight 2, appears after cases 1 and 2)
+- Review → Approve (weight 1)
+- Review → Reject (weight 1)
+- Reject → Revise (weight 1)
+- Revise → Review (weight 1)
+- Approve → Pay (weight 2)
+- Submit → Approve (weight 1, orange color — deviant direct connection, skip of Review)</p>
+<p>Edge thickness scales with weight. Deviant edge (Submit→Approve, skipping Review) rendered in orange.</p>
+<p>Controls: "Next Event" button advances one log row at a time, updating the graph. "Auto-play" button animates through all events at 1-second intervals. "Reset" button clears the graph and restarts.</p>
+<p>After all events processed, a summary panel appears: "Process discovered from 3 cases, 10 events. 1 conformance deviation detected: Case PO-003 skipped the Review step."</p>
+<p>Clicking any graph node highlights all edges from and to that node and shows a count of how many cases passed through this activity.</p>
+</details>
+<h2 id="data-lineage-following-the-data-trail">Data Lineage: Following the Data Trail<a class="headerlink" href="#data-lineage-following-the-data-trail" title="Permanent link">¶</a></h2>
+<p>While process mining follows <em>activities</em> through a process, <strong>data lineage</strong> follows <em>data values</em> through a data pipeline. Lineage answers the question: for any given piece of data in any system, where did it come from, what transformations did it undergo along the way, and where does it flow downstream?</p>
+<p><strong>Upstream lineage</strong> traces a data value backward from its current location to its original source. If an annual revenue figure in a reporting dashboard is under investigation, upstream lineage would trace it through the data warehouse aggregation step, through the ETL pipeline that loaded the warehouse, to the original records in the ERP billing system. Every transformation, join, filter, and aggregation is a node in the lineage graph.</p>
+<p><strong>Downstream lineage</strong> runs in the opposite direction: given a source data field, which downstream systems, reports, dashboards, APIs, and ML models consume it? Downstream lineage is essential for impact analysis: if the definition of a source field changes, or if a data quality problem is discovered in a source, downstream lineage tells you exactly which consuming systems are affected and in what order.</p>
+<p><strong>Column-level lineage</strong> is the granular form of data lineage: instead of tracking datasets or tables as whole units, column-level lineage tracks the flow of individual columns (fields) through each transformation step. Column-level lineage can answer questions like: "Which source columns contributed to the value in the <code>gross_margin_pct</code> column of the revenue dashboard?" — tracing through multiple SQL transformations to identify every input field.</p>
+<p>Column-level lineage is substantially harder to capture than table-level lineage because it requires parsing the SQL or transformation logic at each pipeline step to identify which input columns feed into which output columns. Modern lineage systems use SQL parsers and dataflow analysis to extract column-level lineage automatically, without requiring manual documentation.</p>
+<p>A <strong>lineage graph</strong> is the directed graph that represents all lineage relationships: nodes are datasets, tables, or columns; edges are transformation or dependency relationships with directionality (upstream to downstream). A lineage graph stored in a graph database can be queried with the same traversal algorithms as any other knowledge graph, enabling sophisticated lineage analysis: "find all columns whose upstream source includes any dataset owned by the team that recently reported a data quality incident."</p>
+<h2 id="data-provenance-trust-and-accountability">Data Provenance: Trust and Accountability<a class="headerlink" href="#data-provenance-trust-and-accountability" title="Permanent link">¶</a></h2>
+<p><strong>Data provenance</strong> is related to lineage but answers a different question. Lineage answers <em>where data came from</em>; provenance answers <em>whether it can be trusted</em> and <em>who is accountable for it</em>.</p>
+<p>A <strong>provenance record</strong> for a data value documents: the original source of the value (which system, which user, which external data provider), the <strong>custody chain</strong> — every person or system that has touched the value since its creation, the <strong>transformation history</strong> — every computation, filter, or enrichment that was applied to derive or modify the value, and any known quality events — data quality alerts, manual corrections, or re-ingestion events that affected the value.</p>
+<p>The distinction between lineage and provenance maps to two different questions that practitioners ask:</p>
+<ul>
+<li><strong>Lineage question</strong>: "Which dashboard used the same source data as the report that had an error?" (structural query about the data pipeline graph)</li>
+<li><strong>Provenance question</strong>: "Can I trust this transaction amount, given that it was manually entered by an external contractor and has not been reconciled against the bank statement?" (trust and accountability query)</li>
+</ul>
+<p>Both questions matter for LLM context. An LLM drawing on a high-provenance data value (original source: official bank statement, no transformations, reconciled by controller) can make stronger assertions than one drawing on a low-provenance value (original source: manual entry, three transformations, no validation). The context graph should surface provenance quality as a confidence annotation on every retrieved value.</p>
+<p><strong>The OpenLineage Standard</strong> is an open specification for representing data lineage metadata in a standardized, portable format. OpenLineage defines a JSON event model for recording lineage events: when a pipeline run starts, what datasets it reads (inputs), what datasets it writes (outputs), and what transformations it applies. Tools and platforms that implement the OpenLineage specification can interoperate — lineage information generated by one tool can be consumed and stored by a lineage catalog from a different vendor without custom integration work.</p>
+<p>For context graphs, OpenLineage events are a natural ingestion source: each OpenLineage run event generates a set of graph nodes (pipeline run, input datasets, output datasets) and edges (reads, writes, transforms) that extend the lineage graph in the context graph database. Because OpenLineage events are timestamped, the lineage graph naturally supports temporal queries: "show me the complete lineage of this dashboard column as it was on January 15th, 2025, before the pipeline was refactored."</p>
+<h4 id="diagram-lineage-vs-provenance-in-context">Diagram: Lineage vs. Provenance in Context<a class="headerlink" href="#diagram-lineage-vs-provenance-in-context" title="Permanent link">¶</a></h4>
+<details>
+<summary>Interactive vis-network graph showing the difference between lineage (where data came from) and provenance (whether it can be trusted) for a specific dashboard value</summary>
+<p>Type: graph-model
+<strong>sim-id:</strong> lineage-vs-provenance
+<strong>Library:</strong> vis-network
+<strong>Status:</strong> Specified</p>
+<p>Bloom Level: Analyze (L4)
+Bloom Verb: differentiate
+Learning Objective: Learners can differentiate data lineage from data provenance by identifying which question each answers for a specific data value in a pipeline graph.</p>
+<p>Instructional Rationale: A clickable graph with two distinct visual layers (lineage edges vs. provenance annotation nodes) is appropriate for the Analyze objective — clicking reveals the question each layer answers, making the distinction concrete without requiring additional prose.</p>
+<p>Canvas: responsive width, 500px height. White background.</p>
+<p>Nodes:
+- "Bank Transactions DB" (teal, rectangle) — source
+- "ETL Pipeline v2.3" (steel blue, diamond)
+- "Revenue Summary Table" (gold, rectangle)
+- "Finance Dashboard" (indigo, ellipse) — final consumer
+- "Provenance: Manual Correction" (orange, triangle) — attached to ETL
+- "Provenance: Not Reconciled" (red, triangle) — attached to Revenue Summary
+- "Provenance: High Confidence" (green, triangle) — attached to Bank Transactions</p>
+<p>Lineage edges (solid, dark gray):
+- Bank Transactions DB → ETL Pipeline v2.3 "reads"
+- ETL Pipeline v2.3 → Revenue Summary Table "writes"
+- Revenue Summary Table → Finance Dashboard "feeds"</p>
+<p>Provenance edges (dashed, orange):
+- ETL Pipeline v2.3 ← Provenance: Manual Correction "annotation"
+- Revenue Summary Table ← Provenance: Not Reconciled "annotation"
+- Bank Transactions DB ← Provenance: High Confidence "annotation"</p>
+<p>Two toggle buttons below the canvas:
+- "Show Lineage" (default ON): highlights solid lineage edges in dark blue
+- "Show Provenance" (default ON): highlights dashed provenance edges in orange</p>
+<p>When lineage-only toggled on: "Lineage shows the structural path: Bank DB → ETL → Summary Table → Dashboard. This tells you where the data came from."
+When provenance-only toggled on: "Provenance tells you whether to trust each step. High-confidence source, but a manual correction in the ETL and an unreconciled summary table — the dashboard value carries uncertainty."</p>
+<p>Click any node: opens infobox with node role and the provenance score (if applicable).</p>
+</details>
+<h2 id="event-sourcing-cqrs-and-append-only-logs">Event Sourcing, CQRS, and Append-Only Logs<a class="headerlink" href="#event-sourcing-cqrs-and-append-only-logs" title="Permanent link">¶</a></h2>
+<p>Some modern enterprise architectures are designed from the ground up to make event capture the primary mode of state management — not an afterthought. These architectures are naturally compatible with context graphs because they maintain a complete, immutable history of every state change from the beginning.</p>
+<p><strong>Event sourcing</strong> is an architectural pattern in which every change to application state is captured as an immutable event and stored in an append-only log. Rather than storing only the current state of an entity (like a relational database does), an event-sourced system stores the full sequence of events that led to the current state. The current state is derived by replaying the event sequence. This gives a system a built-in, tamper-evident history of every state change — exactly the kind of audit trail that compliance requirements demand and context graphs need to operate.</p>
+<p>An <strong>append-only log</strong> is a data structure where records can be added to the end but not modified or deleted. The append-only constraint provides two guarantees: immutability (past events cannot be altered retroactively) and temporal ordering (events are naturally ordered by their insertion sequence). These properties make append-only logs the ideal substrate for historical analysis — you can replay any time period, compute what the state of the system was at any point, and audit the complete sequence of changes.</p>
+<p><strong>CQRS</strong> (Command Query Responsibility Segregation) is an architectural pattern that separates the write path (commands that change state) from the read path (queries that read state). In a CQRS system, commands flow to a write store optimized for transactional consistency; queries read from a separate read store optimized for query performance. The read store is populated by processing the event log from the write side. For context graphs, CQRS suggests a natural architecture: the context graph is the read model, optimized for LLM retrieval queries, fed by an event log that captures every decision and state change on the write side.</p>
+<p><strong>Change data capture (CDC)</strong> is a technique for capturing changes to a database in real time by monitoring the database's transaction log rather than polling for changes. When a row is inserted, updated, or deleted, the CDC system detects the change from the transaction log and publishes it as an event to a downstream event stream. CDC is particularly valuable for feeding lineage systems and context graphs with real-time updates from legacy relational databases that were not designed with event sourcing in mind.</p>
+<p><strong>Temporal versioning</strong> is the practice of attaching validity time ranges to graph nodes and edges: <code>valid_from</code> and <code>valid_to</code> timestamps that record when a fact was true. Combined with event sourcing and CDC, temporal versioning allows a context graph to represent not just the current state of the enterprise but any past state — answering questions like "what did we know about this customer on the day the contract was signed?" or "which version of the pricing policy was in effect when this order was placed?"</p>
+<h4 id="diagram-event-sourcing-architecture-for-context-graph">Diagram: Event Sourcing Architecture for Context Graph<a class="headerlink" href="#diagram-event-sourcing-architecture-for-context-graph" title="Permanent link">¶</a></h4>
+<details>
+<summary>Interactive architecture diagram showing how an event-sourced system feeds lineage data and decision traces into a context graph</summary>
+<p>Type: graph-model
+<strong>sim-id:</strong> event-sourcing-context-graph
+<strong>Library:</strong> vis-network
+<strong>Status:</strong> Specified</p>
+<p>Bloom Level: Apply (L3)
+Bloom Verb: use
+Learning Objective: Learners can use the event sourcing architecture diagram to trace how a business event flows from a command to the append-only log to the context graph, and identify which component answers which type of query.</p>
+<p>Instructional Rationale: An interactive architecture diagram with clickable components is appropriate for the Apply objective — learners must identify the role of each component and trace the data flow, which prepares them to design or evaluate a similar architecture.</p>
+<p>Canvas: responsive width, 520px height. Light gray background.</p>
+<p>Nodes (7, arranged in a left-to-right flow):
+1. "Business Event" (indigo, ellipse) — far left, represents a real-world action (e.g., "Invoice Approved")
+2. "Command Handler" (teal, box)
+3. "Append-Only Event Log" (gold, cylinder shape drawn in p5.js as a rounded rectangle stack)
+4. "CDC / Stream Processor" (steel blue, box)
+5. "Context Graph" (indigo, large ellipse) — right side
+6. "LLM Retrieval API" (orange, box) — far right
+7. "Compliance Audit Query" (gray, box) — bottom right, connects to context graph</p>
+<p>Edges:
+- Business Event → Command Handler "triggers"
+- Command Handler → Append-Only Event Log "writes (immutable)"
+- Append-Only Event Log → CDC / Stream Processor "streams"
+- CDC / Stream Processor → Context Graph "ingests as nodes + edges"
+- Context Graph → LLM Retrieval API "serves grounded context"
+- Context Graph → Compliance Audit Query "answers temporal queries"</p>
+<p>Click on each node: opens infobox with component role and the type of question it answers:
+- Business Event: "The real-world action — 'Invoice INV-4482 approved by J. Smith at 14:22 UTC.' Everything starts here."
+- Append-Only Log: "Stores events immutably. You can replay from any point. Nothing is deleted. This is your tamper-evident audit trail."
+- CDC / Stream Processor: "Converts raw events into graph-ready nodes and edges. Handles entity resolution, schema mapping, and temporal versioning."
+- Context Graph: "The read model. Contains the full history of decisions, lineage, and provenance as a queryable graph."
+- LLM Retrieval API: "LLM agents query here for grounded context before generating responses."
+- Compliance Audit Query: "Answers 'what did the system know and do on date X?' using temporal versioning on graph nodes."</p>
+<p>Hover over any edge shows its label.
+Physics: hierarchical layout, left to right. Fixed horizontal positions for each column.</p>
+</details>
+<h2 id="bringing-lineage-and-provenance-into-the-context-graph">Bringing Lineage and Provenance into the Context Graph<a class="headerlink" href="#bringing-lineage-and-provenance-into-the-context-graph" title="Permanent link">¶</a></h2>
+<p>The practical integration of lineage and provenance into a context graph follows a predictable pattern. The context graph maintains three overlapping graph structures that must be queried together for grounded LLM responses:</p>
+<ol>
+<li><strong>The entity graph</strong>: the knowledge graph of business entities (customers, products, employees, contracts) and their current-state relationships</li>
+<li><strong>The lineage graph</strong>: the directed graph of data flows, transformations, and dependencies connecting source systems to downstream consumers</li>
+<li><strong>The process graph</strong>: the process model (from process mining) representing the activities and transitions that characterize enterprise workflows</li>
+</ol>
+<p>These three structures share nodes — a customer entity node in the entity graph is also a case node in the process graph, and also a source data object in the lineage graph. The shared identity makes cross-structure queries natural: "find all customers whose data flows through a pipeline with a recent quality incident AND who have an open exception in the invoice approval process" is a query that traverses all three graph structures.</p>
+<p>A <strong>provenance record</strong> in this architecture is a node in the context graph, linked to the data value nodes it describes, carrying the custodian history, transformation steps, and confidence score as node properties. An LLM retrieving a revenue figure receives not just the number but the provenance node — and can read the confidence score, the custody chain, and the most recent transformation history to determine how much weight to place on the value.</p>
+<h2 id="summary-and-key-takeaways">Summary and Key Takeaways<a class="headerlink" href="#summary-and-key-takeaways" title="Permanent link">¶</a></h2>
+<p>Process mining, data lineage, and data provenance give the context graph its temporal dimension — the ability to represent not just what the enterprise looks like now but what happened over time, and why the data looks the way it does today. Together, they transform the context graph from a static snapshot into a living record of organizational activity.</p>
+<p>By the end of this chapter, you should be able to:</p>
+<ul>
+<li>Define an <strong>event log</strong> and name the three required fields that make it useful for process mining</li>
+<li>Explain the difference between <strong>process discovery</strong>, <strong>conformance checking</strong>, and <strong>process enhancement</strong></li>
+<li>Describe the <strong>IEEE XES</strong> standard and explain its role in making event logs portable across tools</li>
+<li>Distinguish <strong>upstream lineage</strong> from <strong>downstream lineage</strong> and explain the added value of <strong>column-level lineage</strong></li>
+<li>Explain the difference between <strong>data lineage</strong> (where data came from) and <strong>data provenance</strong> (whether it can be trusted)</li>
+<li>Describe the <strong>OpenLineage standard</strong> and how it enables lineage interoperability</li>
+<li>Explain <strong>event sourcing</strong>, <strong>CQRS</strong>, and <strong>append-only logs</strong> as architectures that make historical trace capture natural</li>
+<li>Describe <strong>change data capture</strong> as a mechanism for feeding real-time lineage events from legacy systems into context graphs</li>
+<li>Explain how <strong>temporal versioning</strong> enables "point-in-time" queries over graph history</li>
+</ul>
+<details class="question">
+<summary>Quick Check</summary>
+<p>A finance team suspects that a revenue figure in their quarterly report is incorrect. They ask the data team to investigate. Using the concepts from this chapter, describe the sequence of queries you would run — using lineage, provenance, and process mining data — to trace the error to its source.</p>
+<p><em>(Answer: Start with upstream lineage to trace the dashboard column back through the transformation pipeline to its source tables. Check the provenance records at each transformation step for quality events or manual corrections. Run conformance checking on the process log for the revenue recognition process to identify any deviant cases (e.g., revenue recorded before contract execution). Use temporal versioning to check whether the data definition or code list mapping changed between the period the data was recorded and the reporting date.)</em></p>
+</details>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">Chapter 7: Complete!</p>
+<p><img src="../../img/mascot/celebration.png" class="mascot-admonition-img" alt="Nexus celebrating">
+Outstanding work. You now understand the three dimensions of organizational memory: what entities exist (knowledge graph), what they mean (metadata and registries), and what happened over time (process mining, lineage, and provenance). Chapter 8 brings this all together at the core question of the book: why do LLMs fail at enterprise tasks even when all this infrastructure is in place? The context problem is next. Let's trace the why!</p>
+</div>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -1270,7 +1848,7 @@
         
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
   Back to top
 </button>
         
@@ -1280,13 +1858,13 @@
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
           <a href="../06-metadata-registries/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 6. Metadata Registries">
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
@@ -1311,7 +1889,7 @@
             </div>
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
             </div>
           </a>
         
@@ -1323,7 +1901,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2026 Dan Mccreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+      Copyright © 2026 Dan Mccreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
     </div>
   
   
@@ -1344,6 +1922,14 @@
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
+        <script src="../../js/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+      
     
-  </body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

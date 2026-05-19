@@ -1,12 +1,9 @@
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
+<!DOCTYPE html><html lang="en" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="An interactive intelligent textbook on the contact graph and how the contact graphs helps organization use LLMs cost effectively">
+        <meta name="description" content="How to secure context graph deployments with fine-grained access control and zero-trust architecture, and how to maximize retrieval quality with vector search and dense retrieval techniques">
       
       
         <meta name="author" content="Dan Mccreary">
@@ -21,12 +18,12 @@
         <link rel="next" href="../../learning-graph/">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../img/favicon.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
     
     
       
-        <title>22. Security and Vector Search - Context Graph</title>
+        <title>Chapter 22: Security, Privacy, and Vector Search - Context Graph</title>
       
     
     
@@ -47,7 +44,7 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -55,6 +52,8 @@
       <link rel="stylesheet" href="../../css/extra.css">
     
       <link rel="stylesheet" href="../../css/mascot.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -72,8 +71,44 @@
 
     
     
+      
+        <meta property="og:type" content="website">
+      
+        <meta property="og:title" content="Chapter 22: Security, Privacy, and Vector Search - Context Graph">
+      
+        <meta property="og:description" content="How to secure context graph deployments with fine-grained access control and zero-trust architecture, and how to maximize retrieval quality with vector search and dense retrieval techniques">
+      
+        <meta property="og:image" content="https://dmccreary.github.io/context-graph/assets/images/social/chapters/22-security-vector-search/index.png">
+      
+        <meta property="og:image:type" content="image/png">
+      
+        <meta property="og:image:width" content="1200">
+      
+        <meta property="og:image:height" content="630">
+      
+        <meta property="og:url" content="https://dmccreary.github.io/context-graph/chapters/22-security-vector-search/">
+      
+        <meta name="twitter:card" content="summary_large_image">
+      
+        <meta name="twitter:title" content="Chapter 22: Security, Privacy, and Vector Search - Context Graph">
+      
+        <meta name="twitter:description" content="How to secure context graph deployments with fine-grained access control and zero-trust architecture, and how to maximize retrieval quality with vector search and dense retrieval techniques">
+      
+        <meta name="twitter:image" content="https://dmccreary.github.io/context-graph/assets/images/social/chapters/22-security-vector-search/index.png">
+      
     
-  </head>
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     
@@ -108,13 +143,12 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Context Graph" class="md-header__button md-logo" aria-label="Context Graph" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -126,7 +160,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              22. Security and Vector Search
+              Chapter 22: Security, Privacy, and Vector Search
             
           </span>
         </div>
@@ -140,7 +174,7 @@
     
       <label class="md-header__button md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -149,20 +183,20 @@
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
           <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
             
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
           </a>
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
@@ -187,7 +221,7 @@
         <a href="https://github.com/dmccreary/context-graph" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -211,7 +245,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -222,8 +256,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Context Graph" class="md-nav__button md-logo" aria-label="Context Graph" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     Context Graph
@@ -233,7 +266,7 @@
       <a href="https://github.com/dmccreary/context-graph" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -940,27 +973,183 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#why-context-graph-security-is-different" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Context Graph Security Is Different
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#graph-security-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph Security Model
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#row-level-security-in-graphs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Row-Level Security in Graphs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#attribute-based-access-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Attribute-Based Access Control
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zero-trust-graph-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Zero-Trust Graph Architecture
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#federated-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Federated Learning
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#model-audit-trail" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Audit Trail
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vector-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vector Databases
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hnsw-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      HNSW Index
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#product-quantization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Product Quantization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#approximate-nearest-neighbor-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      Approximate Nearest Neighbor Search
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#embedding-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Embedding Models
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Embedding Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sentence-transformers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sentence Transformers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dense-retrieval" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dense Retrieval
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#context-graph-roi-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context Graph ROI Model
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Context Graph ROI Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cost-dimensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cost Dimensions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#benefit-dimensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Benefit Dimensions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bringing-it-all-together-the-complete-context-graph-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bringing It All Together: The Complete Context Graph Stack
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#summary" class="md-nav__link">
     <span class="md-ellipsis">
       Summary
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#concepts-covered" class="md-nav__link">
-    <span class="md-ellipsis">
-      Concepts Covered
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    <span class="md-ellipsis">
-      Prerequisites
     </span>
   </a>
   
@@ -1007,6 +1196,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1035,6 +1228,46 @@
   
 
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1136,7 +1369,7 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -1155,27 +1388,183 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#why-context-graph-security-is-different" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Context Graph Security Is Different
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#graph-security-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph Security Model
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#row-level-security-in-graphs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Row-Level Security in Graphs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#attribute-based-access-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Attribute-Based Access Control
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zero-trust-graph-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Zero-Trust Graph Architecture
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#federated-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Federated Learning
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#model-audit-trail" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Audit Trail
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vector-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vector Databases
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hnsw-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      HNSW Index
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#product-quantization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Product Quantization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#approximate-nearest-neighbor-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      Approximate Nearest Neighbor Search
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#embedding-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Embedding Models
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Embedding Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sentence-transformers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sentence Transformers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dense-retrieval" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dense Retrieval
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#context-graph-roi-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context Graph ROI Model
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Context Graph ROI Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cost-dimensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cost Dimensions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#benefit-dimensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Benefit Dimensions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bringing-it-all-together-the-complete-context-graph-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bringing It All Together: The Complete Context Graph Stack
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#summary" class="md-nav__link">
     <span class="md-ellipsis">
       Summary
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#concepts-covered" class="md-nav__link">
-    <span class="md-ellipsis">
-      Concepts Covered
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    <span class="md-ellipsis">
-      Prerequisites
     </span>
   </a>
   
@@ -1198,52 +1587,383 @@
   
     <a href="https://github.com/dmccreary/context-graph/blob/main/docs/chapters/22-security-vector-search/index.md" title="Edit this page" class="md-content__button md-icon">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
     </a>
   
   
 
 
-<h1 id="chapter-22-security-privacy-and-vector-search">Chapter 22: Security, Privacy, and Vector Search<a class="headerlink" href="#chapter-22-security-privacy-and-vector-search" title="Permanent link">&para;</a></h1>
-<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
-<p>Covers graph security (row-level security, zero-trust, ABAC), vector databases (HNSW, product quantization, ANN), dense and sparse retrieval, embedding model selection, and the context graph ROI model.</p>
-<h2 id="concepts-covered">Concepts Covered<a class="headerlink" href="#concepts-covered" title="Permanent link">&para;</a></h2>
-<p>This chapter covers the following 14 concepts from the learning graph:</p>
-<ol>
-<li>Graph Security Model</li>
-<li>Row-Level Security in Graph</li>
-<li>Attribute-Based Access Control</li>
-<li>Zero-Trust Graph Architecture</li>
-<li>Federated Learning</li>
-<li>Model Audit Trail</li>
-<li>Vector Database</li>
-<li>HNSW Index</li>
-<li>Product Quantization</li>
-<li>Approximate Nearest Neighbor</li>
-<li>Embedding Model</li>
-<li>Sentence Transformer</li>
-<li>Dense Retrieval</li>
-<li>Context Graph ROI Model</li>
-</ol>
-<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
-<p>This chapter builds on concepts from:</p>
+<h1 id="chapter-22-security-privacy-and-vector-search">Chapter 22: Security, Privacy, and Vector Search<a class="headerlink" href="#chapter-22-security-privacy-and-vector-search" title="Permanent link">¶</a></h1>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Welcome to Chapter 22!</p>
+<p><img src="../../img/mascot/welcome.png" class="mascot-admonition-img" alt="Nexus welcoming">
+This final chapter closes the loop on two interwoven concerns that run through every chapter of this book. Security: context graphs hold the most sensitive organizational knowledge — who decided what, why, and using which policies — and protecting that knowledge requires a security model that goes beyond simple database authentication. Vector search: the retrieval techniques that make context graph outputs relevant and accurate require understanding how embedding models, approximate nearest neighbor indexes, and dense retrieval interact with graph traversal. Nexus has saved the best tools for last. Let's trace the security boundary and the similarity space.</p>
+</div>
+<h2 id="why-context-graph-security-is-different">Why Context Graph Security Is Different<a class="headerlink" href="#why-context-graph-security-is-different" title="Permanent link">¶</a></h2>
+<p>A context graph is not a typical enterprise database. Traditional enterprise databases hold facts: customer records, transaction amounts, inventory quantities. Access control for these systems is straightforward — a user in the finance department can read finance records, a user in the sales department can read sales records.</p>
+<p>A context graph holds decisions: why a customer received a specific discount, why a transaction was flagged for review, why an inventory threshold was set at a non-standard level. Decision data is categorically more sensitive than fact data because it reveals organizational reasoning, policy interpretation, and individual judgment — information that can expose legal liability, competitive strategy, and internal disagreements.</p>
+<p>This sensitivity creates security requirements that go beyond role-based access control. An analyst in the finance department should be able to query decision traces from their team's workflows — but should they be able to query the decision traces from the legal team's policy interpretations? Should a contractor be able to query historical decisions made by employees at a higher clearance level? Should an AI agent be able to retrieve context from a decision trace that the system was not explicitly granted access to by the human who initiated the query?</p>
+<p>The <strong>Graph Security Model</strong> for context graphs must answer these questions structurally — through access control mechanisms that enforce the right answers automatically, not through training and policy that rely on humans to make the right calls manually.</p>
+<h2 id="graph-security-model">Graph Security Model<a class="headerlink" href="#graph-security-model" title="Permanent link">¶</a></h2>
+<p>The <strong>Graph Security Model</strong> defines the access control architecture that governs which users and systems can read, write, and traverse which nodes and edges in the context graph. A complete graph security model has four components.</p>
+<p><strong>Authentication.</strong> The mechanism by which the identity of a user or system making a graph query is verified. Enterprise context graphs should integrate with the organization's existing identity provider (SAML, OIDC) so that authentication is consistent with the rest of the organization's access control infrastructure. Every query to the context graph should be associated with an authenticated identity.</p>
+<p><strong>Authorization.</strong> The mechanism by which the authenticated identity's permissions are evaluated against the requested operation. Authorization for graph systems is more complex than for tabular systems because graph traversal can take a query through nodes and edges that span multiple access control domains — a query that starts in the sales domain and traverses a "governed by" edge can reach policy nodes that live in the legal domain.</p>
+<p><strong>Data classification.</strong> The assignment of sensitivity labels to graph nodes and edges that determine which access control rules apply. A decision trace that contains attorney-client privileged information should be classified at a higher sensitivity level than a routine procurement approval. Data classification enables the authorization layer to apply the correct rules without requiring access control logic to be embedded in every query.</p>
+<p><strong>Audit logging.</strong> The recording of every query, traversal, and data access in an immutable audit log that supports forensic analysis and compliance reporting. Audit logging for graph systems must record not just the query but the subgraph that was returned — so that in the event of a data exposure incident, investigators can determine exactly which information was accessed and by whom.</p>
+<h2 id="row-level-security-in-graphs">Row-Level Security in Graphs<a class="headerlink" href="#row-level-security-in-graphs" title="Permanent link">¶</a></h2>
+<p><strong>Row-Level Security in Graph</strong> is the mechanism that restricts which graph nodes and edges a given user can read, even when they have general read access to the graph database. Without row-level security, any authenticated user with database read access can see all nodes and edges — including those they should not have access to based on their role or clearance level.</p>
+<p>Graph row-level security is more complex to implement than row-level security in relational databases because the unit of access control is not a row (a flat record) but a node or edge in a connected structure. When a user traverses from a node they have access to, along an edge they have access to, to a node they do not have access to, the security model must either block the traversal, return a redacted result (indicating the node exists but its content is not visible), or return no result (indicating the node does not exist from the user's perspective).</p>
+<p>Each of these three approaches has different security implications:</p>
+<p><strong>Block the traversal</strong> — stops the query at the access boundary and returns an error. This is the most secure approach but can break query logic that assumes the graph is fully connected.</p>
+<p><strong>Redacted result</strong> — returns a placeholder node indicating that a node exists but its content is restricted. This leaks the existence of the restricted node (which may itself be sensitive) but allows the query to continue and retrieve non-restricted nodes.</p>
+<p><strong>Return no result</strong> — behaves as if the restricted node does not exist. This is the most restrictive approach and prevents leaking the existence of restricted nodes, but it can produce misleading query results when the absence of the hidden node changes the semantics of the result.</p>
+<p>Enterprise context graph deployments typically use a combination: redacted results for nodes whose existence is not sensitive (a decision trace exists, but its content is restricted), and no result for nodes whose existence itself is sensitive (the existence of certain legal proceedings or HR investigations).</p>
+<h2 id="attribute-based-access-control">Attribute-Based Access Control<a class="headerlink" href="#attribute-based-access-control" title="Permanent link">¶</a></h2>
+<p><strong>Attribute-Based Access Control</strong> (ABAC) is an access control model that evaluates access decisions based on attributes of the requesting subject (user), the resource being requested (graph node or edge), the action being performed (read, write, traverse), and the environmental context (time of day, network location, device security posture). ABAC is more expressive than role-based access control (RBAC) because it allows access decisions to incorporate any combination of these attributes rather than relying solely on the user's role.</p>
+<p>For context graph deployments, ABAC enables access control rules like:</p>
 <ul>
-<li><a href="../03-metadata-management/">Chapter 3: Metadata Management</a></li>
-<li><a href="../09-context-graph-definition/">Chapter 9: What a Context Graph Is</a></li>
-<li><a href="../10-llm-ai-foundations/">Chapter 10: LLM and AI Foundations</a></li>
-<li><a href="../14-llm-integration/">Chapter 14: Integrating LLMs with Context Graphs</a></li>
-<li><a href="../15-building-deploying/">Chapter 15: Building and Deploying Context Graph Systems</a></li>
-<li><a href="../18-compliance-explainability/">Chapter 18: Compliance, Explainability, and Audit</a></li>
-<li><a href="../20-organizational-adoption/">Chapter 20: Organizational Adoption and Governance</a></li>
+<li>"A user may query decision traces in workflow W if their department attribute matches the decision's department attribute AND their clearance level attribute is at least as high as the decision's classification attribute."</li>
+<li>"A contractor may query decision traces from the last 90 days but not from before their engagement start date."</li>
+<li>"A cross-functional AI agent may query decision traces across departments only when the query was initiated by a user who has access to all the departments queried."</li>
 </ul>
-<hr />
-<p>TODO: Generate Chapter Content</p>
+<p>These rules cannot be expressed as simple role memberships. They require an evaluation engine that can access and compare attributes from multiple sources (the user directory, the graph node metadata, the query context) at query time.</p>
+<p>The attribute evaluation is the performance-critical path in ABAC-protected context graphs: every graph traversal step requires an attribute evaluation to determine whether the traversal is permitted. Caching evaluated attribute results (invalidated when the user's attributes or the node's classification changes) is essential for maintaining query performance under ABAC.</p>
+<details>
+<summary>#### Diagram: Attribute-Based Access Control in Context Graphs</summary>
+<p><strong>Sim Spec:</strong></p>
+<ul>
+<li>Type: vis-network diagram</li>
+<li>sim-id: abac-context-graph</li>
+<li>Library: vis-network</li>
+<li>Status: not started</li>
+<li>Bloom Level: Analysis</li>
+<li>Bloom Verb: analyze</li>
+<li>Learning Objective: Analyze how ABAC evaluates subject, resource, action, and environment attributes to make fine-grained access control decisions in a context graph</li>
+<li>Instructional Rationale: A decision-flow diagram makes the multi-attribute evaluation process concrete, helping learners understand how ABAC policies translate into query-time enforcement</li>
+</ul>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"en"</span><span class="p">&gt;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"UTF-8"</span><span class="p">&gt;</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>ABAC in Context Graphs<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#0d1117</span><span class="p">;</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#e6edf3</span><span class="p">;</span><span class="w"> </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="kc">sans-serif</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="p">#</span><span class="nn">network</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span><span class="w"> </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">520</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#30363d</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"network"</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="kd">const</span><span class="w"> </span><span class="nx">nodes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">vis</span><span class="p">.</span><span class="nx">DataSet</span><span class="p">([</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Graph Query\nRequest"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#8250df"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#d2a8ff"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"box"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="nx">fixed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Subject\nAttributes\n(User role,\ndepartment,\nclearance)"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#1f6feb"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#58a6ff"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"box"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">280</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">fixed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Resource\nAttributes\n(Node class,\nowner dept,\nsensitivity)"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#1f6feb"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#58a6ff"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"box"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">90</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">fixed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Action\nAttributes\n(Read / write /\ntraverse)"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#1f6feb"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#58a6ff"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"box"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">90</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">fixed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Environment\nAttributes\n(Time, network,\ndevice posture)"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#1f6feb"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#58a6ff"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"box"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">280</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">fixed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"ABAC Policy\nEngine"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#312d00"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#d29922"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="p">,</span><span class="w"> </span><span class="nx">size</span><span class="o">:</span><span class="w"> </span><span class="mf">15</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"box"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">120</span><span class="p">,</span><span class="w"> </span><span class="nx">fixed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">7</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"PERMIT\nFull result"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#1a4321"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#3fb950"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"box"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">260</span><span class="p">,</span><span class="w"> </span><span class="nx">fixed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"REDACT\nNode exists,\ncontent hidden"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#312d00"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#d29922"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"box"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">260</span><span class="p">,</span><span class="w"> </span><span class="nx">fixed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">9</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"DENY\nNo result"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#3d0d0d"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#f85149"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"box"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">260</span><span class="p">,</span><span class="w"> </span><span class="nx">fixed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Audit Log\n(Who queried what\nand when)"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#0d1117"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#30363d"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#8b949e"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"box"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">400</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">180</span><span class="p">,</span><span class="w"> </span><span class="nx">fixed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="p">]);</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="kd">const</span><span class="w"> </span><span class="nx">edges</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">vis</span><span class="p">.</span><span class="nx">DataSet</span><span class="p">([</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">7</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#3fb950"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#d29922"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">9</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#f85149"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="p">,</span><span class="w"> </span><span class="nx">dashes</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"always\nlogs"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="p">]);</span>
+</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="kd">const</span><span class="w"> </span><span class="nx">container</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"network"</span><span class="p">);</span>
+</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="ow">new</span><span class="w"> </span><span class="nx">vis</span><span class="p">.</span><span class="nx">Network</span><span class="p">(</span><span class="nx">container</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">nodes</span><span class="p">,</span><span class="w"> </span><span class="nx">edges</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="w">  </span><span class="nx">physics</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="w">  </span><span class="nx">interaction</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">dragNodes</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="w">  </span><span class="nx">edges</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">smooth</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"curvedCW"</span><span class="p">,</span><span class="w"> </span><span class="nx">roundness</span><span class="o">:</span><span class="w"> </span><span class="mf">0.2</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">size</span><span class="o">:</span><span class="w"> </span><span class="mf">11</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#8b949e"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="p">});</span>
+</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></code></pre></div>
+</details>
+<h2 id="zero-trust-graph-architecture">Zero-Trust Graph Architecture<a class="headerlink" href="#zero-trust-graph-architecture" title="Permanent link">¶</a></h2>
+<p><strong>Zero-Trust Graph Architecture</strong> applies the zero-trust security principle — "never trust, always verify" — to every layer of the context graph system. In a traditional perimeter security model, resources inside the network boundary are implicitly trusted. Zero-trust eliminates the implicit trust boundary: every request to the context graph must be authenticated, authorized, and validated regardless of where it originates.</p>
+<p>For context graph deployments, zero-trust architecture has several specific implications.</p>
+<p><strong>No implicit service-to-service trust.</strong> When an AI agent's inference service makes a query to the context graph, that query must be authenticated as coming from the specific agent instance, authorized against the agent's permissions (which may be narrower than the permissions of the human user who initiated the agent), and validated for consistency with the query pattern the agent is expected to produce. An AI agent that is compromised or manipulated by a prompt injection attack should not be able to access context graph data that the initiating human would have been permitted to see.</p>
+<p><strong>Cryptographic verification of data provenance.</strong> In a zero-trust context graph, decision trace data carries a cryptographic signature from the system that wrote it. When a retrieval query returns a decision trace, the system can verify that the trace has not been tampered with since it was written — a property that is critical for regulated contexts where the integrity of the decision record must be demonstrable.</p>
+<p><strong>Continuous authorization re-evaluation.</strong> In a traditional system, authorization is evaluated at session start and then assumed to be valid for the duration of the session. In a zero-trust context graph, authorization is re-evaluated at each significant operation — each traversal hop, each data access, each write operation. If a user's role changes mid-session, or if environmental conditions change (they move to an untrusted network), their access is immediately restricted without waiting for the session to end.</p>
+<p><strong>Least-privilege AI agent permissions.</strong> AI agents that query the context graph should be granted only the minimum permissions required to complete their assigned task. An agent that is analyzing financial exception patterns should not have access to HR decision traces, even if the human user who deployed the agent has access to both. Least-privilege agent permissions limit the blast radius if an agent is compromised.</p>
+<h2 id="federated-learning">Federated Learning<a class="headerlink" href="#federated-learning" title="Permanent link">¶</a></h2>
+<p><strong>Federated Learning</strong> is a machine learning approach that trains models across multiple data sources without centralizing the data. Each participating data source trains a local model on its local data and shares only model parameters (not raw data) with a central aggregator. The aggregator combines the local model parameters into a global model that benefits from all the data without any participant's data leaving their system.</p>
+<p>For context graph deployments in multi-organization or multi-jurisdiction settings, federated learning enables several capabilities that centralized training cannot:</p>
+<p><strong>Cross-organization retrieval model training.</strong> Multiple organizations deploying context graphs in the same domain can collaboratively train a shared retrieval model without sharing their raw decision traces. Each organization's decision traces remain within their security boundary; only the gradient updates from local training are shared. The resulting model learns from a much larger corpus than any single organization could provide while preserving data sovereignty.</p>
+<p><strong>Privacy-preserving personalization.</strong> Federated learning can train personalization models — models that adapt context graph retrieval to individual users' preferences — without centralizing user behavior data. Each user's device or workstation trains local preference models; only the model updates are shared with the central aggregator. Individual users' query patterns and retrieval preferences never leave their device.</p>
+<p><strong>Jurisdiction-compliant cross-border model training.</strong> When a context graph deployment spans multiple legal jurisdictions with conflicting data residency requirements (GDPR requiring EU data to stay in Europe, data localization laws requiring national data to stay in-country), federated learning allows a unified model to be trained without violating any jurisdiction's data residency requirement.</p>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Nexus's Federated Learning Caution</p>
+<p><img src="../../img/mascot/tip.png" class="mascot-admonition-img" alt="Nexus giving a tip">
+Federated learning is powerful but adds significant operational complexity. The federation protocol requires careful design to prevent information leakage through gradient updates (membership inference attacks can sometimes reconstruct training data from gradients). Use federated learning when data sovereignty requirements genuinely prohibit centralization; use centralized training with strong access controls when you have more flexibility, because the operational overhead is substantially lower.</p>
+</div>
+<h2 id="model-audit-trail">Model Audit Trail<a class="headerlink" href="#model-audit-trail" title="Permanent link">¶</a></h2>
+<p>A <strong>Model Audit Trail</strong> is a complete record of how an AI model was trained, what data was used, what evaluation metrics were produced, and what changes were made between versions. For context graph AI components — the retrieval model, the ranking model, the generative summarization model — a model audit trail is the mechanism that allows auditors and compliance officers to verify that AI-assisted decisions were made using models that were properly trained, evaluated, and approved.</p>
+<p>A complete model audit trail for a context graph AI component includes:</p>
+<p><strong>Training data provenance.</strong> Which decision traces, in which version of the context graph, were used to train the model. This information allows auditors to verify that training data met the organization's data quality standards and was correctly classified and access-controlled.</p>
+<p><strong>Evaluation metrics.</strong> The quantitative performance measurements produced when the model was evaluated on a held-out test set: retrieval precision, recall, NDCG (Normalized Discounted Cumulative Gain), hallucination rate for generative components. Evaluation metrics must be produced by an evaluation pipeline that is independent from the training pipeline.</p>
+<p><strong>Model versioning.</strong> The specific model version (identified by a cryptographic hash of the model weights and configuration) that was deployed at each point in time. This allows auditors to reconstruct exactly which model was serving decisions on a given date — essential for post-hoc investigation of specific decisions.</p>
+<p><strong>Approval records.</strong> The record of who approved the model for production deployment, based on what evaluation results, and at what date. For regulated contexts, model deployment approvals may require sign-off from compliance officers, risk managers, or subject matter experts.</p>
+<h2 id="vector-databases">Vector Databases<a class="headerlink" href="#vector-databases" title="Permanent link">¶</a></h2>
+<p>A <strong>Vector Database</strong> is a storage system specialized for efficiently storing and querying high-dimensional vector embeddings — numerical representations of text, images, or other data that capture semantic meaning. In the context of context graph retrieval, vector databases store embeddings of decision traces so that semantically similar decisions can be retrieved even when they do not share exact keyword matches.</p>
+<p>Before examining the indexing and retrieval techniques, it is important to understand why vector databases are a necessary complement to graph databases rather than a replacement. Graph databases excel at structured traversal: "find all decisions that cite policy P and were made by approvers in department D." Vector databases excel at semantic similarity: "find decisions semantically similar to this query text." These are different operations that require different data structures and query algorithms. A complete context graph retrieval system uses both.</p>
+<p>The vector database stores one embedding vector per decision trace (or per text segment of a decision trace). When a user or AI agent issues a query, the query text is converted to an embedding vector by the same embedding model used to embed the decision traces, and the vector database returns the decision traces whose embeddings are most similar to the query embedding. These candidate results are then filtered or re-ranked using graph traversal results from the graph database — the hybrid retrieval pattern described in Chapter 14.</p>
+<h2 id="hnsw-index">HNSW Index<a class="headerlink" href="#hnsw-index" title="Permanent link">¶</a></h2>
+<p><strong>HNSW (Hierarchical Navigable Small World)</strong> is the most widely used indexing algorithm for approximate nearest neighbor search in high-dimensional vector spaces. To understand why HNSW is necessary, it helps to first understand the problem it solves.</p>
+<p>Finding the exact nearest neighbors of a query vector in a collection of millions of vectors requires comparing the query vector to every stored vector — an operation whose cost scales linearly with collection size. For a collection of ten million decision traces with 768-dimensional embeddings, an exact nearest neighbor search requires approximately 15 billion floating-point multiplications per query. At modern hardware speeds, this takes seconds per query — too slow for interactive decision support.</p>
+<p>HNSW solves this by building a multi-layer navigable graph over the vector collection. The layers form a hierarchy: the top layer contains a small subset of vectors with long-range connections; each lower layer adds more vectors with shorter-range connections; the bottom layer contains all vectors. Navigating from the top layer to the bottom layer during a query is like navigating a map at progressively finer scales — you start with a coarse view that quickly identifies the general region of the closest vectors, then zoom in to find the exact nearest neighbors within that region.</p>
+<p>The key parameters that govern HNSW performance are:</p>
+<p><strong>M</strong> — the number of connections each node maintains in the graph. Higher M increases search accuracy at the cost of more memory and slower index construction. Typical values range from 8 to 64.</p>
+<p><strong>efConstruction</strong> — the size of the candidate list during index construction. Higher values produce a higher-quality index at the cost of longer construction time. Typical values range from 100 to 400.</p>
+<p><strong>ef</strong> (search-time parameter) — the size of the candidate list during search. Higher values produce more accurate search results at the cost of longer search time. This parameter can be tuned at query time without rebuilding the index.</p>
+<p>HNSW provides a tunable trade-off between search speed and search accuracy. For context graph retrieval, a practical operating point is an ef value that produces 95%+ recall (meaning 95% of the true nearest neighbors are returned) with a query latency under 50 milliseconds on a collection of one million vectors.</p>
+<h2 id="product-quantization">Product Quantization<a class="headerlink" href="#product-quantization" title="Permanent link">¶</a></h2>
+<p><strong>Product Quantization</strong> (PQ) is a compression technique for vector embeddings that reduces memory consumption by representing high-dimensional vectors as compact codes. A 768-dimensional float32 embedding requires 3,072 bytes of memory; the same embedding compressed with product quantization requires as little as 64-128 bytes, a 24-48x reduction.</p>
+<p>Before describing how product quantization works, it is useful to understand why memory compression matters for context graph vector search. A collection of ten million 768-dimensional embeddings requires approximately 29 GB of memory in uncompressed form. If the entire collection must fit in RAM for efficient HNSW traversal, this requires expensive high-memory servers. Product quantization allows the same collection to fit in 1-2 GB of RAM, dramatically reducing infrastructure cost.</p>
+<p>Product quantization works by dividing each embedding vector into subvectors (for a 768-dimensional vector, 96 subvectors of 8 dimensions each), learning a codebook for each subvector position (256 prototype vectors per position, learned from the training data using k-means clustering), and replacing each subvector with the index of its nearest prototype. The result is a compact code (one byte per subvector, 96 bytes total) that approximates the original embedding.</p>
+<p>The approximation introduces some error — product quantized embeddings are less accurate than the original embeddings for nearest neighbor search. This error is managed by using product quantization for candidate retrieval (fetching more candidates than needed, at low cost) and then re-ranking the candidates using the original full-precision embeddings (at higher cost but on a much smaller set). This two-stage approach — PQ retrieval followed by re-ranking with full embeddings — is the standard production pattern.</p>
+<h2 id="approximate-nearest-neighbor-search">Approximate Nearest Neighbor Search<a class="headerlink" href="#approximate-nearest-neighbor-search" title="Permanent link">¶</a></h2>
+<p><strong>Approximate Nearest Neighbor</strong> (ANN) search is the general category of algorithms — of which HNSW is the most prominent example — that trade a small amount of recall accuracy for dramatic improvements in search speed. ANN algorithms are the foundation of practical large-scale vector search because exact nearest neighbor search is computationally intractable for the collection sizes and latency requirements of production context graph systems.</p>
+<p>Several ANN algorithm families are used in practice:</p>
+<p><strong>HNSW-based</strong> — graph-based algorithms that build navigable small-world graphs over the vector collection. High recall at low latency, high memory usage. Best for collections where recall is critical and memory is available.</p>
+<p><strong>LSH-based (Locality Sensitive Hashing)</strong> — hashing-based algorithms that map similar vectors to the same hash buckets with high probability. Lower recall than HNSW but lower memory usage. Better for very large collections where memory is the binding constraint.</p>
+<p><strong>IVF-based (Inverted File Index)</strong> — clustering-based algorithms that partition the vector space into clusters and search only the most relevant clusters for a given query. Combined with product quantization (IVF-PQ), this produces very memory-efficient indexes with moderate recall. The standard approach for collections of hundreds of millions to billions of vectors.</p>
+<p>For context graph deployments, the choice of ANN algorithm depends on collection size and latency requirements:</p>
+<table>
+<thead>
+<tr>
+<th>Collection Size</th>
+<th>Recommended Algorithm</th>
+<th>Recall Target</th>
+<th>Latency Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&lt; 1M vectors</td>
+<td>HNSW</td>
+<td>99%</td>
+<td>&lt; 20ms</td>
+</tr>
+<tr>
+<td>1M – 100M vectors</td>
+<td>HNSW or IVF-HNSW</td>
+<td>95-98%</td>
+<td>&lt; 50ms</td>
+</tr>
+<tr>
+<td>100M+ vectors</td>
+<td>IVF-PQ</td>
+<td>90-95%</td>
+<td>&lt; 100ms</td>
+</tr>
+</tbody>
+</table>
+<p>The table summarizes algorithm choices based on the tradeoffs explained above — it reinforces the concepts rather than introducing them.</p>
+<details>
+<summary>#### Diagram: Vector Search Architecture for Context Graphs</summary>
+<p><strong>Sim Spec:</strong></p>
+<ul>
+<li>Type: vis-network diagram</li>
+<li>sim-id: vector-search-architecture</li>
+<li>Library: vis-network</li>
+<li>Status: not started</li>
+<li>Bloom Level: Application</li>
+<li>Bloom Verb: apply</li>
+<li>Learning Objective: Apply the two-stage retrieval pattern (ANN candidate retrieval + full-precision re-ranking) to a context graph query pipeline</li>
+<li>Instructional Rationale: A pipeline diagram connects abstract ANN concepts to concrete query execution steps, helping learners understand how the theoretical trade-offs translate into system design choices</li>
+</ul>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"en"</span><span class="p">&gt;</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"UTF-8"</span><span class="p">&gt;</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Vector Search Architecture<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#0d1117</span><span class="p">;</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#e6edf3</span><span class="p">;</span><span class="w"> </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="kc">sans-serif</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span><span class="p">#</span><span class="nn">network</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span><span class="w"> </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">480</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#30363d</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"network"</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="kd">const</span><span class="w"> </span><span class="nx">nodes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">vis</span><span class="p">.</span><span class="nx">DataSet</span><span class="p">([</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"User Query\nText"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#8250df"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#d2a8ff"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"box"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">480</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">fixed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Embedding\nModel"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#1f6feb"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#58a6ff"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"box"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">300</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">fixed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Query\nVector"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#312d00"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#d29922"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"ellipse"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">120</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">fixed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"ANN Index\n(HNSW / IVF-PQ)"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#1f6feb"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#58a6ff"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"box"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">60</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">80</span><span class="p">,</span><span class="w"> </span><span class="nx">fixed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Graph\nTraversal"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#1f6feb"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#58a6ff"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"box"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">60</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">80</span><span class="p">,</span><span class="w"> </span><span class="nx">fixed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Candidates\n(top-100)"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#312d00"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#d29922"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"ellipse"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">240</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">80</span><span class="p">,</span><span class="w"> </span><span class="nx">fixed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">7</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Graph\nResults"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#312d00"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#d29922"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"ellipse"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">240</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">80</span><span class="p">,</span><span class="w"> </span><span class="nx">fixed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Cross-Encoder\nRe-ranker"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#1f6feb"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#58a6ff"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"box"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">400</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">fixed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">9</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Top-5\nContext\nResults"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#1a4321"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#3fb950"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="p">,</span><span class="w"> </span><span class="nx">size</span><span class="o">:</span><span class="w"> </span><span class="mf">15</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"box"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">560</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">fixed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Full-precision\nvectors for\ncandidates only"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#0d1117"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#30363d"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#8b949e"</span><span class="p">,</span><span class="w"> </span><span class="nx">size</span><span class="o">:</span><span class="w"> </span><span class="mf">11</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">400</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">160</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="p">]);</span>
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="kd">const</span><span class="w"> </span><span class="nx">edges</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">vis</span><span class="p">.</span><span class="nx">DataSet</span><span class="p">([</span>
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"768-dim\nvector"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"ANN\nsearch"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">7</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"hop\ntraversal"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">7</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-1-36"><a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">9</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-1-37"><a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span><span class="w"> </span><span class="nx">dashes</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#30363d"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-1-38"><a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a><span class="p">]);</span>
+</span><span id="__span-1-39"><a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a><span class="kd">const</span><span class="w"> </span><span class="nx">container</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"network"</span><span class="p">);</span>
+</span><span id="__span-1-40"><a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a><span class="ow">new</span><span class="w"> </span><span class="nx">vis</span><span class="p">.</span><span class="nx">Network</span><span class="p">(</span><span class="nx">container</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">nodes</span><span class="p">,</span><span class="w"> </span><span class="nx">edges</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-41"><a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a><span class="w">  </span><span class="nx">physics</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-1-42"><a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a><span class="w">  </span><span class="nx">interaction</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">dragNodes</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-1-43"><a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a><span class="w">  </span><span class="nx">edges</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">smooth</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"curvedCW"</span><span class="p">,</span><span class="w"> </span><span class="nx">roundness</span><span class="o">:</span><span class="w"> </span><span class="mf">0.2</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">size</span><span class="o">:</span><span class="w"> </span><span class="mf">11</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#8b949e"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-1-44"><a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a><span class="p">});</span>
+</span><span id="__span-1-45"><a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span id="__span-1-46"><a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-1-47"><a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></code></pre></div>
+</details>
+<h2 id="embedding-models">Embedding Models<a class="headerlink" href="#embedding-models" title="Permanent link">¶</a></h2>
+<p>An <strong>Embedding Model</strong> converts text (or other data) into a dense numerical vector that captures semantic meaning. Two input texts that are semantically similar produce embedding vectors that are geometrically close in the vector space; texts that are semantically dissimilar produce vectors that are geometrically distant. This geometric relationship between meaning and distance is what makes vector search for semantic similarity possible.</p>
+<p>For context graph retrieval, embedding models convert decision trace text — the description of the decision, the policies cited, the precedents consulted, the exception rationale — into embedding vectors that can be searched by semantic similarity. A query about "how to handle a revenue recognition exception for a contract with variable consideration" will retrieve decision traces that discuss similar exception patterns even if the traces use different vocabulary.</p>
+<p>Two properties of an embedding model determine its suitability for context graph retrieval:</p>
+<p><strong>Domain specificity.</strong> General-purpose embedding models trained on broad internet text may not accurately capture semantic similarity within specialized domains (financial accounting, clinical medicine, semiconductor manufacturing). Decision traces use domain-specific vocabulary and concepts that may not be well-represented in general-purpose training data. Domain-adapted embedding models — either fine-tuned on domain-specific text or trained from scratch on domain corpora — produce more accurate similarity judgments for domain-specific context graph retrieval.</p>
+<p><strong>Dimensionality.</strong> Embedding vectors of 768 or 1536 dimensions capture more semantic nuance than 128 or 256 dimensions, but require more memory and compute for storage and search. For most context graph applications, 768-dimensional embeddings (produced by models in the BERT family) provide a good balance between retrieval quality and computational cost.</p>
+<h3 id="sentence-transformers">Sentence Transformers<a class="headerlink" href="#sentence-transformers" title="Permanent link">¶</a></h3>
+<p><strong>Sentence Transformers</strong> are a family of embedding models specifically optimized for producing semantically meaningful embeddings of sentences and paragraphs — as opposed to word-level or token-level embeddings that require additional aggregation to produce a single vector for a passage of text. Sentence transformers use a siamese or triplet network architecture during training, where the model learns to produce similar embeddings for semantically related sentence pairs and dissimilar embeddings for unrelated pairs.</p>
+<p>For context graph retrieval, sentence transformers are the preferred embedding model family because they are trained for the specific task of semantic similarity — the task that context graph vector search requires. A sentence transformer that has been fine-tuned on domain-specific text pairs (relevant-irrelevant decision trace pairs labeled by domain experts) produces retrieval quality that significantly exceeds general-purpose embedding models.</p>
+<p>The fine-tuning process for sentence transformers requires a training dataset of positive pairs (queries and their relevant decision traces) and negative pairs (queries and irrelevant decision traces). This dataset can be constructed from user feedback on retrieval results — users who mark a retrieved trace as "very relevant" or "not relevant" are providing exactly the signal needed to fine-tune the embedding model. This creates a virtuous cycle: the more the system is used, the more feedback is collected, and the better the embedding model becomes.</p>
+<h2 id="dense-retrieval">Dense Retrieval<a class="headerlink" href="#dense-retrieval" title="Permanent link">¶</a></h2>
+<p><strong>Dense Retrieval</strong> is the retrieval paradigm in which both queries and documents (decision traces) are represented as dense embedding vectors, and retrieval is performed by finding the vectors most similar to the query vector. Dense retrieval contrasts with <strong>sparse retrieval</strong>, in which both queries and documents are represented as sparse vectors of term frequencies (like TF-IDF or BM25), and retrieval is performed by finding the documents with the highest term overlap with the query.</p>
+<p>Dense retrieval has three advantages over sparse retrieval for context graph applications:</p>
+<p><strong>Semantic generalization.</strong> Dense retrieval finds documents that are semantically related to the query even when they do not share vocabulary. A query about "revenue recognition exception for variable consideration" can retrieve a decision trace that discusses "deferred revenue adjustment for milestone-based contracts" — semantically related but lexically different. Sparse retrieval, relying on term overlap, would miss this connection.</p>
+<p><strong>Cross-lingual retrieval.</strong> If the embedding model is multilingual, dense retrieval can retrieve decision traces written in a different language from the query. For multinational organizations whose context graphs contain decision traces in multiple languages, multilingual dense retrieval enables a unified search interface regardless of the language in which the user queries or the original decision was recorded.</p>
+<p><strong>Better handling of long documents.</strong> Sparse retrieval methods become less effective as document length increases because long documents tend to match many queries due to vocabulary breadth rather than topical focus. Dense retrieval produces a fixed-size embedding regardless of document length, which maintains retrieval quality for long decision traces with multiple sections.</p>
+<p>The trade-off is that dense retrieval requires significantly more computation than sparse retrieval — each query requires embedding the query text and searching the ANN index, operations that have no counterpart in sparse retrieval. For context graph applications where query latency is critical, this computational overhead must be carefully profiled and optimized.</p>
+<p>A practical production context graph uses <strong>hybrid retrieval</strong> — combining dense retrieval with sparse retrieval using reciprocal rank fusion (as described in Chapter 14) — to capture the strengths of both approaches. Dense retrieval dominates for semantic similarity; sparse retrieval contributes for precise term matches (entity names, policy identifiers, specific document references) where vocabulary matters more than semantic generalization.</p>
+<h2 id="context-graph-roi-model">Context Graph ROI Model<a class="headerlink" href="#context-graph-roi-model" title="Permanent link">¶</a></h2>
+<p>The <strong>Context Graph ROI Model</strong> is a financial framework for quantifying the return on investment of a context graph deployment. A rigorous ROI model is essential for securing initial funding, justifying expansion, and communicating value to executive sponsors.</p>
+<p>A complete context graph ROI model accounts for costs on three dimensions and benefits on four dimensions.</p>
+<h3 id="cost-dimensions">Cost Dimensions<a class="headerlink" href="#cost-dimensions" title="Permanent link">¶</a></h3>
+<p><strong>Infrastructure cost.</strong> The ongoing cost of the graph database, vector index, streaming platform, orchestration tools, and observability stack. Infrastructure cost scales with data volume and query volume, and should be modeled at the current scale and at projected scale in 12 and 24 months.</p>
+<p><strong>Implementation cost.</strong> The one-time cost of designing the schema, building the ingestion pipelines, integrating with source systems, training the retrieval model, and deploying the user interface. Implementation cost is highest in the beachhead workflow and decreases for adjacent workflows that can reuse components.</p>
+<p><strong>Operational cost.</strong> The ongoing cost of maintaining the system: data quality monitoring, model retraining, schema evolution, user support, and governance activities. Operational cost is often underestimated in initial ROI models and should be explicitly projected.</p>
+<h3 id="benefit-dimensions">Benefit Dimensions<a class="headerlink" href="#benefit-dimensions" title="Permanent link">¶</a></h3>
+<p><strong>Decision speed improvement.</strong> The reduction in time required to complete a decision cycle — from receiving a case to recording a decision. Decision speed improvement is the most easily measured benefit because timestamps are available in most workflow systems. Calculate as: (average old cycle time - average new cycle time) × number of decisions per year × loaded hourly cost of decision-makers.</p>
+<p><strong>Decision quality improvement.</strong> The reduction in decision reversals, rework, escalations, and compliance exceptions attributable to better context at decision time. Decision quality improvement is harder to measure but often higher value. Proxy metrics include: escalation rate, rework rate, audit finding rate, and customer complaint rate for customer-facing decisions.</p>
+<p><strong>Onboarding speed improvement.</strong> The reduction in time required for new employees to reach full productivity in decision-heavy workflows. If the context graph captures the institutional knowledge that new employees previously had to acquire through months of experience, onboarding time falls. Calculate as: (old time-to-productivity - new time-to-productivity) × number of new hires in target workflows per year × loaded daily cost of employee.</p>
+<p><strong>Compliance cost reduction.</strong> The reduction in time and cost required to prepare for and respond to regulatory audits, internal audits, and compliance investigations. If decision traces replace reconstructed documentation, audit preparation time falls dramatically. This benefit is typically measured as: (old audit preparation hours - new audit preparation hours) × number of audits per year × loaded hourly cost of compliance team.</p>
+<p>A complete ROI model combines these dimensions into a time-series projection that accounts for ramp-up during the pilot and rollout phases. ROI calculations should be presented conservatively — using the 20th percentile of expected benefit rather than the mean — to maintain credibility with skeptical stakeholders.</p>
+<div class="admonition mascot-warning">
+<p class="admonition-title">The ROI Model Footgun</p>
+<p><img src="../../img/mascot/warning.png" class="mascot-admonition-img" alt="Nexus warning">
+The most common ROI model footgun is double-counting: counting the same time savings as both decision speed improvement and compliance cost reduction, or attributing to the context graph benefits that were simultaneously produced by other investments (a CRM upgrade, a new hire, a process change). An ROI model with double-counted benefits will fail scrutiny when a skeptical stakeholder asks to walk through the calculation methodology. Each benefit dimension should map to a distinct, separately measurable metric. If two metrics move together because they are causally related, pick the one that is most directly attributable to the context graph and exclude the other.</p>
+</div>
+<details>
+<summary>#### Diagram: Context Graph ROI Model</summary>
+<p><strong>Sim Spec:</strong></p>
+<ul>
+<li>Type: vis-network diagram</li>
+<li>sim-id: context-graph-roi-model</li>
+<li>Library: vis-network</li>
+<li>Status: not started</li>
+<li>Bloom Level: Evaluation</li>
+<li>Bloom Verb: justify</li>
+<li>Learning Objective: Justify a context graph investment by constructing a complete ROI model that accounts for infrastructure, implementation, and operational costs against decision speed, quality, onboarding, and compliance benefits</li>
+<li>Instructional Rationale: A visual ROI framework connects financial concepts to specific measurement approaches, helping learners present context graph value propositions to executive stakeholders</li>
+</ul>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"en"</span><span class="p">&gt;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"UTF-8"</span><span class="p">&gt;</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Context Graph ROI Model<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">  </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#0d1117</span><span class="p">;</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#e6edf3</span><span class="p">;</span><span class="w"> </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="kc">sans-serif</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">  </span><span class="p">#</span><span class="nn">network</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span><span class="w"> </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">520</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#30363d</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"network"</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="kd">const</span><span class="w"> </span><span class="nx">nodes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">vis</span><span class="p">.</span><span class="nx">DataSet</span><span class="p">([</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Context Graph\nROI"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#8250df"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#d2a8ff"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="p">,</span><span class="w"> </span><span class="nx">size</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"box"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">fixed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">  </span><span class="c1">// Costs (left)</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"COSTS"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#3d0d0d"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#f85149"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="p">,</span><span class="w"> </span><span class="nx">size</span><span class="o">:</span><span class="w"> </span><span class="mf">14</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"box"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">300</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">60</span><span class="p">,</span><span class="w"> </span><span class="nx">fixed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Infrastructure\n(DB, vector, stream)"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#3d0d0d"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#f85149"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"ellipse"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">460</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">160</span><span class="p">,</span><span class="w"> </span><span class="nx">fixed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Implementation\n(Schema, pipelines,\nintegrations)"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#3d0d0d"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#f85149"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"ellipse"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">460</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">fixed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Operations\n(Monitoring,\nretraining, support)"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#3d0d0d"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#f85149"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"ellipse"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">460</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">160</span><span class="p">,</span><span class="w"> </span><span class="nx">fixed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">  </span><span class="c1">// Benefits (right)</span>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"BENEFITS"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#1a4321"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#3fb950"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="p">,</span><span class="w"> </span><span class="nx">size</span><span class="o">:</span><span class="w"> </span><span class="mf">14</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"box"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">300</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">60</span><span class="p">,</span><span class="w"> </span><span class="nx">fixed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">7</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Decision Speed\n(Cycle time ×\nvolume × cost)"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#1a4321"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#3fb950"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"ellipse"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">460</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="nx">fixed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Decision Quality\n(Escalation,\nrework reduction)"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#1a4321"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#3fb950"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"ellipse"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">460</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">70</span><span class="p">,</span><span class="w"> </span><span class="nx">fixed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">9</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Onboarding Speed\n(Time-to-productivity\n× hire volume)"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#1a4321"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#3fb950"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"ellipse"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">460</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">60</span><span class="p">,</span><span class="w"> </span><span class="nx">fixed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Compliance Cost\n(Audit prep,\nfinding reduction)"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#1a4321"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#3fb950"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"ellipse"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">460</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">190</span><span class="p">,</span><span class="w"> </span><span class="nx">fixed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="p">]);</span>
+</span><span id="__span-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="kd">const</span><span class="w"> </span><span class="nx">edges</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">vis</span><span class="p">.</span><span class="nx">DataSet</span><span class="p">([</span>
+</span><span id="__span-2-30"><a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-2-31"><a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-2-32"><a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-2-33"><a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#f85149"</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"subtracted"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-2-34"><a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">7</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-2-35"><a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-2-36"><a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">9</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-2-37"><a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-2-38"><a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#3fb950"</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"added"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-2-39"><a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a><span class="p">]);</span>
+</span><span id="__span-2-40"><a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a><span class="kd">const</span><span class="w"> </span><span class="nx">container</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"network"</span><span class="p">);</span>
+</span><span id="__span-2-41"><a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a><span class="ow">new</span><span class="w"> </span><span class="nx">vis</span><span class="p">.</span><span class="nx">Network</span><span class="p">(</span><span class="nx">container</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">nodes</span><span class="p">,</span><span class="w"> </span><span class="nx">edges</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-42"><a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a><span class="w">  </span><span class="nx">physics</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-2-43"><a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a><span class="w">  </span><span class="nx">interaction</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">dragNodes</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-2-44"><a id="__codelineno-2-44" name="__codelineno-2-44" href="#__codelineno-2-44"></a><span class="w">  </span><span class="nx">edges</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">smooth</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"curvedCW"</span><span class="p">,</span><span class="w"> </span><span class="nx">roundness</span><span class="o">:</span><span class="w"> </span><span class="mf">0.2</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">size</span><span class="o">:</span><span class="w"> </span><span class="mf">11</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#8b949e"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-2-45"><a id="__codelineno-2-45" name="__codelineno-2-45" href="#__codelineno-2-45"></a><span class="p">});</span>
+</span><span id="__span-2-46"><a id="__codelineno-2-46" name="__codelineno-2-46" href="#__codelineno-2-46"></a><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span id="__span-2-47"><a id="__codelineno-2-47" name="__codelineno-2-47" href="#__codelineno-2-47"></a><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-2-48"><a id="__codelineno-2-48" name="__codelineno-2-48" href="#__codelineno-2-48"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></code></pre></div>
+</details>
+<h2 id="bringing-it-all-together-the-complete-context-graph-stack">Bringing It All Together: The Complete Context Graph Stack<a class="headerlink" href="#bringing-it-all-together-the-complete-context-graph-stack" title="Permanent link">¶</a></h2>
+<p>This final chapter, and this book, converges on a complete picture of a production context graph system. The fourteen concepts covered here — security model, row-level security, ABAC, zero-trust, federated learning, model audit trail, vector database, HNSW, product quantization, ANN, embedding model, sentence transformer, dense retrieval, and ROI model — are the final layer of architecture that makes context graph deployments secure, scalable, and financially justifiable.</p>
+<p>The security stack ensures that the rich decision knowledge stored in the context graph is accessible only to authorized users and systems, enforced through fine-grained access control that accounts for user attributes, resource sensitivity, and environmental context. Zero-trust architecture eliminates implicit trust assumptions that create invisible security boundaries. Federated learning enables model improvement across organizational boundaries while preserving data sovereignty.</p>
+<p>The vector search stack — HNSW indexes, product quantization, ANN search, sentence transformers, and dense retrieval — ensures that the retrieval layer can find semantically relevant precedents quickly and accurately even as the context graph grows to millions of decision traces. Hybrid retrieval combines the strengths of semantic and lexical search into a pipeline that is more accurate than either approach alone.</p>
+<p>The ROI model translates technical capability into financial justification — essential for maintaining executive sponsorship and securing the resources needed to expand from beachhead workflow to organizational scale.</p>
+<div class="admonition mascot-encouraging">
+<p class="admonition-title">Nexus Reflects on the Journey</p>
+<p><img src="../../img/mascot/encouraging.png" class="mascot-admonition-img" alt="Nexus encouraging">
+Twenty-two chapters. A complete architecture, from knowledge graph foundations through semantic layers, metadata management, process lineage, the context problem, decision traces, LLM integration, compliance, market strategy, organizational adoption, data engineering, and finally security and vector search. You now have the full picture — not just the what and the how, but the why that makes each piece necessary. Nexus is proud to have traced this path with you. The organizations that build context graphs well will make better decisions, maintain richer institutional memory, and serve their stakeholders more effectively than those that do not. That matters. Go build something that matters.</p>
+</div>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">¶</a></h2>
+<p>This chapter completed the context graph architecture by examining the security and vector search foundations that make production deployments trustworthy and scalable.</p>
+<p>The <strong>Graph Security Model</strong> defines authentication, authorization, data classification, and audit logging as the four pillars of context graph security. <strong>Row-Level Security</strong> enforces access boundaries at the node and edge level with three modes (permit, redact, deny) whose trade-offs between security and usability must be explicitly chosen. <strong>Attribute-Based Access Control</strong> enables fine-grained policies that incorporate user attributes, resource sensitivity, and environmental context — far more expressive than role-based access control for the complex access scenarios context graphs present.</p>
+<p><strong>Zero-Trust Graph Architecture</strong> eliminates implicit trust assumptions through cryptographic data provenance, continuous authorization re-evaluation, and least-privilege AI agent permissions. <strong>Federated Learning</strong> enables cross-organization model training while preserving data sovereignty. <strong>Model Audit Trails</strong> provide the training data provenance, evaluation metrics, version history, and approval records that compliance-regulated contexts require.</p>
+<p>The vector search stack begins with <strong>Vector Databases</strong> as the storage layer for decision trace embeddings. <strong>HNSW</strong> indexes provide fast approximate nearest neighbor search through hierarchical navigable small-world graphs. <strong>Product Quantization</strong> compresses embeddings by 24-48x to make large collections fit in memory. <strong>Approximate Nearest Neighbor</strong> algorithms — HNSW, IVF-PQ, and LSH — offer tunable trade-offs between recall accuracy and search speed. <strong>Embedding Models</strong> and <strong>Sentence Transformers</strong> convert decision trace text into semantically meaningful vectors, with fine-tuning on domain-specific data producing the highest retrieval quality. <strong>Dense Retrieval</strong> enables semantic similarity search that transcends vocabulary matching.</p>
+<p>Finally, the <strong>Context Graph ROI Model</strong> quantifies value across decision speed improvement, decision quality improvement, onboarding acceleration, and compliance cost reduction — giving organizations the financial framework they need to justify and expand context graph investments.</p>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">Chapter 22: Complete — And So Is the Book!</p>
+<p><img src="../../img/mascot/celebration.png" class="mascot-admonition-img" alt="Nexus celebrating">
+You have completed the full journey through "Context Graph: How Organizations Use LLMs Cost Effectively." From the foundational concepts of knowledge graphs and semantic layers, through the technical architecture of decision traces and LLM integration, to the organizational adoption and security foundations that make context graphs production-ready — you now hold a complete framework for understanding, designing, and deploying context graph systems. Nexus's work here is done. Yours is just beginning. Build wisely, trace everything, and may your decisions always have the context they deserve.</p>
+</div>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -1262,7 +1982,7 @@
         
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
   Back to top
 </button>
         
@@ -1272,13 +1992,13 @@
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
           <a href="../21-data-engineering/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 21. Data Engineering">
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
@@ -1303,7 +2023,7 @@
             </div>
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
             </div>
           </a>
         
@@ -1315,7 +2035,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2026 Dan Mccreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+      Copyright © 2026 Dan Mccreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
     </div>
   
   
@@ -1336,6 +2056,14 @@
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
+        <script src="../../js/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+      
     
-  </body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

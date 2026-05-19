@@ -1,12 +1,9 @@
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
+<!DOCTYPE html><html lang="en" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="An interactive intelligent textbook on the contact graph and how the contact graphs helps organization use LLMs cost effectively">
+        <meta name="description" content="The data engineering foundations that keep context graphs accurate, fresh, and observable at scale: data mesh, streaming pipelines, graph processing, and multi-model integration">
       
       
         <meta name="author" content="Dan Mccreary">
@@ -21,12 +18,12 @@
         <link rel="next" href="../22-security-vector-search/">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../img/favicon.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
     
     
       
-        <title>21. Data Engineering - Context Graph</title>
+        <title>Chapter 21: Data Engineering and Infrastructure - Context Graph</title>
       
     
     
@@ -47,7 +44,7 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -55,6 +52,8 @@
       <link rel="stylesheet" href="../../css/extra.css">
     
       <link rel="stylesheet" href="../../css/mascot.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -72,8 +71,44 @@
 
     
     
+      
+        <meta property="og:type" content="website">
+      
+        <meta property="og:title" content="Chapter 21: Data Engineering and Infrastructure - Context Graph">
+      
+        <meta property="og:description" content="The data engineering foundations that keep context graphs accurate, fresh, and observable at scale: data mesh, streaming pipelines, graph processing, and multi-model integration">
+      
+        <meta property="og:image" content="https://dmccreary.github.io/context-graph/assets/images/social/chapters/21-data-engineering/index.png">
+      
+        <meta property="og:image:type" content="image/png">
+      
+        <meta property="og:image:width" content="1200">
+      
+        <meta property="og:image:height" content="630">
+      
+        <meta property="og:url" content="https://dmccreary.github.io/context-graph/chapters/21-data-engineering/">
+      
+        <meta name="twitter:card" content="summary_large_image">
+      
+        <meta name="twitter:title" content="Chapter 21: Data Engineering and Infrastructure - Context Graph">
+      
+        <meta name="twitter:description" content="The data engineering foundations that keep context graphs accurate, fresh, and observable at scale: data mesh, streaming pipelines, graph processing, and multi-model integration">
+      
+        <meta name="twitter:image" content="https://dmccreary.github.io/context-graph/assets/images/social/chapters/21-data-engineering/index.png">
+      
     
-  </head>
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     
@@ -108,13 +143,12 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Context Graph" class="md-header__button md-logo" aria-label="Context Graph" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -126,7 +160,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              21. Data Engineering
+              Chapter 21: Data Engineering and Infrastructure
             
           </span>
         </div>
@@ -140,7 +174,7 @@
     
       <label class="md-header__button md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -149,20 +183,20 @@
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
           <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
             
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
           </a>
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
@@ -187,7 +221,7 @@
         <a href="https://github.com/dmccreary/context-graph" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -211,7 +245,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -222,8 +256,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Context Graph" class="md-nav__button md-logo" aria-label="Context Graph" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     Context Graph
@@ -233,7 +266,7 @@
       <a href="https://github.com/dmccreary/context-graph" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -919,27 +952,204 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#the-data-engineering-foundation" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Data Engineering Foundation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-mesh-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Mesh Architecture
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-products-and-data-contracts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Products and Data Contracts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-sla-and-data-observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data SLA and Data Observability
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sql-transformation-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      SQL Transformation Tools
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflow-orchestration-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Workflow Orchestration Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Workflow Orchestration Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#graph-batch-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph Batch Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#streaming-graph-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      Streaming Graph Update
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#event-streaming-platforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Event Streaming Platforms
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multi-model-database-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-Model Database Integration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Multi-Model Database Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#document-store-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Document Store Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-series-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Time-Series Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feature-engineering-from-graphs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feature Engineering from Graphs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Feature Engineering from Graphs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#knowledge-graph-as-feature-store" class="md-nav__link">
+    <span class="md-ellipsis">
+      Knowledge Graph as Feature Store
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#graph-based-recommendation-and-personalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph-Based Recommendation and Personalization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Graph-Based Recommendation and Personalization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#personalization-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Personalization Graph
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-graph-and-user-journey-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Session Graph and User Journey Graph
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#change-data-feed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Change Data Feed
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#context-graph-observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context Graph Observability
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#summary" class="md-nav__link">
     <span class="md-ellipsis">
       Summary
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#concepts-covered" class="md-nav__link">
-    <span class="md-ellipsis">
-      Concepts Covered
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    <span class="md-ellipsis">
-      Prerequisites
     </span>
   </a>
   
@@ -1007,6 +1217,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1035,6 +1249,46 @@
   
 
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1136,7 +1390,7 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -1155,27 +1409,204 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#the-data-engineering-foundation" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Data Engineering Foundation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-mesh-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Mesh Architecture
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-products-and-data-contracts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Products and Data Contracts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-sla-and-data-observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data SLA and Data Observability
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sql-transformation-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      SQL Transformation Tools
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflow-orchestration-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Workflow Orchestration Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Workflow Orchestration Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#graph-batch-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph Batch Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#streaming-graph-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      Streaming Graph Update
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#event-streaming-platforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Event Streaming Platforms
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multi-model-database-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-Model Database Integration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Multi-Model Database Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#document-store-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Document Store Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-series-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Time-Series Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feature-engineering-from-graphs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feature Engineering from Graphs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Feature Engineering from Graphs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#knowledge-graph-as-feature-store" class="md-nav__link">
+    <span class="md-ellipsis">
+      Knowledge Graph as Feature Store
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#graph-based-recommendation-and-personalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph-Based Recommendation and Personalization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Graph-Based Recommendation and Personalization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#personalization-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Personalization Graph
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-graph-and-user-journey-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Session Graph and User Journey Graph
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#change-data-feed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Change Data Feed
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#context-graph-observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context Graph Observability
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#summary" class="md-nav__link">
     <span class="md-ellipsis">
       Summary
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#concepts-covered" class="md-nav__link">
-    <span class="md-ellipsis">
-      Concepts Covered
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    <span class="md-ellipsis">
-      Prerequisites
     </span>
   </a>
   
@@ -1198,56 +1629,379 @@
   
     <a href="https://github.com/dmccreary/context-graph/blob/main/docs/chapters/21-data-engineering/index.md" title="Edit this page" class="md-content__button md-icon">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
     </a>
   
   
 
 
-<h1 id="chapter-21-data-engineering-and-infrastructure">Chapter 21: Data Engineering and Infrastructure<a class="headerlink" href="#chapter-21-data-engineering-and-infrastructure" title="Permanent link">&para;</a></h1>
-<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
-<p>Supporting infrastructure: data mesh, streaming platforms, graph batch and streaming processing, workflow orchestration, SQL transformation, feature engineering from graphs, and context graph observability.</p>
-<h2 id="concepts-covered">Concepts Covered<a class="headerlink" href="#concepts-covered" title="Permanent link">&para;</a></h2>
-<p>This chapter covers the following 21 concepts from the learning graph:</p>
-<ol>
-<li>Data Mesh</li>
-<li>Data Product</li>
-<li>Data Contract</li>
-<li>Data SLA</li>
-<li>Data Observability</li>
-<li>SQL Transformation Tool</li>
-<li>Workflow Orchestration Tool</li>
-<li>Event Streaming Platform</li>
-<li>Graph Batch Processing</li>
-<li>Streaming Graph Update</li>
-<li>Multi-Model Database</li>
-<li>Document Store Integration</li>
-<li>Time-Series Integration</li>
-<li>Feature Engineering from Graph</li>
-<li>Knowledge Graph as Feature Store</li>
-<li>Graph-Based Recommendation</li>
-<li>Personalization Graph</li>
-<li>Session Graph</li>
-<li>User Journey Graph</li>
-<li>Change Data Feed</li>
-<li>Context Graph Observability</li>
-</ol>
-<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
-<p>This chapter builds on concepts from:</p>
+<h1 id="chapter-21-data-engineering-and-infrastructure">Chapter 21: Data Engineering and Infrastructure<a class="headerlink" href="#chapter-21-data-engineering-and-infrastructure" title="Permanent link">¶</a></h1>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Welcome to Chapter 21!</p>
+<p><img src="../../img/mascot/welcome.png" class="mascot-admonition-img" alt="Nexus welcoming">
+The previous chapters established what context graphs do and how organizations adopt them. This chapter examines the infrastructure underneath — the data engineering patterns, streaming platforms, orchestration tools, and observability systems that keep context graphs accurate, fresh, and trustworthy at scale. Nexus has seen context graphs fail not because the graph was wrong but because the data feeding it was stale, missing, or inconsistent. Infrastructure is not glamorous, but it is what separates a working system from a broken one. Let's trace the pipeline.</p>
+</div>
+<h2 id="the-data-engineering-foundation">The Data Engineering Foundation<a class="headerlink" href="#the-data-engineering-foundation" title="Permanent link">¶</a></h2>
+<p>A context graph is only as good as the data flowing into it. The most sophisticated graph schema and retrieval algorithm cannot compensate for source data that is stale, incomplete, or inconsistent. Data engineering for context graphs is therefore not a supporting activity — it is a load-bearing layer of the architecture.</p>
+<p>Context graphs impose specific data engineering requirements that differ from traditional data warehousing. In a data warehouse, the primary design goal is analytical query performance: how quickly can I aggregate millions of rows along multiple dimensions? In a context graph, the primary goals are freshness (how recently was this decision trace updated?), completeness (does this trace include all the context elements that existed at decision time?), and traversal efficiency (how quickly can I retrieve a subgraph of related decisions?). These goals shape the entire data engineering stack.</p>
+<p>Before examining specific tools and patterns, it is useful to understand the three data flows that a context graph data engineering stack must support:</p>
+<p><strong>The write flow</strong> — capturing decision events, policy updates, and entity changes from source systems and converting them into graph node and edge insertions or updates. Write flow performance determines how quickly new information appears in the graph.</p>
+<p><strong>The read flow</strong> — retrieving subgraphs, traversing precedent chains, and serving context to AI inference pipelines. Read flow performance determines the latency of context graph queries as seen by end users and AI agents.</p>
+<p><strong>The governance flow</strong> — tracking data lineage, enforcing data quality constraints, detecting anomalies, and producing audit records that satisfy compliance requirements. Governance flow correctness determines whether the context graph is trustworthy enough for regulated use cases.</p>
+<h2 id="data-mesh-architecture">Data Mesh Architecture<a class="headerlink" href="#data-mesh-architecture" title="Permanent link">¶</a></h2>
+<p>The <strong>Data Mesh</strong> is an organizational and architectural approach to data infrastructure that addresses one of the fundamental scaling problems of centralized data platforms: as the number of data sources grows, the central data team becomes a bottleneck for onboarding new sources, maintaining pipelines, and ensuring data quality.</p>
+<p>A data mesh decentralizes data ownership: each domain team (finance, sales, engineering, customer success) owns and operates the data pipelines for their domain, following organization-wide standards enforced by a central platform team. The central platform team provides the infrastructure and the standards; the domain teams provide the domain expertise and the operational responsibility.</p>
+<p>For context graph deployments, the data mesh model is a natural fit. Context graph data sources are domain-specific — financial decisions live with the finance domain, sales decisions live with the sales domain — and the people who best understand the quality requirements and exception patterns for that data are in the domain team. A centralized data engineering team trying to build and maintain pipelines for every domain's decision data will produce generic pipelines that miss domain-specific nuances.</p>
+<p>The data mesh model for context graphs involves three layers:</p>
+<p><strong>Domain data products</strong> — each domain team produces a well-defined data product (described in the next section) that represents their decisions and entities in a format the context graph can ingest. The domain team owns the quality and freshness of their data product.</p>
+<p><strong>Central graph platform</strong> — the central platform team operates the context graph infrastructure: the graph database, the query layer, the AI integration, and the observability stack. The platform team defines the schema standards and ingestion protocols that all domain data products must conform to.</p>
+<p><strong>Federated governance</strong> — a cross-domain governance function, typically the Center of Excellence described in the previous chapter, sets and enforces the standards that span domains: data retention policies, access control requirements, audit trail standards. The governance function does not own any specific data product — it owns the rules that all products must follow.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Nexus Thinks About Data Mesh Trade-offs</p>
+<p><img src="../../img/mascot/thinking.png" class="mascot-admonition-img" alt="Nexus thinking">
+Data mesh is not a free lunch. Decentralizing data ownership requires domain teams to develop data engineering competence they may not currently have. The organizational transformation to data mesh can take longer than the technical transformation. For smaller organizations (fewer than 500 employees), a centralized data team with strong domain partnerships is often more practical than a full data mesh. Data mesh scales well for organizations where more than five domains each generate substantial decision data.</p>
+</div>
+<h2 id="data-products-and-data-contracts">Data Products and Data Contracts<a class="headerlink" href="#data-products-and-data-contracts" title="Permanent link">¶</a></h2>
+<p>A <strong>Data Product</strong> is a self-contained, discoverable, and trustworthy data asset that a domain team produces for consumption by other teams or systems. The term "product" is intentional — it implies that the producing team has the same obligations to consumers that a product team has to customers: clear documentation, stable interfaces, quality guarantees, and responsive support.</p>
+<p>In the context of context graph data engineering, each domain team's data product is a structured stream or batch of decision events, entity updates, and policy changes that conforms to the context graph's ingestion schema. The data product is not raw database records — it is a curated, validated, and documented dataset that the context graph platform can ingest without requiring domain-specific transformation logic.</p>
+<p>A <strong>Data Contract</strong> is the formal agreement between the data product producer and its consumers. A data contract for a context graph source specifies:</p>
+<p><strong>Schema.</strong> The exact structure of the data product's records, including field names, data types, required versus optional fields, and the meaning of each field. Schema changes require advance notice and a migration plan.</p>
+<p><strong>Freshness SLA.</strong> How recently the data product's records reflect the state of the source system. A decision event should appear in the data product within a specified time window (e.g., 15 minutes of the decision being recorded in the source system).</p>
+<p><strong>Completeness guarantee.</strong> The proportion of source events that are expected to appear in the data product. A completeness guarantee of 99.9% means that no more than 0.1% of source events are expected to be missing due to pipeline failures.</p>
+<p><strong>Quality assertions.</strong> Specific validation rules that the data product guarantees to satisfy: no null values in required fields, no future-dated event timestamps, no entity references that do not resolve to a known entity in the entity registry.</p>
+<p>Data contracts are typically implemented as code — a schema definition in a schema registry plus a set of automated quality checks that run against each data product batch or stream before it is accepted by the central platform.</p>
+<details>
+<summary>#### Diagram: Data Mesh for Context Graphs</summary>
+<p><strong>Sim Spec:</strong></p>
 <ul>
-<li><a href="../02-semantic-layers/">Chapter 2: Semantic Layers for Data Lakes</a></li>
-<li><a href="../03-metadata-management/">Chapter 3: Metadata Management</a></li>
-<li><a href="../07-process-mining-lineage/">Chapter 7: Process Mining, Data Lineage, and Provenance</a></li>
-<li><a href="../15-building-deploying/">Chapter 15: Building and Deploying Context Graph Systems</a></li>
+<li>Type: vis-network diagram</li>
+<li>sim-id: data-mesh-context-graph</li>
+<li>Library: vis-network</li>
+<li>Status: not started</li>
+<li>Bloom Level: Analysis</li>
+<li>Bloom Verb: analyze</li>
+<li>Learning Objective: Analyze how a data mesh architecture distributes ownership of context graph data sources while maintaining central platform governance</li>
+<li>Instructional Rationale: A multi-layer network diagram makes the domain-platform-governance relationship explicit, helping learners understand how decentralization and standardization coexist</li>
 </ul>
-<hr />
-<p>TODO: Generate Chapter Content</p>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"en"</span><span class="p">&gt;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"UTF-8"</span><span class="p">&gt;</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Data Mesh for Context Graphs<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#0d1117</span><span class="p">;</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#e6edf3</span><span class="p">;</span><span class="w"> </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="kc">sans-serif</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="p">#</span><span class="nn">network</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span><span class="w"> </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">520</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#30363d</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"network"</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="kd">const</span><span class="w"> </span><span class="nx">nodes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">vis</span><span class="p">.</span><span class="nx">DataSet</span><span class="p">([</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">  </span><span class="c1">// Domain teams</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Finance\nDomain Team"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#1f6feb"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#58a6ff"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"box"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">360</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">160</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Sales\nDomain Team"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#1f6feb"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#58a6ff"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"box"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">360</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Engineering\nDomain Team"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#1f6feb"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#58a6ff"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"box"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">360</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">160</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">  </span><span class="c1">// Data products</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Finance\nData Product"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#312d00"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#d29922"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"ellipse"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">120</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">160</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Sales\nData Product"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#312d00"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#d29922"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"ellipse"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">120</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Engineering\nData Product"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#312d00"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#d29922"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"ellipse"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">120</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">160</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">  </span><span class="c1">// Central platform</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">7</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Context Graph\nPlatform"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#8250df"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#d2a8ff"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="p">,</span><span class="w"> </span><span class="nx">size</span><span class="o">:</span><span class="w"> </span><span class="mf">15</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"box"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">120</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">  </span><span class="c1">// Governance</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Federated\nGovernance\n(CoE)"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#3d0d0d"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#f85149"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"box"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">120</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">240</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">  </span><span class="c1">// Consumers</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">9</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"AI Inference\nLayer"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#1a4321"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#3fb950"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"box"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">360</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">80</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Decision\nUsers"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#1a4321"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#3fb950"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"box"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">360</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">80</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">  </span><span class="c1">// Data contracts</span>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">11</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Data Contract\n(Schema + SLA)"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#0d1117"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#30363d"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#8b949e"</span><span class="p">,</span><span class="w"> </span><span class="nx">size</span><span class="o">:</span><span class="w"> </span><span class="mf">11</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">240</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">290</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="p">]);</span>
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="kd">const</span><span class="w"> </span><span class="nx">edges</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">vis</span><span class="p">.</span><span class="nx">DataSet</span><span class="p">([</span>
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"produces"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"produces"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"produces"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">7</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#d29922"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">7</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#d29922"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">7</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#d29922"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">7</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">9</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">7</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#f85149"</span><span class="p">,</span><span class="w"> </span><span class="nx">dashes</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"enforces standards"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#f85149"</span><span class="p">,</span><span class="w"> </span><span class="nx">dashes</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#f85149"</span><span class="p">,</span><span class="w"> </span><span class="nx">dashes</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">11</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="nx">dashes</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#30363d"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="p">]);</span>
+</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="kd">const</span><span class="w"> </span><span class="nx">container</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"network"</span><span class="p">);</span>
+</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="ow">new</span><span class="w"> </span><span class="nx">vis</span><span class="p">.</span><span class="nx">Network</span><span class="p">(</span><span class="nx">container</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">nodes</span><span class="p">,</span><span class="w"> </span><span class="nx">edges</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="w">  </span><span class="nx">physics</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-0-51"><a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a><span class="w">  </span><span class="nx">interaction</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">dragNodes</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-0-52"><a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="w">  </span><span class="nx">edges</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">smooth</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"curvedCW"</span><span class="p">,</span><span class="w"> </span><span class="nx">roundness</span><span class="o">:</span><span class="w"> </span><span class="mf">0.2</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">size</span><span class="o">:</span><span class="w"> </span><span class="mf">11</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#8b949e"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-0-53"><a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="p">});</span>
+</span><span id="__span-0-54"><a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span id="__span-0-55"><a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-0-56"><a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></code></pre></div>
+</details>
+<h2 id="data-sla-and-data-observability">Data SLA and Data Observability<a class="headerlink" href="#data-sla-and-data-observability" title="Permanent link">¶</a></h2>
+<p>A <strong>Data SLA</strong> (Service Level Agreement) specifies the performance commitments that a data product or data pipeline must meet. For context graph data engineering, relevant SLAs include:</p>
+<p><strong>Freshness SLA:</strong> The maximum acceptable lag between an event occurring in the source system and that event being queryable in the context graph. Freshness requirements vary by workflow: real-time incident response workflows may require a freshness SLA of 60 seconds, while quarterly compliance reporting workflows may tolerate 24-hour lag.</p>
+<p><strong>Availability SLA:</strong> The proportion of time that the data ingestion pipeline is operational. An availability SLA of 99.5% allows for approximately 44 hours of downtime per year — acceptable for batch-oriented workflows, too loose for real-time decision support.</p>
+<p><strong>Latency SLA:</strong> The maximum time required to execute a context graph query and return results. A latency SLA of 500 milliseconds for a single-hop query and 2 seconds for a multi-hop traversal is typical for interactive decision support workflows.</p>
+<p><strong>Data SLAs</strong> are enforced through <strong>Data Observability</strong> — the practice of continuously monitoring data pipelines and data quality to detect and alert on SLA violations before they affect end users. Data observability for context graphs includes monitoring the following dimensions:</p>
+<p><strong>Freshness monitoring.</strong> Tracking the timestamp of the most recent event ingested for each data source and alerting when the lag exceeds the freshness SLA. Freshness monitors must account for expected low-activity periods (weekends, overnight) where low event volume is normal rather than indicative of a pipeline failure.</p>
+<p><strong>Volume monitoring.</strong> Tracking the number of events ingested per time window for each data source and alerting when the volume drops significantly below the historical baseline. A sudden drop in event volume often indicates a pipeline failure or a schema change in the source system that broke the parser.</p>
+<p><strong>Schema monitoring.</strong> Detecting changes in the structure of incoming data products — new fields, removed fields, changed data types — that may indicate a schema evolution in the source system that was not communicated through the data contract process.</p>
+<p><strong>Semantic monitoring.</strong> Validating that the content of incoming data is semantically correct — that entity references resolve to known entities, that timestamps are in valid ranges, that enumerated field values are within the allowed set. Semantic violations that pass schema validation are the most dangerous category because they produce incorrect graph data that is difficult to detect downstream.</p>
+<h2 id="sql-transformation-tools">SQL Transformation Tools<a class="headerlink" href="#sql-transformation-tools" title="Permanent link">¶</a></h2>
+<p><strong>SQL Transformation Tools</strong> are the data engineering infrastructure for transforming raw source data into the structured format required by the context graph's ingestion layer. The term "SQL" is used broadly here — these tools use SQL as their transformation language but add capabilities for dependency management, incremental processing, and data quality testing that raw SQL lacks.</p>
+<p>These tools operate on a declarative model: the data engineer defines the desired output structure (a table or view representing the transformation result) and the tool manages the execution order, incremental updates, and dependency graph among transformations. A transformation that depends on three upstream transformations will be re-executed automatically when any of those upstream transformations produces new output.</p>
+<p>For context graph data engineering, SQL transformation tools serve two primary functions:</p>
+<p><strong>Source system normalization.</strong> Enterprise source systems often have idiosyncratic data models: date fields stored as strings, entity IDs that differ between systems (the customer ID in the CRM is different from the customer ID in the billing system), and denormalized records that must be split into multiple graph entities. SQL transformations normalize these source system quirks into the consistent format the context graph ingestion layer expects.</p>
+<p><strong>Decision event reconstruction.</strong> Some source systems do not emit discrete decision events — they maintain a current state that is overwritten when a decision changes it. Converting current-state records into decision events requires a transformation that computes the difference between the current state and the previous state (change data capture), and reconstructs the decision event from that difference. SQL transformation tools with incremental processing capabilities are well-suited to this pattern.</p>
+<p>A data quality testing layer is an essential complement to SQL transformation tools. These tools allow data engineers to write assertions against transformation outputs — "the decision_type field should never be null," "the event_timestamp should always be before the ingestion_timestamp" — and to run those assertions automatically on every transformation execution. Failed assertions are surfaced as test failures, not as silent data quality issues that propagate into the context graph.</p>
+<h2 id="workflow-orchestration-tools">Workflow Orchestration Tools<a class="headerlink" href="#workflow-orchestration-tools" title="Permanent link">¶</a></h2>
+<p><strong>Workflow Orchestration Tools</strong> manage the scheduling, dependency resolution, and failure handling for data engineering pipelines. A context graph data engineering stack typically involves dozens of interdependent processes: source system extraction, transformation, quality validation, graph ingestion, and post-ingestion verification. Orchestration tools ensure these processes execute in the correct order, with appropriate parallelization, and with automatic retry and alerting on failure.</p>
+<p>For context graph data engineering, orchestration tools must support two execution patterns:</p>
+<p><strong>Batch orchestration</strong> — the execution of a complete pipeline on a schedule (hourly, daily, weekly) that processes all data accumulated since the previous batch run. Batch orchestration is appropriate for data sources that are not time-critical and where the overhead of maintaining a streaming connection to the source system is not justified.</p>
+<p><strong>Event-driven orchestration</strong> — the execution of pipeline steps in response to events: a new data product file appearing in a storage bucket, a message appearing in an event queue, or a webhook from a source system indicating that a new decision event is available. Event-driven orchestration minimizes freshness lag by processing events as they arrive rather than waiting for the next batch window.</p>
+<p>Most context graph data engineering stacks use both patterns: event-driven orchestration for real-time decision events from high-priority workflows, and batch orchestration for lower-priority data sources and for the periodic maintenance tasks (quality audits, freshness checks, obsolescence marking) that do not need to execute in real time.</p>
+<h3 id="graph-batch-processing">Graph Batch Processing<a class="headerlink" href="#graph-batch-processing" title="Permanent link">¶</a></h3>
+<p><strong>Graph Batch Processing</strong> refers to the execution of large-scale graph computations on the accumulated context graph data — computations that are too expensive to run in real time but that produce valuable outputs for planning, analysis, or model training. Examples of batch graph computations include:</p>
+<p><strong>Precedent similarity clustering.</strong> Grouping decision traces by semantic similarity to identify recurring exception patterns that can be converted into formal policies. A batch job that runs weekly and produces a ranked list of "exception clusters that appear more than N times and have no corresponding formal policy" gives the governance team a data-driven list of policy gaps to address.</p>
+<p><strong>Staleness detection.</strong> Identifying decision traces that reference policies or precedents that have since been superseded, so those traces can be flagged as historically accurate but no longer policy-compliant. This is inherently a batch computation because it requires joining every trace against the current policy timeline — an operation that cannot be performed cheaply in real time.</p>
+<p><strong>Graph statistics computation.</strong> Computing graph-level metrics — degree distribution, clustering coefficient, average path length between related decision types — that characterize the structure of the organizational knowledge and help identify areas where the graph is sparse or unusually dense. Sparse areas may indicate workflows that are not being captured; unusually dense areas may indicate over-specificity in the schema.</p>
+<h3 id="streaming-graph-update">Streaming Graph Update<a class="headerlink" href="#streaming-graph-update" title="Permanent link">¶</a></h3>
+<p><strong>Streaming Graph Update</strong> refers to the pattern of applying incremental graph changes — new nodes, new edges, modified properties — in near-real time as events flow through the ingestion pipeline. Streaming updates require a streaming processing platform that can handle high event throughput with low latency and provide exactly-once delivery guarantees.</p>
+<p>The critical challenge in streaming graph updates is consistency: the graph must remain internally consistent at all times, even as it is being updated by multiple concurrent streams. A decision trace that references an entity that has not yet been ingested into the graph — because the entity event and the decision event arrived in a different order than they were generated — will fail to resolve the entity reference. The streaming processing platform must either buffer events until all referenced entities are present, or apply the update speculatively and reconcile it once the referenced entity arrives.</p>
+<h2 id="event-streaming-platforms">Event Streaming Platforms<a class="headerlink" href="#event-streaming-platforms" title="Permanent link">¶</a></h2>
+<p><strong>Event Streaming Platforms</strong> are the infrastructure for high-throughput, low-latency event ingestion and distribution. For context graph data engineering, the event streaming platform is the central bus through which decision events, entity updates, and policy changes flow from source systems to the context graph.</p>
+<p>An event streaming platform provides three capabilities that raw message queues do not:</p>
+<p><strong>Retention and replay.</strong> Events are stored for a configurable retention period (days to weeks) and can be re-consumed from any point in the retention window. If the context graph's ingestion pipeline fails and recovers after 4 hours, the pipeline can replay all events from the last successfully processed event rather than having to request a full re-extraction from the source system.</p>
+<p><strong>Multiple consumer isolation.</strong> Multiple independent consumers can read from the same event stream without interfering with each other. The context graph's graph ingestion consumer, the audit log consumer, and the training data preparation consumer all read the same event stream independently — each maintains its own position in the stream and processes events at its own rate.</p>
+<p><strong>Partitioning for ordered processing.</strong> Events can be partitioned by a key (e.g., entity ID or workflow ID) so that all events for the same entity or workflow are processed in order by the same consumer. This is essential for decision traces, where the order of events (original decision, amendment, appeal, override) must be preserved to reconstruct the correct decision history.</p>
+<h2 id="multi-model-database-integration">Multi-Model Database Integration<a class="headerlink" href="#multi-model-database-integration" title="Permanent link">¶</a></h2>
+<p>A <strong>Multi-Model Database</strong> is a database system that can store and query data in multiple models — graph, document, relational, key-value — within a single system. For context graph deployments, multi-model databases reduce the operational complexity of managing separate specialized systems for graph data, document storage, and key-value caching.</p>
+<p>Two adjacent integration patterns — <strong>Document Store Integration</strong> and <strong>Time-Series Integration</strong> — extend the context graph's data coverage beyond the native graph model.</p>
+<h3 id="document-store-integration">Document Store Integration<a class="headerlink" href="#document-store-integration" title="Permanent link">¶</a></h3>
+<p><strong>Document Store Integration</strong> connects the context graph to a document-oriented storage system that holds the full content of documents referenced by decision traces. A decision trace might reference a contract document, a compliance policy PDF, or a meeting transcript. The decision trace in the graph holds the metadata — document ID, title, creation date, relevant sections — while the full document content lives in the document store.</p>
+<p>This separation is important for two reasons. Graph databases are optimized for traversal, not for storing and retrieving large unstructured documents. And document content often contains sensitive information that should be accessible only to specific users — separating it from the graph allows access control to be applied at the document level without restricting graph traversal access to the decision trace metadata.</p>
+<p>Integrating the document store with the context graph requires a consistent entity linking model: the same document entity is referenced by the same ID in both systems, so a query that traverses the graph to a document reference can immediately fetch the document content from the document store without a secondary lookup through a separate identifier mapping.</p>
+<h3 id="time-series-integration">Time-Series Integration<a class="headerlink" href="#time-series-integration" title="Permanent link">¶</a></h3>
+<p><strong>Time-Series Integration</strong> connects the context graph to a time-series database that holds quantitative measurements over time — system performance metrics, market prices, operational statistics. Decision traces often need to reference the state of key metrics at the time a decision was made: "this exception was approved because the inventory level was below the reorder threshold on that date."</p>
+<p>A time-series database can answer "what was the value of metric X at time T?" efficiently — it is specifically optimized for this query pattern. The context graph holds the decision trace and its temporal metadata; the time-series database holds the metric history that provides quantitative context for decisions. Integration between the two systems allows the context graph's retrieval layer to enrich decision traces with the quantitative context that was present at decision time.</p>
+<details>
+<summary>#### Diagram: Multi-Model Integration Architecture</summary>
+<p><strong>Sim Spec:</strong></p>
+<ul>
+<li>Type: vis-network diagram</li>
+<li>sim-id: multi-model-integration-architecture</li>
+<li>Library: vis-network</li>
+<li>Status: not started</li>
+<li>Bloom Level: Analysis</li>
+<li>Bloom Verb: differentiate</li>
+<li>Learning Objective: Differentiate the roles of graph, document, time-series, and vector storage in a complete context graph infrastructure stack</li>
+<li>Instructional Rationale: Showing the four storage models as complementary rather than competing clarifies why context graph deployments require a multi-model approach rather than a single database</li>
+</ul>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"en"</span><span class="p">&gt;</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"UTF-8"</span><span class="p">&gt;</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Multi-Model Integration<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#0d1117</span><span class="p">;</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#e6edf3</span><span class="p">;</span><span class="w"> </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="kc">sans-serif</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span><span class="p">#</span><span class="nn">network</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span><span class="w"> </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#30363d</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"network"</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="kd">const</span><span class="w"> </span><span class="nx">nodes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">vis</span><span class="p">.</span><span class="nx">DataSet</span><span class="p">([</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Context Graph\nQuery Layer"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#8250df"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#d2a8ff"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="p">,</span><span class="w"> </span><span class="nx">size</span><span class="o">:</span><span class="w"> </span><span class="mf">15</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"box"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">fixed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Graph Database\n(Decisions, Entities,\nRelationships)"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#1f6feb"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#58a6ff"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"box"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">280</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">160</span><span class="p">,</span><span class="w"> </span><span class="nx">fixed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Document Store\n(Contracts, Policies,\nTranscripts)"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#1f6feb"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#58a6ff"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"box"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">280</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">160</span><span class="p">,</span><span class="w"> </span><span class="nx">fixed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Time-Series DB\n(Metrics, Prices,\nPerformance)"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#1f6feb"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#58a6ff"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"box"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">280</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">160</span><span class="p">,</span><span class="w"> </span><span class="nx">fixed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Vector Index\n(Semantic Search,\nEmbeddings)"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#1f6feb"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#58a6ff"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"box"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">280</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">160</span><span class="p">,</span><span class="w"> </span><span class="nx">fixed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Traversal\nQueries"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#0d1117"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#30363d"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#8b949e"</span><span class="p">,</span><span class="w"> </span><span class="nx">size</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">140</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">280</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">7</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Full Document\nRetrieval"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#0d1117"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#30363d"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#8b949e"</span><span class="p">,</span><span class="w"> </span><span class="nx">size</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">140</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">280</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Point-in-time\nMetric Lookup"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#0d1117"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#30363d"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#8b949e"</span><span class="p">,</span><span class="w"> </span><span class="nx">size</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">140</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">280</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">9</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Semantic\nSimilarity"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#0d1117"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#30363d"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#8b949e"</span><span class="p">,</span><span class="w"> </span><span class="nx">size</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">140</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">280</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="p">]);</span>
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="kd">const</span><span class="w"> </span><span class="nx">edges</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">vis</span><span class="p">.</span><span class="nx">DataSet</span><span class="p">([</span>
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"both"</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"primary\nstore"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"both"</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"doc\nref"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"both"</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"metric\ncontext"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"both"</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"semantic\nretrieval"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">dashes</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#30363d"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">7</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="nx">dashes</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#30363d"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="nx">dashes</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#30363d"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">9</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="nx">dashes</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#30363d"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="p">]);</span>
+</span><span id="__span-1-36"><a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="kd">const</span><span class="w"> </span><span class="nx">container</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"network"</span><span class="p">);</span>
+</span><span id="__span-1-37"><a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a><span class="ow">new</span><span class="w"> </span><span class="nx">vis</span><span class="p">.</span><span class="nx">Network</span><span class="p">(</span><span class="nx">container</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">nodes</span><span class="p">,</span><span class="w"> </span><span class="nx">edges</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-38"><a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a><span class="w">  </span><span class="nx">physics</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-1-39"><a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a><span class="w">  </span><span class="nx">interaction</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">dragNodes</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-1-40"><a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a><span class="w">  </span><span class="nx">edges</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">smooth</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"curvedCW"</span><span class="p">,</span><span class="w"> </span><span class="nx">roundness</span><span class="o">:</span><span class="w"> </span><span class="mf">0.25</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">size</span><span class="o">:</span><span class="w"> </span><span class="mf">11</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#8b949e"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-1-41"><a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a><span class="p">});</span>
+</span><span id="__span-1-42"><a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span id="__span-1-43"><a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-1-44"><a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></code></pre></div>
+</details>
+<h2 id="feature-engineering-from-graphs">Feature Engineering from Graphs<a class="headerlink" href="#feature-engineering-from-graphs" title="Permanent link">¶</a></h2>
+<p><strong>Feature Engineering from Graph</strong> is the process of converting graph-structured data into numerical feature vectors that can be used as inputs to machine learning models. Graph data contains rich structural information — node centrality, neighborhood density, path lengths between entities, community membership — that flat tabular datasets cannot represent. Extracting these structural features and combining them with node-level attributes produces richer feature sets than either graph structure or node attributes alone.</p>
+<p>Several categories of graph-derived features are particularly valuable for context graph applications:</p>
+<p><strong>Centrality features.</strong> The centrality of a decision node (how many other nodes reference it, how many chains pass through it) is a proxy for its importance as a precedent. A highly central decision has influenced many subsequent decisions; a central policy node has governed many decisions. Centrality features can be computed as node-level features that machine learning models can use to weight the importance of retrieved precedents.</p>
+<p><strong>Temporal features.</strong> The age of a decision trace, the recency of its last reference in a subsequent decision, and the rate at which it has been cited over time are temporal features that capture the relevance evolution of a precedent. A precedent that was heavily cited two years ago but has not been referenced in six months may reflect a policy or practice that has become obsolete, even if no formal obsolescence has been recorded.</p>
+<p><strong>Community features.</strong> Community detection algorithms partition graph nodes into groups with dense internal connections and sparse external connections. In a context graph, communities often correspond to functional areas (finance exception decisions, procurement approval decisions) or organizational units. Community membership is a useful feature for retrieval ranking — a decision from the same community as the current decision is more likely to be relevant than a decision from a distant community.</p>
+<p><strong>Path features.</strong> The shortest path length between two decision nodes measures their conceptual distance in the knowledge graph. Two decisions separated by two hops (a common policy) are more similar than two decisions separated by five hops. Path length features help retrieval models distinguish between decisions that appear semantically similar but are structurally distant.</p>
+<h3 id="knowledge-graph-as-feature-store">Knowledge Graph as Feature Store<a class="headerlink" href="#knowledge-graph-as-feature-store" title="Permanent link">¶</a></h3>
+<p>A <strong>Knowledge Graph as Feature Store</strong> is an architectural pattern where a context graph serves as the source of features for machine learning model training and inference. Rather than maintaining a separate feature store (a specialized database for ML feature serving), the context graph's rich node and edge attributes — combined with graph-derived features — provide a comprehensive feature source for models that reason about organizational decisions.</p>
+<p>This pattern has a compelling property: because the context graph already maintains temporal versioning (bitemporal modeling, as described in Chapter 13), it can provide point-in-time correct features for training. When training a model to predict which decisions will require escalation, you need to know what features were present at the time each historical decision was made — not what the features look like today. A context graph with proper temporal versioning can answer "what did the precedent graph look like on this specific date for this specific entity?" — a query that flat feature stores cannot answer without enormous complexity.</p>
+<h2 id="graph-based-recommendation-and-personalization">Graph-Based Recommendation and Personalization<a class="headerlink" href="#graph-based-recommendation-and-personalization" title="Permanent link">¶</a></h2>
+<p><strong>Graph-Based Recommendation</strong> uses the structure of a knowledge graph to generate recommendations — of relevant precedents, of applicable policies, of subject matter experts — based on graph proximity rather than statistical correlation alone. In a context graph, graph-based recommendation surfaces "decisions similar to the current one that were resolved in a specific way," where similarity is defined by shared entities, shared policies, and structural proximity in the graph.</p>
+<p>Graph-based recommendation has an advantage over pure embedding-based similarity for context graph applications: it is inherently explainable. "These three precedent decisions are recommended because they involved the same customer, the same exception type, and were approved by the same authority" is a traceable explanation. "These three decisions have a cosine similarity of 0.87 in the embedding space" is not.</p>
+<h3 id="personalization-graph">Personalization Graph<a class="headerlink" href="#personalization-graph" title="Permanent link">¶</a></h3>
+<p>A <strong>Personalization Graph</strong> is a context graph extension that captures individual user preferences, expertise areas, and decision patterns to tailor context graph outputs to the specific user. A personalization graph links user nodes to the types of decisions they most frequently handle, the precedents they most frequently cite, and the experts they most frequently consult — building a structured representation of each user's decision-making context.</p>
+<p>Personalization in context graph retrieval improves relevance in two ways. First, it filters retrieved precedents to those from workflow areas the user is responsible for, reducing noise from irrelevant organizational contexts. Second, it ranks retrieved precedents by how closely they match the decision patterns this specific user has followed in the past — surfacing the precedents that are most consistent with their existing judgment rather than the most statistically common precedents overall.</p>
+<h3 id="session-graph-and-user-journey-graph">Session Graph and User Journey Graph<a class="headerlink" href="#session-graph-and-user-journey-graph" title="Permanent link">¶</a></h3>
+<p>A <strong>Session Graph</strong> is a temporary subgraph that captures the decisions, queries, and context retrievals that occur within a single user session — a bounded period of work on a specific decision or set of related decisions. Session graphs enable context graph systems to maintain state across multiple queries within a session: "the user asked about three related precedents in this session, so subsequent queries should be interpreted in that context."</p>
+<p>A <strong>User Journey Graph</strong> extends the session graph concept to the full lifecycle of a user's interaction with the context graph system over time: which workflows they use most frequently, which types of exceptions they encounter most often, how their querying patterns evolve as they become more experienced with the system. User journey graphs are a source of implicit feedback for system improvement — users who stop querying for certain types of precedents may have developed internal expertise (positive signal) or may have stopped trusting the results (negative signal that requires investigation).</p>
+<h2 id="change-data-feed">Change Data Feed<a class="headerlink" href="#change-data-feed" title="Permanent link">¶</a></h2>
+<p>A <strong>Change Data Feed</strong> (CDF) is a pattern for capturing changes to data in a source system and delivering those changes as a stream of events to downstream systems. Change data feeds are the most important integration pattern for context graph freshness because they enable real-time or near-real-time synchronization between source systems and the context graph without requiring the source system to implement explicit event publishing.</p>
+<p>Change data feeds work by monitoring the transaction log of the source database — the internal record that the database maintains of every write operation. Each write operation (insert, update, delete) appears as an event in the transaction log; a change data feed consumer reads these log events and converts them into the format expected by the context graph ingestion layer.</p>
+<p>Three properties make change data feeds particularly valuable for context graph data engineering:</p>
+<p><strong>Completeness.</strong> Because the transaction log captures every database write, a change data feed provides complete coverage of source system changes — unlike polling-based approaches that can miss changes that occur and are subsequently overwritten between polling intervals.</p>
+<p><strong>Low source system impact.</strong> Reading the transaction log has minimal impact on the source system's performance, unlike query-based approaches that execute SELECT statements against production tables. Transaction log reading is a read-only, non-blocking operation.</p>
+<p><strong>Order preservation.</strong> Transaction logs preserve the exact order in which changes occurred. Change data feed events arrive at the context graph ingestion layer in the same order that the source system processed them, which is essential for correct reconstruction of decision histories.</p>
+<details>
+<summary>#### Diagram: Change Data Feed Pipeline</summary>
+<p><strong>Sim Spec:</strong></p>
+<ul>
+<li>Type: vis-network diagram</li>
+<li>sim-id: change-data-feed-pipeline</li>
+<li>Library: vis-network</li>
+<li>Status: not started</li>
+<li>Bloom Level: Application</li>
+<li>Bloom Verb: construct</li>
+<li>Learning Objective: Construct a change data feed pipeline that connects source system transaction logs to context graph ingestion in real time</li>
+<li>Instructional Rationale: Tracing the path from source database write to graph node update illustrates the end-to-end data flow that enables context graph freshness</li>
+</ul>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"en"</span><span class="p">&gt;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"UTF-8"</span><span class="p">&gt;</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Change Data Feed Pipeline<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">  </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#0d1117</span><span class="p">;</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#e6edf3</span><span class="p">;</span><span class="w"> </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="kc">sans-serif</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">  </span><span class="p">#</span><span class="nn">network</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span><span class="w"> </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">460</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#30363d</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"network"</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="kd">const</span><span class="w"> </span><span class="nx">nodes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">vis</span><span class="p">.</span><span class="nx">DataSet</span><span class="p">([</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Source System\n(CRM / ERP / etc)"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#3d0d0d"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#f85149"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"box"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">480</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">fixed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Transaction\nLog"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#312d00"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#d29922"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"cylinder"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">320</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">fixed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"CDC\nConnector"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#1f6feb"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#58a6ff"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"box"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">160</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">fixed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Event\nStream"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#8250df"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#d2a8ff"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"box"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">fixed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Schema\nValidation"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#1f6feb"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#58a6ff"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"box"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">160</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">80</span><span class="p">,</span><span class="w"> </span><span class="nx">fixed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Dead Letter\nQueue"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#3d0d0d"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#f85149"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"box"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">160</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">80</span><span class="p">,</span><span class="w"> </span><span class="nx">fixed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">7</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Graph\nIngestion"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#1f6feb"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#58a6ff"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"box"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">320</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">80</span><span class="p">,</span><span class="w"> </span><span class="nx">fixed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Context\nGraph DB"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#1a4321"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#3fb950"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="p">,</span><span class="w"> </span><span class="nx">size</span><span class="o">:</span><span class="w"> </span><span class="mf">15</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"box"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">480</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">80</span><span class="p">,</span><span class="w"> </span><span class="nx">fixed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">9</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Observability\nAlerts"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="s2">"#312d00"</span><span class="p">,</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s2">"#d29922"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#e6edf3"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"box"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">320</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">80</span><span class="p">,</span><span class="w"> </span><span class="nx">fixed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="p">]);</span>
+</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="kd">const</span><span class="w"> </span><span class="nx">edges</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">vis</span><span class="p">.</span><span class="nx">DataSet</span><span class="p">([</span>
+</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"writes"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"reads log"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"publishes events"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-2-30"><a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-2-31"><a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">7</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"valid"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-2-32"><a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"invalid"</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#f85149"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-2-33"><a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">7</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"upsert"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-2-34"><a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="mf">9</span><span class="p">,</span><span class="w"> </span><span class="nx">arrows</span><span class="o">:</span><span class="w"> </span><span class="s2">"to"</span><span class="p">,</span><span class="w"> </span><span class="nx">dashes</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"metrics"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-2-35"><a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="p">]);</span>
+</span><span id="__span-2-36"><a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="kd">const</span><span class="w"> </span><span class="nx">container</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"network"</span><span class="p">);</span>
+</span><span id="__span-2-37"><a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a><span class="ow">new</span><span class="w"> </span><span class="nx">vis</span><span class="p">.</span><span class="nx">Network</span><span class="p">(</span><span class="nx">container</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">nodes</span><span class="p">,</span><span class="w"> </span><span class="nx">edges</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-38"><a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a><span class="w">  </span><span class="nx">physics</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-2-39"><a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a><span class="w">  </span><span class="nx">interaction</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">dragNodes</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-2-40"><a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a><span class="w">  </span><span class="nx">edges</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">smooth</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"curvedCW"</span><span class="p">,</span><span class="w"> </span><span class="nx">roundness</span><span class="o">:</span><span class="w"> </span><span class="mf">0.2</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">size</span><span class="o">:</span><span class="w"> </span><span class="mf">11</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s2">"#8b949e"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-2-41"><a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a><span class="p">});</span>
+</span><span id="__span-2-42"><a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span id="__span-2-43"><a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-2-44"><a id="__codelineno-2-44" name="__codelineno-2-44" href="#__codelineno-2-44"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></code></pre></div>
+</details>
+<h2 id="context-graph-observability">Context Graph Observability<a class="headerlink" href="#context-graph-observability" title="Permanent link">¶</a></h2>
+<p><strong>Context Graph Observability</strong> is the practice of instrumenting the context graph system to provide continuous visibility into its operational health, data quality, and AI performance. Observability for context graphs goes beyond traditional database monitoring — it must cover not just system performance metrics but also data semantic quality and AI output quality.</p>
+<p>A complete context graph observability stack monitors three layers.</p>
+<p><strong>Infrastructure layer.</strong> Traditional database and pipeline monitoring: query latency, throughput, error rate, storage utilization, replication lag. Infrastructure layer monitoring is necessary but not sufficient — a system can be operationally healthy at the infrastructure layer while producing incorrect outputs due to data quality issues.</p>
+<p><strong>Data quality layer.</strong> Monitoring of the semantic correctness of graph contents: the proportion of decision traces with all required fields populated, the proportion of entity references that resolve correctly, the freshness of each data source, and the volume of events flowing through each ingestion pipeline. Data quality layer monitoring requires application-level instrumentation — the context graph application must actively check and report on data quality, not just system metrics.</p>
+<p><strong>AI output layer.</strong> Monitoring of the quality of context graph outputs as experienced by AI agents and end users: retrieval relevance scores (do retrieved precedents have high relevance to the query?), coverage rates (what proportion of queries return at least one relevant result?), and feedback scores (do users rate retrieved context as helpful?). AI output layer monitoring closes the loop between the data engineering work and the actual value delivered to users.</p>
+<p>These three monitoring layers together provide the observability required to distinguish between four types of system states:</p>
+<table>
+<thead>
+<tr>
+<th>System State</th>
+<th>Infrastructure</th>
+<th>Data Quality</th>
+<th>AI Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fully operational</td>
+<td>Healthy</td>
+<td>Healthy</td>
+<td>Healthy</td>
+</tr>
+<tr>
+<td>Silent data failure</td>
+<td>Healthy</td>
+<td>Degraded</td>
+<td>Degraded</td>
+</tr>
+<tr>
+<td>AI model drift</td>
+<td>Healthy</td>
+<td>Healthy</td>
+<td>Degraded</td>
+</tr>
+<tr>
+<td>Infrastructure failure</td>
+<td>Degraded</td>
+<td>Unknown</td>
+<td>Unknown</td>
+</tr>
+</tbody>
+</table>
+<p>The most dangerous state is silent data failure: the infrastructure is operationally healthy (all monitoring dashboards show green), but the data quality is degraded (stale sources, missing fields, incorrect entity links), causing AI output quality to degrade silently. Without data quality layer monitoring, this state can persist for weeks before users notice and report the problem.</p>
+<div class="admonition mascot-warning">
+<p class="admonition-title">The Silent Data Failure Footgun</p>
+<p><img src="../../img/mascot/warning.png" class="mascot-admonition-img" alt="Nexus warning">
+Silent data failure is a footgun pattern with all three defining properties: it is <strong>silent</strong> (no system alerts, no error messages — just quietly wrong outputs), it is <strong>easy to trigger</strong> (any pipeline that lacks data quality assertions will eventually experience it), and it causes <strong>delayed and invisible damage</strong> (users lose trust in the system gradually rather than experiencing a single visible failure they can report). The fix is structural: data quality assertions must run automatically on every pipeline execution, not as a periodic manual audit.</p>
+</div>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">¶</a></h2>
+<p>This chapter covered the data engineering infrastructure that makes context graphs operational at scale. Seven interconnected architectural layers work together to provide accurate, fresh, and observable context graph data.</p>
+<p>The <strong>Data Mesh</strong> decentralizes data ownership to domain teams while the central platform team provides shared infrastructure and governance standards enforced by a Center of Excellence. <strong>Data Products</strong> and <strong>Data Contracts</strong> formalize the interface between domain teams and the central platform, with explicit schema, freshness, completeness, and quality guarantees. <strong>Data SLAs</strong> and <strong>Data Observability</strong> define the performance commitments and monitoring practices that detect SLA violations before they affect users.</p>
+<p><strong>SQL Transformation Tools</strong> normalize source system data into context graph ingestion format with automated quality assertions. <strong>Workflow Orchestration Tools</strong> manage the dependency graph, scheduling, and failure handling for both batch and event-driven pipelines. <strong>Event Streaming Platforms</strong> provide the high-throughput, ordered, replayable event bus that enables near-real-time graph updates and multiple independent consumer patterns.</p>
+<p><strong>Multi-Model Database Integration</strong> — connecting graph, document, time-series, and vector storage — provides the full data coverage that context graph retrieval requires. <strong>Change Data Feeds</strong> enable real-time synchronization from source systems by reading database transaction logs rather than polling production tables.</p>
+<p><strong>Feature Engineering from Graphs</strong> converts graph structure into ML model inputs: centrality, temporal, community, and path features. The <strong>Knowledge Graph as Feature Store</strong> pattern leverages temporal versioning to provide point-in-time correct features for training. <strong>Graph-Based Recommendation</strong>, <strong>Personalization Graphs</strong>, <strong>Session Graphs</strong>, and <strong>User Journey Graphs</strong> extend the context graph's capabilities into adaptive, user-aware retrieval.</p>
+<p>Finally, <strong>Context Graph Observability</strong> — monitoring infrastructure, data quality, and AI output quality simultaneously — prevents the silent data failure failure mode that is the most dangerous threat to context graph trustworthiness.</p>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">Chapter 21: Complete!</p>
+<p><img src="../../img/mascot/celebration.png" class="mascot-admonition-img" alt="Nexus celebrating">
+You now understand the full data engineering stack that keeps context graphs accurate, fresh, and observable. The final chapter — Chapter 22 — explores security and vector search: how to protect sensitive decision data with fine-grained access control, how to combine vector similarity search with graph traversal for the most powerful retrieval patterns, and how to evaluate and monitor the security posture of a production context graph deployment. The last piece of the architecture. Let's trace the security boundary!</p>
+</div>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -1266,7 +2020,7 @@
         
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
   Back to top
 </button>
         
@@ -1276,13 +2030,13 @@
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
           <a href="../20-organizational-adoption/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 20. Organizational Adoption">
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
@@ -1307,7 +2061,7 @@
             </div>
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
             </div>
           </a>
         
@@ -1319,7 +2073,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2026 Dan Mccreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+      Copyright © 2026 Dan Mccreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
     </div>
   
   
@@ -1340,6 +2094,14 @@
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
+        <script src="../../js/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+      
     
-  </body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

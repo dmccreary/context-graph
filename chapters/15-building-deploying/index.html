@@ -1,12 +1,9 @@
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
+<!DOCTYPE html><html lang="en" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="An interactive intelligent textbook on the contact graph and how the contact graphs helps organization use LLMs cost effectively">
+        <meta name="description" content="End-to-end system construction: storage layer selection, ingestion pipelines, SDK/REST/GraphQL APIs, caching, replication, monitoring, SLAs, testing strategies, and cost modeling.">
       
       
         <meta name="author" content="Dan Mccreary">
@@ -21,12 +18,12 @@
         <link rel="next" href="../16-ai-agent-architecture/">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../img/favicon.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
     
     
       
-        <title>15. Building and Deploying - Context Graph</title>
+        <title>Chapter 15: Building and Deploying Context Graph Systems - Context Graph</title>
       
     
     
@@ -47,7 +44,7 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -55,6 +52,8 @@
       <link rel="stylesheet" href="../../css/extra.css">
     
       <link rel="stylesheet" href="../../css/mascot.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -72,8 +71,44 @@
 
     
     
+      
+        <meta property="og:type" content="website">
+      
+        <meta property="og:title" content="Chapter 15: Building and Deploying Context Graph Systems - Context Graph">
+      
+        <meta property="og:description" content="End-to-end system construction: storage layer selection, ingestion pipelines, SDK/REST/GraphQL APIs, caching, replication, monitoring, SLAs, testing strategies, and cost modeling.">
+      
+        <meta property="og:image" content="https://dmccreary.github.io/context-graph/assets/images/social/chapters/15-building-deploying/index.png">
+      
+        <meta property="og:image:type" content="image/png">
+      
+        <meta property="og:image:width" content="1200">
+      
+        <meta property="og:image:height" content="630">
+      
+        <meta property="og:url" content="https://dmccreary.github.io/context-graph/chapters/15-building-deploying/">
+      
+        <meta name="twitter:card" content="summary_large_image">
+      
+        <meta name="twitter:title" content="Chapter 15: Building and Deploying Context Graph Systems - Context Graph">
+      
+        <meta name="twitter:description" content="End-to-end system construction: storage layer selection, ingestion pipelines, SDK/REST/GraphQL APIs, caching, replication, monitoring, SLAs, testing strategies, and cost modeling.">
+      
+        <meta name="twitter:image" content="https://dmccreary.github.io/context-graph/assets/images/social/chapters/15-building-deploying/index.png">
+      
     
-  </head>
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     
@@ -108,13 +143,12 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Context Graph" class="md-header__button md-logo" aria-label="Context Graph" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -126,7 +160,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              15. Building and Deploying
+              Chapter 15: Building and Deploying Context Graph Systems
             
           </span>
         </div>
@@ -140,7 +174,7 @@
     
       <label class="md-header__button md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -149,20 +183,20 @@
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
           <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
             
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
           </a>
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
@@ -187,7 +221,7 @@
         <a href="https://github.com/dmccreary/context-graph" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -211,7 +245,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -222,8 +256,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Context Graph" class="md-nav__button md-logo" aria-label="Context Graph" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     Context Graph
@@ -233,7 +266,7 @@
       <a href="https://github.com/dmccreary/context-graph" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -819,6 +852,126 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storage-layer-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Storage Layer Selection
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ingestion-pipeline-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ingestion Pipeline Design
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ingestion Pipeline Design">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#real-time-ingestion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Real-Time Ingestion
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#batch-ingestion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Batch Ingestion
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Batch Ingestion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-ingestion-pipeline-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Ingestion Pipeline Architecture
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-design-rest-graphql-and-sdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Design: REST, GraphQL, and SDK
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#caching-replication-and-performance-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Caching, Replication, and Performance Tuning
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#context-graph-slas-and-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context Graph SLAs and Monitoring
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing Strategy
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#context-graph-cost-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context Graph Cost Model
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-and-key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary and Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1007,6 +1160,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1035,6 +1192,46 @@
   
 
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1136,7 +1333,7 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -1181,6 +1378,126 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storage-layer-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Storage Layer Selection
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ingestion-pipeline-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ingestion Pipeline Design
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ingestion Pipeline Design">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#real-time-ingestion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Real-Time Ingestion
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#batch-ingestion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Batch Ingestion
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Batch Ingestion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-ingestion-pipeline-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Ingestion Pipeline Architecture
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-design-rest-graphql-and-sdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Design: REST, GraphQL, and SDK
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#caching-replication-and-performance-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Caching, Replication, and Performance Tuning
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#context-graph-slas-and-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context Graph SLAs and Monitoring
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing Strategy
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#context-graph-cost-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context Graph Cost Model
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-and-key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary and Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1198,16 +1515,16 @@
   
     <a href="https://github.com/dmccreary/context-graph/blob/main/docs/chapters/15-building-deploying/index.md" title="Edit this page" class="md-content__button md-icon">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
     </a>
   
   
 
 
-<h1 id="chapter-15-building-and-deploying-context-graph-systems">Chapter 15: Building and Deploying Context Graph Systems<a class="headerlink" href="#chapter-15-building-and-deploying-context-graph-systems" title="Permanent link">&para;</a></h1>
-<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<h1 id="chapter-15-building-and-deploying-context-graph-systems">Chapter 15: Building and Deploying Context Graph Systems<a class="headerlink" href="#chapter-15-building-and-deploying-context-graph-systems" title="Permanent link">¶</a></h1>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">¶</a></h2>
 <p>Covers end-to-end system construction: storage layer selection, real-time and batch ingestion pipelines, SDK/REST/GraphQL APIs, caching, replication, monitoring, SLAs, and testing strategies.</p>
-<h2 id="concepts-covered">Concepts Covered<a class="headerlink" href="#concepts-covered" title="Permanent link">&para;</a></h2>
+<h2 id="concepts-covered">Concepts Covered<a class="headerlink" href="#concepts-covered" title="Permanent link">¶</a></h2>
 <p>This chapter covers the following 24 concepts from the learning graph:</p>
 <ol>
 <li>Context Graph Storage Layer</li>
@@ -1235,21 +1552,183 @@
 <li>Context Graph Testing Strategy</li>
 <li>Context Graph Cost Model</li>
 </ol>
-<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">¶</a></h2>
 <p>This chapter builds on concepts from:</p>
 <ul>
 <li><a href="../09-context-graph-definition/">Chapter 9: What a Context Graph Is</a></li>
 <li><a href="../13-graph-data-modeling/">Chapter 13: Graph Data Modeling for Context</a></li>
 <li><a href="../14-llm-integration/">Chapter 14: Integrating LLMs with Context Graphs</a></li>
 </ul>
-<hr />
-<p>TODO: Generate Chapter Content</p>
+<hr>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">From design to production.</p>
+<p><img src="../../img/mascot/welcome.png" class="mascot-admonition-img" alt="Nexus waves welcome">
+Welcome to Chapter 15! The design is complete. Now we build and ship it. This chapter is the production engineering playbook — storage selection, ingestion pipelines, API design, monitoring, and testing. By the end, you will have everything you need to take a context graph from whiteboard to running system. Let's trace the why!</p>
+</div>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">¶</a></h2>
+<p>A context graph that exists only in design documents helps no one. This chapter covers what it takes to build a production-grade context graph system — one that handles real load, maintains sub-200ms retrieval latency, ingests decision traces in real time, survives node failures, recovers from schema migrations, and tells you when something goes wrong before your users do.</p>
+<p>The decisions you make in this chapter — storage layer, API design, ingestion architecture, caching strategy — compound over time. A storage layer that is correct for 10 million decision traces may need significant rearchitecting at 1 billion. An API design that is convenient for one integration pattern may become a bottleneck when you add five more consumers. This chapter gives you the principles to make choices that scale, not just choices that work today.</p>
+<h2 id="storage-layer-selection">Storage Layer Selection<a class="headerlink" href="#storage-layer-selection" title="Permanent link">¶</a></h2>
+<p>The <strong>context graph storage layer</strong> is the combination of systems that persist the graph data and serve queries. A production context graph requires two complementary storage components, which together constitute a <strong>hybrid storage architecture</strong>.</p>
+<p><strong>Property graph database selection</strong> is the first decision. The graph database must support: native graph storage with index-free adjacency (for fast multi-hop traversal), temporal property modeling (for bitemporal queries), horizontal scaling through sharding and replication (for large graphs), and a graph query language compatible with the context graph's query patterns (GQL or Cypher are the standard choices).</p>
+<p>Key selection criteria for the graph database:</p>
+<ul>
+<li><strong>Traversal performance</strong>: measured as latency for a 4-hop traversal over the entity-decision-actor-policy subgraph on a production-sized graph. Target: &lt; 20ms at the 95th percentile.</li>
+<li><strong>Write throughput</strong>: measured as decision trace writes per second at sustained load. Target: sufficient to handle peak event ingestion rates from all source systems.</li>
+<li><strong>Transaction support</strong>: decision trace writes must be atomic — a trace that is partially written (node without required edges) should never be visible to readers.</li>
+<li><strong>Schema constraint enforcement</strong>: the database must support uniqueness constraints and required property validations at the write level, not just at the application level.</li>
+</ul>
+<p><strong>Vector index layer</strong> is the second component of the hybrid storage architecture. A specialized vector index stores the embedding vectors for decision trace context summaries and supports approximate nearest-neighbor search. The vector index does not need to store the full graph data — it stores only the embedding vectors and the corresponding decision trace IDs (which the retrieval pipeline uses to fetch the full node from the graph database). Key selection criteria: ANN search latency (target: &lt; 30ms for top-100 results at 10M vectors), memory efficiency (embedding vectors are large — 1536 dimensions × 4 bytes × 10M traces = ~60GB), and support for metadata filtering (combining vector similarity with decision_type, entity_id, or timestamp filters in a single query pass).</p>
+<p>The two storage components are not alternatives — they are complementary. The graph database serves traversal queries (entity-linked decision history, precedent chains, policy version lookups). The vector index serves semantic similarity queries (find decisions semantically similar to this query, regardless of entity link). The hybrid retrieval pipeline (Chapter 14) uses both in every query.</p>
+<h2 id="ingestion-pipeline-design">Ingestion Pipeline Design<a class="headerlink" href="#ingestion-pipeline-design" title="Permanent link">¶</a></h2>
+<p><strong>Ingestion pipeline design</strong> determines how decision traces get from their source (automated systems, human capture interfaces, operational event streams) into the graph database and vector index in a reliable, consistent, and timely manner.</p>
+<p>A production ingestion pipeline has two modes that run in parallel: real-time ingestion (for decision traces generated by live systems) and batch ingestion (for historical backfill and low-velocity sources).</p>
+<h3 id="real-time-ingestion">Real-Time Ingestion<a class="headerlink" href="#real-time-ingestion" title="Permanent link">¶</a></h3>
+<p><strong>Real-time ingestion</strong> is the critical path for maintaining context freshness. It must process decision traces within seconds of their creation, making them available to the next retrieval query with minimal latency.</p>
+<p><strong>Event-driven ingestion</strong> is the architectural pattern for real-time capture. Decision sources (AI agents, workflow automation platforms, human capture interfaces) publish decision events to a <strong>message queue</strong> or event streaming platform. The ingestion service subscribes to the event queue, processes each event, validates the decision trace against the schema, resolves entity references to canonical IDs, generates the embedding vector for the context summary, and writes the trace node (with its edges) to the graph database and the vector index in a single atomic operation.</p>
+<p><strong>Event streaming integration</strong> with an existing enterprise event infrastructure (a message broker, a streaming platform) enables the ingestion pipeline to receive decision events from many sources without each source needing a direct API integration with the context graph. Sources publish to named event topics; the ingestion service subscribes to the relevant topics. When a new decision type or a new source system is added, only the event topic subscription needs to change — not the ingestion architecture.</p>
+<p>The <strong>message queue pattern</strong> provides durability: events are stored in the queue until the ingestion service successfully processes them. If the ingestion service is temporarily unavailable (maintenance, deployment), events accumulate in the queue and are processed in order when the service resumes. No events are lost. The queue also provides backpressure — if the ingestion service cannot keep up with the event rate, the queue grows, signaling that ingestion capacity needs to scale.</p>
+<p>Real-time ingestion latency target: from event published to trace visible in retrieval query results, &lt; 5 seconds at the 95th percentile.</p>
+<h3 id="batch-ingestion">Batch Ingestion<a class="headerlink" href="#batch-ingestion" title="Permanent link">¶</a></h3>
+<p><strong>Batch ingestion</strong> processes large volumes of historical or low-velocity data on a scheduled cadence. Sources that produce batch exports (daily HR snapshots, weekly contract updates, monthly financial reconciliations) feed the batch ingestion pipeline.</p>
+<p>A <strong>backfill strategy</strong> is a batch ingestion plan for loading historical decision data that predates the context graph deployment. Most organizations have years of decision history that can be partially reconstructed from operational system records: approval logs, email threads, change management tickets, audit trails. Backfilling this history significantly accelerates the context graph's time-to-value by providing precedents from day one rather than requiring months of live capture.</p>
+<p>Backfill requires a priority ordering: fill the highest-volume, highest-value decision types first (pricing exceptions, procurement approvals, incident escalations), since these are the domains where LLM context retrieval provides the most immediate value. Full historical reconstruction is rarely necessary — 2-3 years of backfill typically provides sufficient precedent depth for most decision types.</p>
+<h4 id="diagram-ingestion-pipeline-architecture">Diagram: Ingestion Pipeline Architecture<a class="headerlink" href="#diagram-ingestion-pipeline-architecture" title="Permanent link">¶</a></h4>
+<details>
+<summary>Interactive vis-network architecture diagram showing the real-time and batch ingestion pipelines feeding the hybrid storage architecture</summary>
+<p>Type: graph-model
+<strong>sim-id:</strong> ingestion-pipeline-architecture
+<strong>Library:</strong> vis-network
+<strong>Status:</strong> Specified</p>
+<p>Bloom Level: Understand (L2)
+Bloom Verb: explain
+Learning Objective: Learners can explain how decision events flow from source systems through the real-time and batch ingestion pipelines to the graph database and vector index.</p>
+<p>Instructional Rationale: A clickable architecture diagram is appropriate for the Understand objective — learners trace the flow of a specific event through the diagram, which makes the abstract pipeline concrete.</p>
+<p>Canvas: responsive width, 560px height. Light gray background.</p>
+<p>Nodes arranged in three columns:
+<strong>Left — Sources:</strong>
+- "AI Agents" (orange, ellipse)
+- "Human Capture UI" (orange, ellipse)
+- "Operational Systems (CDC)" (orange, ellipse)
+- "Historical Archives (Batch)" (gray, ellipse)</p>
+<p><strong>Center — Pipeline:</strong>
+- "Event Stream / Message Queue" (gold, box, wide) — real-time path
+- "Batch ETL Scheduler" (gray, box) — batch path
+- "Ingestion Service" (indigo, box, large)
+  - Sub-components shown as smaller boxes inside: "Schema Validator", "Entity Resolver", "Embedding Generator"</p>
+<p><strong>Right — Storage:</strong>
+- "Graph Database" (teal, cylinder shape)
+- "Vector Index" (steel blue, cylinder shape)
+- "Ingestion Monitor" (red, small box) — connected to both storage nodes</p>
+<p>Edges:
+- AI Agents → Event Stream, label "publishes events"
+- Human Capture UI → Event Stream, label "submits traces"
+- Operational Systems → Event Stream, label "CDC events"
+- Historical Archives → Batch ETL, label "scheduled exports"
+- Event Stream → Ingestion Service, label "real-time stream"
+- Batch ETL → Ingestion Service, label "batch loads"
+- Ingestion Service → Graph Database, label "writes traces"
+- Ingestion Service → Vector Index, label "writes embeddings"
+- Ingestion Monitor → Graph Database, label "monitors"
+- Ingestion Monitor → Vector Index, label "monitors"</p>
+<p>Click on Event Stream: "<strong>Message Queue</strong> — provides durability and backpressure. Events are persisted until processed. If the ingestion service goes down, events queue up and are processed in order when service resumes. Capacity: handles burst rates from all sources simultaneously."
+Click on Ingestion Service: "<strong>Ingestion Service</strong> — validates schema, resolves canonical entity IDs, generates embedding vector, and atomically writes to graph + vector index. Latency target: &lt; 3 seconds end-to-end from event to stored trace."
+Click on each storage node: shows selection criteria and latency targets.
+Click on Ingestion Monitor: "<strong>Monitoring</strong> — watches for: high queue depth (ingestion lag), write error rate spikes, schema validation failure rate, and entity resolution failure rate. Alerts when any metric exceeds threshold."</p>
+<p>Hover over edges shows edge labels.</p>
+</details>
+<h2 id="api-design-rest-graphql-and-sdk">API Design: REST, GraphQL, and SDK<a class="headerlink" href="#api-design-rest-graphql-and-sdk" title="Permanent link">¶</a></h2>
+<p>A context graph system exposes three API surfaces to consuming applications. Each serves a different consumer profile and interaction pattern.</p>
+<p><strong>Context graph REST API</strong> serves simple, point-in-time queries from applications that want standard HTTP/JSON integration. REST endpoints are defined for the most common query patterns: retrieve decision history for an entity, retrieve a specific decision trace by ID, retrieve precedents for a decision type, write a new decision trace. REST is the lowest-barrier integration option and is appropriate for most application integrations.</p>
+<p>Standard REST endpoint patterns:
+- <code>GET /entities/{entity_id}/decisions?type=pricing_exception&amp;recency=24mo</code> — retrieve decision history
+- <code>GET /decisions/{trace_id}</code> — retrieve a specific trace with its full subgraph
+- <code>POST /decisions</code> — write a new decision trace
+- <code>GET /decisions/{trace_id}/precedents?limit=10</code> — retrieve ranked precedents for a trace
+- <code>GET /decisions/search?query={text}&amp;entity_id={id}</code> — semantic search over decision summaries</p>
+<p><strong>Context graph GraphQL API</strong> serves advanced consumers that need flexible, arbitrary subgraph queries. GraphQL allows the client to specify exactly which node and edge properties to include in the response, avoiding over-fetching. For LLM applications that need to assemble custom context packages, GraphQL enables: "give me the customer entity, its last 5 pricing decisions, and for each decision the actor name, the policy version string, and the top-2 cited precedents" in a single query — without requiring a custom REST endpoint for each specific combination.</p>
+<p>GraphQL also enables subscription queries — clients can subscribe to new decision traces for a specific entity and receive real-time push notifications when new traces are written. This is the mechanism for keeping LLM agent context windows fresh during long-running processes.</p>
+<p><strong>Context graph SDK</strong> packages the REST and GraphQL APIs into a language-native library (Python, TypeScript/JavaScript, Java) with convenience methods for the most common operations. The SDK handles: authentication, connection pooling, retry logic, error handling, and serialization of decision trace objects to and from the graph's format. An SDK with good defaults dramatically reduces the integration effort for AI agent developers who want to add context graph write-back to their agents without becoming graph database experts.</p>
+<h2 id="caching-replication-and-performance-tuning">Caching, Replication, and Performance Tuning<a class="headerlink" href="#caching-replication-and-performance-tuning" title="Permanent link">¶</a></h2>
+<p><strong>Context graph caching</strong> reduces retrieval latency and LLM API costs by storing the results of common retrieval queries in a fast cache layer. Not all query results are equally cacheable:</p>
+<ul>
+<li><strong>Entity decision history</strong>: highly cacheable. An entity's recent decision history changes relatively slowly (new decisions are added, but existing ones are not modified). Cache with a TTL proportional to the entity's decision velocity (high-volume entities: 30-second TTL; low-volume entities: 5-minute TTL).</li>
+<li><strong>Precedent rankings</strong>: moderately cacheable. Precedent rankings change when new high-in-degree decisions are added or when lifecycle statuses change. Cache with a 10-minute TTL.</li>
+<li><strong>Real-time decision context for active workflows</strong>: do not cache. A decision being actively processed may have a new trace written seconds before the retrieval query — caching this context risks serving stale information at exactly the moment when freshness matters most.</li>
+</ul>
+<p>The cache should be keyed by the retrieval specification (entity_id + decision_type + recency + max_results) to enable cache hits for identical queries across different sessions.</p>
+<p><strong>Context graph replication</strong> maintains synchronized copies of the graph data across multiple physical locations for: high availability (read replicas can serve retrieval queries when the primary is under maintenance), geographic distribution (reads from European LLM applications can be served by a European replica without transatlantic latency), and read-write separation (write traffic goes to the primary, read traffic is distributed across replicas, keeping the primary's write path uncongested).</p>
+<p><strong>Context graph performance tuning</strong> is an ongoing practice, not a one-time setup. Key performance metrics to monitor continuously:</p>
+<ul>
+<li><strong>Traversal latency at P95</strong>: the 95th percentile latency for a standard 4-hop traversal query. If this drifts above 50ms, the index configuration or shard distribution may need adjustment.</li>
+<li><strong>Embedding search latency at P95</strong>: the time for a vector ANN search to return top-100 results. Should be &lt; 30ms.</li>
+<li><strong>Ingestion queue depth</strong>: the number of unprocessed events in the message queue. A growing queue indicates that ingestion capacity is insufficient for the current event rate.</li>
+<li><strong>Cache hit rate</strong>: the fraction of retrieval queries served from the cache. A hit rate below 40% may indicate over-aggressive TTLs or a query pattern that is too diverse for effective caching.</li>
+</ul>
+<h2 id="context-graph-slas-and-monitoring">Context Graph SLAs and Monitoring<a class="headerlink" href="#context-graph-slas-and-monitoring" title="Permanent link">¶</a></h2>
+<p>A <strong>context graph SLA</strong> (Service Level Agreement) defines the performance and availability commitments the system makes to its consumers. A standard context graph SLA for an enterprise decision support application:</p>
+<ul>
+<li><strong>Retrieval latency</strong>: P50 &lt; 80ms, P95 &lt; 200ms, P99 &lt; 500ms</li>
+<li><strong>Ingestion latency</strong>: from event published to trace visible in retrieval, P95 &lt; 5 seconds</li>
+<li><strong>Availability</strong>: 99.5% uptime (&lt; 22 hours downtime per year), with &lt; 5 minutes planned maintenance window per week</li>
+<li><strong>Data freshness</strong>: decision traces written to the context graph are visible to retrieval queries within the ingestion latency SLA</li>
+<li><strong>Accuracy</strong>: faithfulness score &gt; 0.85 on continuous sample monitoring</li>
+</ul>
+<p><strong>Context graph monitoring</strong> requires instrumentation at three levels:</p>
+<p><strong>Infrastructure monitoring</strong>: CPU, memory, disk I/O, and network metrics for the graph database and vector index instances. Alert thresholds are set at 80% utilization to provide lead time for capacity planning.</p>
+<p><strong>Application monitoring</strong>: query latency histograms, ingestion throughput (events per second), cache hit rates, schema validation error rates, entity resolution failure rates, and LLM API error rates. These metrics tell you how the system is performing at the application layer, not just the infrastructure layer.</p>
+<p><strong>Business monitoring</strong>: the metrics that matter to the organizations consuming the context graph — faithfulness score of LLM outputs, decision quality (measured by downstream outcomes), and coverage (what fraction of decision events in the source systems are being captured as traces). Business monitoring is the ultimate validation that the system is delivering value, not just running correctly.</p>
+<p><strong>Context graph alerting</strong> requires distinct alert channels for different severity levels. A graph database node failure at 3 AM needs an immediate page to the on-call engineer. A gradual drift in faithfulness score from 0.92 to 0.87 over two weeks should generate a ticket for the engineering team's next sprint. A full outage of the vector index should page immediately; a batch ingestion job that runs 30 minutes late should generate a low-urgency notification.</p>
+<h2 id="testing-strategy">Testing Strategy<a class="headerlink" href="#testing-strategy" title="Permanent link">¶</a></h2>
+<p>A <strong>context graph testing strategy</strong> has four layers, each verifying different properties.</p>
+<p><strong>Unit tests</strong> verify individual components in isolation: schema constraint validation logic, entity resolution functions, embedding generation, and serialization/deserialization of decision trace objects. Unit tests should run in &lt; 30 seconds and should not require a running graph database.</p>
+<p><strong>Integration tests</strong> verify that components work together correctly: that a decision trace written via the write API appears correctly in the graph database, with the right edges and properties; that a retrieval query against a known dataset returns the expected candidates in the expected order; that schema migration scripts transform test fixtures correctly.</p>
+<p><strong>End-to-end tests</strong> verify the full pipeline from event publication to LLM context retrieval: publish a decision event to the test event stream, verify it appears in the graph within the SLA latency, execute a retrieval query that should return this event, verify the query result contains the expected trace with correct properties, run the result through a test LLM call and verify the faithfulness score.</p>
+<p><strong>Contract tests</strong> verify that the context graph API behavior matches the contract that consuming applications expect. When an API change is proposed, contract tests verify that existing consumers will not break. Contract tests are particularly important for the context graph GraphQL API, where the schema is rich and breaking changes are easy to introduce accidentally.</p>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Start with a tight SLA and relax it, never the opposite.</p>
+<p><img src="../../img/mascot/tip.png" class="mascot-admonition-img" alt="Nexus giving a tip">
+A common mistake is to launch without SLAs and add them later when performance problems emerge. By that time, consumers have built applications with implicit assumptions about latency that are hard to revise. Set the SLAs before the first consumer integrates, even if they are conservative — P95 &lt; 500ms is achievable on day one and gives you headroom to improve. You can always tighten an SLA as you optimize; you cannot easily relax a SLA that consumers have already designed around.</p>
+</div>
+<h2 id="context-graph-cost-model">Context Graph Cost Model<a class="headerlink" href="#context-graph-cost-model" title="Permanent link">¶</a></h2>
+<p><strong>Context graph cost model</strong> is the framework for estimating and managing the operational costs of running a context graph system. The costs decompose into four categories:</p>
+<p><strong>Storage costs</strong> scale with the number of nodes and edges in the graph database, and with the number and dimensionality of embedding vectors in the vector index. A reasonable estimate: 10 million decision traces with their associated subgraph nodes and edges, plus embeddings, requires approximately 100-200GB of storage across the two systems.</p>
+<p><strong>Compute costs</strong> scale with query volume (retrieval queries per second) and ingestion volume (decision traces per second). The graph database and vector index instances must be sized to handle peak load. Reserved compute pricing can significantly reduce costs vs. on-demand pricing for sustained workloads.</p>
+<p><strong>LLM API costs</strong> are the most significant cost driver in most context graph deployments: the cost of the embedding generation calls (one call per new decision trace, plus one call per retrieval query for the query embedding), the reranking calls (if using an LLM-based reranker), and the faithfulness evaluation calls (if using an LLM-based output validator). At scale (100,000 retrieval queries per day), LLM API costs can exceed infrastructure costs by a factor of 2-3x.</p>
+<p><strong>Integration and maintenance costs</strong> — the engineering time to maintain integrations with source systems, handle schema migrations, update the SDK for new consumers, and operate the monitoring and alerting infrastructure — are often underestimated in initial cost models and should be planned for explicitly.</p>
+<p>Optimizations that significantly reduce total cost: caching (reduces redundant LLM API calls for repeated queries), context compression (reduces token usage in LLM calls by 30-50%), batch embedding generation (generates embeddings in batches rather than one per event, reducing API call overhead), and tiered storage (moving historical decision traces to cheaper cold storage while keeping recent traces in the fast graph database).</p>
+<h2 id="summary-and-key-takeaways">Summary and Key Takeaways<a class="headerlink" href="#summary-and-key-takeaways" title="Permanent link">¶</a></h2>
+<p>Building a production context graph system requires decisions across the full engineering stack — storage, ingestion, APIs, caching, replication, monitoring, testing, and cost management. The choices at each layer compound: a storage layer chosen for today's load may need rearchitecting at 10x scale, and an API design that is convenient for one consumer may become a bottleneck at ten.</p>
+<p>By the end of this chapter, you should be able to:</p>
+<ul>
+<li>Describe the <strong>hybrid storage architecture</strong> and explain why a property graph database and a vector index are both required</li>
+<li>Explain the difference between <strong>real-time ingestion</strong> and <strong>batch ingestion</strong> and describe when each is appropriate</li>
+<li>Explain the <strong>event-driven ingestion</strong> pattern and the role of the <strong>message queue</strong> in providing durability</li>
+<li>Describe the three API surfaces (REST, GraphQL, SDK) and explain which consumer profile each serves</li>
+<li>Explain what is cacheable vs. not cacheable in a context graph retrieval system and why</li>
+<li>Define a standard <strong>context graph SLA</strong> with specific latency, availability, and freshness targets</li>
+<li>Describe the four layers of a <strong>context graph testing strategy</strong> (unit, integration, end-to-end, contract)</li>
+<li>Enumerate the four categories of the <strong>context graph cost model</strong></li>
+</ul>
+<details class="question">
+<summary>Quick Check</summary>
+<p>A team is deploying a context graph for a high-frequency trading compliance use case. The system must process 5,000 decision trace events per second at peak, serve retrieval queries in &lt; 100ms, and maintain 99.9% availability. Which two design decisions from this chapter are most critical for meeting these requirements, and what would you do differently for this use case compared to a standard enterprise decision support deployment?</p>
+<p><em>(Answer: 1) Real-time ingestion capacity — at 5,000 events/second, the message queue and ingestion service must be horizontally scaled (multiple ingestion service instances consuming from partitioned event stream topics). Standard enterprise deployments may run a single ingestion service; this use case requires auto-scaling. 2) Read replica configuration — 99.9% availability (&lt; 9 hours downtime per year) requires at least two hot read replicas with automatic failover. A standard deployment might use a single primary with manual failover. Additionally: caching TTLs should be much shorter (compliance queries require higher freshness), and the retrieval SLA is tighter (&lt; 100ms vs. standard &lt; 200ms), requiring more aggressive index optimization and potentially dedicated query nodes.)</em></p>
+</details>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">Chapter 15: Complete!</p>
+<p><img src="../../img/mascot/celebration.png" class="mascot-admonition-img" alt="Nexus celebrating">
+You now have the complete production engineering playbook. The context graph is designed, modeled, integrated, and deployable. Chapter 16 zooms out to the agent architecture level — how AI agents use the context graph as their long-term memory, how the write-back loop creates a self-improving system, and how graduated autonomy enables organizations to trust AI agents with progressively more consequential decisions. Let's trace the why!</p>
+</div>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -1268,7 +1747,7 @@
         
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
   Back to top
 </button>
         
@@ -1278,13 +1757,13 @@
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
           <a href="../14-llm-integration/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 14. Integrating LLMs">
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
@@ -1309,7 +1788,7 @@
             </div>
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
             </div>
           </a>
         
@@ -1321,7 +1800,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2026 Dan Mccreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+      Copyright © 2026 Dan Mccreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
     </div>
   
   
@@ -1342,6 +1821,14 @@
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
+        <script src="../../js/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+      
     
-  </body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

@@ -1,12 +1,9 @@
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
+<!DOCTYPE html><html lang="en" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="An interactive intelligent textbook on the contact graph and how the contact graphs helps organization use LLMs cost effectively">
+        <meta name="description" content="How semantic layers, metric stores, and business glossaries turn raw enterprise data lakes into queryable, trustworthy knowledge — and why context graphs need them as a foundation.">
       
       
         <meta name="author" content="Dan Mccreary">
@@ -21,12 +18,12 @@
         <link rel="next" href="../03-metadata-management/">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../img/favicon.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
     
     
       
-        <title>2. Semantic Layers - Context Graph</title>
+        <title>Chapter 2: Semantic Layers for Data Lakes - Context Graph</title>
       
     
     
@@ -47,7 +44,7 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -55,6 +52,8 @@
       <link rel="stylesheet" href="../../css/extra.css">
     
       <link rel="stylesheet" href="../../css/mascot.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -72,8 +71,44 @@
 
     
     
+      
+        <meta property="og:type" content="website">
+      
+        <meta property="og:title" content="Chapter 2: Semantic Layers for Data Lakes - Context Graph">
+      
+        <meta property="og:description" content="How semantic layers, metric stores, and business glossaries turn raw enterprise data lakes into queryable, trustworthy knowledge — and why context graphs need them as a foundation.">
+      
+        <meta property="og:image" content="https://dmccreary.github.io/context-graph/assets/images/social/chapters/02-semantic-layers/index.png">
+      
+        <meta property="og:image:type" content="image/png">
+      
+        <meta property="og:image:width" content="1200">
+      
+        <meta property="og:image:height" content="630">
+      
+        <meta property="og:url" content="https://dmccreary.github.io/context-graph/chapters/02-semantic-layers/">
+      
+        <meta name="twitter:card" content="summary_large_image">
+      
+        <meta name="twitter:title" content="Chapter 2: Semantic Layers for Data Lakes - Context Graph">
+      
+        <meta name="twitter:description" content="How semantic layers, metric stores, and business glossaries turn raw enterprise data lakes into queryable, trustworthy knowledge — and why context graphs need them as a foundation.">
+      
+        <meta name="twitter:image" content="https://dmccreary.github.io/context-graph/assets/images/social/chapters/02-semantic-layers/index.png">
+      
     
-  </head>
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     
@@ -108,13 +143,12 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Context Graph" class="md-header__button md-logo" aria-label="Context Graph" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -126,7 +160,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              2. Semantic Layers
+              Chapter 2: Semantic Layers for Data Lakes
             
           </span>
         </div>
@@ -140,7 +174,7 @@
     
       <label class="md-header__button md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -149,20 +183,20 @@
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
           <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
             
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
           </a>
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
@@ -187,7 +221,7 @@
         <a href="https://github.com/dmccreary/context-graph" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -211,7 +245,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -222,8 +256,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Context Graph" class="md-nav__button md-logo" aria-label="Context Graph" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     Context Graph
@@ -233,7 +266,7 @@
       <a href="https://github.com/dmccreary/context-graph" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -541,6 +574,168 @@
   <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
       Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-a-data-lake" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Is a Data Lake?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-data-lakehouse-getting-the-best-of-both-worlds" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Data Lakehouse: Getting the Best of Both Worlds
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-meaning-problem-up-close" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Meaning Problem Up Close
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-semantic-layer-a-translation-layer-for-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Semantic Layer: A Translation Layer for Data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Semantic Layer: A Translation Layer for Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-semantic-layer-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Semantic Layer Architecture
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logical-data-models-and-virtual-views" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logical Data Models and Virtual Views
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metric-stores-and-olap-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metric Stores and OLAP Tools
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#naming-the-world-glossaries-dictionaries-and-standards" class="md-nav__link">
+    <span class="md-ellipsis">
+      Naming the World: Glossaries, Dictionaries, and Standards
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vocabulary-alignment-and-semantic-consistency" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vocabulary Alignment and Semantic Consistency
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Vocabulary Alignment and Semantic Consistency">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-semantic-consistency-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Semantic Consistency Explorer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#table-discovery-join-path-discovery-and-semantic-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      Table Discovery, Join Path Discovery, and Semantic Search
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#query-federation-and-data-virtualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Query Federation and Data Virtualization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Query Federation and Data Virtualization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-query-federation-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Query Federation Flow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connecting-semantic-layers-to-context-graphs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connecting Semantic Layers to Context Graphs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-and-key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary and Key Takeaways
     </span>
   </a>
   
@@ -1007,6 +1202,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1035,6 +1234,46 @@
   
 
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1136,7 +1375,7 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -1181,6 +1420,168 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-a-data-lake" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Is a Data Lake?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-data-lakehouse-getting-the-best-of-both-worlds" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Data Lakehouse: Getting the Best of Both Worlds
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-meaning-problem-up-close" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Meaning Problem Up Close
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-semantic-layer-a-translation-layer-for-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Semantic Layer: A Translation Layer for Data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Semantic Layer: A Translation Layer for Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-semantic-layer-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Semantic Layer Architecture
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logical-data-models-and-virtual-views" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logical Data Models and Virtual Views
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metric-stores-and-olap-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metric Stores and OLAP Tools
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#naming-the-world-glossaries-dictionaries-and-standards" class="md-nav__link">
+    <span class="md-ellipsis">
+      Naming the World: Glossaries, Dictionaries, and Standards
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vocabulary-alignment-and-semantic-consistency" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vocabulary Alignment and Semantic Consistency
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Vocabulary Alignment and Semantic Consistency">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-semantic-consistency-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Semantic Consistency Explorer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#table-discovery-join-path-discovery-and-semantic-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      Table Discovery, Join Path Discovery, and Semantic Search
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#query-federation-and-data-virtualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Query Federation and Data Virtualization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Query Federation and Data Virtualization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-query-federation-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Query Federation Flow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connecting-semantic-layers-to-context-graphs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connecting Semantic Layers to Context Graphs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-and-key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary and Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1198,16 +1599,16 @@
   
     <a href="https://github.com/dmccreary/context-graph/blob/main/docs/chapters/02-semantic-layers/index.md" title="Edit this page" class="md-content__button md-icon">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
     </a>
   
   
 
 
-<h1 id="chapter-2-semantic-layers-for-data-lakes">Chapter 2: Semantic Layers for Data Lakes<a class="headerlink" href="#chapter-2-semantic-layers-for-data-lakes" title="Permanent link">&para;</a></h1>
-<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<h1 id="chapter-2-semantic-layers-for-data-lakes">Chapter 2: Semantic Layers for Data Lakes<a class="headerlink" href="#chapter-2-semantic-layers-for-data-lakes" title="Permanent link">¶</a></h1>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">¶</a></h2>
 <p>Covers the data infrastructure that gives enterprise data meaning: data lakehouses, semantic layers, metric stores, query federation, data virtualization, and governance frameworks.</p>
-<h2 id="concepts-covered">Concepts Covered<a class="headerlink" href="#concepts-covered" title="Permanent link">&para;</a></h2>
+<h2 id="concepts-covered">Concepts Covered<a class="headerlink" href="#concepts-covered" title="Permanent link">¶</a></h2>
 <p>This chapter covers the following 25 concepts from the learning graph:</p>
 <ol>
 <li>Data Lake</li>
@@ -1236,19 +1637,318 @@
 <li>Schema Registry</li>
 <li>Data Dictionary</li>
 </ol>
-<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">¶</a></h2>
 <p>This chapter builds on concepts from:</p>
 <ul>
 <li><a href="../01-knowledge-graphs-lpg/">Chapter 1: Knowledge Graphs and Labeled Property Graphs</a></li>
 </ul>
-<hr />
-<p>TODO: Generate Chapter Content</p>
+<hr>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Welcome to Chapter 2, Graph Builders!</p>
+<p><img src="../../img/mascot/welcome.png" class="mascot-admonition-img" alt="Nexus waving welcome">
+In Chapter 1, you learned to think in nodes and edges. Now we zoom out to see the messy reality those nodes and edges have to be built from: a sprawling enterprise data lake full of thousands of tables, inconsistent names, and joins that nobody documented. The good news? This chapter is the story of how organizations tame that mess — and why getting it right is the key to building context graphs that actually work. Let's trace the why!</p>
+</div>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">¶</a></h2>
+<p>Picture this: your company has been collecting data for fifteen years. You have a data warehouse, a customer relationship system, a finance platform, an HR database, a product catalog, and a logging system that generates ten million events a day. All of it lives in a massive storage layer — your <strong>data lake</strong>. You technically have all the information you need to answer almost any business question.</p>
+<p>There is just one problem. Nobody can agree on what "revenue" means.</p>
+<p>The finance team calculates it one way. The sales team calculates it another. The product team has a third definition. When three different dashboards show three different numbers for "last quarter's revenue," executives stop trusting dashboards entirely. All the data in the world is useless if nobody agrees on what it means.</p>
+<p>This is the <em>meaning problem</em>, and it is the reason semantic layers exist. This chapter explains what a semantic layer is, how it is built, what tools implement it, and why it forms a critical part of the foundation for any context graph. By the end, you will understand how organizations create a shared vocabulary for their data — and why that vocabulary is one of the most valuable assets an AI system can inherit.</p>
+<h2 id="what-is-a-data-lake">What Is a Data Lake?<a class="headerlink" href="#what-is-a-data-lake" title="Permanent link">¶</a></h2>
+<p>A <strong>data lake</strong> is a centralized storage repository that holds raw data in its native format until it is needed. Unlike a traditional data warehouse — which requires data to be cleaned, transformed, and loaded into a rigid schema before it can be stored — a data lake accepts data as-is. Want to dump a year's worth of server logs? In they go. Want to store JSON payloads from a mobile app? No problem. Raw CSV exports from a legacy mainframe? Welcome to the lake.</p>
+<p>The appeal is obvious: you never throw anything away, and you pay storage costs instead of transformation costs. The problem emerges when someone tries to <em>use</em> the data. A data lake has no built-in meaning. Column names like <code>cust_id_v2</code>, <code>trans_amt_net</code>, and <code>prod_cat_cd_old</code> are technically present, but nobody outside the original engineering team knows what they mean or how to join them correctly.</p>
+<p>Data lakes grow fast. A mid-sized enterprise can accumulate thousands of tables in a few years. Most of those tables have no documentation. Finding the right table, understanding its columns, and knowing which join connects it to another table requires detective work that most analysts cannot spare time for.</p>
+<p>The table below summarizes the core trade-off between a traditional data warehouse and a data lake:</p>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Data Warehouse</th>
+<th>Data Lake</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Schema</td>
+<td>Fixed at write time (schema-on-write)</td>
+<td>Applied at read time (schema-on-read)</td>
+</tr>
+<tr>
+<td>Data types</td>
+<td>Structured only</td>
+<td>Structured, semi-structured, unstructured</td>
+</tr>
+<tr>
+<td>Transformation</td>
+<td>Required before storage (ETL)</td>
+<td>Optional, deferred (ELT)</td>
+</tr>
+<tr>
+<td>Query readiness</td>
+<td>High</td>
+<td>Low without additional tooling</td>
+</tr>
+<tr>
+<td>Flexibility</td>
+<td>Low</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Documentation burden</td>
+<td>Moderate</td>
+<td>Very high — tables multiply fast</td>
+</tr>
+</tbody>
+</table>
+<h2 id="the-data-lakehouse-getting-the-best-of-both-worlds">The Data Lakehouse: Getting the Best of Both Worlds<a class="headerlink" href="#the-data-lakehouse-getting-the-best-of-both-worlds" title="Permanent link">¶</a></h2>
+<p>The data warehouse versus data lake tension eventually produced a hybrid architecture called the <strong>data lakehouse</strong>. A data lakehouse combines the low-cost, flexible storage of a data lake with the query performance and schema enforcement of a data warehouse. It stores raw data in open file formats (such as Parquet or Delta format) while adding a metadata and transaction layer on top that supports SQL queries, ACID transactions, and schema evolution.</p>
+<p>The lakehouse solves the storage problem. It does not solve the meaning problem. You can have a perfectly engineered lakehouse with petabytes of neatly formatted Parquet files and still have no idea which column in the <code>order_events</code> table corresponds to the finance team's definition of "recognized revenue." Storage architecture and semantic clarity are separate problems. Fixing one does not fix the other.</p>
+<h2 id="the-meaning-problem-up-close">The Meaning Problem Up Close<a class="headerlink" href="#the-meaning-problem-up-close" title="Permanent link">¶</a></h2>
+<p>To understand why a semantic layer is necessary, it helps to see what the absence of one looks like in practice. Consider a data analyst at a retail company who needs to answer a simple question: "How many active customers placed more than two orders last month?"</p>
+<p>Before writing a single line of SQL, the analyst faces a research project:</p>
+<ul>
+<li>Which table holds customer records? There are four tables with "customer" in the name.</li>
+<li>What does "active" mean? There is an <code>is_active</code> flag in one table and a <code>last_login_date</code> in another. Which one is authoritative?</li>
+<li>What counts as an "order"? The <code>transactions</code> table has status codes. The <code>orders</code> table has a different set of status codes. Do cancelled orders count?</li>
+<li>How do the tables join? The <code>customer_id</code> in the <code>orders</code> table is an integer, but in the <code>transactions</code> table it is a string with a prefix. Is that intentional?</li>
+</ul>
+<p>This is not an unusual situation. It is Tuesday. Every analyst at every company deals with some version of this every week.</p>
+<p>The root cause is <strong>undocumented joins</strong> — join conditions that exist in someone's head or in a years-old notebook but were never written down anywhere the data catalog can find. An <strong>undocumented join</strong> is a join path between two tables that is not documented in any metadata system. It is known to the original developer who built the pipeline, and to nobody else. When that developer leaves the company, the join becomes a mystery.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Key Insight: The Undocumented Join Is a Knowledge Graph Problem</p>
+<p><img src="../../img/mascot/thinking.png" class="mascot-admonition-img" alt="Nexus thinking">
+An undocumented join is not really a data problem — it is a <em>relationship</em> problem. The relationship between two tables exists in the real world (customer orders do belong to customers), but it is not represented anywhere in the data infrastructure. That is exactly the kind of missing knowledge that a context graph is built to capture. When a semantic layer discovers and documents join paths, it is doing a primitive form of graph construction: representing edges between table-nodes that were previously invisible. Every node tells a story. So does every join.</p>
+</div>
+<h2 id="the-semantic-layer-a-translation-layer-for-data">The Semantic Layer: A Translation Layer for Data<a class="headerlink" href="#the-semantic-layer-a-translation-layer-for-data" title="Permanent link">¶</a></h2>
+<p>A <strong>semantic layer</strong> is a software layer that sits between raw data storage and the end users (or LLMs) querying it. Its job is to translate physical database concepts — tables, columns, foreign keys — into business concepts — metrics, dimensions, entities, relationships — and to enforce consistent definitions across every consumer.</p>
+<p>Think of it as a translator. The physical world speaks in <code>SELECT SUM(net_amt) FROM trans WHERE stat_cd = 3 AND cat_cd IN (1,4,7)</code>. The business world speaks in "total recognized revenue for completed transactions in product categories A, C, and G." The semantic layer maps the second language to the first, and it does so consistently for everyone — analysts, dashboards, and AI systems alike.</p>
+<p>A semantic layer typically defines three kinds of objects:</p>
+<ul>
+<li><strong>Business metrics</strong> — calculated measures with precise, agreed-upon definitions. A <strong>business metric</strong> is a quantitative measurement that answers a specific business question: "total recognized revenue," "30-day active users," "average order value." Metrics have formulas, filters, and time-grain rules all encoded in one place.</li>
+<li><strong>Dimensions</strong> — categorical attributes used to slice and filter metrics. A <strong>dimension</strong> describes a perspective from which a metric can be analyzed: geography, product category, customer segment, time period. "Revenue by region" means revenue (metric) broken down by region (dimension).</li>
+<li><strong>Logical entities</strong> — business objects like Customer, Order, and Product, defined at the semantic level independently of which physical tables implement them.</li>
+</ul>
+<p>The diagram below shows how a semantic layer maps business questions to physical storage. Before examining it, note the three layers: the physical data tier at the bottom, the semantic layer in the middle, and the query interface at the top.</p>
+<h4 id="diagram-semantic-layer-architecture">Diagram: Semantic Layer Architecture<a class="headerlink" href="#diagram-semantic-layer-architecture" title="Permanent link">¶</a></h4>
+<iframe src="../../sims/semantic-layer-architecture/main.html" width="100%" height="520px" scrolling="no"></iframe>
+
+<details>
+<summary>Semantic Layer Architecture Explorer</summary>
+<p>Type: diagram
+<strong>sim-id:</strong> semantic-layer-architecture<br>
+<strong>Library:</strong> p5.js<br>
+<strong>Status:</strong> Specified</p>
+<p>Bloom Level: Understand (L2)
+Bloom Verb: Explain and identify
+Learning Objective: Learners can identify the three layers of a semantic layer architecture (physical storage, semantic definition, query interface) and explain how each layer translates the one below it.</p>
+<p>Instructional Rationale: A layered architecture diagram with clickable layer transitions is appropriate because the Understand objective requires learners to trace how a business question passes through each layer before reaching physical data. Static image would not let learners explore each transformation.</p>
+<p>Layout: Three horizontal bands stacked vertically in a canvas:
+- Top band (~25%): "Query Interface" — shows two query bubbles: one in business English ("Total revenue by region, last 30 days") and one in SQL
+- Middle band (~35%): "Semantic Layer" — shows three boxes: Metrics (revenue formula), Dimensions (region hierarchy), Logical Model (Customer-Order-Product entities)
+- Bottom band (~40%): "Physical Storage" — shows five table icons with raw column names (trans_tbl, cust_master, prod_cat, geo_ref, ord_hdr)</p>
+<p>Connections:
+- Dotted arrows from each SQL fragment in the top band down through the semantic layer boxes to the physical table(s) that supply it
+- Arrow labels: "business term → metric definition → SQL fragment → physical column"</p>
+<p>Interactive behavior:
+- Click any physical table icon: highlight which semantic layer objects reference it; show a tooltip with the raw column names and their semantic aliases
+- Click any Metric box: show the full formula (e.g., "SUM(trans_tbl.net_amt) WHERE trans_tbl.stat_cd = 3") and which dimensions can slice it
+- Click any business-language query bubble at the top: animate the translation path downward through the layers, lighting up each node as the query passes through it
+- Hover any arrow: tooltip explains what translation that step performs ("Metric name → SQL formula")
+- "Reset" button returns to neutral state</p>
+<p>Color palette: Indigo top band, teal middle band, orange bottom band. Consistent with book palette.
+Canvas: Responsive width, 520px height.</p>
+</details>
+<h2 id="logical-data-models-and-virtual-views">Logical Data Models and Virtual Views<a class="headerlink" href="#logical-data-models-and-virtual-views" title="Permanent link">¶</a></h2>
+<p>Two key components of a semantic layer deserve their own introduction.</p>
+<p>A <strong>logical data model</strong> is a description of business entities and their relationships expressed in business terms, independent of any physical implementation. A logical data model says "a Customer places Orders, and each Order contains one or more OrderLines." It does not say anything about which tables, columns, or join keys implement that structure. The logical model is the semantic layer's blueprint — the contract that says what the business believes about its data.</p>
+<p>A <strong>virtual view</strong> is a named query that the semantic layer exposes as if it were a real table, even though no physical data is stored in it. When a user or an AI system queries the view named <code>recognized_revenue_by_region</code>, they are querying a definition — the semantic layer rewrites that query into the appropriate physical SQL and executes it against the real tables. The physical complexity is invisible to the consumer. From their perspective, they are just reading a well-named table.</p>
+<p>Virtual views are how semantic layers deliver consistency at scale. Instead of fifty different analysts writing fifty slightly different versions of the revenue calculation, one analyst writes the canonical definition once, and everyone queries the view. When the business rule changes, you update the view in one place, and every downstream consumer automatically gets the corrected calculation.</p>
+<h2 id="metric-stores-and-olap-tools">Metric Stores and OLAP Tools<a class="headerlink" href="#metric-stores-and-olap-tools" title="Permanent link">¶</a></h2>
+<p>The semantic layer concept has evolved into several specialized implementations. Two important ones are metric stores and OLAP semantic layer tools.</p>
+<p>A <strong>metric store</strong> is a system dedicated specifically to defining, storing, and serving business metrics with consistent lineage and governance. Before describing what a metric store offers, it helps to understand what precedes it: a spreadsheet full of metric definitions that different teams maintain separately, with no guarantee of consistency. A metric store replaces that spreadsheet with a code-defined, version-controlled, tested system. Metrics are defined once in a declarative file, validated against the physical schema, and served through a standard API. Any consumer — dashboard, analyst, or LLM — queries the same definition.</p>
+<p>An <strong>OLAP semantic layer tool</strong> (Online Analytical Processing) takes a broader approach. It defines not just metrics but entire multidimensional data models: cubes, dimensions, hierarchies, and drill-down paths. The term <strong>cube</strong> in semantic layer contexts refers to a pre-defined multidimensional model that organizes metrics by their relevant dimensions for fast, consistent analysis.</p>
+<p>A <strong>SQL-based semantic layer</strong> is a category of semantic layer implementations that expose their definitions as SQL-compatible views or computed tables, allowing any SQL-capable tool to query them without learning a proprietary query syntax. This is an important practical choice for enterprise adoption: if your semantic layer speaks SQL, every analyst tool, every BI platform, and every LLM that can generate SQL can use it immediately.</p>
+<p>The table below summarizes the semantic layer implementation options and their key trade-offs. All three concepts were defined just above — the table is here to organize and compare them.</p>
+<table>
+<thead>
+<tr>
+<th>Implementation Type</th>
+<th>What It Defines</th>
+<th>Query Interface</th>
+<th>Best For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Metric store</td>
+<td>Metrics, lineage, governance</td>
+<td>REST API or SQL</td>
+<td>Consistent KPI definitions across teams</td>
+</tr>
+<tr>
+<td>OLAP semantic layer</td>
+<td>Cubes, dimensions, hierarchies, metrics</td>
+<td>MDX or SQL</td>
+<td>Multidimensional analysis, pivot-table style</td>
+</tr>
+<tr>
+<td>SQL-based semantic layer</td>
+<td>Views, virtual tables, joins</td>
+<td>Standard SQL</td>
+<td>Maximum tool compatibility</td>
+</tr>
+</tbody>
+</table>
+<h2 id="naming-the-world-glossaries-dictionaries-and-standards">Naming the World: Glossaries, Dictionaries, and Standards<a class="headerlink" href="#naming-the-world-glossaries-dictionaries-and-standards" title="Permanent link">¶</a></h2>
+<p>Even the best semantic layer is only as good as the vocabulary it uses. This is where business glossaries, data dictionaries, and naming standards come in.</p>
+<p>A <strong>business glossary</strong> is an organized collection of business term definitions, managed by the people who understand the business. It is not a technical document — it is a living agreement between departments about what words mean. "Customer" means an entity that has completed at least one purchase. "Active customer" means a customer with a purchase in the last twelve months. "Churned customer" means a customer with no purchase in the last twelve months and at least one in the twelve months before that. These definitions live in the business glossary, written in plain English, reviewed by the finance, sales, and product teams together.</p>
+<p>A <strong>data dictionary</strong> is the technical counterpart. While a business glossary defines what things mean in business terms, a <strong>data dictionary</strong> documents what every column in every table contains at the physical level: its data type, valid values, source system, owner, freshness, and any known quality issues. The data dictionary answers the question "what is in this column?" The business glossary answers the question "what does this concept mean?"</p>
+<p>The connection between them — mapping glossary terms to physical columns — is called <strong>source system mapping</strong>. A <strong>source system mapping</strong> documents the link between a business concept ("recognized revenue") and the physical columns and transformation rules that implement it (<code>SUM(trans_tbl.net_amt) WHERE stat_cd IN (3,5) AND...</code>). This mapping is the bridge between the business world and the data world.</p>
+<p>To make all of this consistent across an organization, enterprises define naming standards:</p>
+<ul>
+<li>A <strong>naming convention standard</strong> is a set of rules for how database objects (tables, columns, schemas) should be named. For example: "table names use snake_case with a business-domain prefix; column names use descriptive nouns; foreign key columns end in <code>_id</code>."</li>
+<li>A <strong>column naming standard</strong> is the subset of naming conventions specifically for columns. It might require that date columns end in <code>_dt</code>, boolean columns start with <code>is_</code> or <code>has_</code>, and amount columns end in <code>_amt</code> with a unit suffix.</li>
+</ul>
+<p>These standards sound bureaucratic. (Yes, we know. Bear with us — they matter enormously for what comes next.) A <strong>schema registry</strong> is the system that enforces and catalogs these standards, registering every schema, table, and column as it is created and flagging violations. When an LLM needs to navigate thousands of tables, a schema registry that enforces consistent naming is the difference between a solvable puzzle and an impenetrable mess.</p>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Nexus's Tip: Naming Standards Are Context Graph Infrastructure</p>
+<p><img src="../../img/mascot/tip.png" class="mascot-admonition-img" alt="Nexus pointing upward">
+When you build a context graph, you will be importing entity names from many source systems. If the HR system calls it <code>employee_id</code>, the finance system calls it <code>emp_nbr</code>, and the access-control system calls it <code>user_identifier</code>, your context graph has three nodes for the same real-world entity. Consistent naming conventions prevent this before it happens. The boring work of enforcing naming standards today is what makes entity resolution painless later. Connect the dots — then ask why.</p>
+</div>
+<h2 id="vocabulary-alignment-and-semantic-consistency">Vocabulary Alignment and Semantic Consistency<a class="headerlink" href="#vocabulary-alignment-and-semantic-consistency" title="Permanent link">¶</a></h2>
+<p>Even with naming standards in place, different systems often use different words for the same concept. A customer in the CRM is a "contact." The same person in the billing system is an "account." In the support system, they are a "ticket submitter." These are not the same word, but they refer to the same real-world entity.</p>
+<p><strong>Vocabulary alignment</strong> is the process of mapping these different terms to a shared canonical vocabulary. It is part business glossary work (deciding that "customer," "contact," and "account" all refer to the same entity class) and part technical work (building the mapping rules that let queries across systems use consistent terminology).</p>
+<p><strong>Semantic consistency</strong> is the broader goal: ensuring that the same concept means the same thing wherever it appears in the data infrastructure. A semantically consistent system is one where "revenue" in the finance dashboard, "revenue" in the executive report, and "revenue" in the LLM's context window all refer to exactly the same calculation. Achieving this is hard. Maintaining it as systems evolve is harder. But without it, every AI system that reasons about enterprise data is reasoning about ambiguous information — and ambiguous context produces unreliable decisions.</p>
+<p>The MicroSim below demonstrates what semantic inconsistency looks like in practice — and how a semantic layer resolves it.</p>
+<h4 id="diagram-semantic-consistency-explorer">Diagram: Semantic Consistency Explorer<a class="headerlink" href="#diagram-semantic-consistency-explorer" title="Permanent link">¶</a></h4>
+<iframe src="../../sims/semantic-consistency-explorer/main.html" width="100%" height="500px" scrolling="no"></iframe>
+
+<details>
+<summary>Semantic Consistency Explorer MicroSim</summary>
+<p>Type: microsim
+<strong>sim-id:</strong> semantic-consistency-explorer<br>
+<strong>Library:</strong> p5.js<br>
+<strong>Status:</strong> Specified</p>
+<p>Bloom Level: Analyze (L4)
+Bloom Verb: Compare and examine
+Learning Objective: Learners can identify semantic inconsistency across two data sources and explain how a semantic layer resolves it by providing a single canonical definition.</p>
+<p>Instructional Rationale: Step-through comparison with real column names and values is appropriate because the Analyze objective requires learners to trace a specific inconsistency to its root cause and then observe the resolution. Continuous animation would prevent careful comparison.</p>
+<p>Layout: Three-panel horizontal layout
+- Left panel (~33%): "Finance System" — shows a small table with columns: <code>trans_id</code>, <code>trans_dt</code>, <code>net_amt</code>, <code>stat_cd</code>. Four sample rows. <code>stat_cd</code> values: 3 = completed, 5 = recognized, 7 = pending.
+- Center panel (~33%): "Sales System" — shows a small table with columns: <code>order_id</code>, <code>order_date</code>, <code>gross_revenue</code>, <code>order_status</code>. Four sample rows. <code>order_status</code> values: "closed_won", "invoiced", "in_progress".
+- Right panel (~33%): "Semantic Layer" — shows the unified metric definition: <code>recognized_revenue = SUM(net_amt WHERE stat_cd IN (3,5)) + SUM(gross_revenue WHERE order_status IN ('closed_won','invoiced'))</code>. Shows computed result for the sample data.</p>
+<p>Two scenario buttons at the top:
+- "Without Semantic Layer": highlights that a finance analyst querying the left table and a sales analyst querying the right table get different numbers for the same business question, even with identical date filters. Show calculated values diverging ($4.2M vs $3.9M).
+- "With Semantic Layer": shows both systems feeding into the right panel's unified definition, producing one agreed-upon number ($4.1M — explained as reconciled via the canonical formula).</p>
+<p>Step log (bottom of each panel): shows the SQL fragment used in each scenario, so learners can see what changed.</p>
+<p>Interactive behavior:
+- Click either scenario button: animate the data flow from the relevant source tables into the right panel with a 500ms delay per step
+- Hover any column name in the source tables: tooltip showing its data type and example values
+- Hover any row in the source tables: highlight the corresponding contribution in the semantic layer formula
+- Click the metric definition in the right panel: expand a detailed formula breakdown showing each source's contribution</p>
+<p>Canvas: Responsive width, 500px height.
+Color palette: Left panel orange, center panel teal, right panel indigo.</p>
+</details>
+<h2 id="table-discovery-join-path-discovery-and-semantic-search">Table Discovery, Join Path Discovery, and Semantic Search<a class="headerlink" href="#table-discovery-join-path-discovery-and-semantic-search" title="Permanent link">¶</a></h2>
+<p>Before you can build a semantic layer, you have to understand what data you have. This turns out to be harder than it sounds.</p>
+<p><strong>Table discovery</strong> is the automated process of scanning a data lake or warehouse to find and catalog all the tables and views that exist. In a mature data lake, nobody has a complete list of what is in there. Tables were created by different teams at different times with different naming conventions. Table discovery tools scan the storage layer, infer structure from file formats and existing schemas, and build an inventory.</p>
+<p><strong>Join path discovery</strong> is the automated detection of likely join paths between tables — even undocumented ones. The tool looks for columns with matching or similar names across tables, compares data distributions to check for foreign-key-like patterns, and builds a catalog of candidate join relationships. This is genuinely useful. Many undocumented joins can be inferred statistically even when nobody documented them.</p>
+<p><strong>Semantic search</strong> takes discovery further. Rather than searching for tables by exact name, semantic search lets analysts and AI systems describe what they are looking for in plain language — "find me tables related to customer purchases" — and returns relevant tables based on the semantic meaning of their content, not just string matching against column names. Semantic search over a data catalog is one of the places where vector embeddings and knowledge graphs work together: embeddings capture semantic similarity, while the graph captures documented relationships.</p>
+<div class="admonition mascot-warning">
+<p class="admonition-title">The Undocumented Join Trap</p>
+<p><img src="../../img/mascot/warning.png" class="mascot-admonition-img" alt="Nexus warning">
+Join path discovery tools are valuable, but they are not magic. A tool that finds statistically probable join paths can also find statistically <em>plausible-but-wrong</em> join paths — especially in messy data lakes where <code>id</code> columns reuse integer ranges across unrelated systems. Always validate a discovered join against a domain expert before encoding it in a semantic layer. An LLM that queries a context graph built on a wrong join will produce confidently incorrect answers. The error is silent, delayed, and expensive to debug. Verify before you canonicalize.</p>
+</div>
+<h2 id="query-federation-and-data-virtualization">Query Federation and Data Virtualization<a class="headerlink" href="#query-federation-and-data-virtualization" title="Permanent link">¶</a></h2>
+<p>A semantic layer solves the <em>meaning</em> problem. <strong>Query federation</strong> solves the <em>location</em> problem.</p>
+<p><strong>Query federation</strong> is the ability to query multiple independent data sources — a cloud data warehouse, an on-premises database, an API endpoint, a file store — through a single unified query interface, without physically moving the data to one place first. A federated query engine receives a SQL or semantic query, breaks it into sub-queries appropriate for each source, executes them in parallel, and joins the results before returning them to the caller.</p>
+<p><strong>Data virtualization</strong> takes this further. <strong>Data virtualization</strong> is a broader architectural approach in which a virtual data layer presents a unified, logical view of all enterprise data sources without any physical data movement or replication. To the consumer, it looks like a single database. Under the hood, it is orchestrating access to dozens of systems in real time.</p>
+<p>Both technologies matter for context graphs because enterprise knowledge is rarely in one place. Decision traces reference data from HR, finance, CRM, and engineering systems simultaneously. A context graph that can only see one data source at a time is a context graph that tells incomplete stories.</p>
+<p>The diagram below shows how query federation assembles answers from multiple sources behind a single interface.</p>
+<h4 id="diagram-query-federation-flow">Diagram: Query Federation Flow<a class="headerlink" href="#diagram-query-federation-flow" title="Permanent link">¶</a></h4>
+<iframe src="../../sims/query-federation-flow/main.html" width="100%" height="500px" scrolling="no"></iframe>
+
+<details>
+<summary>Query Federation Flow Diagram</summary>
+<p>Type: workflow
+<strong>sim-id:</strong> query-federation-flow<br>
+<strong>Library:</strong> p5.js<br>
+<strong>Status:</strong> Specified</p>
+<p>Bloom Level: Understand (L2)
+Bloom Verb: Explain and trace
+Learning Objective: Learners can trace a federated query from the user interface through the federation engine to multiple source systems and back, explaining what happens at each step.</p>
+<p>Instructional Rationale: Step-through workflow is appropriate because the Understand objective requires learners to follow a concrete query through the system. Seeing each sub-query dispatched and each result returned makes the mechanics tangible.</p>
+<p>Layout: Vertical flow with five levels:
+Level 1 (top): User/LLM — shows a business question: "What is the total approved budget for open headcount requests in Engineering?"
+Level 2: Federation Engine — shows the query being parsed and decomposed into three sub-queries
+Level 3: Three source boxes side by side: "HR System (headcount requests)", "Finance System (approved budgets)", "Org Chart (Engineering dept tree)"
+Level 4: Results boxes — each source returns its partial result
+Level 5 (bottom): Joined result — the federation engine assembles the final answer</p>
+<p>Arrows connect each level with labeled edges:
+- Level 1→2: "Submit business query"
+- Level 2→3: Three arrows labeled "Sub-query 1 (SQL)", "Sub-query 2 (REST API)", "Sub-query 3 (Graph traverse)"
+- Level 3→4: "Partial results"
+- Level 4→5: "Merge + join on employee_id"</p>
+<p>Step controls:
+- "Next Step" button advances through 5 stages, highlighting the active level
+- "Run All" button animates through all stages at 600ms per step
+- "Reset" returns to initial state</p>
+<p>Each source box shows the actual sub-query dispatched when that stage is active.
+Hover any arrow: tooltip explains the data format returned at that step (JSON, SQL result set, graph path list).</p>
+<p>Canvas: Responsive width, 500px height.
+Color palette: Indigo for user/result levels, orange for source systems, teal for federation engine.</p>
+</details>
+<h2 id="connecting-semantic-layers-to-context-graphs">Connecting Semantic Layers to Context Graphs<a class="headerlink" href="#connecting-semantic-layers-to-context-graphs" title="Permanent link">¶</a></h2>
+<p>Everything in this chapter feeds directly into context graph construction. Here is why each piece matters:</p>
+<p>A context graph stores <em>decision traces</em> — records of what decisions were made, why, and which data justified them. To record a decision trace reliably, the context graph needs to know the authoritative definition of every data element involved. "We approved this expense because revenue exceeded the threshold" is only a trustworthy trace if "revenue" has a consistent, documented definition. That definition lives in the semantic layer.</p>
+<p>Concretely, the semantic layer contributes to context graph construction in four ways:</p>
+<ul>
+<li><strong>Business glossary → node labels</strong>: Business glossary terms become the canonical labels for entity nodes in the context graph. "Customer," "Order," "Product" are agreed-upon labels with documented definitions, not ad-hoc names from whichever system happened to be convenient.</li>
+<li><strong>Source system mappings → edge provenance</strong>: When a context graph edge records that "Decision D used Data Element E," the source system mapping provides the provenance — which physical column, in which system, computed how, with what freshness and quality.</li>
+<li><strong>Virtual views → grounded LLM context</strong>: When a context graph retrieves relevant facts to include in an LLM's context window, it can query semantic layer views rather than raw tables. The LLM receives business-level concepts with consistent definitions, not raw column values with cryptic names.</li>
+<li><strong>Schema registry → consistent entity resolution</strong>: When the same real-world entity appears in multiple source systems under different identifiers, the schema registry's naming standards and the business glossary's canonical terms provide the hooks for entity resolution — merging "employee_id," "emp_nbr," and "user_identifier" into a single graph node.</li>
+</ul>
+<p>The relationship between semantic layers and context graphs is not competitive. They solve different problems. The semantic layer gives data meaning. The context graph gives decisions memory. Together, they give AI systems the two things they need most: consistent facts and the history of how those facts were used.</p>
+<h2 id="summary-and-key-takeaways">Summary and Key Takeaways<a class="headerlink" href="#summary-and-key-takeaways" title="Permanent link">¶</a></h2>
+<p>This chapter covered the infrastructure that turns a raw data lake into a queryable, trustworthy foundation for AI reasoning. Before moving to Chapter 3, make sure you can answer these questions:</p>
+<ul>
+<li>What is a data lake, and why does the "meaning problem" emerge from it even when the storage is well-engineered?</li>
+<li>How does a data lakehouse differ from a data lake? What does it solve, and what does it leave unsolved?</li>
+<li>What is a semantic layer, and what three kinds of objects does it typically define?</li>
+<li>What is the difference between a business metric and a dimension?</li>
+<li>What is a virtual view, and why does it deliver consistency at scale?</li>
+<li>What is the difference between a business glossary and a data dictionary?</li>
+<li>What is an undocumented join, and why is it dangerous for AI systems?</li>
+<li>What is a naming convention standard, and why does it matter for context graph construction?</li>
+<li>What is the difference between query federation and data virtualization?</li>
+<li>How do semantic layer artifacts (glossary terms, source system mappings, virtual views) contribute directly to context graph construction?</li>
+</ul>
+<details class="question">
+<summary>Quick Check: Semantic Layer or Context Graph?</summary>
+<p>An enterprise team is deciding where to record each of the following artifacts. Which belongs in the semantic layer, and which belongs in the context graph?</p>
+<ol>
+<li>The canonical definition of "active customer" (a customer with a purchase in the last 12 months).</li>
+<li>The record that analyst Jordan approved a $200K budget exception on March 3rd because the "active customer" count exceeded 50,000.</li>
+<li>The source system mapping showing that "active customer" is computed from <code>cust_master.last_order_dt &gt; CURRENT_DATE - 365</code>.</li>
+<li>The trace that this approval set a precedent used six times in the following quarter.</li>
+</ol>
+<p>Click to reveal:</p>
+<p><strong>Answer:</strong>
+<strong>(1) Semantic layer</strong> — a business glossary definition. <strong>(2) Context graph</strong> — a decision trace with actor, timestamp, and justification. <strong>(3) Semantic layer</strong> — a source system mapping. <strong>(4) Context graph</strong> — a precedent relationship connecting multiple decision nodes. Notice how (1) and (3) provide the <em>meaning</em> of the data, while (2) and (4) capture the <em>history</em> of how that meaning was used in real decisions. Both layers are necessary; neither replaces the other.</p>
+</details>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">Chapter 2 Done — That Was a Lot of Infrastructure!</p>
+<p><img src="../../img/mascot/celebration.png" class="mascot-admonition-img" alt="Nexus celebrating">
+You have now seen the full stack beneath a context graph: data lakes that store everything, lakehouses that make storage queryable, and semantic layers that make storage <em>meaningful</em>. You understand why undocumented joins are dangerous, why naming standards matter more than they sound, and why vocabulary alignment is the unglamorous prerequisite for everything AI-powered that comes after. Chapter 3 moves to metadata management — the discipline that keeps all of this trustworthy over time. The graph is taking shape. Let's trace the why!</p>
+</div>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -1267,7 +1967,7 @@
         
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
   Back to top
 </button>
         
@@ -1277,13 +1977,13 @@
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
           <a href="../01-knowledge-graphs-lpg/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 1. Knowledge Graphs and LPGs">
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
@@ -1308,7 +2008,7 @@
             </div>
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
             </div>
           </a>
         
@@ -1320,7 +2020,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2026 Dan Mccreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+      Copyright © 2026 Dan Mccreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
     </div>
   
   
@@ -1341,6 +2041,14 @@
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
+        <script src="../../js/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+      
     
-  </body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

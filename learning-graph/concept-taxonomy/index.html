@@ -1,7 +1,4 @@
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
+<!DOCTYPE html><html lang="en" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -21,7 +18,7 @@
         <link rel="next" href="../quality-metrics/">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../img/favicon.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
     
     
@@ -47,7 +44,7 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -55,6 +52,8 @@
       <link rel="stylesheet" href="../../css/extra.css">
     
       <link rel="stylesheet" href="../../css/mascot.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -72,8 +71,44 @@
 
     
     
+      
+        <meta property="og:type" content="website">
+      
+        <meta property="og:title" content="Concept Taxonomy - Context Graph">
+      
+        <meta property="og:description" content="An interactive intelligent textbook on the contact graph and how the contact graphs helps organization use LLMs cost effectively">
+      
+        <meta property="og:image" content="https://dmccreary.github.io/context-graph/assets/images/social/learning-graph/concept-taxonomy.png">
+      
+        <meta property="og:image:type" content="image/png">
+      
+        <meta property="og:image:width" content="1200">
+      
+        <meta property="og:image:height" content="630">
+      
+        <meta property="og:url" content="https://dmccreary.github.io/context-graph/learning-graph/concept-taxonomy/">
+      
+        <meta name="twitter:card" content="summary_large_image">
+      
+        <meta name="twitter:title" content="Concept Taxonomy - Context Graph">
+      
+        <meta name="twitter:description" content="An interactive intelligent textbook on the contact graph and how the contact graphs helps organization use LLMs cost effectively">
+      
+        <meta name="twitter:image" content="https://dmccreary.github.io/context-graph/assets/images/social/learning-graph/concept-taxonomy.png">
+      
     
-  </head>
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     
@@ -108,13 +143,12 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Context Graph" class="md-header__button md-logo" aria-label="Context Graph" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -140,7 +174,7 @@
     
       <label class="md-header__button md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -149,20 +183,20 @@
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
           <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
             
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
           </a>
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
@@ -187,7 +221,7 @@
         <a href="https://github.com/dmccreary/context-graph" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -211,7 +245,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -222,8 +256,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Context Graph" class="md-nav__button md-logo" aria-label="Context Graph" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     Context Graph
@@ -233,7 +266,7 @@
       <a href="https://github.com/dmccreary/context-graph" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -449,6 +482,10 @@
       
         
           
+        
+      
+        
+      
         
       
         
@@ -792,9 +829,91 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq-quality-report/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ Quality Report
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq-coverage-gaps/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ Coverage Gaps
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -896,7 +1015,7 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -1054,13 +1173,13 @@
   
     <a href="https://github.com/dmccreary/context-graph/blob/main/docs/learning-graph/concept-taxonomy.md" title="Edit this page" class="md-content__button md-icon">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
     </a>
   
   
 
 
-<h1 id="concept-taxonomy">Concept Taxonomy<a class="headerlink" href="#concept-taxonomy" title="Permanent link">&para;</a></h1>
+<h1 id="concept-taxonomy">Concept Taxonomy<a class="headerlink" href="#concept-taxonomy" title="Permanent link">¶</a></h1>
 <p>12 categories covering all 496 concepts. No category exceeds 14% of total concepts.</p>
 <table>
 <thead>
@@ -1159,23 +1278,23 @@
 </tr>
 </tbody>
 </table>
-<hr />
-<h2 id="category-definitions">Category Definitions<a class="headerlink" href="#category-definitions" title="Permanent link">&para;</a></h2>
-<h3 id="graph-graph-fundamentals">GRAPH — Graph Fundamentals<a class="headerlink" href="#graph-graph-fundamentals" title="Permanent link">&para;</a></h3>
+<hr>
+<h2 id="category-definitions">Category Definitions<a class="headerlink" href="#category-definitions" title="Permanent link">¶</a></h2>
+<h3 id="graph-graph-fundamentals">GRAPH — Graph Fundamentals<a class="headerlink" href="#graph-graph-fundamentals" title="Permanent link">¶</a></h3>
 <p>Concepts: 1–25 (Topic 1) and 417–436 (cross-cutting graph theory)</p>
 <p>The foundational building blocks of the Labeled Property Graph model and graph
 theory: nodes, edges, labels, properties, schemas, Cypher/openCypher/GQL query
 languages, graph algorithms (shortest path, PageRank, community detection),
 graph schema, serialization formats (GraphML, GraphSON), and the comparison of
 LPG with relational and RDF models including the scalability limitations of RDF.</p>
-<h3 id="ekg-enterprise-knowledge-graphs">EKG — Enterprise Knowledge Graphs<a class="headerlink" href="#ekg-enterprise-knowledge-graphs" title="Permanent link">&para;</a></h3>
+<h3 id="ekg-enterprise-knowledge-graphs">EKG — Enterprise Knowledge Graphs<a class="headerlink" href="#ekg-enterprise-knowledge-graphs" title="Permanent link">¶</a></h3>
 <p>Concepts: 26–55 (Topic 2)</p>
 <p>How organizations build and operate LPG-based knowledge graphs at enterprise
 scale: entity resolution, master data management, canonical entity models,
 hub-and-spoke and federated architectures, cross-system entity linking, ETL and
 ingestion patterns, graph sharding and replication, knowledge graph quality,
 ontologies, SKOS, and graph data catalogs.</p>
-<h3 id="data-data-and-semantic-layers">DATA — Data and Semantic Layers<a class="headerlink" href="#data-data-and-semantic-layers" title="Permanent link">&para;</a></h3>
+<h3 id="data-data-and-semantic-layers">DATA — Data and Semantic Layers<a class="headerlink" href="#data-data-and-semantic-layers" title="Permanent link">¶</a></h3>
 <p>Concepts: 56–102 (Topics 3 and 4)</p>
 <p>The infrastructure that gives enterprise data meaning: data lakes and
 lakehouses, semantic layers, metric stores, business glossaries, query
@@ -1183,14 +1302,14 @@ federation, data virtualization, metadata management (technical, business,
 operational), data quality dimensions, data governance frameworks, stewardship,
 ownership, classification, access control, automated metadata discovery, and
 metadata catalog platforms.</p>
-<h3 id="meta-metadata-standards">META — Metadata Standards<a class="headerlink" href="#meta-metadata-standards" title="Permanent link">&para;</a></h3>
+<h3 id="meta-metadata-standards">META — Metadata Standards<a class="headerlink" href="#meta-metadata-standards" title="Permanent link">¶</a></h3>
 <p>Concepts: 103–130 (Topic 5)</p>
 <p>Formal standards and vocabularies for enterprise metadata: the ISO/IEC 11179
 metadata registry standard and its six core components (data element, data
 element concept, conceptual domain, value domain, object class, property),
 registration authorities, naming conventions, reference data management, code
 lists, metadata thesauri, UMLS, and NIEM.</p>
-<h3 id="prov-process-mining-and-provenance">PROV — Process Mining and Provenance<a class="headerlink" href="#prov-process-mining-and-provenance" title="Permanent link">&para;</a></h3>
+<h3 id="prov-process-mining-and-provenance">PROV — Process Mining and Provenance<a class="headerlink" href="#prov-process-mining-and-provenance" title="Permanent link">¶</a></h3>
 <p>Concepts: 131–155 (Topic 6)</p>
 <p>Reconstructing what actually happened from event logs and streams: process
 mining (process discovery, conformance checking, process enhancement), the
@@ -1198,14 +1317,14 @@ IEEE XES standard, structured logging, upstream and downstream lineage,
 column-level lineage, data provenance, custody chains, transformation history,
 the OpenLineage standard, event sourcing, CQRS, append-only logs, change data
 capture, and temporal versioning.</p>
-<h3 id="cntx-context-problem-and-context-graphs">CNTX — Context Problem and Context Graphs<a class="headerlink" href="#cntx-context-problem-and-context-graphs" title="Permanent link">&para;</a></h3>
+<h3 id="cntx-context-problem-and-context-graphs">CNTX — Context Problem and Context Graphs<a class="headerlink" href="#cntx-context-problem-and-context-graphs" title="Permanent link">¶</a></h3>
 <p>Concepts: 156–195 (Topics 7 and 8)</p>
 <p>The gap that context graphs fill: why LLMs fail at enterprise tasks even with
 existing infrastructure; RAG and its limits; tacit and implicit knowledge;
 context freshness, relevance, and poisoning; the definition of a context
 graph; how it extends rather than replaces the enterprise knowledge graph;
 context graph schema, API, read/write paths, lifecycle, and access control.</p>
-<h3 id="dtrc-decision-traces-and-graph-modeling">DTRC — Decision Traces and Graph Modeling<a class="headerlink" href="#dtrc-decision-traces-and-graph-modeling" title="Permanent link">&para;</a></h3>
+<h3 id="dtrc-decision-traces-and-graph-modeling">DTRC — Decision Traces and Graph Modeling<a class="headerlink" href="#dtrc-decision-traces-and-graph-modeling" title="Permanent link">¶</a></h3>
 <p>Concepts: 196–261 (Topics 9, 10, and 11)</p>
 <p>The core of context graph content: the anatomy of a decision trace; exception
 logic, historical precedent, approval chains, and out-of-band approvals;
@@ -1214,7 +1333,7 @@ trace-to-entity relationships, actor nodes, policy version edges, precedent
 chains); why incumbent systems will struggle to build this; and the full
 graph data modeling toolkit for context (bitemporal modeling, temporal edges,
 valid/transaction time, constraint enforcement, schema evolution).</p>
-<h3 id="llmi-llm-foundations-and-integration">LLMI — LLM Foundations and Integration<a class="headerlink" href="#llmi-llm-foundations-and-integration" title="Permanent link">&para;</a></h3>
+<h3 id="llmi-llm-foundations-and-integration">LLMI — LLM Foundations and Integration<a class="headerlink" href="#llmi-llm-foundations-and-integration" title="Permanent link">¶</a></h3>
 <p>Concepts: 262–286 (Topic 12) and 457–476 (cross-cutting LLM foundations)</p>
 <p>How large language models work and how they connect to context graphs:
 transformer architecture, tokens, prompting, fine-tuning, RLHF, in-context
@@ -1222,7 +1341,7 @@ learning, zero- and few-shot prompting; context retrieval, relevance ranking,
 vector embeddings, hybrid retrieval, context window budgeting, compression and
 pruning, grounding strategies, hallucination mitigation, function calling,
 context graph tool definitions, and prompt injection risks.</p>
-<h3 id="build-building-and-deploying-systems">BUILD — Building and Deploying Systems<a class="headerlink" href="#build-building-and-deploying-systems" title="Permanent link">&para;</a></h3>
+<h3 id="build-building-and-deploying-systems">BUILD — Building and Deploying Systems<a class="headerlink" href="#build-building-and-deploying-systems" title="Permanent link">¶</a></h3>
 <p>Concepts: 287–336 (Topics 13 and 14)</p>
 <p>End-to-end system construction: storage layer selection (property graph
 database, vector index, hybrid), ingestion pipelines (real-time, batch,
@@ -1232,7 +1351,7 @@ observability, cost models; and the AI agent architecture layer: agent loop
 design, planning, memory, tool use, orchestration, multi-agent systems,
 graduated autonomy, human-in-the-loop, write-back, ReAct/Plan-and-Execute/
 Reflection patterns, and agent evaluation.</p>
-<h3 id="use-enterprise-use-cases">USE — Enterprise Use Cases<a class="headerlink" href="#use-enterprise-use-cases" title="Permanent link">&para;</a></h3>
+<h3 id="use-enterprise-use-cases">USE — Enterprise Use Cases<a class="headerlink" href="#use-enterprise-use-cases" title="Permanent link">¶</a></h3>
 <p>Concepts: 337–361 (Topic 15)</p>
 <p>Concrete applications of context graphs across the enterprise: finance
 (revenue reporting exceptions, ARR definition conflicts), sales (engagement
@@ -1241,7 +1360,7 @@ decision records), legal/compliance (regulatory audit automation), customer
 success (account history, escalation logic), HR, procurement, supply chain,
 marketing, risk, IT operations, healthcare, financial services, retail,
 manufacturing, insurance, government, and cross-department patterns.</p>
-<h3 id="comp-compliance-market-and-adoption">COMP — Compliance, Market, and Adoption<a class="headerlink" href="#comp-compliance-market-and-adoption" title="Permanent link">&para;</a></h3>
+<h3 id="comp-compliance-market-and-adoption">COMP — Compliance, Market, and Adoption<a class="headerlink" href="#comp-compliance-market-and-adoption" title="Permanent link">¶</a></h3>
 <p>Concepts: 362–416 (Topics 16, 17, and 18)</p>
 <p>The organizational and regulatory context for context graphs: GDPR right to
 explanation, audit trail design, explainability by design vs. post-hoc,
@@ -1251,7 +1370,7 @@ replacement, module replacement, new system); beachhead workflow selection,
 glue functions, competitive moats; and the organizational adoption lifecycle
 (first workflow selection, change management, stakeholder alignment, ROI
 measurement, graduated autonomy rollout, center of excellence).</p>
-<h3 id="infra-data-infrastructure-and-security">INFRA — Data Infrastructure and Security<a class="headerlink" href="#infra-data-infrastructure-and-security" title="Permanent link">&para;</a></h3>
+<h3 id="infra-data-infrastructure-and-security">INFRA — Data Infrastructure and Security<a class="headerlink" href="#infra-data-infrastructure-and-security" title="Permanent link">¶</a></h3>
 <p>Concepts: 437–456 (cross-cutting data engineering) and 477–496 (security and
 vector search)</p>
 <p>Supporting infrastructure: data mesh, data products and contracts, data SLAs,
@@ -1270,6 +1389,9 @@ retrieval (BM25), and context graph ROI modeling.</p>
 
 
 
+  
+  
+
 
 
   
@@ -1287,7 +1409,7 @@ retrieval (BM25), and context graph ROI modeling.</p>
         
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
   Back to top
 </button>
         
@@ -1297,13 +1419,13 @@ retrieval (BM25), and context graph ROI modeling.</p>
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
           <a href="../concept-list/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Concept Enumeration">
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
@@ -1328,7 +1450,7 @@ retrieval (BM25), and context graph ROI modeling.</p>
             </div>
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
             </div>
           </a>
         
@@ -1340,7 +1462,7 @@ retrieval (BM25), and context graph ROI modeling.</p>
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2026 Dan Mccreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+      Copyright © 2026 Dan Mccreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
     </div>
   
   
@@ -1361,6 +1483,14 @@ retrieval (BM25), and context graph ROI modeling.</p>
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
+        <script src="../../js/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+      
     
-  </body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

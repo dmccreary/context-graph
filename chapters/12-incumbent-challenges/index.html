@@ -1,12 +1,9 @@
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
+<!DOCTYPE html><html lang="en" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="An interactive intelligent textbook on the contact graph and how the contact graphs helps organization use LLMs cost effectively">
+        <meta name="description" content="Why existing BI tools, CRMs, ERP systems, data warehouses, and AI agent startups are structurally unable to capture and serve decision traces as context — and what creates durable competitive advantage for purpose-built context graph systems.">
       
       
         <meta name="author" content="Dan Mccreary">
@@ -21,12 +18,12 @@
         <link rel="next" href="../13-graph-data-modeling/">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../img/favicon.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
     
     
       
-        <title>12. Incumbent Challenges - Context Graph</title>
+        <title>Chapter 12: Incumbent Challenges in Building Context Systems - Context Graph</title>
       
     
     
@@ -47,7 +44,7 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -55,6 +52,8 @@
       <link rel="stylesheet" href="../../css/extra.css">
     
       <link rel="stylesheet" href="../../css/mascot.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -72,8 +71,44 @@
 
     
     
+      
+        <meta property="og:type" content="website">
+      
+        <meta property="og:title" content="Chapter 12: Incumbent Challenges in Building Context Systems - Context Graph">
+      
+        <meta property="og:description" content="Why existing BI tools, CRMs, ERP systems, data warehouses, and AI agent startups are structurally unable to capture and serve decision traces as context — and what creates durable competitive advantage for purpose-built context graph systems.">
+      
+        <meta property="og:image" content="https://dmccreary.github.io/context-graph/assets/images/social/chapters/12-incumbent-challenges/index.png">
+      
+        <meta property="og:image:type" content="image/png">
+      
+        <meta property="og:image:width" content="1200">
+      
+        <meta property="og:image:height" content="630">
+      
+        <meta property="og:url" content="https://dmccreary.github.io/context-graph/chapters/12-incumbent-challenges/">
+      
+        <meta name="twitter:card" content="summary_large_image">
+      
+        <meta name="twitter:title" content="Chapter 12: Incumbent Challenges in Building Context Systems - Context Graph">
+      
+        <meta name="twitter:description" content="Why existing BI tools, CRMs, ERP systems, data warehouses, and AI agent startups are structurally unable to capture and serve decision traces as context — and what creates durable competitive advantage for purpose-built context graph systems.">
+      
+        <meta name="twitter:image" content="https://dmccreary.github.io/context-graph/assets/images/social/chapters/12-incumbent-challenges/index.png">
+      
     
-  </head>
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     
@@ -108,13 +143,12 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Context Graph" class="md-header__button md-logo" aria-label="Context Graph" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -126,7 +160,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              12. Incumbent Challenges
+              Chapter 12: Incumbent Challenges in Building Context Systems
             
           </span>
         </div>
@@ -140,7 +174,7 @@
     
       <label class="md-header__button md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -149,20 +183,20 @@
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
           <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
             
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
           </a>
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
@@ -187,7 +221,7 @@
         <a href="https://github.com/dmccreary/context-graph" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -211,7 +245,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -222,8 +256,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Context Graph" class="md-nav__button md-logo" aria-label="Context Graph" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     Context Graph
@@ -233,7 +266,7 @@
       <a href="https://github.com/dmccreary/context-graph" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -756,6 +789,93 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-root-structural-problem-current-state-bias" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Root Structural Problem: Current State Bias
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-warehouse-players-on-the-read-path-after-the-fact" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Warehouse Players: On the Read Path After the Fact
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai-agent-platforms-on-the-execution-path-without-persistence" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI Agent Platforms: On the Execution Path Without Persistence
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#crm-and-erp-systems-optimized-for-transactions-not-traces" class="md-nav__link">
+    <span class="md-ellipsis">
+      CRM and ERP Systems: Optimized for Transactions, Not Traces
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#structural-advantage-what-purpose-built-systems-provide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structural Advantage: What Purpose-Built Systems Provide
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Structural Advantage: What Purpose-Built Systems Provide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-structural-gap-analysis-incumbent-systems-vs-context-graph-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Structural Gap Analysis — Incumbent Systems vs. Context Graph Requirements
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-accumulation-dynamic-why-starting-early-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Accumulation Dynamic: Why Starting Early Matters
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-and-key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary and Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1007,6 +1127,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1035,6 +1159,46 @@
   
 
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1136,7 +1300,7 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -1181,6 +1345,93 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-root-structural-problem-current-state-bias" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Root Structural Problem: Current State Bias
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-warehouse-players-on-the-read-path-after-the-fact" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Warehouse Players: On the Read Path After the Fact
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai-agent-platforms-on-the-execution-path-without-persistence" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI Agent Platforms: On the Execution Path Without Persistence
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#crm-and-erp-systems-optimized-for-transactions-not-traces" class="md-nav__link">
+    <span class="md-ellipsis">
+      CRM and ERP Systems: Optimized for Transactions, Not Traces
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#structural-advantage-what-purpose-built-systems-provide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structural Advantage: What Purpose-Built Systems Provide
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Structural Advantage: What Purpose-Built Systems Provide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-structural-gap-analysis-incumbent-systems-vs-context-graph-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Structural Gap Analysis — Incumbent Systems vs. Context Graph Requirements
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-accumulation-dynamic-why-starting-early-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Accumulation Dynamic: Why Starting Early Matters
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-and-key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary and Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1198,16 +1449,16 @@
   
     <a href="https://github.com/dmccreary/context-graph/blob/main/docs/chapters/12-incumbent-challenges/index.md" title="Edit this page" class="md-content__button md-icon">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
     </a>
   
   
 
 
-<h1 id="chapter-12-incumbent-challenges-in-building-context-systems">Chapter 12: Incumbent Challenges in Building Context Systems<a class="headerlink" href="#chapter-12-incumbent-challenges-in-building-context-systems" title="Permanent link">&para;</a></h1>
-<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<h1 id="chapter-12-incumbent-challenges-in-building-context-systems">Chapter 12: Incumbent Challenges in Building Context Systems<a class="headerlink" href="#chapter-12-incumbent-challenges-in-building-context-systems" title="Permanent link">¶</a></h1>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">¶</a></h2>
 <p>Analyzes why existing BI tools, CRMs, ERP systems, and document stores will structurally struggle to capture and serve decision traces as context.</p>
-<h2 id="concepts-covered">Concepts Covered<a class="headerlink" href="#concepts-covered" title="Permanent link">&para;</a></h2>
+<h2 id="concepts-covered">Concepts Covered<a class="headerlink" href="#concepts-covered" title="Permanent link">¶</a></h2>
 <p>This chapter covers the following 15 concepts from the learning graph:</p>
 <ol>
 <li>Legacy System Bias</li>
@@ -1226,20 +1477,137 @@
 <li>Real-Time Context Capture</li>
 <li>Competitive Moat</li>
 </ol>
-<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">¶</a></h2>
 <p>This chapter builds on concepts from:</p>
 <ul>
 <li><a href="../08-context-problem/">Chapter 8: The Context Problem and RAG Limitations</a></li>
 <li><a href="../11-decision-traces/">Chapter 11: Decision Traces: Anatomy and LPG Patterns</a></li>
 </ul>
-<hr />
-<p>TODO: Generate Chapter Content</p>
+<hr>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Why incumbents will not build this for you.</p>
+<p><img src="../../img/mascot/welcome.png" class="mascot-admonition-img" alt="Nexus waves welcome">
+Welcome to Chapter 12! You now know what a context graph is and how to implement it. A natural question is: why can't an existing enterprise system — a CRM, a data warehouse, an AI agent platform — just add this capability? The answer is structural, not technical. Let's trace the why!</p>
+</div>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">¶</a></h2>
+<p>Every large enterprise already has systems that touch the data that should be in a context graph. CRM systems record customer interactions. ERP systems record transactions and approvals. Business intelligence platforms aggregate and report on operational data. Process automation systems execute workflows. Why, then, does none of them provide decision trace capture and LLM-context retrieval?</p>
+<p>The answer is not that these systems lack engineering talent or investment. It is that each system is optimized for a specific job — a job that is structurally incompatible with what a context graph requires. Understanding this structural incompatibility is not academic: it explains where context graphs create durable competitive advantage, which incumbent vendor partnerships are valuable vs. threatening, and which gaps in your organization's current architecture are most urgent to address.</p>
+<p>This chapter analyzes each category of incumbent system through three lenses: what it is designed to do, what architectural constraint follows from that design, and why that constraint prevents it from serving as a context graph even with significant investment.</p>
+<h2 id="the-root-structural-problem-current-state-bias">The Root Structural Problem: Current State Bias<a class="headerlink" href="#the-root-structural-problem-current-state-bias" title="Permanent link">¶</a></h2>
+<p>Most enterprise systems are designed to answer one question efficiently: <strong>what is the current state of this entity?</strong> The CRM answers: what is the current status of this account, who is the current owner, what is the current pipeline stage? The ERP answers: what is the current open balance, what is the current inventory level, what is the current order status? The HR system answers: who reports to whom right now, what are the current salary bands, what are the current headcount numbers?</p>
+<p>This design choice — optimize for current state — is entirely rational given the systems' primary jobs. A sales rep needs to know the current status of an account, not the full history of how it reached that status. A supply chain manager needs the current inventory, not a timeline of every reorder decision. <strong>Current state bias</strong> is not a bug; it is the intended design.</p>
+<p>But current state bias is fatal for a context graph. A context graph requires historical depth: not just what the relationship between two entities is today, but what decisions were made about that relationship over time, under what policies, citing what precedents, with what approvals. An entity record in a CRM system that is updated to reflect a new account status has (in most implementations) destroyed the previous state. The information about why the status changed, who changed it, and what context led to the change is gone — overwritten by the current value.</p>
+<p>A <strong>legacy system bias</strong> compounds current state bias: incumbent systems were designed when the primary consumers of their data were humans reading dashboards and reports, not AI agents consuming structured graphs. The data models encode assumptions (flat tables, normalized schemas, foreign key relationships) that are efficient for report generation and transactional consistency but inefficient for graph traversal and temporal reasoning. Retrofitting a graph traversal API and an append-only decision trace log onto a relational CRM system would require changes so fundamental that it would effectively be rebuilding the system's data layer from scratch.</p>
+<h2 id="data-warehouse-players-on-the-read-path-after-the-fact">Data Warehouse Players: On the Read Path After the Fact<a class="headerlink" href="#data-warehouse-players-on-the-read-path-after-the-fact" title="Permanent link">¶</a></h2>
+<p>Data warehouses and business intelligence platforms are among the most mature and well-funded categories of enterprise software. They excel at storing large volumes of historical data and serving complex analytical queries — properties that seem superficially relevant to context graphs.</p>
+<p>The <strong>data warehouse gap</strong> is that warehouses are positioned on the <strong>read path</strong>, after decisions have already been made and their outcomes have already been recorded. A data warehouse ingests data from operational systems on a scheduled cadence (typically daily or weekly) and makes it available for analytical queries. By the time a decision's record reaches the warehouse, the real-time decision context — the data values consulted at the moment of decision, the out-of-band approval conversation, the urgency signals — has been reduced to a transaction record.</p>
+<p>A <strong>read-path limitation</strong> means that the warehouse can tell you what happened (aggregate analysis of past outcomes) but cannot tell you why it happened in the way that is useful for future decisions. The "why" — the cross-system synthesis, the exception logic applied, the precedents cited — is not stored in operational systems in a form that the warehouse can ingest. It is in people's heads, in email threads, in informal conversations. By the time the warehouse sees the data, the context is gone.</p>
+<p><strong>Post-hoc context capture</strong> — trying to reconstruct decision context from the outputs after the decision is made — is fundamentally limited. You can sometimes infer that an exception was made (the transaction has anomalous values), but you cannot reliably infer why the exception was made (which policy applied, which precedents were cited, who approved it informally). The context graph's value proposition depends entirely on <strong>real-time context capture</strong> — recording the context at the moment of decision, when it is complete and accessible.</p>
+<p>Warehouse vendors are aware of this limitation and are actively working to address it through AI features — query-answering interfaces, anomaly detection, automated insight generation. But these features position the warehouse as a query-answering system over historical aggregate data, not as a decision trace store and LLM context provider. The architectural gap remains: a warehouse is optimized for reading aggregated historical data, not for real-time write-back of structured decision traces and sub-second graph traversal retrieval.</p>
+<h2 id="ai-agent-platforms-on-the-execution-path-without-persistence">AI Agent Platforms: On the Execution Path Without Persistence<a class="headerlink" href="#ai-agent-platforms-on-the-execution-path-without-persistence" title="Permanent link">¶</a></h2>
+<p>The other obvious category of incumbent is the growing ecosystem of AI agent platforms — products that enable organizations to deploy LLM-powered agents that take actions in enterprise systems. These platforms are positioned closer to the decision moment than data warehouses, and they are architected around LLM integration. Why can't an agent platform provide the context graph?</p>
+<p>The <strong>AI agent execution path</strong> problem is that agent platforms are optimized for executing tasks — completing workflows, taking actions, generating outputs. Their architecture prioritizes forward motion: take the next action based on the current context. What they typically do not prioritize is backward-looking persistence: recording a structured, queryable trace of every decision the agent made and why.</p>
+<p>An AI agent platform that executes a pricing exception decision will log that the decision was made. But the log is typically an audit log for debugging and compliance — not a structured graph of decision nodes, entity links, approval edges, and precedent citations designed for LLM retrieval. Converting an agent execution log into a queryable decision trace requires exactly the graph data modeling work described in Chapter 11 — work that is not the agent platform's core job.</p>
+<p>There is also a <strong>system of record gap</strong>: agent platforms are new, and they operate as orchestration layers over existing systems of record. The pricing exception is ultimately recorded in the CRM; the payment approval is recorded in the ERP; the configuration change is recorded in the IT service management system. The agent platform orchestrated the actions, but the systems of record own the data. A context graph that needs to stitch together the agent's reasoning with the outcomes recorded in the systems of record requires integrations with all of those downstream systems — which the agent platform does not control.</p>
+<p>A <strong>write-path advantage</strong> exists for purpose-built context graph systems: because the context graph is explicitly designed to receive decision trace write-backs from any source (agents, humans, integrated systems), it can instrument any decision point in any workflow without needing to replace the systems that record the outcomes. The context graph does not need to be the system of record for the transaction — it only needs to receive the decision trace before the decision context evaporates.</p>
+<h2 id="crm-and-erp-systems-optimized-for-transactions-not-traces">CRM and ERP Systems: Optimized for Transactions, Not Traces<a class="headerlink" href="#crm-and-erp-systems-optimized-for-transactions-not-traces" title="Permanent link">¶</a></h2>
+<p>CRM and ERP systems are the primary systems of record for customer relationships and operational transactions, respectively. They hold the entity data that context graphs link to — customer records, purchase orders, contracts, invoices. But they are not designed to serve as context stores.</p>
+<p>A CRM system is optimized for sales productivity: fast lookup of account status, easy data entry for sales activities, pipeline stage tracking, and forecast aggregation. Its data model centers on the entity (account, opportunity, contact) and its current properties. Historical data is often retained, but not in a graph-traversable form designed for multi-hop LLM queries. Asking "show me all the pricing exception decisions that cited this account as a precedent and trace the approval chain for each" is not a query that a CRM system was designed to answer.</p>
+<p>An ERP system is optimized for transactional integrity: ensuring that every purchase order is matched to a receipt, every invoice is matched to a payment, every inventory movement is balanced. Its data model centers on transactions and their status. ERP systems typically have extensive audit logs, but those logs are designed for internal accounting controls, not for LLM context retrieval. Transforming an ERP audit log into a queryable precedent network is technically feasible but requires building exactly the context graph infrastructure described in this book — on top of, not inside, the ERP system.</p>
+<p>The <strong>integration tax</strong> is the cost paid every time a new capability is built on top of existing systems rather than native to a purpose-built platform. Adding decision trace capture to a CRM system requires: a custom data model extension (decision trace nodes alongside contact and opportunity records), a write-back API that agents and humans can call at decision time, a graph query layer on top of the relational storage, freshness and provenance metadata management, and lifecycle management for superseded and overturned traces. Each of these is a non-trivial engineering project, and together they add up to a substantial integration tax — paid at every CRM upgrade, every API change, every schema migration.</p>
+<p><strong>Data silos</strong> compound the integration tax. A CRM system holds customer relationship data. An ERP holds transaction data. An ITSM holds incident data. Each silo has its own decision context — exception approvals in the CRM, purchase order escalations in the ERP, configuration change decisions in the ITSM. Cross-silo decision context is almost never recorded — the decision that links a customer escalation to a production incident and a contract modification exists in no single system. A purpose-built context graph spans all silos because it is not owned by any of them; its entity links reference canonical entity IDs that are shared across all source systems.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Purpose-built is not just better — it's structurally necessary.</p>
+<p><img src="../../img/mascot/thinking.png" class="mascot-admonition-img" alt="Nexus thinking">
+This is the key insight of the chapter: the limitations of incumbent systems are not oversights that can be patched. They are consequences of rational design decisions made for different jobs. A CRM that tried to also be a full-fidelity context graph would need to compromise its core transactional performance. The right answer is not to force the CRM to do both — it is to build a complementary layer that does the context graph job natively, while the CRM continues to do the CRM job.</p>
+</div>
+<h2 id="structural-advantage-what-purpose-built-systems-provide">Structural Advantage: What Purpose-Built Systems Provide<a class="headerlink" href="#structural-advantage-what-purpose-built-systems-provide" title="Permanent link">¶</a></h2>
+<p>A <strong>purpose-built context graph system</strong> starts from the correct architectural premise rather than retrofitting it onto an incompatible foundation. Its storage layer is a native graph database — optimized for multi-hop traversal, not relational joins. Its write API is designed for real-time decision trace capture — not for transactional batch processing. Its read API is designed for sub-second LLM context retrieval — not for scheduled report generation. Its lifecycle management is designed for append-only decision history — not for current-state record updates.</p>
+<p>These design choices create <strong>structural advantages</strong> that incumbents cannot easily replicate:</p>
+<ul>
+<li>
+<p><strong>Graph-native storage</strong> enables complex precedent chain traversals in milliseconds. An equivalent query on a relational database requires recursive CTEs or application-layer recursion, adding latency that accumulates with each additional hop.</p>
+</li>
+<li>
+<p><strong>Real-time write path</strong> ensures that decision context is captured at decision time, before it evaporates. An incumbent system that records decision outcomes after the fact (even with minutes of latency) systematically misses the context that matters most.</p>
+</li>
+<li>
+<p><strong>Cross-silo entity linking</strong> through canonical entity IDs makes cross-domain decision queries natural rather than requiring complex join logic across multiple system APIs.</p>
+</li>
+<li>
+<p><strong>Temporal versioning</strong> as a first-class feature means every query can be answered for any historical point in time without additional engineering.</p>
+</li>
+</ul>
+<p>A <strong>competitive moat</strong> emerges from an additional source: the value of a context graph grows with the number of decision traces it contains. An empty context graph has no precedents to retrieve. A context graph with three years of decision history is increasingly valuable with each new decision — because every new decision can draw on a richer precedent base. This accumulation dynamic means that a purpose-built context graph that starts early in an organization's AI deployment will be harder to displace over time, not easier. The incumbent systems cannot replicate this accumulation because they were not designed to capture the traces in the first place.</p>
+<h4 id="diagram-structural-gap-analysis-incumbent-systems-vs-context-graph-requirements">Diagram: Structural Gap Analysis — Incumbent Systems vs. Context Graph Requirements<a class="headerlink" href="#diagram-structural-gap-analysis-incumbent-systems-vs-context-graph-requirements" title="Permanent link">¶</a></h4>
+<details>
+<summary>Interactive vis-network diagram showing which context graph requirements each incumbent system category can and cannot address</summary>
+<p>Type: graph-model
+<strong>sim-id:</strong> incumbent-gap-analysis
+<strong>Library:</strong> vis-network
+<strong>Status:</strong> Specified</p>
+<p>Bloom Level: Evaluate (L5)
+Bloom Verb: assess
+Learning Objective: Learners can assess each category of incumbent enterprise system against the four requirements of a context graph, identifying the structural constraint that prevents full compliance.</p>
+<p>Instructional Rationale: An interactive gap matrix visualization is appropriate for the Evaluate objective — learners must judge each incumbent's fitness for purpose, which requires comparing capabilities against requirements rather than just recalling facts.</p>
+<p>Canvas: responsive width, 560px height. White background.</p>
+<p>Layout: Grid with 4 rows (context graph requirements) and 4 columns (incumbent categories) plus a 5th column for Purpose-Built. Total: 4 × 5 grid of colored cells.</p>
+<p>Rows (requirements):
+1. "Real-Time Decision Capture"
+2. "Graph-Native Traversal"
+3. "Cross-Silo Entity Linking"
+4. "Temporal Versioning"</p>
+<p>Columns (systems):
+A. "Data Warehouse" (gray header)
+B. "CRM System" (gray header)
+C. "ERP System" (gray header)
+D. "AI Agent Platform" (gray header)
+E. "Purpose-Built CG" (indigo header, highlighted)</p>
+<p>Cell colors:
+- Red (cannot meet): Data Warehouse × Real-Time Capture, Data Warehouse × Cross-Silo, CRM × Graph-Native, CRM × Temporal Versioning, ERP × Cross-Silo, ERP × Graph-Native, AI Agent × Temporal Versioning, AI Agent × Cross-Silo
+- Yellow (partial / with significant effort): Data Warehouse × Graph-Native, Data Warehouse × Temporal Versioning, CRM × Real-Time, CRM × Cross-Silo, ERP × Real-Time, ERP × Temporal Versioning, AI Agent × Real-Time, AI Agent × Graph-Native
+- Green (can meet): Purpose-Built CG × all four requirements (all green)</p>
+<p>Click on any cell: opens infobox explaining WHY the cell is red, yellow, or green — including the specific architectural constraint that causes the red/yellow rating and the specific design feature that makes the purpose-built system green.</p>
+<p>Legend at bottom: Red = "Structural constraint — cannot meet without fundamental redesign", Yellow = "Partial — achievable with significant integration tax", Green = "Native capability".</p>
+<p>Canvas responds to window resize.</p>
+</details>
+<h2 id="the-accumulation-dynamic-why-starting-early-matters">The Accumulation Dynamic: Why Starting Early Matters<a class="headerlink" href="#the-accumulation-dynamic-why-starting-early-matters" title="Permanent link">¶</a></h2>
+<p>The most underappreciated property of a context graph is its accumulation dynamic. Unlike a software feature (which has the same value on day one as on day one thousand), a context graph's value grows with the number of decision traces it contains.</p>
+<p>On day one, a context graph has no precedents to retrieve. An LLM asking for relevant pricing exception history gets no results. The context graph is technically operational but practically empty. This is the valley of disappointment that many context graph pilots stumble into — they evaluate the system before it has accumulated enough traces to demonstrate value.</p>
+<p>By month six, with hundreds of decision traces recorded, the context graph begins to surface useful precedents. LLMs can find relevant historical decisions, cite them in recommendations, and explain their reasoning. Quality improves measurably. By year two, with thousands of traces across multiple decision domains, the context graph becomes a genuine organizational intelligence layer — the precedent network is rich enough that almost every new decision has relevant historical precedents, and the exception patterns are dense enough to surface reliable informal policy.</p>
+<p>The accumulation dynamic creates a <strong>competitive moat</strong> that compounds over time. An organization that starts building its context graph today will have a three-year head start over a competitor that starts three years from now — and that three-year head start is not just a timing advantage. It is a qualitative advantage: the early starter's LLM agents will make better decisions because they draw on more precedents, while the late starter's agents will make worse decisions for years until their context graph accumulates comparable depth.</p>
+<p>This dynamic also explains the strategic importance of starting with high-volume decision workflows. A workflow that generates 50 decision traces per day accumulates 18,000 traces in a year — enough to build a rich precedent network. A workflow that generates 2 decision traces per month will take decades to accumulate comparable depth. The choice of which workflow to instrument first is a strategic decision that determines how quickly the context graph reaches usefulness.</p>
+<h2 id="summary-and-key-takeaways">Summary and Key Takeaways<a class="headerlink" href="#summary-and-key-takeaways" title="Permanent link">¶</a></h2>
+<p>The structural incompatibilities between incumbent systems and context graph requirements are not technical failures — they are the predictable consequences of rational design decisions made for different jobs. Recognizing these structural constraints is the foundation for understanding where context graphs create durable competitive advantage.</p>
+<p>By the end of this chapter, you should be able to:</p>
+<ul>
+<li>Define <strong>current state bias</strong> and explain why it makes incumbent systems structurally incompatible with context graph requirements</li>
+<li>Explain the <strong>data warehouse gap</strong>: why warehouses are positioned on the read path after decision context has already evaporated</li>
+<li>Describe the <strong>AI agent execution path</strong> problem: why agent platforms capture actions but not structured, queryable decision traces</li>
+<li>Explain the <strong>integration tax</strong> and why retrofitting context graph capability onto CRM or ERP systems is prohibitively expensive</li>
+<li>Define <strong>data silos</strong> and explain why cross-silo decision context requires a layer that is not owned by any single silo</li>
+<li>Explain the four <strong>structural advantages</strong> of a purpose-built context graph system (graph-native storage, real-time write path, cross-silo entity linking, temporal versioning)</li>
+<li>Describe the <strong>accumulation dynamic</strong> and explain why starting early creates a compounding competitive moat</li>
+</ul>
+<details class="question">
+<summary>Quick Check</summary>
+<p>A CTO proposes extending the company's existing CRM platform to add decision trace capture rather than deploying a separate context graph system. The argument is: "All our customer decisions already happen in the CRM — why add another system?" Using the structural analysis from this chapter, identify three specific constraints that would limit the effectiveness of this approach, and explain what would need to change in the CRM's architecture to overcome each constraint.</p>
+<p><em>(Answer: 1) Current state bias — the CRM overwrites record states rather than preserving history as append-only decision traces. Fix: add an event-sourced decision trace table that is never updated, only appended to. 2) Relational storage vs. graph-native traversal — precedent chain queries require recursive SQL or application-layer recursion. Fix: add a graph database layer alongside the relational layer, synced via CDC. 3) Data silo limitation — customer decisions in the CRM are not linked to ERP transactions, ITSM incidents, or billing history under the same canonical customer ID. Fix: implement canonical entity resolution and cross-silo entity linking — essentially building the enterprise knowledge graph foundation described in Chapter 4.)</em></p>
+</details>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">Chapter 12: Complete!</p>
+<p><img src="../../img/mascot/celebration.png" class="mascot-admonition-img" alt="Nexus celebrating">
+Excellent analytical work. You can now make a principled case for why context graphs require purpose-built infrastructure rather than bolt-on extensions. Chapter 13 moves from analysis to design: the detailed graph data modeling patterns that make a context graph implementation technically sound — temporal modeling, schema design for organizational knowledge, and the specific patterns that handle the most common enterprise decision types. Let's trace the why!</p>
+</div>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -1258,7 +1626,7 @@
         
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
   Back to top
 </button>
         
@@ -1268,13 +1636,13 @@
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
           <a href="../11-decision-traces/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 11. Decision Traces">
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
@@ -1299,7 +1667,7 @@
             </div>
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
             </div>
           </a>
         
@@ -1311,7 +1679,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2026 Dan Mccreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+      Copyright © 2026 Dan Mccreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
     </div>
   
   
@@ -1332,6 +1700,14 @@
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
+        <script src="../../js/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+      
     
-  </body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

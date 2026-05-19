@@ -1,12 +1,9 @@
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
+<!DOCTYPE html><html lang="en" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="An interactive intelligent textbook on the contact graph and how the contact graphs helps organization use LLMs cost effectively">
+        <meta name="description" content="Concrete applications of context graphs across finance, sales, engineering, legal, HR, healthcare, procurement, and risk management — with detailed decision trace schemas and agent workflows for each domain.">
       
       
         <meta name="author" content="Dan Mccreary">
@@ -21,12 +18,12 @@
         <link rel="next" href="../18-compliance-explainability/">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../img/favicon.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
     
     
       
-        <title>17. Enterprise Use Cases - Context Graph</title>
+        <title>Chapter 17: Enterprise Use Cases - Context Graph</title>
       
     
     
@@ -47,7 +44,7 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -55,6 +52,8 @@
       <link rel="stylesheet" href="../../css/extra.css">
     
       <link rel="stylesheet" href="../../css/mascot.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -72,8 +71,44 @@
 
     
     
+      
+        <meta property="og:type" content="website">
+      
+        <meta property="og:title" content="Chapter 17: Enterprise Use Cases - Context Graph">
+      
+        <meta property="og:description" content="Concrete applications of context graphs across finance, sales, engineering, legal, HR, healthcare, procurement, and risk management — with detailed decision trace schemas and agent workflows for each domain.">
+      
+        <meta property="og:image" content="https://dmccreary.github.io/context-graph/assets/images/social/chapters/17-enterprise-use-cases/index.png">
+      
+        <meta property="og:image:type" content="image/png">
+      
+        <meta property="og:image:width" content="1200">
+      
+        <meta property="og:image:height" content="630">
+      
+        <meta property="og:url" content="https://dmccreary.github.io/context-graph/chapters/17-enterprise-use-cases/">
+      
+        <meta name="twitter:card" content="summary_large_image">
+      
+        <meta name="twitter:title" content="Chapter 17: Enterprise Use Cases - Context Graph">
+      
+        <meta name="twitter:description" content="Concrete applications of context graphs across finance, sales, engineering, legal, HR, healthcare, procurement, and risk management — with detailed decision trace schemas and agent workflows for each domain.">
+      
+        <meta name="twitter:image" content="https://dmccreary.github.io/context-graph/assets/images/social/chapters/17-enterprise-use-cases/index.png">
+      
     
-  </head>
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     
@@ -108,13 +143,12 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Context Graph" class="md-header__button md-logo" aria-label="Context Graph" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -126,7 +160,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              17. Enterprise Use Cases
+              Chapter 17: Enterprise Use Cases
             
           </span>
         </div>
@@ -140,7 +174,7 @@
     
       <label class="md-header__button md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -149,20 +183,20 @@
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
           <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
             
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
           </a>
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
@@ -187,7 +221,7 @@
         <a href="https://github.com/dmccreary/context-graph" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -211,7 +245,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -222,8 +256,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Context Graph" class="md-nav__button md-logo" aria-label="Context Graph" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../../img/mascot/neutral.png" alt="logo">
 
     </a>
     Context Graph
@@ -233,7 +266,7 @@
       <a href="https://github.com/dmccreary/context-graph" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -861,6 +894,126 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#finance-revenue-reporting-exception-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Finance: Revenue Reporting Exception Handling
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sales-engagement-history-and-playbook-precedents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sales: Engagement History and Playbook Precedents
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#engineering-incident-response-and-production-decisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Engineering: Incident Response and Production Decisions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Engineering: Incident Response and Production Decisions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-engineering-incident-context-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Engineering Incident Context Graph
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#legal-and-compliance-audit-trails-for-automated-decisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Legal and Compliance: Audit Trails for Automated Decisions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#customer-success-account-history-and-escalation-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Customer Success: Account History and Escalation Logic
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#procurement-vendor-selection-and-contract-exceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Procurement: Vendor Selection and Contract Exceptions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#healthcare-clinical-workflow-decision-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      Healthcare: Clinical Workflow Decision Support
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cross-department-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cross-Department Use Cases
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cross-Department Use Cases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-cross-domain-use-case-decision-trace-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Cross-Domain Use Case Decision Trace Comparison
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-and-key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary and Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1007,6 +1160,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1035,6 +1192,46 @@
   
 
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1136,7 +1333,7 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -1181,6 +1378,126 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#finance-revenue-reporting-exception-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Finance: Revenue Reporting Exception Handling
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sales-engagement-history-and-playbook-precedents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sales: Engagement History and Playbook Precedents
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#engineering-incident-response-and-production-decisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Engineering: Incident Response and Production Decisions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Engineering: Incident Response and Production Decisions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-engineering-incident-context-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Engineering Incident Context Graph
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#legal-and-compliance-audit-trails-for-automated-decisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Legal and Compliance: Audit Trails for Automated Decisions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#customer-success-account-history-and-escalation-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Customer Success: Account History and Escalation Logic
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#procurement-vendor-selection-and-contract-exceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Procurement: Vendor Selection and Contract Exceptions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#healthcare-clinical-workflow-decision-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      Healthcare: Clinical Workflow Decision Support
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cross-department-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cross-Department Use Cases
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cross-Department Use Cases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-cross-domain-use-case-decision-trace-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Cross-Domain Use Case Decision Trace Comparison
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-and-key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary and Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1198,16 +1515,16 @@
   
     <a href="https://github.com/dmccreary/context-graph/blob/main/docs/chapters/17-enterprise-use-cases/index.md" title="Edit this page" class="md-content__button md-icon">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
     </a>
   
   
 
 
-<h1 id="chapter-17-enterprise-use-cases">Chapter 17: Enterprise Use Cases<a class="headerlink" href="#chapter-17-enterprise-use-cases" title="Permanent link">&para;</a></h1>
-<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<h1 id="chapter-17-enterprise-use-cases">Chapter 17: Enterprise Use Cases<a class="headerlink" href="#chapter-17-enterprise-use-cases" title="Permanent link">¶</a></h1>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">¶</a></h2>
 <p>Demonstrates concrete applications of context graphs across finance, sales, engineering, legal, HR, healthcare, procurement, and risk management domains.</p>
-<h2 id="concepts-covered">Concepts Covered<a class="headerlink" href="#concepts-covered" title="Permanent link">&para;</a></h2>
+<h2 id="concepts-covered">Concepts Covered<a class="headerlink" href="#concepts-covered" title="Permanent link">¶</a></h2>
 <p>This chapter covers the following 25 concepts from the learning graph:</p>
 <ol>
 <li>Finance Automation Use Case</li>
@@ -1236,20 +1553,163 @@
 <li>Government Process Automation</li>
 <li>Cross-Department Use Case</li>
 </ol>
-<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">¶</a></h2>
 <p>This chapter builds on concepts from:</p>
 <ul>
 <li><a href="../09-context-graph-definition/">Chapter 9: What a Context Graph Is</a></li>
 <li><a href="../11-decision-traces/">Chapter 11: Decision Traces: Anatomy and LPG Patterns</a></li>
 </ul>
-<hr />
-<p>TODO: Generate Chapter Content</p>
+<hr>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Theory meets the real enterprise.</p>
+<p><img src="../../img/mascot/welcome.png" class="mascot-admonition-img" alt="Nexus waves welcome">
+Welcome to Chapter 17! Every concept in this book has been building toward this moment: seeing context graphs solve real problems in real domains. This chapter walks through concrete use cases across eight enterprise domains, with enough implementation detail to sketch a deployment plan. Let's trace the why!</p>
+</div>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">¶</a></h2>
+<p>Context graphs are not domain-specific — the same graph architecture, decision trace schema, and agent integration patterns apply across every enterprise domain where AI must make or support decisions. What varies by domain is the specific decision types captured, the relevant entity relationships, the applicable policies, and the volume and velocity of decisions.</p>
+<p>This chapter presents eight domain-specific use cases, organized to show: the decision problem being solved, the key entities and relationships in the context graph, the decision trace structure, and the agent pattern that enables automation. Together these use cases provide a pattern library that practitioners can adapt to their specific organizational context.</p>
+<p>Each use case also identifies the characteristic signal that indicates when a workflow is ready for context graph automation: high headcount in the decision function, a high rate of exceptions to the standard rule, and significant cross-system synthesis required to reach a defensible decision.</p>
+<h2 id="finance-revenue-reporting-exception-handling">Finance: Revenue Reporting Exception Handling<a class="headerlink" href="#finance-revenue-reporting-exception-handling" title="Permanent link">¶</a></h2>
+<p><strong>The problem.</strong> Finance teams at large organizations spend a disproportionate amount of time on revenue reporting exceptions: cases where revenue does not fit neatly into the standard recognition schedule because of multi-element arrangements, concessions, contract modifications, out-of-period adjustments, or intercompany eliminations. Each exception requires: looking up the applicable accounting policy, finding historical precedents for similar exceptions, assembling data from the billing system and the contract management system, getting controller sign-off, and documenting the justification. An experienced controller can process 8-12 exceptions per day; most teams have backlogs.</p>
+<p><strong>The context graph.</strong> Entity nodes: Revenue Transaction (from billing system), Contract (from contract management), Customer (from CRM), Cost Center, Accounting Period. Decision nodes: Revenue Exception with decision_type = <code>revenue_exception</code>, linked to the specific transaction, the applicable GAAP/IFRS policy version, the precedent exceptions cited, and the controller who approved. ARR (Annual Recurring Revenue) definition conflict traces record when the same revenue was classified differently under different definitions and how the conflict was resolved.</p>
+<p><strong>The agent workflow.</strong> On exception trigger: (1) retrieve the transaction details and the relevant contract from the enterprise knowledge graph; (2) query the context graph for previous exceptions for the same contract, the same customer, and the same exception category; (3) retrieve the current accounting policy version; (4) generate a draft exception treatment recommendation with precedent citations; (5) route to controller for review (Level 2 autonomy); (6) write the decision trace on approval. After 500 validated approvals at &gt; 96% validation rate, promote to Level 3 auto-approval for categories with strong precedent coverage.</p>
+<p><strong>The ARR definition conflict</strong> is a special sub-case where two valid interpretations of the ARR definition produce different numbers for the same revenue stream. Context graph decision traces capture how each conflicting interpretation was resolved, making future interpretations consistent and auditable.</p>
+<p><strong>Readiness signal.</strong> Finance exception volume &gt; 50 per month, exception resolution time &gt; 2 days average, controller time spent on exceptions &gt; 30% of role.</p>
+<h2 id="sales-engagement-history-and-playbook-precedents">Sales: Engagement History and Playbook Precedents<a class="headerlink" href="#sales-engagement-history-and-playbook-precedents" title="Permanent link">¶</a></h2>
+<p><strong>The problem.</strong> Enterprise sales cycles involve dozens of interactions over months or years: discovery calls, proposals, pricing negotiations, objection handling, competitive comparisons, executive engagement, and legal reviews. When an account changes hands between reps (attrition, territory reorganization, expansion of the account team), the institutional knowledge accumulated by the previous rep is mostly lost. The new rep starts from scratch, re-learning context that the account team had already established and repeating conversations that the customer finds annoying.</p>
+<p><strong>The context graph.</strong> Entity nodes: Account (customer), Contact (customer stakeholders), Opportunity (specific sales engagement), Competitor (competing products evaluated), Product Line (what is being sold). Decision nodes: Sales Engagement decisions with decision_type = <code>sales_engagement</code> — recording specific interactions, objections raised and how they were handled, concessions made and the justification, pricing adjustments and the precedents cited. Sales Playbook Precedents are decision traces that capture the specific plays that worked for similar accounts in similar stages.</p>
+<p><strong>The account history graph</strong> extends the entity graph with a timeline of key relationship events: first contact, initial demo, proposal submission, competitive bake-off, contract negotiation milestones, renewal history, and expansion decisions. This history is queryable by any agent or new rep joining the account.</p>
+<p><strong>The agent workflow.</strong> Before each customer interaction: retrieve the account history graph, retrieve the most recent engagement decision traces, retrieve playbook precedents from similar accounts (matching on industry, size, stage). Generate a briefing with: key relationship history, open items from last interaction, recommended approach based on precedents. After each interaction: capture the interaction summary, the objections raised and how they were handled, and the agreed next steps as a decision trace. This creates a continuous, searchable account intelligence record.</p>
+<p><strong>The escalation logic</strong> for sales is the pattern of how opportunities are routed from standard account management to executive engagement. Context graph traces of past escalation decisions surface the signals that most reliably predict when executive involvement changes outcome — enabling more targeted escalation rather than over-escalating every deal.</p>
+<p><strong>Readiness signal.</strong> Rep attrition rate &gt; 15% annually, average account handoff time &gt; 3 weeks, deal cycle &gt; 6 months, deal size &gt; $100K.</p>
+<h2 id="engineering-incident-response-and-production-decisions">Engineering: Incident Response and Production Decisions<a class="headerlink" href="#engineering-incident-response-and-production-decisions" title="Permanent link">¶</a></h2>
+<p><strong>The problem.</strong> Engineering teams make dozens of consequential decisions per incident: which alert to escalate, which service to roll back, which query to kill, which team to page. These decisions are made under time pressure by whoever is on call, often without visibility into what decisions were made in previous similar incidents or why. Incident retrospectives capture some of this knowledge, but they are produced days later, are unevenly documented, and are rarely searched before the next incident.</p>
+<p><strong>The context graph.</strong> Entity nodes: Service (microservice or system component), Deployment (specific version deployed), Alert (monitoring alarm), Engineer (on-call actor). Decision nodes: Production Decision Record with decision_type = <code>incident_response</code> — recording each significant decision during an incident: the triggering alert, the action taken, the reasoning, the engineer who made the call, and the outcome. Linked to the service graph and the deployment history so that "which version was running when this decision was made?" is always answerable.</p>
+<p><strong>The agent workflow.</strong> On alert fire: (1) retrieve the service graph for the alerting service and its dependencies; (2) retrieve recent deployment history for the service; (3) query the context graph for previous incidents with similar alert signatures; (4) retrieve the resolution decision traces from the most similar previous incidents; (5) generate an incident briefing: "Similar to Incident-447 (2025-03-14), where [service X] was rolled back to version [Y] resolving within 12 minutes. Recommend same action." Route to on-call engineer with recommended action pre-filled. (6) On action taken, write the decision trace immediately.</p>
+<p><strong>The production decision record</strong> is particularly valuable for post-incident analysis: every decision during the incident is already a queryable node in the context graph, eliminating the need to reconstruct the timeline from memory. The incident retro can begin with a generated timeline from the context graph rather than from engineer recall.</p>
+<p><strong>Readiness signal.</strong> Mean time to resolve &gt; 45 minutes, repeat incident rate &gt; 20%, on-call engineer knowledge turnover &gt; 25% annually.</p>
+<h4 id="diagram-engineering-incident-context-graph">Diagram: Engineering Incident Context Graph<a class="headerlink" href="#diagram-engineering-incident-context-graph" title="Permanent link">¶</a></h4>
+<details>
+<summary>Interactive vis-network diagram showing the decision trace structure for an engineering incident response, from alert through resolution</summary>
+<p>Type: graph-model
+<strong>sim-id:</strong> incident-response-graph
+<strong>Library:</strong> vis-network
+<strong>Status:</strong> Specified</p>
+<p>Bloom Level: Apply (L3)
+Bloom Verb: use
+Learning Objective: Learners can use the incident response context graph schema to design the decision trace structure for a specific production incident, identifying the relevant entity nodes, decision nodes, and edge types.</p>
+<p>Instructional Rationale: A concrete, fully-instantiated example graph is appropriate for the Apply objective — seeing a real incident trace structure lets learners immediately transpose the pattern to their own engineering context.</p>
+<p>Canvas: responsive width, 520px height. White background.</p>
+<p>Nodes for "Incident-891 (2025-04-01)":
+- "Alert: HighErrorRate-Service-Auth" (orange, diamond) — trigger
+- "Decision: Roll back Auth Service v4.2" (indigo, large ellipse) — main decision
+- "Decision: Page DB-team for capacity" (indigo, medium ellipse) — secondary decision
+- "Service: Auth Service" (teal, box)
+- "Deployment: Auth-v4.2 (bad)" (red, small box)
+- "Deployment: Auth-v4.1 (good rollback)" (green, small box)
+- "Engineer: K. Patel (on-call)" (gold, circle)
+- "Precedent: Incident-447 (2025-03-14)" (indigo, smaller ellipse, dashed border)
+- "Resolution: Auth Service healthy at T+18min" (green, box)</p>
+<p>Edges:
+- Alert → Decision (rollback), label "triggered"
+- Decision (rollback) → Service: Auth Service, label "APPLIES_TO"
+- Decision (rollback) → Deployment: Auth-v4.2, label "FROM_VERSION"
+- Decision (rollback) → Deployment: Auth-v4.1, label "TO_VERSION"
+- Engineer K. Patel → Decision (rollback), label "DECIDED_BY"
+- Decision (rollback) → Precedent: Incident-447, label "CITES"
+- Decision (rollback) → Decision (page DB-team), label "TRIGGERED"
+- Decision (rollback) → Resolution, label "RESULTED_IN"</p>
+<p>Click on Decision (rollback): shows full property list — trace_id, decision_type='incident_response', timestamp, context_summary, exception_flag=true (rollback is non-standard for this service), confidence=high.
+Click on Precedent: "<strong>Cited Precedent</strong> — Incident-447, 18 days earlier, same alert pattern, same auth service, rollback from v4.1 to v4.0 resolved in 9 minutes. Context graph retrieval surfaced this as the top precedent, reducing investigation time from ~30 minutes to ~5 minutes."
+Click on Resolution: "<strong>Outcome Node</strong> — recorded 18 minutes after the rollback decision. Resolution time was longer than precedent (9 min vs 18 min) because of the additional DB paging decision. This outcome is recorded in the precedent's trace for future reference."</p>
+<p>Hover over edges shows labels.</p>
+</details>
+<h2 id="legal-and-compliance-audit-trails-for-automated-decisions">Legal and Compliance: Audit Trails for Automated Decisions<a class="headerlink" href="#legal-and-compliance-audit-trails-for-automated-decisions" title="Permanent link">¶</a></h2>
+<p><strong>The problem.</strong> Automated decisions — pricing, credit, claims, content moderation — are increasingly subject to regulatory requirements for explainability, audit trails, and non-discrimination evidence. Regulations in financial services, healthcare, insurance, and employment require that any automated decision affecting an individual be explainable, traceable, and auditable by regulators. Most AI systems cannot meet this bar — they make decisions but do not maintain queryable records of what information they used, what rules they applied, or what precedents they considered.</p>
+<p><strong>The context graph.</strong> Entity nodes: Individual (the person affected), Decision (the automated decision), Regulatory Standard (the applicable regulation and version), Auditor (the regulatory body). Decision nodes: Regulatory Audit Automation traces record: for each automated decision, the full decision context (input features, model version, policy version, threshold applied), the precedents for similar cases, and any human review events (whether the decision was reviewed and what the reviewer concluded).</p>
+<p><strong>The agent workflow.</strong> The regulatory audit agent receives an audit request for a specific automated decision. It: (1) retrieves the decision trace from the context graph; (2) traverses the trace to retrieve the policy version in effect at decision time, the precedents cited, and any review events; (3) generates an audit response document with: the decision inputs, the decision rationale, the policy basis, the precedent comparison, and the human review record; (4) formats the response according to the specific regulatory reporting schema (NIEM or a domain-specific equivalent).</p>
+<p>The context graph enables <strong>regulatory audit automation</strong> because the information required for the audit response is already structured and queryable — it does not need to be reconstructed from logs and emails. The audit agent can generate a compliance-ready response in minutes rather than the days typically required for manual audit preparation.</p>
+<p><strong>Financial services compliance</strong> extends this pattern to the specific regulatory requirements of banking and insurance: Fair Credit Reporting Act (FCRA) adverse action notices, Equal Credit Opportunity Act (ECOA) non-discrimination evidence, and Dodd-Frank stress testing documentation. Each has specific record-keeping requirements that map directly to context graph decision trace fields.</p>
+<p><strong>Readiness signal.</strong> Regulatory inquiry response time &gt; 5 days, manual audit preparation cost &gt; $50,000 per audit cycle, automated decision volume &gt; 10,000 per month.</p>
+<h2 id="customer-success-account-history-and-escalation-logic">Customer Success: Account History and Escalation Logic<a class="headerlink" href="#customer-success-account-history-and-escalation-logic" title="Permanent link">¶</a></h2>
+<p><strong>The problem.</strong> Customer success teams manage complex, multi-year relationships with enterprise customers. The same questions arise repeatedly: should we escalate this support case to the executive sponsor, should we offer a proactive concession to avoid churn, should we expand into a new use case given the customer's current adoption pattern? Experienced CSMs answer these questions by drawing on years of account-specific context and pattern recognition across their portfolio. Junior CSMs answer them by escalating everything or guessing.</p>
+<p><strong>The context graph.</strong> Entity nodes: Account (customer), Executive Sponsor, CSM (customer success manager), Product (what the customer uses), Health Score (a time-series of account health metrics), Support Case. The <strong>account history graph</strong> is a rich context graph subgraph representing the full relationship timeline: onboarding milestones, expansion decisions, escalations, renewals, and churn-risk events. <strong>Escalation logic</strong> traces record each time an account was escalated to executive engagement: the triggering signal, the precedent accounts used to calibrate the response, the action taken, and the outcome.</p>
+<p><strong>The agent workflow.</strong> On health score alert (score drops below threshold): (1) retrieve the account history graph; (2) query the context graph for escalation decisions for similar accounts (matching industry, size, product usage pattern, stage in lifecycle); (3) retrieve the outcomes of those escalation decisions; (4) generate a recommended response: "Based on 12 similar accounts in the 60-90 day post-implementation risk window, accounts that received an executive check-in and a structured adoption review resolved within 45 days in 78% of cases. Recommend same for this account." (5) Route to CSM with recommendation and precedent citations for human confirmation.</p>
+<p><strong>Readiness signal.</strong> Churn rate &gt; 8% annually, CSM portfolio size &gt; 20 accounts, average relationship age &gt; 18 months, renewal rate below industry benchmark.</p>
+<h2 id="procurement-vendor-selection-and-contract-exceptions">Procurement: Vendor Selection and Contract Exceptions<a class="headerlink" href="#procurement-vendor-selection-and-contract-exceptions" title="Permanent link">¶</a></h2>
+<p><strong>The problem.</strong> Procurement decisions — vendor selection, contract term negotiations, exception approvals for off-contract purchases — are high-value, highly repeatable, and highly context-dependent. The same vendors appear repeatedly; the same contract clauses are negotiated repeatedly; the same exception patterns recur. Yet most organizations make each procurement decision largely from scratch because the precedent record is scattered across email threads, contract management systems, and individual buyer memory.</p>
+<p><strong>The context graph.</strong> Entity nodes: Vendor, Contract, Purchase Order, Spend Category, Buyer. Decision nodes: Procurement decision traces for vendor selection (why this vendor was chosen over alternatives), contract exceptions (why specific terms were deviated from the standard), and off-contract approvals (why an off-contract purchase was approved). These traces stitch together into a rich vendor relationship history that buyers can query before any new negotiation.</p>
+<p><strong>The supply chain use case</strong> extends procurement context graphs to cover supplier risk decisions: when a supplier is identified as at-risk (financial distress, concentration risk, regulatory investigation), the context graph provides the full history of past risk events with the same supplier, the contingency decisions made in previous risk events, and the alternative supplier relationships that can be activated.</p>
+<p><strong>Readiness signal.</strong> Off-contract spend &gt; 15% of total procurement, contract cycle time &gt; 45 days, supplier risk events &gt; 10 per year.</p>
+<h2 id="healthcare-clinical-workflow-decision-support">Healthcare: Clinical Workflow Decision Support<a class="headerlink" href="#healthcare-clinical-workflow-decision-support" title="Permanent link">¶</a></h2>
+<p><strong>The problem.</strong> Clinical decision-making involves synthesizing patient history, current test results, applicable clinical guidelines, and institutional protocols for each specific patient encounter. Electronic health record (EHR) systems store patient history but are not optimized for surfacing relevant precedents from similar patients or for linking clinical decisions to the specific guideline versions that governed them.</p>
+<p><strong>The context graph.</strong> Entity nodes use UMLS concept identifiers (Chapter 6) for diagnoses, medications, procedures, and anatomical structures, ensuring interoperability with other clinical systems. Decision nodes: Clinical Decision Records capture treatment decisions, medication change decisions, escalation decisions, and discharge planning decisions — each linked to the applicable clinical guidelines (by version) and to precedent decisions from similar patient cases (matched on diagnosis cluster, risk profile, and treatment stage).</p>
+<p><strong>The healthcare workflow</strong> agent retrieves: the patient's decision history (in the context graph), the most similar patient cases and their treatment decisions, and the current applicable clinical guidelines. It generates a decision support summary with evidence from both the institutional precedent base and the clinical literature — a richer context than EHR-native decision support tools provide.</p>
+<p><strong>Readiness signal.</strong> Physician documentation burden &gt; 3 hours per day, clinical guideline adherence below quality targets, readmission rate above benchmark.</p>
+<h2 id="cross-department-use-cases">Cross-Department Use Cases<a class="headerlink" href="#cross-department-use-cases" title="Permanent link">¶</a></h2>
+<p>Many of the most valuable context graph applications span multiple departments — cases where the decision requires information from multiple systems and where the decision affects entities in multiple domains.</p>
+<p><strong>IT operations</strong> context graphs record infrastructure configuration decisions: which change requests were approved, under what change management policy, with what rollback plan, and with what outcome. Linked to the incident response graph, this creates a queryable record of how infrastructure changes relate to system instability — enabling correlation queries like "what changes were made in the 48 hours before this incident, by whom, and have similar changes caused issues before?"</p>
+<p><strong>HR workflow automation</strong> uses context graphs for compensation exception decisions, promotion decisions, and performance management. Compensation exceptions (salaries approved above band, one-time payments) are particularly important because they create precedents that future employees or managers may try to use as leverage. A context graph with comprehensive compensation exception history enables consistent treatment across the workforce.</p>
+<p><strong>Manufacturing quality</strong> context graphs record production deviation decisions: when a batch is produced outside specification, the disposition decision (rework, release with concession, scrap), the quality engineer who approved it, the customer notification decision, and the corrective action taken. These records enable pattern detection across production runs — identifying which process parameters are most predictive of defect rates.</p>
+<p><strong>Insurance claims</strong> context graphs record claims decision traces: coverage determination, reserve setting, payment authorization, subrogation decisions. In an industry with strict regulatory requirements and significant litigation risk, having a complete, queryable record of every claims decision — including the precedents cited and the policy version applied — is not just operationally valuable; it is a legal necessity.</p>
+<h4 id="diagram-cross-domain-use-case-decision-trace-comparison">Diagram: Cross-Domain Use Case Decision Trace Comparison<a class="headerlink" href="#diagram-cross-domain-use-case-decision-trace-comparison" title="Permanent link">¶</a></h4>
+<details>
+<summary>Interactive vis-network diagram showing how the same core context graph schema instantiates differently across five enterprise domains</summary>
+<p>Type: graph-model
+<strong>sim-id:</strong> cross-domain-use-case-comparison
+<strong>Library:</strong> vis-network
+<strong>Status:</strong> Specified</p>
+<p>Bloom Level: Analyze (L4)
+Bloom Verb: compare
+Learning Objective: Learners can compare how the same core decision trace schema instantiates across different enterprise domains by identifying the domain-specific entity types and decision types while recognizing the shared structural pattern.</p>
+<p>Instructional Rationale: A multi-panel vis-network diagram showing five domain instances of the same schema is appropriate for the Analyze objective — learners must identify both differences (domain-specific node types) and commonalities (shared edge type vocabulary), which requires analysis rather than recall.</p>
+<p>Canvas: responsive width, 560px height. Five domain mini-graphs arranged in a 2×3 grid (last cell empty or used for legend).</p>
+<p>Each mini-graph shows: one central Decision Trace node (indigo), connected to 3 nodes:
+- Entity node (teal, domain-specific label)
+- Actor node (gold, domain-specific label)
+- Policy node (steel blue, domain-specific label)</p>
+<p>Domain 1 (Finance): Decision="Revenue Exception", Entity="Invoice", Actor="Controller", Policy="GAAP ASC 606 v2024"
+Domain 2 (Sales): Decision="Pricing Concession", Entity="Opportunity", Actor="VP Sales", Policy="Pricing Policy v3.2"
+Domain 3 (Engineering): Decision="Rollback to v4.1", Entity="Auth Service", Actor="On-Call Engineer", Policy="Change Management Policy"
+Domain 4 (Legal): Decision="Exception Approval", Entity="Contract Clause", Actor="Legal Counsel", Policy="Standard Terms v8"
+Domain 5 (Healthcare): Decision="Treatment Change", Entity="Patient Encounter", Actor="Attending Physician", Policy="Clinical Guideline v2025.3"</p>
+<p>Each mini-graph labeled with domain name at top.</p>
+<p>Click on any Decision Trace node in any domain: shows the shared required properties (trace_id, decision_type, timestamp, status, context_summary) alongside domain-specific optional properties.
+Click on any Entity node: shows how this entity is defined differently in each domain but referenced by the same canonical entity ID pattern.
+Click on any Policy node: emphasizes that all domains link to specific policy VERSIONS — not current policy — for temporal correctness.</p>
+<p>Legend box: "The edge types are the same across all domains: DECIDED_BY, APPLIES_TO, GOVERNED_BY, CITES. The schema is universal; the content is domain-specific."</p>
+</details>
+<h2 id="summary-and-key-takeaways">Summary and Key Takeaways<a class="headerlink" href="#summary-and-key-takeaways" title="Permanent link">¶</a></h2>
+<p>Context graphs are domain-agnostic. The same schema, the same agent patterns, and the same integration architecture apply across finance, sales, engineering, legal, customer success, procurement, healthcare, and cross-department workflows. What varies is the specific entities, decision types, and policies — the content, not the structure.</p>
+<p>By the end of this chapter, you should be able to:</p>
+<ul>
+<li>Describe the finance <strong>revenue reporting exception</strong> use case and identify its decision trace schema elements</li>
+<li>Describe the sales <strong>sales playbook precedent</strong> use case and explain how the account history graph enables context-aware engagement</li>
+<li>Describe the engineering <strong>production decision record</strong> use case and explain how context graphs reduce incident response time</li>
+<li>Describe the legal <strong>regulatory audit automation</strong> use case and explain how decision trace queryability satisfies audit requirements</li>
+<li>Describe the customer success <strong>escalation logic</strong> use case and explain how precedent retrieval improves junior CSM effectiveness</li>
+<li>Identify the three <strong>readiness signals</strong> that indicate a workflow is ready for context graph automation</li>
+<li>Explain how the same core decision trace schema instantiates differently across domains while maintaining a shared structural pattern</li>
+</ul>
+<details class="question">
+<summary>Quick Check</summary>
+<p>A manufacturing quality manager wants to use a context graph to improve consistency in production deviation disposition decisions. The team currently handles 30 deviations per week, each requiring a quality engineer to determine whether the batch should be reworked, released with a concession, or scrapped. Design the core entity nodes, decision node type, required edges, and key properties for a manufacturing quality context graph tailored to this use case. Include the readiness signal assessment.</p>
+<p><em>(Answer: Entity nodes: Batch (product batch with lot number, production run date, product SKU), Specification (the quality parameter and tolerance range), Customer (if affected), Supplier (if raw material issue). Decision node: type='quality_disposition', properties: trace_id, timestamp, disposition (rework/release/scrap), justification, exception_flag, confidence. Edges: APPLIES_TO → Batch, DECIDED_BY → Quality Engineer, GOVERNED_BY → Quality Management Policy version, CONSULTED → Specification node (with actual vs. spec value), CITES → prior disposition decisions for same product + same deviation type. Readiness signal assessment: 30 deviations/week = ~1,560/year, strong volume. If &gt; 30% of dispositions are non-standard (not automatic scrap for critical deviations), that indicates exception-heavy pattern. Cross-system synthesis (production data + QC lab data + customer contractual requirements) is likely. All three readiness signals are present — this workflow is ready.)</em></p>
+</details>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">Chapter 17: Complete!</p>
+<p><img src="../../img/mascot/celebration.png" class="mascot-admonition-img" alt="Nexus celebrating">
+Excellent work. You have now seen context graphs at work across eight enterprise domains. Chapter 18 addresses the regulatory and governance dimension: how context graphs provide searchable audit trails, meet explainability requirements, satisfy data retention obligations, and support compliance-by-design rather than compliance-as-a-retrofit. Let's trace the why!</p>
+</div>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -1268,7 +1728,7 @@
         
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
   Back to top
 </button>
         
@@ -1278,13 +1738,13 @@
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
           <a href="../16-ai-agent-architecture/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 16. AI Agent Architecture">
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
@@ -1309,7 +1769,7 @@
             </div>
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
             </div>
           </a>
         
@@ -1321,7 +1781,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2026 Dan Mccreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+      Copyright © 2026 Dan Mccreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
     </div>
   
   
@@ -1342,6 +1802,14 @@
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
+        <script src="../../js/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+      
     
-  </body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
