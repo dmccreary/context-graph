@@ -99,6 +99,8 @@ nav:
       - Decision Trace Full Schema: sims/decision-trace-full-schema/index.md
       - Precedent Chain Pattern: sims/precedent-chain-pattern/index.md
       - Incumbent Gap Analysis: sims/incumbent-gap-analysis/index.md
+      - Bitemporal Explorer: sims/bitemporal-explorer/index.md
+      - Subgraph Extraction: sims/subgraph-extraction/index.md
 
   - License: license.md
   - Contact: contact.md

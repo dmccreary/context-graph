@@ -243,4 +243,18 @@ Plotly, Venn.js).
     4×5 ratings grid scoring incumbent systems (Data Warehouse, CRM, ERP,
     AI Agent, Purpose-Built CG) against the four context-graph requirements. **Chapter 12 · HTML**
 
+-   __[Bitemporal Explorer](bitemporal-explorer/index.md)__
+
+    ![Bitemporal Explorer](bitemporal-explorer/bitemporal-explorer.png)
+
+    2D time grid with crosshair sliders showing valid-time × transaction-time
+    queries against three credit-tier records. **Chapter 13 · p5.js**
+
+-   __[Subgraph Extraction](subgraph-extraction/index.md)__
+
+    ![Subgraph Extraction](subgraph-extraction/subgraph-extraction.png)
+
+    Highlighted subgraph plus prose serialization showing how a focused
+    context is assembled for the LLM from a full graph. **Chapter 13 · vis-network**
+
 </div>
