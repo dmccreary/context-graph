@@ -14,7 +14,7 @@
   "library": "vis-network",
   "bloomLevel": "Understand (L2)",
   "bloomVerb": "Identify and describe",
-  "completion_status": "scaffold",
+  "completion_status": "implemented",
   "chapter_number": 1,
   "chapter_title": "\"Chapter 1: Knowledge Graphs and Labeled Property Graphs\"",
   "chapter_dir": "01-knowledge-graphs-lpg"

@@ -3,132 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
     <title>Multi-Hop Query Performance</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f8f9fa;
-            color: #212529;
+        body { margin: 0; padding: 0; font-family: Arial, Helvetica, sans-serif; background: aliceblue; }
+        .wrap { padding: 12px 16px 8px; background: white; border: 1px solid silver; }
+        .title { font-size: 16px; font-weight: bold; color: #1a237e; margin-bottom: 6px; text-align: center; }
+        .chart-box { position: relative; width: 100%; height: 380px; }
+        .controls { margin-top: 8px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+        .controls button {
+            background: #3949ab; color: white; border: none; border-radius: 4px;
+            padding: 6px 14px; font-size: 13px; cursor: pointer; font-weight: bold;
         }
-        #container {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background: white;
+        .controls button:hover { background: #283593; }
+        .callout {
+            background: #fff8e1; border: 1px solid #fbc02d; border-radius: 4px;
+            padding: 6px 10px; font-size: 12px; color: #5d4037; flex: 1; min-width: 200px;
         }
-        h1 {
-            font-size: 22px;
-            margin-bottom: 10px;
-            color: #1a3a6c;
-        }
-        .placeholder {
-            border: 2px dashed #adb5bd;
-            border-radius: 8px;
-            padding: 40px 20px;
-            text-align: center;
-            color: #6c757d;
-            margin: 20px 0;
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .placeholder .badge {
-            display: inline-block;
-            background: #ffc107;
-            color: #212529;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-        .placeholder h2 {
-            font-size: 18px;
-            color: #495057;
-            margin-bottom: 8px;
-        }
-        .placeholder p {
-            font-size: 14px;
-            max-width: 480px;
-        }
-        .meta {
-            margin-top: 20px;
-            font-size: 13px;
-            color: #6c757d;
-            border-top: 1px solid #dee2e6;
-            padding-top: 12px;
-        }
-        .meta strong { color: #495057; }
+        .scale-label { font-size: 12px; color: #455a64; }
     </style>
 </head>
 <body>
-    <div id="container">
-        <h1>Multi-Hop Query Performance</h1>
-        <div class="placeholder">
-            <span class="badge">SCAFFOLD</span>
-            <h2>MicroSim Not Yet Implemented</h2>
-            <p>This MicroSim has been scaffolded from its specification but the
-            interactive content has not been built yet. See the chapter source
-            and the <code>index.md</code> in this directory for the full spec.</p>
-        </div>
-        <div class="meta">
-            <p><strong>Sim ID:</strong> multi-hop-performance</p>
-            <p><strong>Library:</strong> Chart.js</p>
-            <p><strong>Bloom Level:</strong> Analyze (L4)</p>
-            <p><strong>Learning Objective:</strong> Learners can explain why native graph traversal performance grows linearly with hop count while relational JOIN performance degrades super-linearly, and identify the crossover point where graph performance becomes practically necessary.</p>
+    <div class="wrap">
+        <div class="title">Multi-Hop Query Performance: Native Graph vs Relational</div>
+        <div class="chart-box"><canvas id="chart"></canvas></div>
+        <div class="controls">
+            <button id="scale-btn">Switch to Linear Scale</button>
+            <span class="scale-label">Y-axis: <span id="scale-label">logarithmic</span></span>
+            <div class="callout" id="callout">Click any hop's bar to see the relational/graph ratio.</div>
         </div>
     </div>
-
-    <!--
-    SPECIFICATION (from chapter index.md):
-
-    Type: chart
-    **sim-id:** multi-hop-performance<br/>
-    **Library:** Chart.js<br/>
-    **Status:** Specified
-    
-    Bloom Level: Analyze (L4)
-    Bloom Verb: Compare and contrast
-    Learning Objective: Learners can explain why native graph traversal performance grows linearly with hop count while relational JOIN performance degrades super-linearly, and identify the crossover point where graph performance becomes practically necessary.
-    
-    Chart type: Grouped bar chart
-    
-    X-axis label: "Number of Hops"
-    X-axis values: 1, 2, 3, 4, 5
-    Y-axis label: "Query Response Time (ms)"
-    Y-axis: Logarithmic scale, range 1ms to 1,000,000ms
-    
-    Data series:
-    1. Relational Database (orange bars):
-       - 1 hop: 8ms
-       - 2 hops: 90ms
-       - 3 hops: 1,400ms
-       - 4 hops: 28,000ms
-       - 5 hops: 650,000ms
-    
-    2. Native Graph Database (indigo bars):
-       - 1 hop: 4ms
-       - 2 hops: 7ms
-       - 3 hops: 11ms
-       - 4 hops: 15ms
-       - 5 hops: 19ms
-    
-    Interactive behavior:
-    - Hover any bar: tooltip shows exact milliseconds formatted for readability (e.g., "28,000 ms ≈ 28 seconds")
-    - Click a hop's bar pair: highlight both bars at that hop count; display a callout showing the ratio (e.g., "At 4 hops: relational is 1,867× slower")
-    - Toggle button below chart: switch Y-axis between logarithmic and linear scales. On linear scale the relational 5-hop bar visually dominates the entire chart area, making the practical consequence visceral.
-    - Annotation on relational 5-hop bar: "~11 minutes — effectively unusable for real-time queries"
-    - Annotation on graph series line: "~4ms per additional hop — near-linear growth"
-    
-    Title: "Multi-Hop Query Performance: Native Graph vs Relational"
-    Legend: Top-right
-    
-    Color palette: Indigo (#3949ab) for graph, orange (#f57c00) for relational.
-    Canvas: Responsive width, 480px height.
-    -->
+    <script src="multi-hop-performance.js"></script>
 </body>
 </html>

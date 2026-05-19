@@ -1,7 +1,7 @@
 ---
 title: Data Model Comparison Explorer
 description: Learners can compare the Relational, RDF, LPG, and Vector Store data models across five performance dimensions and justify which model is appropriate for a given enterprise query type.
-status: scaffold
+status: implemented
 library: p5.js
 bloom_level: Analyze (L4)
 ---
@@ -10,7 +10,7 @@ bloom_level: Analyze (L4)
 
 
 
-<iframe src="main.html" width="100%" height="600"></iframe>
+<iframe src="main.html" width="100%" height="722" scrolling="no"></iframe>
 
 [Run MicroSim in Fullscreen](main.html){ .md-button .md-button--primary }
 

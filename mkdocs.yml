@@ -66,6 +66,10 @@ nav:
   - MicroSims:
       - List of MicroSims: sims/index.md
       - Learning Graph Viewer: sims/graph-viewer/index.md
+      - Data Model Comparison Explorer: sims/data-model-comparison/index.md
+      - Graph Traversal Explorer: sims/graph-traversal-explorer/index.md
+      - Interactive LPG Explorer: sims/lpg-explorer/index.md
+      - Multi-Hop Query Performance: sims/multi-hop-performance/index.md
 
   - License: license.md
   - Contact: contact.md

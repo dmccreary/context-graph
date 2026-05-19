@@ -1,7 +1,7 @@
 ---
 title: Interactive LPG Explorer
 description: Learners can identify nodes, edges, labels, and properties in a Labeled Property Graph and explain the role of each element.
-status: scaffold
+status: implemented
 library: vis-network
 bloom_level: Understand (L2)
 ---
@@ -10,7 +10,7 @@ bloom_level: Understand (L2)
 
 
 
-<iframe src="main.html" width="100%" height="600"></iframe>
+<iframe src="main.html" width="100%" height="542" scrolling="no"></iframe>
 
 [Run MicroSim in Fullscreen](main.html){ .md-button .md-button--primary }
 

@@ -1,7 +1,7 @@
 ---
 title: Graph Traversal Explorer
 description: Learners can trace the step-by-step execution of BFS and DFS traversal on a sample enterprise graph and explain why the two algorithms produce different node visit orderings.
-status: scaffold
+status: implemented
 library: p5.js
 bloom_level: Understand (L2)
 ---
@@ -10,7 +10,7 @@ bloom_level: Understand (L2)
 
 
 
-<iframe src="main.html" width="100%" height="600"></iframe>
+<iframe src="main.html" width="100%" height="602" scrolling="no"></iframe>
 
 [Run MicroSim in Fullscreen](main.html){ .md-button .md-button--primary }
 

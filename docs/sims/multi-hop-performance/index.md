@@ -1,7 +1,7 @@
 ---
 title: Multi-Hop Query Performance
 description: Learners can explain why native graph traversal performance grows linearly with hop count while relational JOIN performance degrades super-linearly, and identify the crossover point where graph performance becomes practically necessary.
-status: scaffold
+status: implemented
 library: Chart.js
 bloom_level: Analyze (L4)
 ---
@@ -10,7 +10,7 @@ bloom_level: Analyze (L4)
 
 
 
-<iframe src="main.html" width="100%" height="600"></iframe>
+<iframe src="main.html" width="100%" height="482" scrolling="no"></iframe>
 
 [Run MicroSim in Fullscreen](main.html){ .md-button .md-button--primary }
 

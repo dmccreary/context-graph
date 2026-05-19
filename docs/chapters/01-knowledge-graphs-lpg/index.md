@@ -84,7 +84,7 @@ The interactive diagram below shows a small but representative enterprise LPG. C
 
 #### Diagram: Interactive LPG Explorer
 
-<iframe src="../../sims/lpg-explorer/main.html" width="100%" height="520px" scrolling="no"></iframe>
+<iframe src="../../sims/lpg-explorer/main.html" width="100%" height="542px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Interactive LPG Explorer</summary>
@@ -179,7 +179,7 @@ This property has dramatic consequences for multi-hop queries — queries that t
 
 #### Diagram: Multi-Hop Query Performance
 
-<iframe src="../../sims/multi-hop-performance/main.html" width="100%" height="480px" scrolling="no"></iframe>
+<iframe src="../../sims/multi-hop-performance/main.html" width="100%" height="482px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Multi-Hop Query Performance: Native Graph vs Relational</summary>
@@ -270,7 +270,7 @@ The MicroSim below lets you step through BFS and DFS traversals on a small enter
 
 #### Diagram: Graph Traversal Explorer
 
-<iframe src="../../sims/graph-traversal-explorer/main.html" width="100%" height="520px" scrolling="no"></iframe>
+<iframe src="../../sims/graph-traversal-explorer/main.html" width="100%" height="602px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Graph Traversal Explorer MicroSim</summary>
@@ -363,7 +363,7 @@ The interactive comparison below lets you examine all four data models side by s
 
 #### Diagram: Data Model Comparison Explorer
 
-<iframe src="../../sims/data-model-comparison/main.html" width="100%" height="500px" scrolling="no"></iframe>
+<iframe src="../../sims/data-model-comparison/main.html" width="100%" height="722px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Data Model Comparison Explorer</summary>
