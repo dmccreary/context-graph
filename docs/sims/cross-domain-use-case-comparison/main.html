@@ -1,122 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cross-Domain Use Case Decision Trace Comparison</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f8f9fa;
-            color: #212529;
-        }
-        #container {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background: white;
-        }
-        h1 {
-            font-size: 22px;
-            margin-bottom: 10px;
-            color: #1a3a6c;
-        }
-        .placeholder {
-            border: 2px dashed #adb5bd;
-            border-radius: 8px;
-            padding: 40px 20px;
-            text-align: center;
-            color: #6c757d;
-            margin: 20px 0;
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .placeholder .badge {
-            display: inline-block;
-            background: #ffc107;
-            color: #212529;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-        .placeholder h2 {
-            font-size: 18px;
-            color: #495057;
-            margin-bottom: 8px;
-        }
-        .placeholder p {
-            font-size: 14px;
-            max-width: 480px;
-        }
-        .meta {
-            margin-top: 20px;
-            font-size: 13px;
-            color: #6c757d;
-            border-top: 1px solid #dee2e6;
-            padding-top: 12px;
-        }
-        .meta strong { color: #495057; }
-    </style>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
+    <title>Cross-Domain Use Cases</title>
+    <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/vis-network/styles/vis-network.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="container">
-        <h1>Cross-Domain Use Case Decision Trace Comparison</h1>
-        <div class="placeholder">
-            <span class="badge">SCAFFOLD</span>
-            <h2>MicroSim Not Yet Implemented</h2>
-            <p>This MicroSim has been scaffolded from its specification but the
-            interactive content has not been built yet. See the chapter source
-            and the <code>index.md</code> in this directory for the full spec.</p>
-        </div>
-        <div class="meta">
-            <p><strong>Sim ID:</strong> cross-domain-use-case-comparison</p>
-            <p><strong>Library:</strong> vis-network</p>
-            <p><strong>Bloom Level:</strong> Analyze (L4)</p>
-            <p><strong>Learning Objective:</strong> Learners can compare how the same core decision trace schema instantiates across different enterprise domains by identifying the domain-specific entity types and decision types while recognizing the shared structural pattern.</p>
+    <div class="container">
+        <div id="network"></div>
+        <div class="title">Same Decision Trace Schema — Five Domain Instances</div>
+        <div class="right-panel">
+            <div class="detail-panel" id="dp">
+                <div class="dt">Domain comparison</div>
+                <div class="db" id="db">Click any node. <em>Edge types are the same across all five domains: DECIDED_BY, APPLIES_TO, GOVERNED_BY, CITES.</em></div>
+            </div>
+            <button class="btn" id="reset-btn">Reset View</button>
         </div>
     </div>
-
-    <!--
-    SPECIFICATION (from chapter index.md):
-
-    Type: graph-model
-    **sim-id:** cross-domain-use-case-comparison
-    **Library:** vis-network
-    **Status:** Specified
-    
-    Bloom Level: Analyze (L4)
-    Bloom Verb: compare
-    Learning Objective: Learners can compare how the same core decision trace schema instantiates across different enterprise domains by identifying the domain-specific entity types and decision types while recognizing the shared structural pattern.
-    
-    Instructional Rationale: A multi-panel vis-network diagram showing five domain instances of the same schema is appropriate for the Analyze objective — learners must identify both differences (domain-specific node types) and commonalities (shared edge type vocabulary), which requires analysis rather than recall.
-    
-    Canvas: responsive width, 560px height. Five domain mini-graphs arranged in a 2×3 grid (last cell empty or used for legend).
-    
-    Each mini-graph shows: one central Decision Trace node (indigo), connected to 3 nodes:
-    - Entity node (teal, domain-specific label)
-    - Actor node (gold, domain-specific label)
-    - Policy node (steel blue, domain-specific label)
-    
-    Domain 1 (Finance): Decision="Revenue Exception", Entity="Invoice", Actor="Controller", Policy="GAAP ASC 606 v2024"
-    Domain 2 (Sales): Decision="Pricing Concession", Entity="Opportunity", Actor="VP Sales", Policy="Pricing Policy v3.2"
-    Domain 3 (Engineering): Decision="Rollback to v4.1", Entity="Auth Service", Actor="On-Call Engineer", Policy="Change Management Policy"
-    Domain 4 (Legal): Decision="Exception Approval", Entity="Contract Clause", Actor="Legal Counsel", Policy="Standard Terms v8"
-    Domain 5 (Healthcare): Decision="Treatment Change", Entity="Patient Encounter", Actor="Attending Physician", Policy="Clinical Guideline v2025.3"
-    
-    Each mini-graph labeled with domain name at top.
-    
-    Click on any Decision Trace node in any domain: shows the shared required properties (trace_id, decision_type, timestamp, status, context_summary) alongside domain-specific optional properties.
-    Click on any Entity node: shows how this entity is defined differently in each domain but referenced by the same canonical entity ID pattern.
-    Click on any Policy node: emphasizes that all domains link to specific policy VERSIONS — not current policy — for temporal correctness.
-    
-    Legend box: "The edge types are the same across all domains: DECIDED_BY, APPLIES_TO, GOVERNED_BY, CITES. The schema is universal; the content is domain-specific."
-    -->
+    <script src="cross-domain-use-case-comparison.js"></script>
 </body>
 </html>

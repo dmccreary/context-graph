@@ -1,7 +1,7 @@
 ---
 title: Compliance Lifecycle for a Context Graph System
 description: Learners can design a compliance lifecycle for a context graph deployment by identifying the required activities at each phase and linking each activity to the specific regulatory requirement it addresses.
-status: scaffold
+status: implemented
 library: vis-network
 bloom_level: Create (L6)
 ---
@@ -10,7 +10,7 @@ bloom_level: Create (L6)
 
 
 
-<iframe src="main.html" width="100%" height="600"></iframe>
+<iframe src="main.html" width="100%" height="622" scrolling="no"></iframe>
 
 [Run MicroSim in Fullscreen](main.html){ .md-button .md-button--primary }
 

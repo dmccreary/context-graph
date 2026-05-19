@@ -1,7 +1,7 @@
 ---
 title: Cross-Domain Use Case Decision Trace Comparison
 description: Learners can compare how the same core decision trace schema instantiates across different enterprise domains by identifying the domain-specific entity types and decision types while recognizing the shared structural pattern.
-status: scaffold
+status: implemented
 library: vis-network
 bloom_level: Analyze (L4)
 ---
@@ -10,7 +10,7 @@ bloom_level: Analyze (L4)
 
 
 
-<iframe src="main.html" width="100%" height="600"></iframe>
+<iframe src="main.html" width="100%" height="602" scrolling="no"></iframe>
 
 [Run MicroSim in Fullscreen](main.html){ .md-button .md-button--primary }
 

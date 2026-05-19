@@ -14,7 +14,7 @@
   "library": "vis-network",
   "bloomLevel": "Create (L6)",
   "bloomVerb": "design",
-  "completion_status": "scaffold",
+  "completion_status": "implemented",
   "chapter_number": 18,
   "chapter_title": "\"Chapter 18: Compliance, Explainability, and Audit\"",
   "chapter_dir": "18-compliance-explainability"

@@ -1,7 +1,7 @@
 ---
 title: Engineering Incident Context Graph
 description: Learners can use the incident response context graph schema to design the decision trace structure for a specific production incident, identifying the relevant entity nodes, decision nodes, and edge types.
-status: scaffold
+status: implemented
 library: vis-network
 bloom_level: Apply (L3)
 ---
@@ -10,7 +10,7 @@ bloom_level: Apply (L3)
 
 
 
-<iframe src="main.html" width="100%" height="600"></iframe>
+<iframe src="main.html" width="100%" height="582" scrolling="no"></iframe>
 
 [Run MicroSim in Fullscreen](main.html){ .md-button .md-button--primary }
 

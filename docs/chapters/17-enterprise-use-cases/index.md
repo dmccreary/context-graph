@@ -103,6 +103,8 @@ Each use case also identifies the characteristic signal that indicates when a wo
 
 #### Diagram: Engineering Incident Context Graph
 
+<iframe src="../../sims/incident-response-graph/main.html" width="100%" height="582px" scrolling="no"></iframe>
+
 <details markdown="1">
 <summary>Interactive vis-network diagram showing the decision trace structure for an engineering incident response, from alert through resolution</summary>
 Type: graph-model
@@ -203,6 +205,8 @@ Many of the most valuable context graph applications span multiple departments �
 **Insurance claims** context graphs record claims decision traces: coverage determination, reserve setting, payment authorization, subrogation decisions. In an industry with strict regulatory requirements and significant litigation risk, having a complete, queryable record of every claims decision — including the precedents cited and the policy version applied — is not just operationally valuable; it is a legal necessity.
 
 #### Diagram: Cross-Domain Use Case Decision Trace Comparison
+
+<iframe src="../../sims/cross-domain-use-case-comparison/main.html" width="100%" height="602px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Interactive vis-network diagram showing how the same core context graph schema instantiates differently across five enterprise domains</summary>

@@ -1,7 +1,7 @@
 ---
 title: Audit Trail Architecture in a Context Graph
 description: Learners can assess whether a proposed context graph audit trail design meets the three requirements of tamper evidence, temporal completeness, and searchability by examining the architectural components.
-status: scaffold
+status: implemented
 library: vis-network
 bloom_level: Evaluate (L5)
 ---
@@ -10,7 +10,7 @@ bloom_level: Evaluate (L5)
 
 
 
-<iframe src="main.html" width="100%" height="600"></iframe>
+<iframe src="main.html" width="100%" height="602" scrolling="no"></iframe>
 
 [Run MicroSim in Fullscreen](main.html){ .md-button .md-button--primary }
 

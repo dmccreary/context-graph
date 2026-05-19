@@ -106,6 +106,8 @@ Context graph decision traces are audit trail records by design. Their graph str
 
 #### Diagram: Audit Trail Architecture in a Context Graph
 
+<iframe src="../../sims/audit-trail-architecture/main.html" width="100%" height="602px" scrolling="no"></iframe>
+
 <details markdown="1">
 <summary>Interactive vis-network diagram showing how a context graph provides audit trail capability — from individual decision traces to regulatory report generation</summary>
 Type: graph-model
@@ -213,6 +215,8 @@ The **EU AI Act** (enacted 2024, applicable from 2026) is the most comprehensive
 Red team findings should be documented and fed back into the context graph's access control design, content validation rules, and monitoring configuration. The **AI red teaming** report should be included in the governance report submitted to regulators as evidence of proactive security assessment.
 
 #### Diagram: Compliance Lifecycle for a Context Graph System
+
+<iframe src="../../sims/compliance-lifecycle/main.html" width="100%" height="622px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Interactive vis-network diagram showing the compliance lifecycle — from system design through ongoing monitoring, audit response, and governance reporting</summary>
