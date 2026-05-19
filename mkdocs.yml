@@ -84,6 +84,9 @@ nav:
       - IE Pipeline to Graph: sims/ie-pipeline-to-graph/index.md
       - KG Embedding Explorer: sims/kg-embedding-explorer/index.md
       - PageRank Supplier Graph: sims/pagerank-supplier-graph/index.md
+      - ISO 11179 Hierarchy: sims/iso11179-hierarchy/index.md
+      - Registry API Retrieval Flow: sims/registry-api-retrieval/index.md
+      - Registry vs Catalog: sims/registry-vs-catalog/index.md
 
   - License: license.md
   - Contact: contact.md

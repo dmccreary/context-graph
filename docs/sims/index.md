@@ -138,4 +138,25 @@ Plotly, Venn.js).
     Eight-node supply chain with node size proportional to PageRank score;
     click any node for its risk interpretation. **Chapter 5 · vis-network**
 
+-   __[ISO 11179 Hierarchy](iso11179-hierarchy/index.md)__
+
+    ![ISO 11179 Hierarchy](iso11179-hierarchy/iso11179-hierarchy.png)
+
+    Six-level ISO 11179 component hierarchy alongside a worked Customer
+    Annual Revenue example. **Chapter 6 · vis-network**
+
+-   __[Registry API Retrieval Flow](registry-api-retrieval/index.md)__
+
+    ![Registry API Retrieval Flow](registry-api-retrieval/registry-api-retrieval.png)
+
+    Trace a query through context graph + registry API to produce a
+    grounded LLM payload with units and version. **Chapter 6 · p5.js**
+
+-   __[Registry vs Catalog Architecture](registry-vs-catalog/index.md)__
+
+    ![Registry vs Catalog](registry-vs-catalog/registry-vs-catalog.png)
+
+    Contrast an authoritative registry with a discovery-oriented catalog;
+    follow the dashed integration link between them. **Chapter 6 · vis-network**
+
 </div>
