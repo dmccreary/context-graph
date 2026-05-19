@@ -106,6 +106,10 @@ nav:
       - Ingestion Pipeline Architecture: sims/ingestion-pipeline-architecture/index.md
       - Agent Memory Architecture: sims/agent-memory-architecture/index.md
       - Graduated Autonomy Model: sims/graduated-autonomy-model/index.md
+      - Cross-Domain Use Cases: sims/cross-domain-use-case-comparison/index.md
+      - Incident Response Graph: sims/incident-response-graph/index.md
+      - Audit Trail Architecture: sims/audit-trail-architecture/index.md
+      - Compliance Lifecycle: sims/compliance-lifecycle/index.md
 
   - License: license.md
   - Contact: contact.md

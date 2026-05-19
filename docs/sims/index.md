@@ -292,4 +292,32 @@ Plotly, Venn.js).
     Four-level autonomy ladder (Draft → Full Autonomy) with promotion
     criteria and rollback rules; click any transition to see the rationale. **Chapter 16 · vis-network**
 
+-   __[Cross-Domain Use Cases](cross-domain-use-case-comparison/index.md)__
+
+    ![Cross-Domain Use Cases](cross-domain-use-case-comparison/cross-domain-use-case-comparison.png)
+
+    Same decision trace schema instantiated across Finance, Sales,
+    Engineering, Legal, and Healthcare. **Chapter 17 · vis-network**
+
+-   __[Incident Response Graph](incident-response-graph/index.md)__
+
+    ![Incident Response Graph](incident-response-graph/incident-response-graph.png)
+
+    Fully-instantiated engineering incident trace: alert → rollback decision
+    → service/deployment entities → resolution. **Chapter 17 · vis-network**
+
+-   __[Audit Trail Architecture](audit-trail-architecture/index.md)__
+
+    ![Audit Trail Architecture](audit-trail-architecture/audit-trail-architecture.png)
+
+    Components meeting three audit requirements (tamper evidence, temporal
+    completeness, searchability) for regulated context graph systems. **Chapter 18 · vis-network**
+
+-   __[Compliance Lifecycle](compliance-lifecycle/index.md)__
+
+    ![Compliance Lifecycle](compliance-lifecycle/compliance-lifecycle.png)
+
+    Six-phase circular lifecycle (Design → Deploy → Monitor → Audit →
+    Govern → Red Team) around the context graph. **Chapter 18 · vis-network**
+
 </div>
