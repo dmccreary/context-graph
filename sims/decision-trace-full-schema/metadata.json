@@ -1,0 +1,21 @@
+{
+  "title": "Complete Decision Trace LPG Schema",
+  "description": "Learners can implement a complete decision trace schema by identifying the required node types, property lists, and edge types for a given enterprise decision scenario.",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-19",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "decision-trace-full-schema",
+  "library": "vis-network",
+  "bloomLevel": "Apply (L3)",
+  "bloomVerb": "implement",
+  "completion_status": "scaffold",
+  "chapter_number": 11,
+  "chapter_title": "\"Chapter 11: Decision Traces: Anatomy and LPG Patterns\"",
+  "chapter_dir": "11-decision-traces"
+}

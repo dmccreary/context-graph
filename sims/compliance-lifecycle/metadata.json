@@ -1,0 +1,21 @@
+{
+  "title": "Compliance Lifecycle for a Context Graph System",
+  "description": "Learners can design a compliance lifecycle for a context graph deployment by identifying the required activities at each phase and linking each activity to the specific regulatory requirement it addresses.",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-19",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "compliance-lifecycle",
+  "library": "vis-network",
+  "bloomLevel": "Create (L6)",
+  "bloomVerb": "design",
+  "completion_status": "scaffold",
+  "chapter_number": 18,
+  "chapter_title": "\"Chapter 18: Compliance, Explainability, and Audit\"",
+  "chapter_dir": "18-compliance-explainability"
+}

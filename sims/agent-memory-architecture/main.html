@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Memory Architecture and Write-Back Loop</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        #container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        h1 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #1a3a6c;
+        }
+        .placeholder {
+            border: 2px dashed #adb5bd;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #6c757d;
+            margin: 20px 0;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .placeholder .badge {
+            display: inline-block;
+            background: #ffc107;
+            color: #212529;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .placeholder h2 {
+            font-size: 18px;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+        .placeholder p {
+            font-size: 14px;
+            max-width: 480px;
+        }
+        .meta {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
+            padding-top: 12px;
+        }
+        .meta strong { color: #495057; }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Agent Memory Architecture and Write-Back Loop</h1>
+        <div class="placeholder">
+            <span class="badge">SCAFFOLD</span>
+            <h2>MicroSim Not Yet Implemented</h2>
+            <p>This MicroSim has been scaffolded from its specification but the
+            interactive content has not been built yet. See the chapter source
+            and the <code>index.md</code> in this directory for the full spec.</p>
+        </div>
+        <div class="meta">
+            <p><strong>Sim ID:</strong> agent-memory-architecture</p>
+            <p><strong>Library:</strong> vis-network</p>
+            <p><strong>Bloom Level:</strong> Understand (L2)</p>
+            <p><strong>Learning Objective:</strong> Learners can explain how the three tiers of agent memory (in-context, session, long-term) relate to each other and how agent write-back connects the agent's decisions to the shared organizational memory.</p>
+        </div>
+    </div>
+
+    <!--
+    SPECIFICATION (from chapter index.md):
+
+    Type: graph-model
+    **sim-id:** agent-memory-architecture
+    **Library:** vis-network
+    **Status:** Specified
+    
+    Bloom Level: Understand (L2)
+    Bloom Verb: explain
+    Learning Objective: Learners can explain how the three tiers of agent memory (in-context, session, long-term) relate to each other and how agent write-back connects the agent's decisions to the shared organizational memory.
+    
+    Instructional Rationale: A hierarchical vis-network diagram with labeled data flows is appropriate for the Understand objective — learners trace information flowing in (read pattern) and out (write-back) across the three memory tiers, building a mental model of the memory architecture.
+    
+    Canvas: responsive width, 520px height. White background.
+    
+    Layout: Three horizontal bands stacked top-to-bottom, separated by labeled dividers.
+    
+    **Top band — In-Context Memory:**
+    Nodes: "Task Specification" (orange, small box), "Retrieved Traces" (indigo, box), "Tool Results" (teal, box), "Loop History" (steel blue, box). All inside a labeled band "In-Context (Working Memory, ~8K tokens, ephemeral)".
+    
+    **Middle band — Session Memory:**
+    Node: "Session State Object" (gold, box). Inside a labeled band "Session Memory (persisted across loop cycles, summarized at loop start)".
+    
+    **Bottom band — Long-Term Memory (Context Graph):**
+    Nodes: "Decision Trace Nodes" (indigo, ellipse, large), "Entity Nodes" (teal, ellipse), "Policy Versions" (steel blue, box), "Precedent Links" (orange, dashed edges between decision nodes). Inside a labeled band "Long-Term Memory (shared, persistent, queryable by all agents)".
+    
+    **Data flow edges:**
+    - Context Graph → In-Context Memory: orange arrow, label "Agent Read Pattern (retrieval queries)"
+    - Session State → In-Context Memory: gold arrow, label "Session summary injected at loop start"
+    - In-Context Memory → Session State: gold dashed arrow, label "Updated after each loop cycle"
+    - In-Context Memory → Context Graph: large indigo arrow, label "Agent Write-Back (decision trace)" — this arrow is highlighted prominently
+    
+    Click on Agent Write-Back arrow: "**Agent Write-Back** — the most important data flow. After each decision, the agent writes a complete decision trace to the context graph: the decision, the actor (agent identity), the retrieved precedents cited, the policy version, and the reasoning summary. This trace immediately becomes available to all future agents and human queries."
+    Click on Agent Read Pattern arrow: "**Agent Read Pattern** — the retrieval query sequence that populates the agent's working memory at the start of each loop cycle. Uses hybrid retrieval (graph traversal + vector search) to find the most relevant decision history and precedents for the current task."
+    Click on each memory tier band: shows definition, capacity, and lifecycle (ephemeral vs. persistent).
+    -->
+</body>
+</html>

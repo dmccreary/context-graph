@@ -1,0 +1,21 @@
+{
+  "title": "Registry vs. Catalog Architecture",
+  "description": "Learners can differentiate the role of a metadata registry (what data should mean) from a metadata catalog (what data does mean) and explain how the two integrate.",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-19",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "registry-vs-catalog",
+  "library": "vis-network",
+  "bloomLevel": "Analyze (L4)",
+  "bloomVerb": "differentiate",
+  "completion_status": "scaffold",
+  "chapter_number": 6,
+  "chapter_title": "\"Chapter 6: Metadata Registries and ISO 11179\"",
+  "chapter_dir": "06-metadata-registries"
+}

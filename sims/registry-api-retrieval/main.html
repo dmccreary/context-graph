@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registry API Retrieval Flow</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        #container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        h1 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #1a3a6c;
+        }
+        .placeholder {
+            border: 2px dashed #adb5bd;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #6c757d;
+            margin: 20px 0;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .placeholder .badge {
+            display: inline-block;
+            background: #ffc107;
+            color: #212529;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .placeholder h2 {
+            font-size: 18px;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+        .placeholder p {
+            font-size: 14px;
+            max-width: 480px;
+        }
+        .meta {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
+            padding-top: 12px;
+        }
+        .meta strong { color: #495057; }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Registry API Retrieval Flow</h1>
+        <div class="placeholder">
+            <span class="badge">SCAFFOLD</span>
+            <h2>MicroSim Not Yet Implemented</h2>
+            <p>This MicroSim has been scaffolded from its specification but the
+            interactive content has not been built yet. See the chapter source
+            and the <code>index.md</code> in this directory for the full spec.</p>
+        </div>
+        <div class="meta">
+            <p><strong>Sim ID:</strong> registry-api-retrieval</p>
+            <p><strong>Library:</strong> p5.js</p>
+            <p><strong>Bloom Level:</strong> Apply (L3)</p>
+            <p><strong>Learning Objective:</strong> Learners can implement a registry-aware retrieval step by tracing how a field value and its authoritative registry definition are combined before being passed to an LLM.</p>
+        </div>
+    </div>
+
+    <!--
+    SPECIFICATION (from chapter index.md):
+
+    Type: microsim
+    **sim-id:** registry-api-retrieval
+    **Library:** p5.js
+    **Status:** Specified
+    
+    Bloom Level: Apply (L3)
+    Bloom Verb: implement
+    Learning Objective: Learners can implement a registry-aware retrieval step by tracing how a field value and its authoritative registry definition are combined before being passed to an LLM.
+    
+    Instructional Rationale: A step-through animation with concrete API request and response payloads is appropriate for the Apply objective — seeing the actual JSON structures at each step prepares learners to implement a similar pattern in their own retrieval pipelines.
+    
+    Canvas: responsive width via updateCanvasSize() first in setup(). Height: 500px. White background with light panel borders.
+    
+    Layout (four horizontal stages, left to right):
+    1. "LLM Query" panel: shows incoming query "What is Acme Corp's annual revenue?"
+    2. "Context Graph" panel: shows retrieved node — Customer {id: ENT-00441872, annual_revenue: 2100000, revenue_field_id: DE-CUST-REV-002}
+    3. "Registry API" panel: shows API call "GET /registry/data-elements/DE-CUST-REV-002" and response JSON:
+    ```json
+    {
+      "id": "DE-CUST-REV-002",
+      "name": "Customer Annual Revenue USD TTM",
+      "version": "3.2",
+      "definition": "Recognized revenue in USD for trailing 12 months",
+      "value_domain": {"type": "decimal", "units": "USD"},
+      "approved": "2024-01-15"
+    }
+    ```
+    4. "Grounded Context" panel: shows the combined payload sent to the LLM:
+    ```
+    Field: annual_revenue = 2,100,000
+    Definition: Recognized revenue in USD for trailing 12 months
+    Units: USD | Version: 3.2 | As of: 2024-01-15
+    ```
+    
+    Animation: clicking "Next Step" button illuminates each panel in sequence, with an orange animated arrow moving left to right. Current step highlighted in indigo border.
+    
+    Step labels below: "Step 1: Query received", "Step 2: Field retrieved from context graph (with registry ID)", "Step 3: Registry API called for definition", "Step 4: Value + definition combined into grounded context".
+    
+    A "Why this matters" toggle button reveals a text box: "Without the registry lookup, the LLM receives only '2100000' with no context about units, time period, or whether it is gross or net revenue. With the registry definition, the LLM can answer accurately and caveat appropriately if the definition changed."
+    
+    Canvas responds to window resize.
+    -->
+</body>
+</html>

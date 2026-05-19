@@ -1,0 +1,21 @@
+{
+  "title": "Hybrid Retrieval and Reranking Pipeline",
+  "description": "Learners can use the hybrid retrieval pipeline to describe what happens at each stage of context graph retrieval and identify which stage is responsible for a specific type of retrieval failure.",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-19",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "hybrid-retrieval-pipeline",
+  "library": "p5.js",
+  "bloomLevel": "Apply (L3)",
+  "bloomVerb": "use",
+  "completion_status": "scaffold",
+  "chapter_number": 14,
+  "chapter_title": "\"Chapter 14: Integrating LLMs with Context Graphs\"",
+  "chapter_dir": "14-llm-integration"
+}

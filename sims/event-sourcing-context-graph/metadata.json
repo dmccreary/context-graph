@@ -1,0 +1,21 @@
+{
+  "title": "Event Sourcing Architecture for Context Graph",
+  "description": "Learners can use the event sourcing architecture diagram to trace how a business event flows from a command to the append-only log to the context graph, and identify which component answers which type of query.",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-19",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "event-sourcing-context-graph",
+  "library": "vis-network",
+  "bloomLevel": "Apply (L3)",
+  "bloomVerb": "use",
+  "completion_status": "scaffold",
+  "chapter_number": 7,
+  "chapter_title": "\"Chapter 7: Process Mining, Data Lineage, and Provenance\"",
+  "chapter_dir": "07-process-mining-lineage"
+}

@@ -1,0 +1,14 @@
+{
+  "sim_id": "differential-privacy-explorer",
+  "diagram_name": "Differential Privacy Noise Mechanism Explorer",
+  "chapter_number": 3,
+  "chapter_title": "\"Chapter 3: Metadata Management and Data Governance\"",
+  "chapter_dir": "03-metadata-management",
+  "library": "p5.js",
+  "bloom_level": "Apply (L3)",
+  "bloom_verb": "demonstrate",
+  "learning_objective": "Learners can demonstrate how adjusting the epsilon privacy budget changes the trade-off between result accuracy and individual privacy protection.",
+  "completion_status": "specified",
+  "extracted_date": "2026-05-19",
+  "specification": "Type: microsim\n**sim-id:** differential-privacy-explorer\n**Library:** p5.js\n**Status:** Specified\n\nBloom Level: Apply (L3)\nBloom Verb: demonstrate\nLearning Objective: Learners can demonstrate how adjusting the epsilon privacy budget changes the trade-off between result accuracy and individual privacy protection.\n\nInstructional Rationale: An interactive slider MicroSim is appropriate because the Apply objective requires learners to manipulate a parameter and observe outcomes — dragging the epsilon slider makes the abstract noise mechanism concrete and intuitive.\n\nCanvas: responsive width via updateCanvasSize() as first line of setup(). Height: 480px.\n\nLayout:\n- Top section (200px): bar chart showing \"True Count\" (solid indigo bar) vs \"Noisy Count\" (orange bar with noise) for a query like \"Count of customers with credit limit > $50,000\". True value fixed at 1,247.\n- Middle section: epsilon slider (createSlider, range 0.01 to 2.0, step 0.01, default 0.5). Label shows current epsilon value and privacy level text (\"Very Strong / Strong / Moderate / Weak\" based on epsilon range).\n- Bottom section: two summary panels side by side — \"Privacy Protection\" (shield icon drawn in p5.js, fill level inversely proportional to epsilon) and \"Result Accuracy\" (target icon with ring fill proportional to epsilon).\n\nBehavior: As epsilon slider changes, the noisy bar height updates using Laplace mechanism simulation (add Laplace(0, sensitivity/epsilon) noise to the true count). Noisy count displayed as a number above the bar. Privacy level text updates: epsilon < 0.1 → \"Very Strong Privacy\", 0.1–0.5 → \"Strong Privacy\", 0.5–1.0 → \"Moderate Privacy\", > 1.0 → \"Weak Privacy\".\n\nA \"Run 10 Queries\" button samples 10 noisy results and shows them as small dots above the bar chart, illustrating that the same true count produces different noisy outputs each time — reinforcing the probabilistic nature of the mechanism.\n\nColor: indigo for true values, orange for noisy values, teal for UI chrome. Canvas responds to window resize events."
+}

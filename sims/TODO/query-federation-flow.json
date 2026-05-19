@@ -1,0 +1,14 @@
+{
+  "sim_id": "query-federation-flow",
+  "diagram_name": "Query Federation Flow",
+  "chapter_number": 2,
+  "chapter_title": "\"Chapter 2: Semantic Layers for Data Lakes\"",
+  "chapter_dir": "02-semantic-layers",
+  "library": "p5.js",
+  "bloom_level": "Understand (L2)",
+  "bloom_verb": "Explain and trace",
+  "learning_objective": "Learners can trace a federated query from the user interface through the federation engine to multiple source systems and back, explaining what happens at each step.",
+  "completion_status": "specified",
+  "extracted_date": "2026-05-19",
+  "specification": "Type: workflow\n**sim-id:** query-federation-flow<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\nBloom Level: Understand (L2)\nBloom Verb: Explain and trace\nLearning Objective: Learners can trace a federated query from the user interface through the federation engine to multiple source systems and back, explaining what happens at each step.\n\nInstructional Rationale: Step-through workflow is appropriate because the Understand objective requires learners to follow a concrete query through the system. Seeing each sub-query dispatched and each result returned makes the mechanics tangible.\n\nLayout: Vertical flow with five levels:\nLevel 1 (top): User/LLM — shows a business question: \"What is the total approved budget for open headcount requests in Engineering?\"\nLevel 2: Federation Engine — shows the query being parsed and decomposed into three sub-queries\nLevel 3: Three source boxes side by side: \"HR System (headcount requests)\", \"Finance System (approved budgets)\", \"Org Chart (Engineering dept tree)\"\nLevel 4: Results boxes — each source returns its partial result\nLevel 5 (bottom): Joined result — the federation engine assembles the final answer\n\nArrows connect each level with labeled edges:\n- Level 1→2: \"Submit business query\"\n- Level 2→3: Three arrows labeled \"Sub-query 1 (SQL)\", \"Sub-query 2 (REST API)\", \"Sub-query 3 (Graph traverse)\"\n- Level 3→4: \"Partial results\"\n- Level 4→5: \"Merge + join on employee_id\"\n\nStep controls:\n- \"Next Step\" button advances through 5 stages, highlighting the active level\n- \"Run All\" button animates through all stages at 600ms per step\n- \"Reset\" returns to initial state\n\nEach source box shows the actual sub-query dispatched when that stage is active.\nHover any arrow: tooltip explains the data format returned at that step (JSON, SQL result set, graph path list).\n\nCanvas: Responsive width, 500px height.\nColor palette: Indigo for user/result levels, orange for source systems, teal for federation engine."
+}

@@ -1,0 +1,21 @@
+{
+  "title": "Interactive LPG Explorer",
+  "description": "Learners can identify nodes, edges, labels, and properties in a Labeled Property Graph and explain the role of each element.",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-19",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "lpg-explorer",
+  "library": "vis-network",
+  "bloomLevel": "Understand (L2)",
+  "bloomVerb": "Identify and describe",
+  "completion_status": "scaffold",
+  "chapter_number": 1,
+  "chapter_title": "\"Chapter 1: Knowledge Graphs and Labeled Property Graphs\"",
+  "chapter_dir": "01-knowledge-graphs-lpg"
+}

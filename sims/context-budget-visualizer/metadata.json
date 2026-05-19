@@ -1,0 +1,21 @@
+{
+  "title": "Context Window Budget Visualizer",
+  "description": "Learners can calculate the context window allocation for a specific decision support application by adjusting component budgets and observing the trade-offs on retrieval capacity.",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-19",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "context-budget-visualizer",
+  "library": "p5.js",
+  "bloomLevel": "Apply (L3)",
+  "bloomVerb": "calculate",
+  "completion_status": "scaffold",
+  "chapter_number": 14,
+  "chapter_title": "\"Chapter 14: Integrating LLMs with Context Graphs\"",
+  "chapter_dir": "14-llm-integration"
+}

@@ -1,0 +1,14 @@
+{
+  "sim_id": "catalog-to-context-graph-flow",
+  "diagram_name": "Metadata Catalog to Context Graph Flow",
+  "chapter_number": 3,
+  "chapter_title": "\"Chapter 3: Metadata Management and Data Governance\"",
+  "chapter_dir": "03-metadata-management",
+  "library": "p5.js",
+  "bloom_level": "Understand (L2)",
+  "bloom_verb": "explain",
+  "learning_objective": "Learners can explain the flow of metadata from source systems through a catalog platform into a context graph.",
+  "completion_status": "specified",
+  "extracted_date": "2026-05-19",
+  "specification": "Type: microsim\n**sim-id:** catalog-to-context-graph-flow\n**Library:** p5.js\n**Status:** Specified\n\nBloom Level: Understand (L2)\nBloom Verb: explain\nLearning Objective: Learners can explain the flow of metadata from source systems through a catalog platform into a context graph.\n\nInstructional Rationale: An animated step-through MicroSim is appropriate because the Understand objective requires learners to trace a concrete data transformation — seeing metadata move through each stage makes the pipeline tangible rather than abstract.\n\nCanvas: responsive width via updateCanvasSize() as first line of setup(). Height: 480px. White background with subtle light gray (#F5F5F5) panel backgrounds.\n\nLayout: Three horizontal panels arranged left-to-right:\n1. \"Source Systems\" panel (left): 4 small labeled boxes — \"ERP\", \"CRM\", \"Data Warehouse\", \"Streaming Events\" — stacked vertically\n2. \"Metadata Catalog\" panel (center): labeled with icon-like boxes — \"Schema Crawler\", \"Business Terms\", \"Quality Scores\", \"Lineage Graph\"\n3. \"Context Graph\" panel (right): shows 4 node types — \"Dataset Node\", \"Quality Node\", \"Owner Node\", \"Decision Trace Node\" — connected by edges\n\nAnimation: Clicking a \"Step Forward\" button reveals one stage at a time:\n- Step 1: Source Systems light up, label \"1. Source systems store data across dozens of systems\"\n- Step 2: Animated arrows flow left→center, label \"2. Schema crawler discovers structure (automated)\"\n- Step 3: Business Terms lights up, label \"3. Stewards review and approve business metadata (human-in-loop)\"\n- Step 4: Arrows flow from Catalog → Context Graph, label \"4. Context graph ingests metadata as nodes and edges\"\n- Step 5: Decision Trace Node lights up, label \"5. Context graph adds decision history — the catalog cannot\"\n\nControls: \"Next Step\" button (p5.js createButton), \"Reset\" button. Current step shown as \"Step N of 5\" text below canvas.\n\nColor coding: source systems in steel blue, catalog in teal, context graph in indigo. Arrows are orange (#E76F51) when active.\n\nThe canvas must respond to window resize events by recalculating panel widths proportionally."
+}

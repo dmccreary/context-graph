@@ -1,0 +1,21 @@
+{
+  "title": "Audit Trail Architecture in a Context Graph",
+  "description": "Learners can assess whether a proposed context graph audit trail design meets the three requirements of tamper evidence, temporal completeness, and searchability by examining the architectural components.",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-19",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "audit-trail-architecture",
+  "library": "vis-network",
+  "bloomLevel": "Evaluate (L5)",
+  "bloomVerb": "assess",
+  "completion_status": "scaffold",
+  "chapter_number": 18,
+  "chapter_title": "\"Chapter 18: Compliance, Explainability, and Audit\"",
+  "chapter_dir": "18-compliance-explainability"
+}

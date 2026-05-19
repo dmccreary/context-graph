@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive LPG Explorer</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        #container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        h1 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #1a3a6c;
+        }
+        .placeholder {
+            border: 2px dashed #adb5bd;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #6c757d;
+            margin: 20px 0;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .placeholder .badge {
+            display: inline-block;
+            background: #ffc107;
+            color: #212529;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .placeholder h2 {
+            font-size: 18px;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+        .placeholder p {
+            font-size: 14px;
+            max-width: 480px;
+        }
+        .meta {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
+            padding-top: 12px;
+        }
+        .meta strong { color: #495057; }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Interactive LPG Explorer</h1>
+        <div class="placeholder">
+            <span class="badge">SCAFFOLD</span>
+            <h2>MicroSim Not Yet Implemented</h2>
+            <p>This MicroSim has been scaffolded from its specification but the
+            interactive content has not been built yet. See the chapter source
+            and the <code>index.md</code> in this directory for the full spec.</p>
+        </div>
+        <div class="meta">
+            <p><strong>Sim ID:</strong> lpg-explorer</p>
+            <p><strong>Library:</strong> vis-network</p>
+            <p><strong>Bloom Level:</strong> Understand (L2)</p>
+            <p><strong>Learning Objective:</strong> Learners can identify nodes, edges, labels, and properties in a Labeled Property Graph and explain the role of each element.</p>
+        </div>
+    </div>
+
+    <!--
+    SPECIFICATION (from chapter index.md):
+
+    Type: graph-model
+    **sim-id:** lpg-explorer<br/>
+    **Library:** vis-network<br/>
+    **Status:** Specified
+    
+    Bloom Level: Understand (L2)
+    Bloom Verb: Identify and describe
+    Learning Objective: Learners can identify nodes, edges, labels, and properties in a Labeled Property Graph and explain the role of each element.
+    
+    Purpose: Show a small but realistic enterprise LPG (supply-chain scenario) with clickable nodes and edges that reveal labels, types, and properties in a side panel. The learner should be able to distinguish nodes from edges, labels from types, and properties on nodes from properties on edges.
+    
+    Sample graph scenario: A simplified supply chain with 10 nodes.
+    
+    Node types (distinct colors and shapes):
+    - Supplier (orange ellipse): properties: name, country, risk_tier
+      - Examples: "Acme Components" (US, tier-1), "Bolts & More" (MX, tier-2)
+    - Product (blue rectangle): properties: sku, unit_cost
+      - Examples: "Widget-A" ($12.50), "Widget-B" ($7.20)
+    - Warehouse (teal diamond): properties: location, capacity_units
+      - Examples: "Chicago DC" (50,000 units), "Atlanta DC" (32,000 units)
+    - Order (gray circle): properties: order_id, amount_usd, status
+      - Examples: "ORD-2024-001" ($45,000, confirmed)
+    
+    Edge types (distinct arrow styles):
+    - SUPPLIES (solid orange arrow): properties: lead_time_days
+      Direction: Supplier → Product
+    - STOCKS (dashed teal arrow): properties: quantity_on_hand
+      Direction: Warehouse → Product
+    - FULFILLS (solid blue arrow): properties: fulfillment_date
+      Direction: Warehouse → Order
+    
+    Interactive behavior:
+    - Hover any node: tooltip showing all properties (key: value pairs)
+    - Click a node: highlight all directly connected nodes and edges; right-side detail panel shows label, type, and full property list
+    - Click an edge: highlight endpoint nodes; detail panel shows edge type, direction (from → to), and edge properties
+    - Legend (top-right): node shapes and colors mapped to labels
+    - Zoom via mouse wheel; pan by dragging background
+    - "Reset View" button returns to default layout
+    
+    Layout: Force-directed, stabilized on load. Canvas fully responsive to window width; 520px height.
+    Detail panel: 200px fixed right column, shows selected element's data.
+    Color palette: Indigo (#3949ab) and orange (#f57c00) consistent with book theme.
+    -->
+</body>
+</html>

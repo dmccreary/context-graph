@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Context Graph Schema — Core Node and Edge Types</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        #container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        h1 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #1a3a6c;
+        }
+        .placeholder {
+            border: 2px dashed #adb5bd;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #6c757d;
+            margin: 20px 0;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .placeholder .badge {
+            display: inline-block;
+            background: #ffc107;
+            color: #212529;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .placeholder h2 {
+            font-size: 18px;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+        .placeholder p {
+            font-size: 14px;
+            max-width: 480px;
+        }
+        .meta {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
+            padding-top: 12px;
+        }
+        .meta strong { color: #495057; }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Context Graph Schema — Core Node and Edge Types</h1>
+        <div class="placeholder">
+            <span class="badge">SCAFFOLD</span>
+            <h2>MicroSim Not Yet Implemented</h2>
+            <p>This MicroSim has been scaffolded from its specification but the
+            interactive content has not been built yet. See the chapter source
+            and the <code>index.md</code> in this directory for the full spec.</p>
+        </div>
+        <div class="meta">
+            <p><strong>Sim ID:</strong> context-graph-schema</p>
+            <p><strong>Library:</strong> vis-network</p>
+            <p><strong>Bloom Level:</strong> Remember (L1)</p>
+            <p><strong>Learning Objective:</strong> Learners can identify the four core schema elements of a context graph (Decision Node, Entity Link, Approval Edge, Precedent Link) and state what information each carries.</p>
+        </div>
+    </div>
+
+    <!--
+    SPECIFICATION (from chapter index.md):
+
+    Type: graph-model
+    **sim-id:** context-graph-schema
+    **Library:** vis-network
+    **Status:** Specified
+    
+    Bloom Level: Remember (L1)
+    Bloom Verb: identify
+    Learning Objective: Learners can identify the four core schema elements of a context graph (Decision Node, Entity Link, Approval Edge, Precedent Link) and state what information each carries.
+    
+    Instructional Rationale: A clickable vis-network schema diagram is appropriate for the Remember objective — learners can click each node type and edge type to see its property list and role, reinforcing recall through active engagement with the schema structure.
+    
+    Canvas: responsive width, 560px height. White background with light gray grid.
+    
+    Nodes:
+    - "Decision: Price Exception Q4-2025" (indigo, large ellipse, center-left) — represents a specific decision
+    - "Customer: Acme Corp" (teal, ellipse, left) — business entity
+    - "Approver: M. Williams (VP Sales)" (gold, circle, top-center)
+    - "Policy: Pricing Policy v3.2" (steel blue, box, bottom-left)
+    - "Precedent: Price Exception Q2-2024" (indigo, smaller ellipse, right) — earlier decision cited as precedent
+    - "Precedent: Price Exception Q4-2023" (indigo, smallest ellipse, far-right) — second precedent
+    
+    Edges:
+    - Decision → Customer: Acme Corp, label "APPLIES_TO", color dark gray
+    - Approver → Decision, label "APPROVED", color gold, arrow at Decision end
+    - Decision → Policy: Pricing Policy v3.2, label "GOVERNED_BY", color steel blue
+    - Decision → Precedent Q2-2024, label "CITES", color orange, dashed
+    - Decision → Precedent Q4-2023, label "CITES", color orange, dashed
+    
+    Click on "Decision: Price Exception Q4-2025":
+    "**Decision Node** — the core schema element. Properties: decision_id (UID), decision_type ('pricing_exception'), timestamp ('2025-10-31T14:22:00Z'), actor_id ('EMP-J-SMITH'), status ('active'), context_summary ('15% discount approved for Acme Corp renewal, Q4 end-of-period, strategic account justification')."
+    
+    Click on "Customer: Acme Corp":
+    "**Entity Link (APPLIES_TO)** — connects a decision node to the business entity it concerns. This entity lives in the enterprise knowledge graph. The link makes the decision discoverable through any query that starts from this customer entity."
+    
+    Click on "Approver: M. Williams":
+    "**Approval Edge (APPROVED)** — records the authorization. Properties: approval_timestamp, approval_channel ('system: CRM approval workflow'), conditions ('no recurrence within 12 months'). Out-of-band approvals (verbal, email) can also be recorded here."
+    
+    Click on "Policy: Pricing Policy v3.2":
+    "**Policy Reference Edge (GOVERNED_BY)** — links to the *specific version* of the policy in force at decision time. Critical for historical query accuracy: v3.2, not the current v4.1."
+    
+    Click on either Precedent node:
+    "**Precedent Link (CITES)** — records which earlier decisions were consulted. High in-degree decisions (cited by many) are the most influential organizational precedents and are retrieved first in LLM context assembly."
+    
+    Hover over each edge: shows edge label and description.
+    -->
+</body>
+</html>

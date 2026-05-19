@@ -1,0 +1,14 @@
+{
+  "sim_id": "five-knowledge-layers",
+  "diagram_name": "Five Complementary Knowledge Layers",
+  "chapter_number": 9,
+  "chapter_title": "\"Chapter 9: What a Context Graph Is\"",
+  "chapter_dir": "09-context-graph-definition",
+  "library": "vis-network",
+  "bloom_level": "Understand (L2)",
+  "bloom_verb": "summarize",
+  "learning_objective": "Learners can summarize the role of each of the five knowledge layers in an enterprise AI architecture and explain how the context graph bridges the structured data layers and the LLM reasoning layer.",
+  "completion_status": "specified",
+  "extracted_date": "2026-05-19",
+  "specification": "Type: graph-model\n**sim-id:** five-knowledge-layers\n**Library:** vis-network\n**Status:** Specified\n\nBloom Level: Understand (L2)\nBloom Verb: summarize\nLearning Objective: Learners can summarize the role of each of the five knowledge layers in an enterprise AI architecture and explain how the context graph bridges the structured data layers and the LLM reasoning layer.\n\nInstructional Rationale: A hierarchical vis-network diagram with clickable layer nodes is appropriate for the Understand objective — learners can click each layer to read its role description, building a structured mental model of the overall architecture.\n\nCanvas: responsive width, 520px height. Light gray background.\n\nLayout: Five nodes arranged vertically (top to bottom), like a stack:\n1. \"LLM Reasoning Layer\" (gold, large box, top)\n2. \"Context Graph Layer\" (indigo, large ellipse) — highlighted as the key layer\n3. \"Semantic Layer\" (teal, box)\n4. \"Knowledge Graph Layer\" (steel blue, box)\n5. \"Raw Data Layer\" (gray, box, bottom)\n\nVertical edges connecting adjacent layers, labeled:\n- LLM Reasoning ↔ Context Graph: \"queries for decision context\"\n- Context Graph ↔ Semantic Layer: \"uses definitions and governance\"\n- Context Graph ↔ Knowledge Graph: \"anchors decision nodes to entities\"\n- Knowledge Graph ↔ Semantic Layer: \"provides vocabulary\"\n- Knowledge Graph ↔ Raw Data: \"integrates via ETL pipelines\"\n\nClick on each layer node: opens infobox with:\n- Layer name\n- What question it answers\n- What it stores / provides\n- Which earlier chapter covered it\n\nFor \"Context Graph Layer\": highlighted in bright indigo border with additional text: \"This is the layer this book is about. It is the bridge between what the organization knows (knowledge graph, semantic layer) and what the organization has decided (decision traces).\"\n\nTwo annotation labels:\n- Bracket spanning layers 3-5: \"Covered in Chapters 1-7\"\n- Bracket spanning layer 2: \"This book's focus (Chapters 8-22)\"\n- Bracket spanning layer 1: \"The LLM that benefits from all layers below\"\n\nHover over any edge shows the label."
+}

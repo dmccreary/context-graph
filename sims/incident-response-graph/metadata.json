@@ -1,0 +1,21 @@
+{
+  "title": "Engineering Incident Context Graph",
+  "description": "Learners can use the incident response context graph schema to design the decision trace structure for a specific production incident, identifying the relevant entity nodes, decision nodes, and edge types.",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-19",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "incident-response-graph",
+  "library": "vis-network",
+  "bloomLevel": "Apply (L3)",
+  "bloomVerb": "use",
+  "completion_status": "scaffold",
+  "chapter_number": 17,
+  "chapter_title": "\"Chapter 17: Enterprise Use Cases\"",
+  "chapter_dir": "17-enterprise-use-cases"
+}

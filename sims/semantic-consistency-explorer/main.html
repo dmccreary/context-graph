@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semantic Consistency Explorer</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        #container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        h1 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #1a3a6c;
+        }
+        .placeholder {
+            border: 2px dashed #adb5bd;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #6c757d;
+            margin: 20px 0;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .placeholder .badge {
+            display: inline-block;
+            background: #ffc107;
+            color: #212529;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .placeholder h2 {
+            font-size: 18px;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+        .placeholder p {
+            font-size: 14px;
+            max-width: 480px;
+        }
+        .meta {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
+            padding-top: 12px;
+        }
+        .meta strong { color: #495057; }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Semantic Consistency Explorer</h1>
+        <div class="placeholder">
+            <span class="badge">SCAFFOLD</span>
+            <h2>MicroSim Not Yet Implemented</h2>
+            <p>This MicroSim has been scaffolded from its specification but the
+            interactive content has not been built yet. See the chapter source
+            and the <code>index.md</code> in this directory for the full spec.</p>
+        </div>
+        <div class="meta">
+            <p><strong>Sim ID:</strong> semantic-consistency-explorer</p>
+            <p><strong>Library:</strong> p5.js</p>
+            <p><strong>Bloom Level:</strong> Analyze (L4)</p>
+            <p><strong>Learning Objective:</strong> Learners can identify semantic inconsistency across two data sources and explain how a semantic layer resolves it by providing a single canonical definition.</p>
+        </div>
+    </div>
+
+    <!--
+    SPECIFICATION (from chapter index.md):
+
+    Type: microsim
+    **sim-id:** semantic-consistency-explorer<br/>
+    **Library:** p5.js<br/>
+    **Status:** Specified
+    
+    Bloom Level: Analyze (L4)
+    Bloom Verb: Compare and examine
+    Learning Objective: Learners can identify semantic inconsistency across two data sources and explain how a semantic layer resolves it by providing a single canonical definition.
+    
+    Instructional Rationale: Step-through comparison with real column names and values is appropriate because the Analyze objective requires learners to trace a specific inconsistency to its root cause and then observe the resolution. Continuous animation would prevent careful comparison.
+    
+    Layout: Three-panel horizontal layout
+    - Left panel (~33%): "Finance System" — shows a small table with columns: `trans_id`, `trans_dt`, `net_amt`, `stat_cd`. Four sample rows. `stat_cd` values: 3 = completed, 5 = recognized, 7 = pending.
+    - Center panel (~33%): "Sales System" — shows a small table with columns: `order_id`, `order_date`, `gross_revenue`, `order_status`. Four sample rows. `order_status` values: "closed_won", "invoiced", "in_progress".
+    - Right panel (~33%): "Semantic Layer" — shows the unified metric definition: `recognized_revenue = SUM(net_amt WHERE stat_cd IN (3,5)) + SUM(gross_revenue WHERE order_status IN ('closed_won','invoiced'))`. Shows computed result for the sample data.
+    
+    Two scenario buttons at the top:
+    - "Without Semantic Layer": highlights that a finance analyst querying the left table and a sales analyst querying the right table get different numbers for the same business question, even with identical date filters. Show calculated values diverging ($4.2M vs $3.9M).
+    - "With Semantic Layer": shows both systems feeding into the right panel's unified definition, producing one agreed-upon number ($4.1M — explained as reconciled via the canonical formula).
+    
+    Step log (bottom of each panel): shows the SQL fragment used in each scenario, so learners can see what changed.
+    
+    Interactive behavior:
+    - Click either scenario button: animate the data flow from the relevant source tables into the right panel with a 500ms delay per step
+    - Hover any column name in the source tables: tooltip showing its data type and example values
+    - Hover any row in the source tables: highlight the corresponding contribution in the semantic layer formula
+    - Click the metric definition in the right panel: expand a detailed formula breakdown showing each source's contribution
+    
+    Canvas: Responsive width, 500px height.
+    Color palette: Left panel orange, center panel teal, right panel indigo.
+    -->
+</body>
+</html>

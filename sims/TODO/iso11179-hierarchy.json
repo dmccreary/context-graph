@@ -1,0 +1,14 @@
+{
+  "sim_id": "iso11179-hierarchy",
+  "diagram_name": "ISO 11179 Component Hierarchy",
+  "chapter_number": 6,
+  "chapter_title": "\"Chapter 6: Metadata Registries and ISO 11179\"",
+  "chapter_dir": "06-metadata-registries",
+  "library": "vis-network",
+  "bloom_level": "Remember (L1)",
+  "bloom_verb": "identify",
+  "learning_objective": "Learners can identify all six ISO 11179 components and state the relationship between each adjacent pair in the hierarchy.",
+  "completion_status": "specified",
+  "extracted_date": "2026-05-19",
+  "specification": "Type: graph-model\n**sim-id:** iso11179-hierarchy\n**Library:** vis-network\n**Status:** Specified\n\nBloom Level: Remember (L1)\nBloom Verb: identify\nLearning Objective: Learners can identify all six ISO 11179 components and state the relationship between each adjacent pair in the hierarchy.\n\nInstructional Rationale: A hierarchical vis-network graph is appropriate for the Remember objective — each component is a node, the hierarchy is visualized as top-to-bottom edges, and clicking each node reveals its definition and a concrete example, reinforcing recall through active engagement.\n\nCanvas: responsive width, 520px height. White background.\n\nLayout: Two side-by-side columns. Left column: abstract ISO 11179 component hierarchy (top-to-bottom). Right column: worked example (\"Customer Annual Revenue\") showing the concrete instance of each component at the corresponding level.\n\n**Left column nodes** (abstract, indigo theme):\n- \"Object Class\" (top, large)\n- \"Property\" (below, large)\n- \"Data Element Concept\" (center, highlighted gold — the combination of the above two)\n- \"Conceptual Domain\" (below Data Element Concept)\n- \"Value Domain\" (below Conceptual Domain)\n- \"Data Element\" (bottom, large — the fully specified unit)\n\n**Right column nodes** (example, teal theme, same vertical positions):\n- \"Customer\" (aligns with Object Class)\n- \"Annual Revenue\" (aligns with Property)\n- \"Customer Annual Revenue\" (aligns with Data Element Concept)\n- \"{Monetary amounts ≥ 0}\" (aligns with Conceptual Domain)\n- \"Decimal, USD, trailing 12mo\" (aligns with Value Domain)\n- \"Customer_Annual_Revenue_USD_TTM\" (aligns with Data Element — the actual field name)\n\nHorizontal dashed edges connect each abstract node to its example node.\nVertical solid edges connect each abstract node to the next in the hierarchy.\nTwo merging edges from Object Class + Property → Data Element Concept.\nTwo merging edges from Data Element Concept + Value Domain → Data Element.\n\nClick on each abstract node: displays infobox with ISO 11179 definition and one additional worked example.\nClick on each example node: displays infobox explaining how this specific value was derived from the abstract concept.\n\nPhysics: hierarchical layout, top-to-bottom, left and right columns anchored to fixed x positions."
+}

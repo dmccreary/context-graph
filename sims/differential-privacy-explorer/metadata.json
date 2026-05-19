@@ -1,0 +1,21 @@
+{
+  "title": "Differential Privacy Noise Mechanism Explorer",
+  "description": "Learners can demonstrate how adjusting the epsilon privacy budget changes the trade-off between result accuracy and individual privacy protection.",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-19",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "differential-privacy-explorer",
+  "library": "p5.js",
+  "bloomLevel": "Apply (L3)",
+  "bloomVerb": "demonstrate",
+  "completion_status": "scaffold",
+  "chapter_number": 3,
+  "chapter_title": "\"Chapter 3: Metadata Management and Data Governance\"",
+  "chapter_dir": "03-metadata-management"
+}

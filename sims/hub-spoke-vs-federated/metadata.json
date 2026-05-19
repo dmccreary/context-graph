@@ -1,0 +1,21 @@
+{
+  "title": "Hub-and-Spoke vs. Federated Architecture",
+  "description": "Learners can compare hub-and-spoke and federated graph architectures by identifying the trade-offs in governance, autonomy, and query complexity.",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-19",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "hub-spoke-vs-federated",
+  "library": "vis-network",
+  "bloomLevel": "Analyze (L4)",
+  "bloomVerb": "compare",
+  "completion_status": "scaffold",
+  "chapter_number": 4,
+  "chapter_title": "\"Chapter 4: Enterprise Knowledge Graphs — Core Patterns\"",
+  "chapter_dir": "04-enterprise-knowledge-graphs"
+}

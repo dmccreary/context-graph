@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph Traversal Explorer</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        #container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        h1 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #1a3a6c;
+        }
+        .placeholder {
+            border: 2px dashed #adb5bd;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #6c757d;
+            margin: 20px 0;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .placeholder .badge {
+            display: inline-block;
+            background: #ffc107;
+            color: #212529;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .placeholder h2 {
+            font-size: 18px;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+        .placeholder p {
+            font-size: 14px;
+            max-width: 480px;
+        }
+        .meta {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
+            padding-top: 12px;
+        }
+        .meta strong { color: #495057; }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Graph Traversal Explorer</h1>
+        <div class="placeholder">
+            <span class="badge">SCAFFOLD</span>
+            <h2>MicroSim Not Yet Implemented</h2>
+            <p>This MicroSim has been scaffolded from its specification but the
+            interactive content has not been built yet. See the chapter source
+            and the <code>index.md</code> in this directory for the full spec.</p>
+        </div>
+        <div class="meta">
+            <p><strong>Sim ID:</strong> graph-traversal-explorer</p>
+            <p><strong>Library:</strong> p5.js</p>
+            <p><strong>Bloom Level:</strong> Understand (L2)</p>
+            <p><strong>Learning Objective:</strong> Learners can trace the step-by-step execution of BFS and DFS traversal on a sample enterprise graph and explain why the two algorithms produce different node visit orderings.</p>
+        </div>
+    </div>
+
+    <!--
+    SPECIFICATION (from chapter index.md):
+
+    Type: microsim
+    **sim-id:** graph-traversal-explorer<br/>
+    **Library:** p5.js<br/>
+    **Status:** Specified
+    
+    Bloom Level: Understand (L2)
+    Bloom Verb: Explain and trace
+    Learning Objective: Learners can trace the step-by-step execution of BFS and DFS traversal on a sample enterprise graph and explain why the two algorithms produce different node visit orderings.
+    
+    Instructional Rationale: Step-through with worked examples is appropriate because the Understand/explain objective requires learners to observe concrete visit sequences with real node labels. Continuous animation would prevent prediction and obscure the actual decision logic at each step. Each step should give the learner a moment to predict the next node before the simulation reveals it.
+    
+    Canvas layout:
+    - Main area (left ~68%): 12-node enterprise graph showing Employee and Department entities
+    - Right panel (~32%): Step log showing nodes visited in order, plus current algorithm state (stack contents for DFS, queue contents for BFS)
+    
+    Graph structure (fixed, readable, enterprise scenario):
+    Nodes:
+    - E1: CEO (Employee), E2: VP-Engineering (Employee), E3: VP-Sales (Employee)
+    - E4: Eng-Lead (Employee), E5: Eng-A (Employee), E6: Eng-B (Employee)
+    - E7: Sales-Lead (Employee), E8: Sales-A (Employee)
+    - D1: Engineering (Department), D2: Sales (Department), D3: Executive (Department)
+    - P1: Project-Alpha (Project)
+    
+    Edges:
+    - E2 REPORTS_TO E1, E3 REPORTS_TO E1
+    - E4 REPORTS_TO E2, E5 REPORTS_TO E4, E6 REPORTS_TO E4
+    - E7 REPORTS_TO E3, E8 REPORTS_TO E7
+    - E2 BELONGS_TO D1, E4 BELONGS_TO D1, E5 BELONGS_TO D1, E6 BELONGS_TO D1
+    - E3 BELONGS_TO D2, E7 BELONGS_TO D2, E8 BELONGS_TO D2
+    - E1 BELONGS_TO D3
+    - E4 OWNS P1
+    
+    Interactive controls:
+    - Dropdown: Algorithm (BFS or DFS)
+    - Dropdown: Start Node (any of the 12 nodes, labeled by name)
+    - Button: "Next Step" — advance one traversal step
+    - Button: "Run All" — complete traversal with 500ms delay between steps
+    - Button: "Reset" — return to initial unvisited state
+    
+    Data visibility requirements:
+    Stage 0: All nodes gray (unvisited). Right panel: Queue/Stack shows [start node name].
+    Stage 1: Start node highlighted yellow. Right panel: "Visiting: [label]"; queue/stack updated after dequeue/pop.
+    Stage N: Each new step: current node turns yellow → indigo (visited) after step completes. Newly discovered unvisited neighbors shown in orange (in-queue/stack). Right panel shows "Visiting: [node name]" and appends to the ordered visit list.
+    Final: All reachable nodes indigo. Panel shows complete visit order as a numbered list of node labels.
+    
+    Node visual states:
+    - Unvisited: gray fill, dark border
+    - In queue/stack: orange fill
+    - Currently visiting: yellow fill with subtle pulse border
+    - Visited: indigo fill, white label text
+    
+    Hover behavior: Hovering any node shows a tooltip with label (name and type) and list of neighbor names.
+    Edge hover: Shows edge type (REPORTS_TO / BELONGS_TO / OWNS).
+    
+    Canvas: Responsive width, 520px height. Right panel fixed 200px.
+    -->
+</body>
+</html>

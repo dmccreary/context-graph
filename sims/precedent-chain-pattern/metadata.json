@@ -1,0 +1,21 @@
+{
+  "title": "Precedent Chain Pattern",
+  "description": "Learners can organize a set of decision trace nodes into a precedent citation chain, identify the most influential foundational precedents by in-degree, and explain why high-in-degree nodes should be retrieved first for LLM context.",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-19",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "precedent-chain-pattern",
+  "library": "vis-network",
+  "bloomLevel": "Analyze (L4)",
+  "bloomVerb": "organize",
+  "completion_status": "scaffold",
+  "chapter_number": 11,
+  "chapter_title": "\"Chapter 11: Decision Traces: Anatomy and LPG Patterns\"",
+  "chapter_dir": "11-decision-traces"
+}

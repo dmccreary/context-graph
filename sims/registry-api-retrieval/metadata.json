@@ -1,0 +1,21 @@
+{
+  "title": "Registry API Retrieval Flow",
+  "description": "Learners can implement a registry-aware retrieval step by tracing how a field value and its authoritative registry definition are combined before being passed to an LLM.",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-19",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "registry-api-retrieval",
+  "library": "p5.js",
+  "bloomLevel": "Apply (L3)",
+  "bloomVerb": "implement",
+  "completion_status": "scaffold",
+  "chapter_number": 6,
+  "chapter_title": "\"Chapter 6: Metadata Registries and ISO 11179\"",
+  "chapter_dir": "06-metadata-registries"
+}

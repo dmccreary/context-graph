@@ -1,0 +1,21 @@
+{
+  "title": "Three Metadata Layers",
+  "description": "Learners can classify a metadata attribute as technical, business, or operational by examining what question it answers.",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-19",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "three-metadata-layers",
+  "library": "vis-network",
+  "bloomLevel": "Understand (L2)",
+  "bloomVerb": "classify",
+  "completion_status": "scaffold",
+  "chapter_number": 3,
+  "chapter_title": "\"Chapter 3: Metadata Management and Data Governance\"",
+  "chapter_dir": "03-metadata-management"
+}

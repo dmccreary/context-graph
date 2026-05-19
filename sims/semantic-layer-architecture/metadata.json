@@ -1,0 +1,21 @@
+{
+  "title": "Semantic Layer Architecture",
+  "description": "Learners can identify the three layers of a semantic layer architecture (physical storage, semantic definition, query interface) and explain how each layer translates the one below it.",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-19",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "semantic-layer-architecture",
+  "library": "p5.js",
+  "bloomLevel": "Understand (L2)",
+  "bloomVerb": "Explain and identify",
+  "completion_status": "scaffold",
+  "chapter_number": 2,
+  "chapter_title": "\"Chapter 2: Semantic Layers for Data Lakes\"",
+  "chapter_dir": "02-semantic-layers"
+}

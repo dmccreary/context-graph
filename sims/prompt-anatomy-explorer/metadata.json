@@ -1,0 +1,21 @@
+{
+  "title": "Prompt Anatomy for Context Graph Integration",
+  "description": "Learners can use the prompt anatomy diagram to design a structured LLM prompt that correctly positions the system prompt, few-shot examples, retrieved context, and user query within the token budget.",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-19",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "prompt-anatomy-explorer",
+  "library": "p5.js",
+  "bloomLevel": "Apply (L3)",
+  "bloomVerb": "use",
+  "completion_status": "scaffold",
+  "chapter_number": 10,
+  "chapter_title": "\"Chapter 10: LLM and AI Foundations\"",
+  "chapter_dir": "10-llm-ai-foundations"
+}

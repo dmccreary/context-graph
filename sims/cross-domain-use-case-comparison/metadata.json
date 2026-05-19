@@ -1,0 +1,21 @@
+{
+  "title": "Cross-Domain Use Case Decision Trace Comparison",
+  "description": "Learners can compare how the same core decision trace schema instantiates across different enterprise domains by identifying the domain-specific entity types and decision types while recognizing the shared structural pattern.",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-19",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "cross-domain-use-case-comparison",
+  "library": "vis-network",
+  "bloomLevel": "Analyze (L4)",
+  "bloomVerb": "compare",
+  "completion_status": "scaffold",
+  "chapter_number": 17,
+  "chapter_title": "\"Chapter 17: Enterprise Use Cases\"",
+  "chapter_dir": "17-enterprise-use-cases"
+}

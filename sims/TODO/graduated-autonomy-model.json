@@ -1,0 +1,14 @@
+{
+  "sim_id": "graduated-autonomy-model",
+  "diagram_name": "Graduated Autonomy Model",
+  "chapter_number": 16,
+  "chapter_title": "\"Chapter 16: AI Agent Architecture\"",
+  "chapter_dir": "16-ai-agent-architecture",
+  "library": "vis-network",
+  "bloom_level": "Evaluate (L5)",
+  "bloom_verb": "justify",
+  "learning_objective": "Learners can justify the transition criteria between autonomy levels by explaining how context graph depth (number of relevant precedents) relates to agent reliability and warranted trust expansion.",
+  "completion_status": "specified",
+  "extracted_date": "2026-05-19",
+  "specification": "Type: graph-model\n**sim-id:** graduated-autonomy-model\n**Library:** vis-network\n**Status:** Specified\n\nBloom Level: Evaluate (L5)\nBloom Verb: justify\nLearning Objective: Learners can justify the transition criteria between autonomy levels by explaining how context graph depth (number of relevant precedents) relates to agent reliability and warranted trust expansion.\n\nInstructional Rationale: A hierarchical vis-network diagram with clickable transition conditions is appropriate for the Evaluate objective — learners must evaluate whether a specific condition (e.g., 95% validation rate over 200 decisions) justifies an autonomy expansion, which requires judgment rather than recall.\n\nCanvas: responsive width, 520px height. Light gray background.\n\nNodes (4 autonomy level nodes, stacked top-to-bottom):\n- \"Level 1: Draft Only\" (steel blue, large box)\n- \"Level 2: Auto-Approve w/ Review\" (teal, large box)\n- \"Level 3: Auto-Approve Routine\" (gold, large box)\n- \"Level 4: Full Autonomy In-Policy\" (indigo, large box)\n\nVertical edges between adjacent levels, labeled:\n- L1 → L2: \"≥ 95% human validation rate over 200+ decisions\"\n- L2 → L3: \"≤ 2% reversal rate over 500+ decisions\"\n- L3 → L4: \"≤ 0.5% reversal rate, P95 faithfulness > 0.92, over 2,000+ decisions\"\n\nReverse edges (rollback):\n- L2 → L1 (red, dashed): \"reversal rate spike > 5% in any 7-day window\"\n- L3 → L2 (red, dashed): \"reversal rate spike > 3% or anomalous decision pattern detected\"\n- L4 → L2 (red, large, dashed): \"any compliance violation or regulatory alert\"\n\nSmall \"Context Graph Depth\" annotation node (orange) connected to each transition edge: \"Required precedent depth: L1→L2: 50+ relevant precedents, L2→L3: 200+ relevant precedents, L3→L4: 1,000+ relevant precedents.\"\n\nClick on each level node: shows what the agent does at this level, what human oversight remains, and what LLM metrics to monitor.\nClick on each transition edge: shows the exact measurement method for the transition criterion and explains why that threshold was chosen.\nClick on each rollback edge: shows the trigger condition and the investigation protocol that must complete before re-promotion.\n\nPhysics: hierarchical layout, top-to-bottom. Fixed vertical positions."
+}

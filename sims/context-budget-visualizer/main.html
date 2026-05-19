@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Context Window Budget Visualizer</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        #container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        h1 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #1a3a6c;
+        }
+        .placeholder {
+            border: 2px dashed #adb5bd;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #6c757d;
+            margin: 20px 0;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .placeholder .badge {
+            display: inline-block;
+            background: #ffc107;
+            color: #212529;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .placeholder h2 {
+            font-size: 18px;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+        .placeholder p {
+            font-size: 14px;
+            max-width: 480px;
+        }
+        .meta {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
+            padding-top: 12px;
+        }
+        .meta strong { color: #495057; }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Context Window Budget Visualizer</h1>
+        <div class="placeholder">
+            <span class="badge">SCAFFOLD</span>
+            <h2>MicroSim Not Yet Implemented</h2>
+            <p>This MicroSim has been scaffolded from its specification but the
+            interactive content has not been built yet. See the chapter source
+            and the <code>index.md</code> in this directory for the full spec.</p>
+        </div>
+        <div class="meta">
+            <p><strong>Sim ID:</strong> context-budget-visualizer</p>
+            <p><strong>Library:</strong> p5.js</p>
+            <p><strong>Bloom Level:</strong> Apply (L3)</p>
+            <p><strong>Learning Objective:</strong> Learners can calculate the context window allocation for a specific decision support application by adjusting component budgets and observing the trade-offs on retrieval capacity.</p>
+        </div>
+    </div>
+
+    <!--
+    SPECIFICATION (from chapter index.md):
+
+    Type: microsim
+    **sim-id:** context-budget-visualizer
+    **Library:** p5.js
+    **Status:** Specified
+    
+    Bloom Level: Apply (L3)
+    Bloom Verb: calculate
+    Learning Objective: Learners can calculate the context window allocation for a specific decision support application by adjusting component budgets and observing the trade-offs on retrieval capacity.
+    
+    Instructional Rationale: An interactive budget allocation MicroSim is appropriate for the Apply objective — learners must adjust component allocations and observe constraints, practicing the budgeting skill they will need for real integrations.
+    
+    Canvas: responsive width via updateCanvasSize() first in setup(). Height: 480px. White background.
+    
+    Layout: Left side (60%): stacked horizontal bar showing context window allocation. Total bar = 8,000 tokens.
+    
+    Bar segments (colors match component categories):
+    1. System Prompt: gold, default 400 tokens
+    2. Few-Shot Examples: teal, default 600 tokens
+    3. Retrieved Context: indigo, auto-calculated (remainder after other segments)
+    4. User Query: orange, default 200 tokens
+    5. Output Reservation: steel blue, default 2,000 tokens
+    6. Safety Margin: gray, fixed 800 tokens
+    
+    Right side (40%): four sliders (createSlider) controlling: System Prompt tokens (100–800), Few-Shot Examples tokens (0–2000), User Query tokens (50–500), Output Reservation tokens (500–4000).
+    
+    Retrieved Context segment auto-calculates: total - (system + few-shot + query + output + margin). If retrieved context goes negative, the bar flashes red and shows: "Warning: Budget exceeded. Reduce other components."
+    
+    Below the bar: "Retrieval Capacity" panel showing:
+    - Available for context: [N] tokens
+    - Estimated traces at 300 tokens each: [N/300] traces
+    - At 150 tokens (compressed): [N/150] traces
+    - Recommendation: [text changes based on slider values]
+    
+    Use cases buttons: createButton for "Simple Status Query", "Complex Exception Decision", "Audit Report". Each pre-fills the sliders with appropriate values for that use case.
+    
+    Canvas responds to window resize. All calculations update in real time as sliders move.
+    -->
+</body>
+</html>

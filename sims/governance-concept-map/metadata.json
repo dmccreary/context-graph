@@ -1,0 +1,21 @@
+{
+  "title": "Governance Framework Concept Map",
+  "description": "Learners can organize the 25 governance concepts from this chapter into a structured relationship map showing how each concept connects to the others.",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-19",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "governance-concept-map",
+  "library": "vis-network",
+  "bloomLevel": "Analyze (L4)",
+  "bloomVerb": "organize",
+  "completion_status": "scaffold",
+  "chapter_number": 3,
+  "chapter_title": "\"Chapter 3: Metadata Management and Data Governance\"",
+  "chapter_dir": "03-metadata-management"
+}
