@@ -96,6 +96,8 @@ nav:
       - Five Knowledge Layers: sims/five-knowledge-layers/index.md
       - LLM Evaluation Pipeline: sims/llm-evaluation-pipeline/index.md
       - Prompt Anatomy Explorer: sims/prompt-anatomy-explorer/index.md
+      - Decision Trace Full Schema: sims/decision-trace-full-schema/index.md
+      - Precedent Chain Pattern: sims/precedent-chain-pattern/index.md
 
   - License: license.md
   - Contact: contact.md

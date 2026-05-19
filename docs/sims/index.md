@@ -222,4 +222,18 @@ Plotly, Venn.js).
     Stack of system prompt + few-shot + context + query blocks with a
     live token-budget chart and toggle buttons. **Chapter 10 · p5.js**
 
+-   __[Decision Trace Full Schema](decision-trace-full-schema/index.md)__
+
+    ![Decision Trace Full Schema](decision-trace-full-schema/decision-trace-full-schema.png)
+
+    Fully-populated decision trace showing initiator, approver, customer,
+    policy, precedents, and source data nodes with all edge types. **Chapter 11 · vis-network**
+
+-   __[Precedent Chain Pattern](precedent-chain-pattern/index.md)__
+
+    ![Precedent Chain Pattern](precedent-chain-pattern/precedent-chain-pattern.png)
+
+    Seven-decision citation chain with node size proportional to in-degree;
+    toggle degree labels and top-precedent highlighting. **Chapter 11 · vis-network**
+
 </div>
