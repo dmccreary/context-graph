@@ -1,7 +1,7 @@
 ---
 title: Five Complementary Knowledge Layers
 description: Learners can summarize the role of each of the five knowledge layers in an enterprise AI architecture and explain how the context graph bridges the structured data layers and the LLM reasoning layer.
-status: scaffold
+status: implemented
 library: vis-network
 bloom_level: Understand (L2)
 ---
@@ -10,7 +10,7 @@ bloom_level: Understand (L2)
 
 
 
-<iframe src="main.html" width="100%" height="600"></iframe>
+<iframe src="main.html" width="100%" height="602" scrolling="no"></iframe>
 
 [Run MicroSim in Fullscreen](main.html){ .md-button .md-button--primary }
 

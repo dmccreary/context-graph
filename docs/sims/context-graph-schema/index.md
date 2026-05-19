@@ -1,7 +1,7 @@
 ---
 title: Context Graph Schema — Core Node and Edge Types
 description: Learners can identify the four core schema elements of a context graph (Decision Node, Entity Link, Approval Edge, Precedent Link) and state what information each carries.
-status: scaffold
+status: implemented
 library: vis-network
 bloom_level: Remember (L1)
 ---
@@ -10,7 +10,7 @@ bloom_level: Remember (L1)
 
 
 
-<iframe src="main.html" width="100%" height="600"></iframe>
+<iframe src="main.html" width="100%" height="602" scrolling="no"></iframe>
 
 [Run MicroSim in Fullscreen](main.html){ .md-button .md-button--primary }
 

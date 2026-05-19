@@ -103,6 +103,8 @@ A diagram will make this schema concrete. Before examining it, note the three ty
 
 #### Diagram: Context Graph Schema — Core Node and Edge Types
 
+<iframe src="../../sims/context-graph-schema/main.html" width="100%" height="602px" scrolling="no"></iframe>
+
 <details markdown="1">
 <summary>Interactive vis-network diagram showing the core schema of a context graph: decision nodes, entity links, approval edges, and precedent links</summary>
 Type: graph-model
@@ -192,6 +194,8 @@ The cleanest conceptual framing for a context graph is as the **memory layer** o
 The context graph sits at the critical junction between the structured organizational data below and the LLM reasoning above. It is the layer that translates organizational history into LLM-retrievable memory.
 
 #### Diagram: Five Complementary Knowledge Layers
+
+<iframe src="../../sims/five-knowledge-layers/main.html" width="100%" height="602px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Interactive vis-network diagram showing the five knowledge layers of an enterprise AI architecture and how they relate</summary>

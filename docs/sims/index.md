@@ -194,4 +194,18 @@ Plotly, Venn.js).
     Two-panel diagram contrasting what RAG covers with the four
     organizational layers context graphs add. **Chapter 8 · vis-network**
 
+-   __[Context Graph Schema](context-graph-schema/index.md)__
+
+    ![Context Graph Schema](context-graph-schema/context-graph-schema.png)
+
+    Inspect the four core schema elements of a context graph — Decision
+    Node, Entity Link, Approval Edge, Precedent Link. **Chapter 9 · vis-network**
+
+-   __[Five Knowledge Layers](five-knowledge-layers/index.md)__
+
+    ![Five Knowledge Layers](five-knowledge-layers/five-knowledge-layers.png)
+
+    Five-layer enterprise AI stack: LLM Reasoning → Context Graph →
+    Semantic → Knowledge Graph → Raw Data. **Chapter 9 · vis-network**
+
 </div>

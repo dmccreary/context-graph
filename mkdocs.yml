@@ -92,6 +92,8 @@ nav:
       - Process Discovery Sim: sims/process-discovery-sim/index.md
       - Context Failure Modes: sims/context-failure-modes/index.md
       - Four Missing Layers: sims/four-missing-layers/index.md
+      - Context Graph Schema: sims/context-graph-schema/index.md
+      - Five Knowledge Layers: sims/five-knowledge-layers/index.md
 
   - License: license.md
   - Contact: contact.md

@@ -14,7 +14,7 @@
   "library": "vis-network",
   "bloomLevel": "Understand (L2)",
   "bloomVerb": "summarize",
-  "completion_status": "scaffold",
+  "completion_status": "implemented",
   "chapter_number": 9,
   "chapter_title": "\"Chapter 9: What a Context Graph Is\"",
   "chapter_dir": "09-context-graph-definition"
