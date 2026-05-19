@@ -40,4 +40,25 @@ Plotly, Venn.js).
     Compare native graph (linear) vs relational (super-linear) query latency
     across 1–5 hops; toggle log/linear scale. **Chapter 1 · Chart.js**
 
+-   __[Query Federation Flow](query-federation-flow/index.md)__
+
+    ![Query Federation Flow](query-federation-flow/query-federation-flow.png)
+
+    Step through a federated business query as it's decomposed into SQL, REST,
+    and graph sub-queries, then re-joined. **Chapter 2 · p5.js**
+
+-   __[Semantic Consistency Explorer](semantic-consistency-explorer/index.md)__
+
+    ![Semantic Consistency Explorer](semantic-consistency-explorer/semantic-consistency-explorer.png)
+
+    Compare Finance and Sales revenue numbers and see how a semantic layer
+    reconciles them into one canonical metric. **Chapter 2 · p5.js**
+
+-   __[Semantic Layer Architecture](semantic-layer-architecture/index.md)__
+
+    ![Semantic Layer Architecture](semantic-layer-architecture/semantic-layer-architecture.png)
+
+    Click any element across the Query Interface, Semantic Layer, and Physical
+    Storage bands to trace its references. **Chapter 2 · p5.js**
+
 </div>

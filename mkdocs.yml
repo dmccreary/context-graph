@@ -70,6 +70,9 @@ nav:
       - Graph Traversal Explorer: sims/graph-traversal-explorer/index.md
       - Interactive LPG Explorer: sims/lpg-explorer/index.md
       - Multi-Hop Query Performance: sims/multi-hop-performance/index.md
+      - Query Federation Flow: sims/query-federation-flow/index.md
+      - Semantic Consistency Explorer: sims/semantic-consistency-explorer/index.md
+      - Semantic Layer Architecture: sims/semantic-layer-architecture/index.md
 
   - License: license.md
   - Contact: contact.md

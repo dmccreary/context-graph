@@ -124,7 +124,7 @@ The diagram below shows how a semantic layer maps business questions to physical
 
 #### Diagram: Semantic Layer Architecture
 
-<iframe src="../../sims/semantic-layer-architecture/main.html" width="100%" height="520px" scrolling="no"></iframe>
+<iframe src="../../sims/semantic-layer-architecture/main.html" width="100%" height="582px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Semantic Layer Architecture Explorer</summary>
@@ -220,7 +220,7 @@ The MicroSim below demonstrates what semantic inconsistency looks like in practi
 
 #### Diagram: Semantic Consistency Explorer
 
-<iframe src="../../sims/semantic-consistency-explorer/main.html" width="100%" height="500px" scrolling="no"></iframe>
+<iframe src="../../sims/semantic-consistency-explorer/main.html" width="100%" height="582px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Semantic Consistency Explorer MicroSim</summary>
@@ -284,7 +284,7 @@ The diagram below shows how query federation assembles answers from multiple sou
 
 #### Diagram: Query Federation Flow
 
-<iframe src="../../sims/query-federation-flow/main.html" width="100%" height="500px" scrolling="no"></iframe>
+<iframe src="../../sims/query-federation-flow/main.html" width="100%" height="582px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Query Federation Flow Diagram</summary>

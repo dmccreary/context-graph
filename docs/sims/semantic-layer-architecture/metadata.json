@@ -14,7 +14,7 @@
   "library": "p5.js",
   "bloomLevel": "Understand (L2)",
   "bloomVerb": "Explain and identify",
-  "completion_status": "scaffold",
+  "completion_status": "implemented",
   "chapter_number": 2,
   "chapter_title": "\"Chapter 2: Semantic Layers for Data Lakes\"",
   "chapter_dir": "02-semantic-layers"
