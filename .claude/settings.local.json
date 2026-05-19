@@ -10,7 +10,11 @@
       "Bash(cp /Users/dan/.claude/skills/learning-graph-generator/csv-to-json.py /Users/dan/Documents/ws/context-graph/docs/learning-graph/)",
       "Bash(cp /Users/dan/.claude/skills/learning-graph-generator/add-taxonomy.py /Users/dan/Documents/ws/context-graph/docs/learning-graph/)",
       "Bash(cp /Users/dan/.claude/skills/learning-graph-generator/taxonomy-distribution.py /Users/dan/Documents/ws/context-graph/docs/learning-graph/)",
-      "Bash(cp /Users/dan/.claude/skills/learning-graph-generator/index-template.md /Users/dan/Documents/ws/context-graph/docs/learning-graph/)"
+      "Bash(cp /Users/dan/.claude/skills/learning-graph-generator/index-template.md /Users/dan/Documents/ws/context-graph/docs/learning-graph/)",
+      "Read(//Users/dan/.claude/skills/claude-skills/src/image-generation/**)",
+      "Read(//Users/dan/Documents/ws/claude-skills/src/image-generation/**)",
+      "Bash(~/Documents/ws/claude-skills/src/image-generation/generate-cover.sh --local-prompt)",
+      "Bash(curl -s -o /Users/dan/Documents/ws/context-graph/docs/img/dan-headshot-small.png https://dmccreary.github.io/dmccreary/img/dan-headshot-small.png)"
     ]
   }
 }
