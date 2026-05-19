@@ -101,6 +101,8 @@ nav:
       - Incumbent Gap Analysis: sims/incumbent-gap-analysis/index.md
       - Bitemporal Explorer: sims/bitemporal-explorer/index.md
       - Subgraph Extraction: sims/subgraph-extraction/index.md
+      - Context Budget Visualizer: sims/context-budget-visualizer/index.md
+      - Hybrid Retrieval Pipeline: sims/hybrid-retrieval-pipeline/index.md
 
   - License: license.md
   - Contact: contact.md

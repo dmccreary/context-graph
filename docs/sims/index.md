@@ -257,4 +257,18 @@ Plotly, Venn.js).
     Highlighted subgraph plus prose serialization showing how a focused
     context is assembled for the LLM from a full graph. **Chapter 13 · vis-network**
 
+-   __[Context Budget Visualizer](context-budget-visualizer/index.md)__
+
+    ![Context Budget Visualizer](context-budget-visualizer/context-budget-visualizer.png)
+
+    Allocate 8K tokens across prompt, few-shot, retrieved context, query,
+    and output reservation with three use-case presets. **Chapter 14 · p5.js**
+
+-   __[Hybrid Retrieval Pipeline](hybrid-retrieval-pipeline/index.md)__
+
+    ![Hybrid Retrieval Pipeline](hybrid-retrieval-pipeline/hybrid-retrieval-pipeline.png)
+
+    Step through Query Interp → Graph Traversal → Vector Search → Composite
+    Rank → Cross-Encoder Rerank with per-stage latency budget. **Chapter 14 · p5.js**
+
 </div>
