@@ -115,6 +115,8 @@ The power of this hierarchy is that it separates the business meaning (Data Elem
 
 #### Diagram: ISO 11179 Component Hierarchy
 
+<iframe src="../../sims/iso11179-hierarchy/main.html" width="100%" height="602px" scrolling="no"></iframe>
+
 <details markdown="1">
 <summary>Interactive vis-network diagram showing the six ISO 11179 components and their relationships, with a worked example</summary>
 Type: graph-model
@@ -199,6 +201,8 @@ The two tools are complementary. The catalog surfaces what data exists; the regi
 
 #### Diagram: Registry vs. Catalog Architecture
 
+<iframe src="../../sims/registry-vs-catalog/main.html" width="100%" height="582px" scrolling="no"></iframe>
+
 <details markdown="1">
 <summary>Interactive vis-network diagram contrasting the roles of a metadata registry and a metadata catalog in an enterprise architecture</summary>
 Type: graph-model
@@ -260,6 +264,8 @@ For a metadata registry to be useful to automated systems and LLM applications, 
 A **cross-enterprise data dictionary** is the aggregation of multiple domain registry entries into a single queryable resource. Within a large organization, different business units may maintain separate registries for their domain-specific data elements. The cross-enterprise data dictionary federates these registries into a unified search experience: a data consumer can search for "revenue" and see all revenue-related data elements from all domain registries, with their definitions, value domains, and provenance clearly indicated.
 
 #### Diagram: Registry API Retrieval Flow
+
+<iframe src="../../sims/registry-api-retrieval/main.html" width="100%" height="602px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Interactive step-through MicroSim showing how an LLM retrieval pipeline uses the registry API to ground a field value with its definition</summary>

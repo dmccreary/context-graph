@@ -1,127 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
     <title>Registry vs. Catalog Architecture</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f8f9fa;
-            color: #212529;
-        }
-        #container {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background: white;
-        }
-        h1 {
-            font-size: 22px;
-            margin-bottom: 10px;
-            color: #1a3a6c;
-        }
-        .placeholder {
-            border: 2px dashed #adb5bd;
-            border-radius: 8px;
-            padding: 40px 20px;
-            text-align: center;
-            color: #6c757d;
-            margin: 20px 0;
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .placeholder .badge {
-            display: inline-block;
-            background: #ffc107;
-            color: #212529;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-        .placeholder h2 {
-            font-size: 18px;
-            color: #495057;
-            margin-bottom: 8px;
-        }
-        .placeholder p {
-            font-size: 14px;
-            max-width: 480px;
-        }
-        .meta {
-            margin-top: 20px;
-            font-size: 13px;
-            color: #6c757d;
-            border-top: 1px solid #dee2e6;
-            padding-top: 12px;
-        }
-        .meta strong { color: #495057; }
-    </style>
+    <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/vis-network/styles/vis-network.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="container">
-        <h1>Registry vs. Catalog Architecture</h1>
-        <div class="placeholder">
-            <span class="badge">SCAFFOLD</span>
-            <h2>MicroSim Not Yet Implemented</h2>
-            <p>This MicroSim has been scaffolded from its specification but the
-            interactive content has not been built yet. See the chapter source
-            and the <code>index.md</code> in this directory for the full spec.</p>
-        </div>
-        <div class="meta">
-            <p><strong>Sim ID:</strong> registry-vs-catalog</p>
-            <p><strong>Library:</strong> vis-network</p>
-            <p><strong>Bloom Level:</strong> Analyze (L4)</p>
-            <p><strong>Learning Objective:</strong> Learners can differentiate the role of a metadata registry (what data should mean) from a metadata catalog (what data does mean) and explain how the two integrate.</p>
+    <div class="container">
+        <div id="network"></div>
+        <div class="title">Registry (should mean) vs. Catalog (does mean)</div>
+        <div class="right-panel">
+            <div class="detail-panel" id="dp">
+                <div class="dt">Role details</div>
+                <div class="db" id="db">Click any node or the orange dashed link to see how registry and catalog work together.</div>
+            </div>
+            <button class="btn" id="reset-btn">Reset View</button>
         </div>
     </div>
-
-    <!--
-    SPECIFICATION (from chapter index.md):
-
-    Type: graph-model
-    **sim-id:** registry-vs-catalog
-    **Library:** vis-network
-    **Status:** Specified
-    
-    Bloom Level: Analyze (L4)
-    Bloom Verb: differentiate
-    Learning Objective: Learners can differentiate the role of a metadata registry (what data should mean) from a metadata catalog (what data does mean) and explain how the two integrate.
-    
-    Instructional Rationale: Side-by-side network diagrams with distinct visual metaphors are appropriate for the Analyze objective — the contrast in structure (curated vs. comprehensive, authoritative vs. descriptive) maps to the conceptual distinction.
-    
-    Canvas: responsive width, 500px height. Two panels separated by a vertical divider.
-    
-    **Left panel — Metadata Registry:**
-    - Title: "Metadata Registry (authoritative definitions)"
-    - "Registration Authority" node (gold, box) at top
-    - "Data Element: Customer Annual Revenue" (indigo, ellipse) — central approved item
-    - "Data Element Concept: Customer Revenue" (teal, ellipse)
-    - "Value Domain: Decimal, USD, TTM" (teal, ellipse)
-    - "Code List: Industry Categories v3" (steel blue, box)
-    - Edges: Registration Authority → Data Element "approved", Data Element → Data Element Concept "instantiates", Data Element → Value Domain "uses", Data Element → Code List "references"
-    - Small "Version History" box (gray) attached to Data Element with edge "has-history"
-    
-    **Right panel — Metadata Catalog:**
-    - Title: "Metadata Catalog (discovery and documentation)"
-    - "Crawler Bot" (steel blue, icon-like) at top
-    - "CRM Table: customers" (gold, ellipse) — discovered dataset
-    - "Field: annual_revenue" (teal, small ellipse)
-    - "Field: customer_id" (teal, small ellipse)
-    - "Quality Score: 0.92" (orange, small box)
-    - "Owner: Revenue Ops" (green, small box)
-    - Edges: Crawler Bot → CRM Table "discovered", CRM Table → field nodes "has-field", Field: annual_revenue → Quality Score "has-score", Field: annual_revenue → Owner "owned-by"
-    - Cross-panel edge: Field: annual_revenue → [Data Element node in Registry panel] "defined-by" (dashed orange edge crossing the divider)
-    
-    Click on any node: opens infobox with role description and key questions each tool answers.
-    Click on the cross-panel edge: "This is the integration link between catalog and registry. The catalog field links to the registry's authoritative definition, so any consumer reading the catalog field knows exactly what it means."
-    -->
+    <script src="registry-vs-catalog.js"></script>
 </body>
 </html>

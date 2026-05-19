@@ -14,7 +14,7 @@
   "library": "vis-network",
   "bloomLevel": "Analyze (L4)",
   "bloomVerb": "differentiate",
-  "completion_status": "scaffold",
+  "completion_status": "implemented",
   "chapter_number": 6,
   "chapter_title": "\"Chapter 6: Metadata Registries and ISO 11179\"",
   "chapter_dir": "06-metadata-registries"

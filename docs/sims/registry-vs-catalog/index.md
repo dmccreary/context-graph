@@ -1,7 +1,7 @@
 ---
 title: Registry vs. Catalog Architecture
 description: Learners can differentiate the role of a metadata registry (what data should mean) from a metadata catalog (what data does mean) and explain how the two integrate.
-status: scaffold
+status: implemented
 library: vis-network
 bloom_level: Analyze (L4)
 ---
@@ -10,7 +10,7 @@ bloom_level: Analyze (L4)
 
 
 
-<iframe src="main.html" width="100%" height="600"></iframe>
+<iframe src="main.html" width="100%" height="582" scrolling="no"></iframe>
 
 [Run MicroSim in Fullscreen](main.html){ .md-button .md-button--primary }
 

@@ -1,7 +1,7 @@
 ---
 title: ISO 11179 Component Hierarchy
 description: Learners can identify all six ISO 11179 components and state the relationship between each adjacent pair in the hierarchy.
-status: scaffold
+status: implemented
 library: vis-network
 bloom_level: Remember (L1)
 ---
@@ -10,7 +10,7 @@ bloom_level: Remember (L1)
 
 
 
-<iframe src="main.html" width="100%" height="600"></iframe>
+<iframe src="main.html" width="100%" height="602" scrolling="no"></iframe>
 
 [Run MicroSim in Fullscreen](main.html){ .md-button .md-button--primary }
 
