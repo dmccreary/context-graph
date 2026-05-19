@@ -87,6 +87,9 @@ nav:
       - ISO 11179 Hierarchy: sims/iso11179-hierarchy/index.md
       - Registry API Retrieval Flow: sims/registry-api-retrieval/index.md
       - Registry vs Catalog: sims/registry-vs-catalog/index.md
+      - Event Sourcing Architecture: sims/event-sourcing-context-graph/index.md
+      - Lineage vs Provenance: sims/lineage-vs-provenance/index.md
+      - Process Discovery Sim: sims/process-discovery-sim/index.md
 
   - License: license.md
   - Contact: contact.md

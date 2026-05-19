@@ -159,4 +159,25 @@ Plotly, Venn.js).
     Contrast an authoritative registry with a discovery-oriented catalog;
     follow the dashed integration link between them. **Chapter 6 · vis-network**
 
+-   __[Event Sourcing Architecture](event-sourcing-context-graph/index.md)__
+
+    ![Event Sourcing](event-sourcing-context-graph/event-sourcing-context-graph.png)
+
+    Trace a business event through command handler, append-only log,
+    stream processor, and into the context graph. **Chapter 7 · vis-network**
+
+-   __[Lineage vs Provenance](lineage-vs-provenance/index.md)__
+
+    ![Lineage vs Provenance](lineage-vs-provenance/lineage-vs-provenance.png)
+
+    Toggle lineage (where data came from) and provenance (whether to trust
+    it) layers in the same pipeline graph. **Chapter 7 · vis-network**
+
+-   __[Process Discovery Sim](process-discovery-sim/index.md)__
+
+    ![Process Discovery](process-discovery-sim/process-discovery-sim.png)
+
+    Watch a directly-follows graph build itself from an event log of three
+    purchase-order cases, flagging deviations in orange. **Chapter 7 · p5.js**
+
 </div>
