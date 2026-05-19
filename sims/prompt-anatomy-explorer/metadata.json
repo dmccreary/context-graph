@@ -14,7 +14,7 @@
   "library": "p5.js",
   "bloomLevel": "Apply (L3)",
   "bloomVerb": "use",
-  "completion_status": "scaffold",
+  "completion_status": "implemented",
   "chapter_number": 10,
   "chapter_title": "\"Chapter 10: LLM and AI Foundations\"",
   "chapter_dir": "10-llm-ai-foundations"

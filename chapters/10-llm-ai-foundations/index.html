@@ -1262,6 +1262,154 @@
           
         
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
     
     
     
@@ -1603,6 +1751,8 @@ Welcome to Chapter 10! You have defined the context graph and understood the pro
 <p><strong>Few-shot prompting</strong> provides one or more examples of the desired input-output pattern before the actual task. A few-shot prompt for decision context synthesis might include two or three examples of well-formatted decision trace contexts and their corresponding synthesized recommendations, before presenting the actual traces for the current task. Few-shot prompting dramatically improves performance on tasks with specific output formats, specialized domain vocabulary, or nuanced reasoning requirements that are uncommon in general training data.</p>
 <p>For context graph integration, few-shot prompting is particularly useful for teaching the model how to interpret decision trace serializations. A model that has never seen the specific JSON structure your context graph uses for decision traces will benefit from 2-3 examples showing how to extract the relevant information and cite it in the output.</p>
 <h4 id="diagram-prompt-anatomy-for-context-graph-integration">Diagram: Prompt Anatomy for Context Graph Integration<a class="headerlink" href="#diagram-prompt-anatomy-for-context-graph-integration" title="Permanent link">¶</a></h4>
+<iframe src="../../sims/prompt-anatomy-explorer/main.html" width="100%" height="602px" scrolling="no"></iframe>
+
 <details>
 <summary>Interactive MicroSim showing the anatomy of a well-structured LLM prompt for context graph retrieval, with labeled sections and token budget display</summary>
 <p>Type: microsim
@@ -1664,6 +1814,8 @@ A common mistake is to treat the context graph write path as a trusted internal 
 <p>Faithfulness scoring can be automated using a second LLM call: send the generated response and the retrieved context to an evaluator model, and ask it to verify each factual claim. This "LLM-as-judge" approach has known limitations (evaluator models have their own biases and failure modes) but provides a scalable quality signal that is more relevant than BLEU for enterprise grounding evaluation.</p>
 <p>For production context graph systems, a monitoring pipeline that continuously samples LLM outputs, computes faithfulness scores, and alerts when scores drop below a threshold is an operational necessity — not an optional feature. Drops in faithfulness score often indicate that the retrieval quality has degraded (stale context, relevance regression) before users notice incorrect recommendations.</p>
 <h4 id="diagram-evaluation-pipeline-for-context-graph-systems">Diagram: Evaluation Pipeline for Context Graph Systems<a class="headerlink" href="#diagram-evaluation-pipeline-for-context-graph-systems" title="Permanent link">¶</a></h4>
+<iframe src="../../sims/llm-evaluation-pipeline/main.html" width="100%" height="542px" scrolling="no"></iframe>
+
 <details>
 <summary>Interactive vis-network diagram showing the end-to-end evaluation pipeline for a context-graph-powered LLM system</summary>
 <p>Type: graph-model

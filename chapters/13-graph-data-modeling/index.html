@@ -1268,6 +1268,154 @@
           
         
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
     
     
     
@@ -1618,6 +1766,8 @@ Welcome to Chapter 13! You have the decision trace schema from Chapter 11. This 
 <p>Transaction time is implemented through the write path: every write to the context graph records a <code>transaction_time</code> on the ingested node or edge. This is typically the timestamp of the write API call. Transaction time is immutable once set — it records when the fact entered the database, not when the fact was true.</p>
 <p>Because transaction time is immutable, the context graph can support audit queries by filtering on transaction time ranges. "Show me every record that was in the context graph as of March 15th" is answered by filtering all nodes and edges where <code>transaction_time &lt;= 2025-03-15T23:59:59Z</code>. This enables point-in-time database snapshots without requiring a full database backup — the bitemporal model is itself a queryable historical record.</p>
 <h4 id="diagram-bitemporal-modeling-two-time-dimensions">Diagram: Bitemporal Modeling — Two Time Dimensions<a class="headerlink" href="#diagram-bitemporal-modeling-two-time-dimensions" title="Permanent link">¶</a></h4>
+<iframe src="../../sims/bitemporal-explorer/main.html" width="100%" height="602px" scrolling="no"></iframe>
+
 <details>
 <summary>Interactive MicroSim showing valid time vs. transaction time for a credit tier change, with a slider to explore the two-dimensional time space</summary>
 <p>Type: microsim
@@ -1690,6 +1840,8 @@ Renaming a node label or edge type in a graph database typically requires rewrit
 <p>A <strong>context graph snapshot</strong> is a point-in-time export of a portion of the context graph — useful for creating development and testing environments, for sharing context graph data between organizational units, and for disaster recovery. Snapshots should be taken at the schema version level: a snapshot of the context graph captures not just the node and edge data but the schema version registry, the constraint definitions, and the index configurations, so that the snapshot can be restored to a fully operational state without additional configuration.</p>
 <p><strong>Context graph merge</strong> is the process of combining two context graph instances — typically when two organizational units have been operating separate context graphs and need to merge after a reorganization, or when a trial deployment is promoted to production. Merging requires: resolving canonical entity ID conflicts, deduplicating decision traces that were recorded in both graphs for the same event, and reconciling schema differences between the two graph versions.</p>
 <h4 id="diagram-subgraph-extraction-for-llm-context-assembly">Diagram: Subgraph Extraction for LLM Context Assembly<a class="headerlink" href="#diagram-subgraph-extraction-for-llm-context-assembly" title="Permanent link">¶</a></h4>
+<iframe src="../../sims/subgraph-extraction/main.html" width="100%" height="602px" scrolling="no"></iframe>
+
 <details>
 <summary>Interactive vis-network diagram showing how a subgraph is extracted from the full context graph for a specific entity query, and how it is serialized for the LLM</summary>
 <p>Type: graph-model

@@ -1244,6 +1244,154 @@
           
         
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
     
     
     
@@ -1580,6 +1728,8 @@ Welcome to Chapter 14! The context graph is built and modeled. Now we wire it to
 <p><strong>Context reranking</strong> is a second-pass ranking step that applies a more expensive but more accurate relevance model after the initial fast retrieval. The reranker takes the top-50 candidates from the first-pass ranking and applies a cross-encoder model (a neural model that jointly encodes the query and each candidate rather than encoding them separately) to re-score them for relevance. The top-10 from the reranker's output are the final candidates for context assembly.</p>
 <p>Cross-encoder reranking is more accurate than embedding similarity because it considers the interaction between the query and each candidate — it can detect when a document that is semantically similar to the query is actually about a different topic (false positive in embedding retrieval). The cost is that cross-encoder scoring is proportional to the number of candidates × query tokens, making it too expensive to apply to the full candidate set — hence the two-pass design.</p>
 <h4 id="diagram-hybrid-retrieval-and-reranking-pipeline">Diagram: Hybrid Retrieval and Reranking Pipeline<a class="headerlink" href="#diagram-hybrid-retrieval-and-reranking-pipeline" title="Permanent link">¶</a></h4>
+<iframe src="../../sims/hybrid-retrieval-pipeline/main.html" width="100%" height="582px" scrolling="no"></iframe>
+
 <details>
 <summary>Interactive step-through MicroSim showing the five-stage hybrid retrieval and reranking pipeline for context graph queries</summary>
 <p>Type: microsim
@@ -1658,6 +1808,8 @@ Learning Objective: Learners can use the hybrid retrieval pipeline to describe w
 The integration patterns in this chapter might feel like engineering detail after the architectural clarity of earlier chapters. They are — but they are the engineering detail that determines whether your context graph system is trusted by its users. A context graph with poor retrieval, poor ranking, or poor output validation will produce wrong answers. The architecture is the vision; the integration engineering is the execution. Both matter equally.</p>
 </div>
 <h4 id="diagram-context-window-budget-visualizer">Diagram: Context Window Budget Visualizer<a class="headerlink" href="#diagram-context-window-budget-visualizer" title="Permanent link">¶</a></h4>
+<iframe src="../../sims/context-budget-visualizer/main.html" width="100%" height="622px" scrolling="no"></iframe>
+
 <details>
 <summary>Interactive MicroSim allowing learners to allocate a context window budget across prompt components and see the impact on available retrieval slots</summary>
 <p>Type: microsim

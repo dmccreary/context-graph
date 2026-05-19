@@ -1319,6 +1319,154 @@
           
         
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
     
     
     
@@ -1729,6 +1877,8 @@ Welcome to Chapter 6! You know what metadata <em>is</em> from Chapter 3. Now we 
 <p>A <strong>data element</strong> is the fully specified atomic unit of metadata: an object class combined with a property, expressed with a specific value domain. It is the thing that actually appears in a database column, an API field, or a report. "Customer Annual Revenue in USD (Trailing 12 Months, Recognized)" is a data element — it specifies not just what is being measured (Customer Annual Revenue) but exactly how it is being measured and represented.</p>
 <p>The power of this hierarchy is that it separates the business meaning (Data Element Concept) from the system representation (Value Domain). When the CRM system and the ERP system both have a "Customer Revenue" field with different formats and different value ranges, both can be linked to the same Data Element Concept — making cross-system comparison possible even when the representations differ.</p>
 <h4 id="diagram-iso-11179-component-hierarchy">Diagram: ISO 11179 Component Hierarchy<a class="headerlink" href="#diagram-iso-11179-component-hierarchy" title="Permanent link">¶</a></h4>
+<iframe src="../../sims/iso11179-hierarchy/main.html" width="100%" height="602px" scrolling="no"></iframe>
+
 <details>
 <summary>Interactive vis-network diagram showing the six ISO 11179 components and their relationships, with a worked example</summary>
 <p>Type: graph-model
@@ -1786,6 +1936,8 @@ A common implementation mistake is to store the display label of a code list val
 <p>A <strong>metadata registry</strong> is primarily a governance tool: it defines what data <em>should</em> mean, enforces that definition across all systems, and maintains an authoritative record of every formally approved definition. A registry is curated — it contains only definitions that have been reviewed and approved by the registration authority. Registries are not necessarily comprehensive (you might only register the most critical shared data elements), but what they do contain is authoritative.</p>
 <p>The two tools are complementary. The catalog surfaces what data exists; the registry defines what it means. In a well-integrated architecture, the catalog links its entries to registry definitions, so that every cataloged dataset is annotated with the authoritative registry definitions for its fields. The context graph consumes from both: it uses the catalog to understand the current data landscape and the registry to ground semantic interpretation.</p>
 <h4 id="diagram-registry-vs-catalog-architecture">Diagram: Registry vs. Catalog Architecture<a class="headerlink" href="#diagram-registry-vs-catalog-architecture" title="Permanent link">¶</a></h4>
+<iframe src="../../sims/registry-vs-catalog/main.html" width="100%" height="582px" scrolling="no"></iframe>
+
 <details>
 <summary>Interactive vis-network diagram contrasting the roles of a metadata registry and a metadata catalog in an enterprise architecture</summary>
 <p>Type: graph-model
@@ -1830,6 +1982,8 @@ Click on the cross-panel edge: "This is the integration link between catalog and
 <p><strong>Context binding</strong> is the mechanism by which a context graph associates a retrieved data value with its registry definition at query time. When the context graph retrieves the value <code>annual_revenue = 2100000</code> from a CRM node, context binding attaches the relevant registry entry: "Data Element: Customer Annual Revenue in USD (Trailing 12 Months, Recognized Revenue Only), version 3.2, approved 2024-01-15." The LLM receives the value and the definition together, enabling it to reason correctly about what the number means — including whether the definition in force when the value was recorded matches the current definition.</p>
 <p>A <strong>cross-enterprise data dictionary</strong> is the aggregation of multiple domain registry entries into a single queryable resource. Within a large organization, different business units may maintain separate registries for their domain-specific data elements. The cross-enterprise data dictionary federates these registries into a unified search experience: a data consumer can search for "revenue" and see all revenue-related data elements from all domain registries, with their definitions, value domains, and provenance clearly indicated.</p>
 <h4 id="diagram-registry-api-retrieval-flow">Diagram: Registry API Retrieval Flow<a class="headerlink" href="#diagram-registry-api-retrieval-flow" title="Permanent link">¶</a></h4>
+<iframe src="../../sims/registry-api-retrieval/main.html" width="100%" height="602px" scrolling="no"></iframe>
+
 <details>
 <summary>Interactive step-through MicroSim showing how an LLM retrieval pipeline uses the registry API to ground a field value with its definition</summary>
 <p>Type: microsim

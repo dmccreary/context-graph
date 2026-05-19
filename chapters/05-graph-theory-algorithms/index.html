@@ -1316,6 +1316,154 @@
           
         
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
     
     
     
@@ -1718,6 +1866,8 @@ Welcome to Chapter 5! The last chapter built the structure; this chapter makes i
 <p>In an enterprise knowledge graph, PageRank applied to the citation graph of internal documents identifies the most-referenced policy documents — a useful signal for an LLM deciding which policies to surface in a compliance query. Applied to the organizational graph, PageRank identifies the most structurally influential individuals (those whose output reaches the most other people through chains of communication and review).</p>
 <p>For context graphs specifically, a decision-weighted PageRank variant — where edge weights are proportional to the frequency with which a precedent decision was referenced in subsequent decisions — surfaces the most influential historical precedents. When an LLM needs to justify an automated decision, high-PageRank precedents are the best candidates to include in the context window.</p>
 <h4 id="diagram-pagerank-visualization-on-a-small-supplier-graph">Diagram: PageRank Visualization on a Small Supplier Graph<a class="headerlink" href="#diagram-pagerank-visualization-on-a-small-supplier-graph" title="Permanent link">¶</a></h4>
+<iframe src="../../sims/pagerank-supplier-graph/main.html" width="100%" height="542px" scrolling="no"></iframe>
+
 <details>
 <summary>Interactive vis-network MicroSim showing PageRank scores on a supplier dependency graph</summary>
 <p>Type: graph-model
@@ -1766,6 +1916,8 @@ Toggle button "Highlight Critical Nodes" colors nodes above 0.15 PageRank in red
 <p><strong>Cross-system entity linking</strong> extends entity resolution beyond a single domain: given two entity records from two different source systems (say, a customer record from the CRM and a billing account from the ERP), determine whether they refer to the same real-world customer and, if so, link them in the knowledge graph. This linking is what enables multi-domain traversal queries — queries that start in one domain (sales history from CRM) and traverse into another (payment patterns from ERP).</p>
 <p><strong>Graph deduplication</strong> is the ongoing process of finding and merging duplicate nodes that have accumulated in the graph over time — due to imperfect entity resolution at ingestion time, manual data entry from multiple sources, or race conditions during parallel ingestion. Deduplication runs on a schedule, scanning for node pairs that share high-similarity properties and flagging them for automated merge or human review.</p>
 <h4 id="diagram-information-extraction-pipeline-to-graph">Diagram: Information Extraction Pipeline to Graph<a class="headerlink" href="#diagram-information-extraction-pipeline-to-graph" title="Permanent link">¶</a></h4>
+<iframe src="../../sims/ie-pipeline-to-graph/main.html" width="100%" height="622px" scrolling="no"></iframe>
+
 <details>
 <summary>Interactive step-through MicroSim showing how an incident report is converted to semantic triples and loaded into a knowledge graph</summary>
 <p>Type: microsim
@@ -1817,6 +1969,8 @@ Learning Objective: Learners can use the three-stage information extraction pipe
 <p><strong>Schema matching</strong> is the process of automatically aligning two schemas from different systems — finding correspondences between elements that represent the same concept under different names. An automated schema matching tool might determine that the CRM's <code>account_id</code> corresponds to the ERP's <code>customer_number</code> by comparing name similarity, data type, value distributions, and semantic context.</p>
 <p><strong>Ontology mapping</strong> is the higher-level version of schema matching: aligning two ontologies (rather than two flat schemas) by finding equivalent or overlapping concept types and relationship types. Organizations that federate multiple graph instances often need ontology mapping to translate queries from one graph's vocabulary into another's.</p>
 <h4 id="diagram-knowledge-graph-embedding-space-explorer">Diagram: Knowledge Graph Embedding Space Explorer<a class="headerlink" href="#diagram-knowledge-graph-embedding-space-explorer" title="Permanent link">¶</a></h4>
+<iframe src="../../sims/kg-embedding-explorer/main.html" width="100%" height="582px" scrolling="no"></iframe>
+
 <details>
 <summary>Interactive 2D scatter plot showing knowledge graph embedding positions for enterprise entities</summary>
 <p>Type: microsim

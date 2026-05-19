@@ -1316,6 +1316,154 @@
           
         
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
     
     
     
@@ -1703,6 +1851,8 @@ Welcome to Chapter 3! I'm Nexus, and this one is close to my heart — because e
 <p><strong>Operational metadata</strong> records the dynamic state of data over time: when was it last updated, how many records were processed in the last pipeline run, what was the error rate, which jobs read this dataset in the last 30 days, and who accessed it? Operational metadata is the foundation for freshness scoring and usage analytics. It tells an LLM not just what a field is, but how current it is and how widely used it is — signals that directly inform whether to trust a retrieval result.</p>
 <p>The three types are complementary, not competing. A fully described enterprise dataset has all three: technical metadata tells the system <em>how</em> to access it, business metadata tells the LLM <em>what</em> it means, and operational metadata tells the context graph <em>how much to trust it right now</em>.</p>
 <h4 id="diagram-three-metadata-layers">Diagram: Three Metadata Layers<a class="headerlink" href="#diagram-three-metadata-layers" title="Permanent link">¶</a></h4>
+<iframe src="../../sims/three-metadata-layers/main.html" width="100%" height="542px" scrolling="no"></iframe>
+
 <details>
 <summary>Interactive diagram showing technical, business, and operational metadata layers on a graph node</summary>
 <p>Type: graph-model
@@ -1809,6 +1959,8 @@ Think about what active metadata management really is: a continuous stream of ob
 </ul>
 <p>Recording all these roles as nodes and edges in a context graph creates a queryable organizational map. When an LLM encounters a field with a suspicious value, the context graph can immediately identify the steward to notify, the owner to escalate to, and the producer to investigate — all from a single graph traversal.</p>
 <h4 id="diagram-governance-role-graph">Diagram: Governance Role Graph<a class="headerlink" href="#diagram-governance-role-graph" title="Permanent link">¶</a></h4>
+<iframe src="../../sims/governance-role-graph/main.html" width="100%" height="542px" scrolling="no"></iframe>
+
 <details>
 <summary>Interactive vis-network graph showing governance roles and their relationships to a dataset</summary>
 <p>Type: graph-model
@@ -1869,6 +2021,8 @@ A common mistake is to classify an entire table as Restricted when only two colu
 <p>The quality of automated discovery has improved dramatically with the application of language models to metadata inference. A crawler that reads column names and sample values across a thousand tables can now propose meaningful business descriptions with reasonable accuracy — descriptions that a steward then reviews, corrects, and approves rather than writing from scratch. This workflow, sometimes called <strong>human-in-the-loop metadata enrichment</strong>, reduces the cost of maintaining high-quality business metadata by an order of magnitude.</p>
 <p>The connection between a metadata catalog and a context graph is not optional — it is the foundation of grounded LLM retrieval. The catalog provides the authoritative metadata; the context graph adds the decision traces, precedent links, and temporal relationships that the catalog does not capture. Together they give an LLM agent the full picture: what this data is (catalog), what this data has been used to decide (context graph), and whether those decisions were later reviewed and validated (decision trace history).</p>
 <h4 id="diagram-metadata-catalog-to-context-graph-flow">Diagram: Metadata Catalog to Context Graph Flow<a class="headerlink" href="#diagram-metadata-catalog-to-context-graph-flow" title="Permanent link">¶</a></h4>
+<iframe src="../../sims/catalog-to-context-graph-flow/main.html" width="100%" height="542px" scrolling="no"></iframe>
+
 <details>
 <summary>Interactive workflow diagram showing how metadata catalog platforms feed context graphs</summary>
 <p>Type: microsim
@@ -1916,6 +2070,8 @@ A dataset that was anonymized three years ago may no longer be anonymous today. 
 <p>For a context graph serving LLM queries, differential privacy is particularly relevant for operational analytics — queries about usage patterns, quality distributions, and access frequencies that aggregate over many individual records. When an LLM asks "how many customers in this region have a credit limit above $50,000?", a differentially private mechanism can answer with a noise-added count that is statistically close to the truth without revealing information about any specific customer.</p>
 <p>The implementation lives at the policy enforcement layer: the context graph tags certain query types as requiring differential privacy, and the enforcement mechanism applies the appropriate noise mechanism before returning results to the requesting agent.</p>
 <h4 id="diagram-differential-privacy-noise-mechanism-explorer">Diagram: Differential Privacy Noise Mechanism Explorer<a class="headerlink" href="#diagram-differential-privacy-noise-mechanism-explorer" title="Permanent link">¶</a></h4>
+<iframe src="../../sims/differential-privacy-explorer/main.html" width="100%" height="542px" scrolling="no"></iframe>
+
 <details>
 <summary>Interactive MicroSim showing how epsilon controls the privacy-accuracy trade-off</summary>
 <p>Type: microsim
@@ -1945,6 +2101,8 @@ Learning Objective: Learners can demonstrate how adjusting the epsilon privacy b
 Twenty-five concepts in one chapter is a lot to absorb, graph builder. The good news: these concepts form a tightly connected cluster. Once you see that metadata types feed quality dimensions, quality dimensions are monitored by stewards, stewards operate under governance frameworks, and frameworks are enforced through classification, access control, and masking — the whole structure clicks into place. You have just learned the vocabulary that every senior data practitioner uses daily.</p>
 </div>
 <h4 id="diagram-governance-framework-concept-map">Diagram: Governance Framework Concept Map<a class="headerlink" href="#diagram-governance-framework-concept-map" title="Permanent link">¶</a></h4>
+<iframe src="../../sims/governance-concept-map/main.html" width="100%" height="762px" scrolling="no"></iframe>
+
 <details>
 <summary>Interactive vis-network concept map connecting all 25 governance concepts from this chapter</summary>
 <p>Type: graph-model

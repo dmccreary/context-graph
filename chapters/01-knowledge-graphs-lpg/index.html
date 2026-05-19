@@ -1325,6 +1325,154 @@
           
         
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
     
     
     
@@ -1726,7 +1874,7 @@ Welcome to <em>Context Graph: How Organizations Use LLMs Cost Effectively</em>! 
 <p>Together, nodes and edges form a graph — a mathematical structure studied for nearly three centuries, since Euler's 1736 analysis of the Königsberg bridges. The enterprise knowledge graph is this same structure applied at organizational scale to answer operational questions in real time.</p>
 <p>The interactive diagram below shows a small but representative enterprise LPG. Click any node or edge to see its label, type, and properties.</p>
 <h4 id="diagram-interactive-lpg-explorer">Diagram: Interactive LPG Explorer<a class="headerlink" href="#diagram-interactive-lpg-explorer" title="Permanent link">¶</a></h4>
-<iframe src="../../sims/lpg-explorer/main.html" width="100%" height="520px" scrolling="no"></iframe>
+<iframe src="../../sims/lpg-explorer/main.html" width="100%" height="542px" scrolling="no"></iframe>
 
 <details>
 <summary>Interactive LPG Explorer</summary>
@@ -1829,7 +1977,7 @@ In a relational schema, a many-to-many relationship with attributes requires an 
 <p>A true graph database uses <strong>native graph storage</strong>, which means relationships (edges) are stored as physical pointers to their endpoint nodes rather than as data values that require index lookups at query time. This architecture enables <strong>index-free adjacency</strong>: traversing from one node to its neighbors is a pointer dereference, not a B-tree lookup. The cost of following one hop is independent of the total size of the graph — whether the graph contains ten thousand nodes or ten billion, following a single edge takes the same time.</p>
 <p>This property has dramatic consequences for multi-hop queries — queries that traverse two, three, or more relationships in sequence. In a relational database, each additional hop requires an additional JOIN, and each JOIN's cost grows with the size of the tables being joined. In a natively stored graph, each hop costs a constant-time pointer dereference, so a five-hop traversal costs roughly five times a one-hop traversal rather than five powers of the table size. The performance chart below quantifies the divergence.</p>
 <h4 id="diagram-multi-hop-query-performance">Diagram: Multi-Hop Query Performance<a class="headerlink" href="#diagram-multi-hop-query-performance" title="Permanent link">¶</a></h4>
-<iframe src="../../sims/multi-hop-performance/main.html" width="100%" height="480px" scrolling="no"></iframe>
+<iframe src="../../sims/multi-hop-performance/main.html" width="100%" height="482px" scrolling="no"></iframe>
 
 <details>
 <summary>Multi-Hop Query Performance: Native Graph vs Relational</summary>
@@ -1900,7 +2048,7 @@ If you're coming from SQL, variable-length path queries feel strange at first �
 </div>
 <p>The MicroSim below lets you step through BFS and DFS traversals on a small enterprise graph and observe the visit ordering at each step.</p>
 <h4 id="diagram-graph-traversal-explorer">Diagram: Graph Traversal Explorer<a class="headerlink" href="#diagram-graph-traversal-explorer" title="Permanent link">¶</a></h4>
-<iframe src="../../sims/graph-traversal-explorer/main.html" width="100%" height="520px" scrolling="no"></iframe>
+<iframe src="../../sims/graph-traversal-explorer/main.html" width="100%" height="602px" scrolling="no"></iframe>
 
 <details>
 <summary>Graph Traversal Explorer MicroSim</summary>
@@ -1966,7 +2114,7 @@ Edge hover: Shows edge type (REPORTS_TO / BELONGS_TO / OWNS).</p>
 <p>The critical distinction from a knowledge graph is that vector similarity is <em>statistical</em>, not <em>structural</em>. A vector store can tell you that two decisions are semantically similar; it cannot tell you that one decision directly caused another, that one entity is the legal owner of another, or that a particular approval chain is required for a given transaction class. Knowledge graphs encode structural relationships with explicit semantics. Context graphs specifically encode the causal and procedural chains — the <em>why</em> — that vector similarity cannot reconstruct. Both technologies belong in a mature enterprise AI architecture; they answer different questions and are most powerful in combination.</p>
 <p>The interactive comparison below lets you examine all four data models side by side and test each against representative enterprise query types.</p>
 <h4 id="diagram-data-model-comparison-explorer">Diagram: Data Model Comparison Explorer<a class="headerlink" href="#diagram-data-model-comparison-explorer" title="Permanent link">¶</a></h4>
-<iframe src="../../sims/data-model-comparison/main.html" width="100%" height="500px" scrolling="no"></iframe>
+<iframe src="../../sims/data-model-comparison/main.html" width="100%" height="722px" scrolling="no"></iframe>
 
 <details>
 <summary>Data Model Comparison Explorer</summary>

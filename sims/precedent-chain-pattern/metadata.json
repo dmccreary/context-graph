@@ -14,7 +14,7 @@
   "library": "vis-network",
   "bloomLevel": "Analyze (L4)",
   "bloomVerb": "organize",
-  "completion_status": "scaffold",
+  "completion_status": "implemented",
   "chapter_number": 11,
   "chapter_title": "\"Chapter 11: Decision Traces: Anatomy and LPG Patterns\"",
   "chapter_dir": "11-decision-traces"

@@ -1,131 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event Sourcing Architecture for Context Graph</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f8f9fa;
-            color: #212529;
-        }
-        #container {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background: white;
-        }
-        h1 {
-            font-size: 22px;
-            margin-bottom: 10px;
-            color: #1a3a6c;
-        }
-        .placeholder {
-            border: 2px dashed #adb5bd;
-            border-radius: 8px;
-            padding: 40px 20px;
-            text-align: center;
-            color: #6c757d;
-            margin: 20px 0;
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .placeholder .badge {
-            display: inline-block;
-            background: #ffc107;
-            color: #212529;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-        .placeholder h2 {
-            font-size: 18px;
-            color: #495057;
-            margin-bottom: 8px;
-        }
-        .placeholder p {
-            font-size: 14px;
-            max-width: 480px;
-        }
-        .meta {
-            margin-top: 20px;
-            font-size: 13px;
-            color: #6c757d;
-            border-top: 1px solid #dee2e6;
-            padding-top: 12px;
-        }
-        .meta strong { color: #495057; }
-    </style>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
+    <title>Event Sourcing Architecture</title>
+    <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/vis-network/styles/vis-network.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="container">
-        <h1>Event Sourcing Architecture for Context Graph</h1>
-        <div class="placeholder">
-            <span class="badge">SCAFFOLD</span>
-            <h2>MicroSim Not Yet Implemented</h2>
-            <p>This MicroSim has been scaffolded from its specification but the
-            interactive content has not been built yet. See the chapter source
-            and the <code>index.md</code> in this directory for the full spec.</p>
-        </div>
-        <div class="meta">
-            <p><strong>Sim ID:</strong> event-sourcing-context-graph</p>
-            <p><strong>Library:</strong> vis-network</p>
-            <p><strong>Bloom Level:</strong> Apply (L3)</p>
-            <p><strong>Learning Objective:</strong> Learners can use the event sourcing architecture diagram to trace how a business event flows from a command to the append-only log to the context graph, and identify which component answers which type of query.</p>
+    <div class="container">
+        <div id="network"></div>
+        <div class="title">Event Sourcing — Event → Log → Context Graph</div>
+        <div class="right-panel">
+            <div class="detail-panel" id="dp">
+                <div class="dt">Component details</div>
+                <div class="db" id="db">Click any node to see its role and the type of question it answers.</div>
+            </div>
+            <button class="btn" id="reset-btn">Reset View</button>
         </div>
     </div>
-
-    <!--
-    SPECIFICATION (from chapter index.md):
-
-    Type: graph-model
-    **sim-id:** event-sourcing-context-graph
-    **Library:** vis-network
-    **Status:** Specified
-    
-    Bloom Level: Apply (L3)
-    Bloom Verb: use
-    Learning Objective: Learners can use the event sourcing architecture diagram to trace how a business event flows from a command to the append-only log to the context graph, and identify which component answers which type of query.
-    
-    Instructional Rationale: An interactive architecture diagram with clickable components is appropriate for the Apply objective — learners must identify the role of each component and trace the data flow, which prepares them to design or evaluate a similar architecture.
-    
-    Canvas: responsive width, 520px height. Light gray background.
-    
-    Nodes (7, arranged in a left-to-right flow):
-    1. "Business Event" (indigo, ellipse) — far left, represents a real-world action (e.g., "Invoice Approved")
-    2. "Command Handler" (teal, box)
-    3. "Append-Only Event Log" (gold, cylinder shape drawn in p5.js as a rounded rectangle stack)
-    4. "CDC / Stream Processor" (steel blue, box)
-    5. "Context Graph" (indigo, large ellipse) — right side
-    6. "LLM Retrieval API" (orange, box) — far right
-    7. "Compliance Audit Query" (gray, box) — bottom right, connects to context graph
-    
-    Edges:
-    - Business Event → Command Handler "triggers"
-    - Command Handler → Append-Only Event Log "writes (immutable)"
-    - Append-Only Event Log → CDC / Stream Processor "streams"
-    - CDC / Stream Processor → Context Graph "ingests as nodes + edges"
-    - Context Graph → LLM Retrieval API "serves grounded context"
-    - Context Graph → Compliance Audit Query "answers temporal queries"
-    
-    Click on each node: opens infobox with component role and the type of question it answers:
-    - Business Event: "The real-world action — 'Invoice INV-4482 approved by J. Smith at 14:22 UTC.' Everything starts here."
-    - Append-Only Log: "Stores events immutably. You can replay from any point. Nothing is deleted. This is your tamper-evident audit trail."
-    - CDC / Stream Processor: "Converts raw events into graph-ready nodes and edges. Handles entity resolution, schema mapping, and temporal versioning."
-    - Context Graph: "The read model. Contains the full history of decisions, lineage, and provenance as a queryable graph."
-    - LLM Retrieval API: "LLM agents query here for grounded context before generating responses."
-    - Compliance Audit Query: "Answers 'what did the system know and do on date X?' using temporal versioning on graph nodes."
-    
-    Hover over any edge shows its label.
-    Physics: hierarchical layout, left to right. Fixed horizontal positions for each column.
-    -->
+    <script src="event-sourcing-context-graph.js"></script>
 </body>
 </html>

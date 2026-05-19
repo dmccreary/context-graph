@@ -1,131 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lineage vs. Provenance in Context</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f8f9fa;
-            color: #212529;
-        }
-        #container {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background: white;
-        }
-        h1 {
-            font-size: 22px;
-            margin-bottom: 10px;
-            color: #1a3a6c;
-        }
-        .placeholder {
-            border: 2px dashed #adb5bd;
-            border-radius: 8px;
-            padding: 40px 20px;
-            text-align: center;
-            color: #6c757d;
-            margin: 20px 0;
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .placeholder .badge {
-            display: inline-block;
-            background: #ffc107;
-            color: #212529;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-        .placeholder h2 {
-            font-size: 18px;
-            color: #495057;
-            margin-bottom: 8px;
-        }
-        .placeholder p {
-            font-size: 14px;
-            max-width: 480px;
-        }
-        .meta {
-            margin-top: 20px;
-            font-size: 13px;
-            color: #6c757d;
-            border-top: 1px solid #dee2e6;
-            padding-top: 12px;
-        }
-        .meta strong { color: #495057; }
-    </style>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
+    <title>Lineage vs. Provenance</title>
+    <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/vis-network/styles/vis-network.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="container">
-        <h1>Lineage vs. Provenance in Context</h1>
-        <div class="placeholder">
-            <span class="badge">SCAFFOLD</span>
-            <h2>MicroSim Not Yet Implemented</h2>
-            <p>This MicroSim has been scaffolded from its specification but the
-            interactive content has not been built yet. See the chapter source
-            and the <code>index.md</code> in this directory for the full spec.</p>
-        </div>
-        <div class="meta">
-            <p><strong>Sim ID:</strong> lineage-vs-provenance</p>
-            <p><strong>Library:</strong> vis-network</p>
-            <p><strong>Bloom Level:</strong> Analyze (L4)</p>
-            <p><strong>Learning Objective:</strong> Learners can differentiate data lineage from data provenance by identifying which question each answers for a specific data value in a pipeline graph.</p>
+    <div class="container">
+        <div id="network"></div>
+        <div class="title">Lineage (where from) vs. Provenance (trust)</div>
+        <div class="right-panel">
+            <div class="detail-panel" id="dp">
+                <div class="dt">Layer details</div>
+                <div class="db" id="db">Click a node or toggle a layer to compare lineage and provenance.</div>
+            </div>
+            <button class="btn" id="lineage-btn">Hide Lineage</button>
+            <button class="btn" id="prov-btn">Hide Provenance</button>
+            <button class="btn" id="reset-btn">Reset View</button>
         </div>
     </div>
-
-    <!--
-    SPECIFICATION (from chapter index.md):
-
-    Type: graph-model
-    **sim-id:** lineage-vs-provenance
-    **Library:** vis-network
-    **Status:** Specified
-    
-    Bloom Level: Analyze (L4)
-    Bloom Verb: differentiate
-    Learning Objective: Learners can differentiate data lineage from data provenance by identifying which question each answers for a specific data value in a pipeline graph.
-    
-    Instructional Rationale: A clickable graph with two distinct visual layers (lineage edges vs. provenance annotation nodes) is appropriate for the Analyze objective — clicking reveals the question each layer answers, making the distinction concrete without requiring additional prose.
-    
-    Canvas: responsive width, 500px height. White background.
-    
-    Nodes:
-    - "Bank Transactions DB" (teal, rectangle) — source
-    - "ETL Pipeline v2.3" (steel blue, diamond)
-    - "Revenue Summary Table" (gold, rectangle)
-    - "Finance Dashboard" (indigo, ellipse) — final consumer
-    - "Provenance: Manual Correction" (orange, triangle) — attached to ETL
-    - "Provenance: Not Reconciled" (red, triangle) — attached to Revenue Summary
-    - "Provenance: High Confidence" (green, triangle) — attached to Bank Transactions
-    
-    Lineage edges (solid, dark gray):
-    - Bank Transactions DB → ETL Pipeline v2.3 "reads"
-    - ETL Pipeline v2.3 → Revenue Summary Table "writes"
-    - Revenue Summary Table → Finance Dashboard "feeds"
-    
-    Provenance edges (dashed, orange):
-    - ETL Pipeline v2.3 ← Provenance: Manual Correction "annotation"
-    - Revenue Summary Table ← Provenance: Not Reconciled "annotation"
-    - Bank Transactions DB ← Provenance: High Confidence "annotation"
-    
-    Two toggle buttons below the canvas:
-    - "Show Lineage" (default ON): highlights solid lineage edges in dark blue
-    - "Show Provenance" (default ON): highlights dashed provenance edges in orange
-    
-    When lineage-only toggled on: "Lineage shows the structural path: Bank DB → ETL → Summary Table → Dashboard. This tells you where the data came from."
-    When provenance-only toggled on: "Provenance tells you whether to trust each step. High-confidence source, but a manual correction in the ETL and an unreconciled summary table — the dashboard value carries uncertainty."
-    
-    Click any node: opens infobox with node role and the provenance score (if applicable).
-    -->
+    <script src="lineage-vs-provenance.js"></script>
 </body>
 </html>

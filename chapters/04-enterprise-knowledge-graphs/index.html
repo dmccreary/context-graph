@@ -1259,6 +1259,154 @@
           
         
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
     
     
     
@@ -1598,6 +1746,8 @@ Here's an insight worth sitting with: a knowledge graph with perfect entity reso
 <p>Neither architecture is universally superior. Organizations with strong central governance and a mandate for a single source of truth tend toward hub-and-spoke. Organizations with strong domain autonomy and diverse technology stacks tend toward federation. Many large enterprises run a hybrid: a central hub for the most critical shared entities (customer, product, employee) and a federated model for domain-specific entities that are less frequently cross-referenced.</p>
 <p>The choice of architecture has direct consequences for context graph design. A hub-and-spoke enterprise knowledge graph naturally serves as the substrate for a context graph — the hub's entity nodes become the anchors for decision trace nodes. A federated architecture requires the context graph to maintain its own entity index so it can navigate the federation without requiring a real-time cross-domain join on every LLM retrieval call.</p>
 <h4 id="diagram-hub-and-spoke-vs-federated-architecture">Diagram: Hub-and-Spoke vs. Federated Architecture<a class="headerlink" href="#diagram-hub-and-spoke-vs-federated-architecture" title="Permanent link">¶</a></h4>
+<iframe src="../../sims/hub-spoke-vs-federated/main.html" width="100%" height="582px" scrolling="no"></iframe>
+
 <details>
 <summary>Interactive vis-network diagram comparing hub-and-spoke and federated graph architectures</summary>
 <p>Type: graph-model
@@ -1648,6 +1798,8 @@ Click on LLM Query node: "<strong>LLM Query</strong> — The LLM agent issues a 
 </ol>
 <p>The pipeline must run continuously for high-velocity sources (like operational event logs) and on a scheduled cadence for lower-velocity sources (like monthly HR roster snapshots). Regardless of cadence, the pipeline must update operational metadata — specifically, the freshness timestamps and ingestion event records — so that the context graph can accurately represent how current each node's data is.</p>
 <h4 id="diagram-graph-etl-pipeline-stages">Diagram: Graph ETL Pipeline Stages<a class="headerlink" href="#diagram-graph-etl-pipeline-stages" title="Permanent link">¶</a></h4>
+<iframe src="../../sims/graph-etl-pipeline/main.html" width="100%" height="582px" scrolling="no"></iframe>
+
 <details>
 <summary>Interactive step-through MicroSim showing the five stages of a graph ingestion pipeline</summary>
 <p>Type: microsim
@@ -1689,6 +1841,8 @@ Each individual schema drift event is usually small — a new field added here, 
 <p><strong>SKOS</strong> (Simple Knowledge Organization System) is a World Wide Web Consortium standard for representing taxonomies, thesauri, and controlled vocabularies in a machine-readable format. For enterprise knowledge graphs, SKOS provides a lightweight, portable way to express the classification hierarchies that underpin metadata tagging and entity typing. A SKOS concept scheme can be imported directly into a graph database as nodes and edges, making the classification vocabulary queryable in exactly the same way as the entity data it describes.</p>
 <p>The relationship between an ontology and a knowledge graph is: the ontology defines the schema (what types and relationships are allowed), and the knowledge graph instantiates the schema (stores the actual entities and relationships). A <strong>graph data catalog</strong> combines both: it stores the ontology, the instance data, and the metadata about both — providing a unified, queryable repository that an LLM can use to understand what a graph contains before querying it.</p>
 <h4 id="diagram-taxonomy-vs-ontology-in-a-product-graph">Diagram: Taxonomy vs. Ontology in a Product Graph<a class="headerlink" href="#diagram-taxonomy-vs-ontology-in-a-product-graph" title="Permanent link">¶</a></h4>
+<iframe src="../../sims/taxonomy-vs-ontology/main.html" width="100%" height="542px" scrolling="no"></iframe>
+
 <details>
 <summary>Interactive vis-network diagram contrasting a product taxonomy with a product ontology</summary>
 <p>Type: graph-model
