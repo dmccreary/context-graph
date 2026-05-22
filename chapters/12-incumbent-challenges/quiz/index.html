@@ -1,0 +1,2525 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An interactive intelligent textbook on the contact graph and how the contact graphs helps organization use LLMs cost effectively">
+      
+      
+        <meta name="author" content="Dan Mccreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/context-graph/chapters/12-incumbent-challenges/quiz/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../references/">
+      
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Quiz - Context Graph</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../../css/mascot.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-7RZYM87NB1"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-7RZYM87NB1",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-7RZYM87NB1",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta property="og:type" content="website">
+      
+        <meta property="og:title" content="Quiz - Context Graph">
+      
+        <meta property="og:description" content="An interactive intelligent textbook on the contact graph and how the contact graphs helps organization use LLMs cost effectively">
+      
+        <meta property="og:image" content="https://dmccreary.github.io/context-graph/assets/images/social/chapters/12-incumbent-challenges/quiz.png">
+      
+        <meta property="og:image:type" content="image/png">
+      
+        <meta property="og:image:width" content="1200">
+      
+        <meta property="og:image:height" content="630">
+      
+        <meta property="og:url" content="https://dmccreary.github.io/context-graph/chapters/12-incumbent-challenges/quiz/">
+      
+        <meta name="twitter:card" content="summary_large_image">
+      
+        <meta name="twitter:title" content="Quiz - Context Graph">
+      
+        <meta name="twitter:description" content="An interactive intelligent textbook on the contact graph and how the contact graphs helps organization use LLMs cost effectively">
+      
+        <meta name="twitter:image" content="https://dmccreary.github.io/context-graph/assets/images/social/chapters/12-incumbent-challenges/quiz.png">
+      
+    
+    
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#quiz-incumbent-challenges-in-building-context-systems" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Context Graph" class="md-header__button md-logo" aria-label="Context Graph" data-md-component="logo">
+      
+  <img src="../../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Context Graph
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Quiz
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/context-graph" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Context Graph" class="md-nav__button md-logo" aria-label="Context Graph" data-md-component="logo">
+      
+  <img src="../../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    Context Graph
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/context-graph" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../01-knowledge-graphs-lpg/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    1. Knowledge Graphs and LPGs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../02-semantic-layers/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    2. Semantic Layers
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../03-metadata-management/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    3. Metadata Management
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../04-enterprise-knowledge-graphs/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    4. Enterprise Knowledge Graphs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../05-graph-theory-algorithms/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    5. Graph Theory and Algorithms
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../06-metadata-registries/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    6. Metadata Registries
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../07-process-mining-lineage/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    7. Process Mining and Lineage
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../08-context-problem/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    8. The Context Problem
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../09-context-graph-definition/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    9. What a Context Graph Is
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../10-llm-ai-foundations/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    10. LLM and AI Foundations
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../11-decision-traces/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    11. Decision Traces
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_13" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    12. Incumbent Challenges
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_13" id="__nav_4_13_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_13_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_13">
+            <span class="md-nav__icon md-icon"></span>
+            12. Incumbent Challenges
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Quiz
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Quiz
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-does-the-chapter-mean-by-current-state-bias-in-enterprise-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. What does the chapter mean by "current state bias" in enterprise systems?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-why-does-the-chapter-call-the-data-warehouse-a-read-path-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Why does the chapter call the data warehouse a "read-path" system?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-what-is-post-hoc-context-capture-and-why-is-it-limited" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. What is "post-hoc context capture" and why is it limited?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-according-to-the-chapter-why-are-ai-agent-platforms-even-though-they-are-close-to-the-decision-moment-and-architected-around-llms-still-unable-to-serve-as-a-context-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. According to the chapter, why are AI agent platforms — even though they are close to the decision moment and architected around LLMs — still unable to serve as a context graph?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-what-is-the-integration-tax-that-the-chapter-describes" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. What is the integration tax that the chapter describes?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-a-crm-holds-customer-relationship-data-an-erp-holds-transaction-data-an-itsm-holds-incident-data-according-to-the-chapter-why-does-cross-silo-decision-context-like-a-customer-escalation-linked-to-a-production-incident-and-a-contract-modification-almost-never-get-recorded-in-any-single-one-of-these-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. A CRM holds customer relationship data; an ERP holds transaction data; an ITSM holds incident data. According to the chapter, why does cross-silo decision context — like a customer escalation linked to a production incident and a contract modification — almost never get recorded in any single one of these systems?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-the-chapter-argues-that-a-purpose-built-context-graph-has-a-write-path-advantage-what-does-this-advantage-allow-it-to-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. The chapter argues that a purpose-built context graph has a "write-path advantage." What does this advantage allow it to do?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-the-chapter-argues-that-the-value-of-a-context-graph-grows-with-the-number-of-decision-traces-it-contains-creating-an-accumulation-dynamic-which-strategic-implication-follows-most-directly" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. The chapter argues that the value of a context graph grows with the number of decision traces it contains, creating an accumulation dynamic. Which strategic implication follows most directly?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-an-enterprise-team-is-evaluating-whether-to-extend-its-existing-relational-data-warehouse-to-serve-precedent-chain-queries-for-an-llm-agent-which-architectural-mismatch-is-the-most-fundamental-obstacle-according-to-the-chapter" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. An enterprise team is evaluating whether to extend its existing relational data warehouse to serve precedent-chain queries for an LLM agent. Which architectural mismatch is the most fundamental obstacle, according to the chapter?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-a-cto-argues-we-already-have-a-crm-that-records-every-customer-interaction-why-add-a-separate-context-graph-based-on-the-chapter-which-is-the-most-defensible-structural-counter-argument" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. A CTO argues "we already have a CRM that records every customer interaction — why add a separate context graph?" Based on the chapter, which is the most defensible structural counter-argument?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Annotated References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../13-graph-data-modeling/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    13. Graph Data Modeling
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../14-llm-integration/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    14. Integrating LLMs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../15-building-deploying/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    15. Building and Deploying
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../16-ai-agent-architecture/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    16. AI Agent Architecture
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../17-enterprise-use-cases/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    17. Enterprise Use Cases
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../18-compliance-explainability/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    18. Compliance and Audit
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../19-market-strategy/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    19. Market Strategy
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../20-organizational-adoption/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    20. Organizational Adoption
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../21-data-engineering/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    21. Data Engineering
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../22-security-vector-search/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    22. Security and Vector Search
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../feature-checklist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feature Checklist
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-does-the-chapter-mean-by-current-state-bias-in-enterprise-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. What does the chapter mean by "current state bias" in enterprise systems?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-why-does-the-chapter-call-the-data-warehouse-a-read-path-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Why does the chapter call the data warehouse a "read-path" system?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-what-is-post-hoc-context-capture-and-why-is-it-limited" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. What is "post-hoc context capture" and why is it limited?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-according-to-the-chapter-why-are-ai-agent-platforms-even-though-they-are-close-to-the-decision-moment-and-architected-around-llms-still-unable-to-serve-as-a-context-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. According to the chapter, why are AI agent platforms — even though they are close to the decision moment and architected around LLMs — still unable to serve as a context graph?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-what-is-the-integration-tax-that-the-chapter-describes" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. What is the integration tax that the chapter describes?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-a-crm-holds-customer-relationship-data-an-erp-holds-transaction-data-an-itsm-holds-incident-data-according-to-the-chapter-why-does-cross-silo-decision-context-like-a-customer-escalation-linked-to-a-production-incident-and-a-contract-modification-almost-never-get-recorded-in-any-single-one-of-these-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. A CRM holds customer relationship data; an ERP holds transaction data; an ITSM holds incident data. According to the chapter, why does cross-silo decision context — like a customer escalation linked to a production incident and a contract modification — almost never get recorded in any single one of these systems?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-the-chapter-argues-that-a-purpose-built-context-graph-has-a-write-path-advantage-what-does-this-advantage-allow-it-to-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. The chapter argues that a purpose-built context graph has a "write-path advantage." What does this advantage allow it to do?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-the-chapter-argues-that-the-value-of-a-context-graph-grows-with-the-number-of-decision-traces-it-contains-creating-an-accumulation-dynamic-which-strategic-implication-follows-most-directly" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. The chapter argues that the value of a context graph grows with the number of decision traces it contains, creating an accumulation dynamic. Which strategic implication follows most directly?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-an-enterprise-team-is-evaluating-whether-to-extend-its-existing-relational-data-warehouse-to-serve-precedent-chain-queries-for-an-llm-agent-which-architectural-mismatch-is-the-most-fundamental-obstacle-according-to-the-chapter" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. An enterprise team is evaluating whether to extend its existing relational data warehouse to serve precedent-chain queries for an LLM agent. Which architectural mismatch is the most fundamental obstacle, according to the chapter?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-a-cto-argues-we-already-have-a-crm-that-records-every-customer-interaction-why-add-a-separate-context-graph-based-on-the-chapter-which-is-the-most-defensible-structural-counter-argument" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. A CTO argues "we already have a CRM that records every customer interaction — why add a separate context graph?" Based on the chapter, which is the most defensible structural counter-argument?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/context-graph/blob/main/docs/chapters/12-incumbent-challenges/quiz.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+    </a>
+  
+  
+
+
+<h1 id="quiz-incumbent-challenges-in-building-context-systems">Quiz: Incumbent Challenges in Building Context Systems<a class="headerlink" href="#quiz-incumbent-challenges-in-building-context-systems" title="Permanent link">¶</a></h1>
+<p>Test your understanding of current state bias, the data warehouse gap, AI agent execution path limits, integration tax, data silos, and why purpose-built context graphs create a durable competitive moat.</p>
+<hr>
+<h4 id="1-what-does-the-chapter-mean-by-current-state-bias-in-enterprise-systems">1. What does the chapter mean by "current state bias" in enterprise systems?<a class="headerlink" href="#1-what-does-the-chapter-mean-by-current-state-bias-in-enterprise-systems" title="Permanent link">¶</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>The tendency of LLMs to over-weight recent training data</li>
+<li>The design choice in most enterprise systems to optimize for answering "what is the current state of this entity?" — overwriting prior state when records update, which destroys the historical depth a context graph requires</li>
+<li>A vendor's preference for current customers over prospects</li>
+<li>A bias in differential privacy mechanisms toward current queries</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. Current state bias is the rational design choice to overwrite prior state — efficient for transactional systems, fatal for context graph requirements. The other options describe unrelated concepts.</p>
+<p><strong>Concept Tested:</strong> Current State Bias</p>
+</details>
+<hr>
+<h4 id="2-why-does-the-chapter-call-the-data-warehouse-a-read-path-system">2. Why does the chapter call the data warehouse a "read-path" system?<a class="headerlink" href="#2-why-does-the-chapter-call-the-data-warehouse-a-read-path-system" title="Permanent link">¶</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>Because warehouses are positioned after decisions are made — ingesting outcomes on a scheduled cadence and serving aggregate analytical queries, after the real-time decision context (cross-system synthesis, out-of-band approvals, urgency signals) has already evaporated</li>
+<li>Because warehouses cannot write any data</li>
+<li>Because warehouses require all queries to be in Cypher</li>
+<li>Because warehouses only support semantic similarity search</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>A</strong>. The chapter is explicit: warehouses sit on the read path after the fact. The other options misstate warehouse capabilities or use.</p>
+<p><strong>Concept Tested:</strong> Data Warehouse Gap</p>
+</details>
+<hr>
+<h4 id="3-what-is-post-hoc-context-capture-and-why-is-it-limited">3. What is "post-hoc context capture" and why is it limited?<a class="headerlink" href="#3-what-is-post-hoc-context-capture-and-why-is-it-limited" title="Permanent link">¶</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>A vector indexing technique applied after document ingestion</li>
+<li>A pre-defined schema applied before data is written</li>
+<li>Attempting to reconstruct decision context from outputs after the decision is made — limited because the why (which policy applied, which precedents were cited, who approved informally) is in people's heads, email threads, and conversations that are not preserved in the output artifacts</li>
+<li>A federated query technique used across data lakes</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. The chapter defines post-hoc capture and explains its structural limit: the context that matters most is gone by the time the outputs are observed. The other options describe unrelated mechanisms.</p>
+<p><strong>Concept Tested:</strong> Post-Hoc Context Capture</p>
+</details>
+<hr>
+<h4 id="4-according-to-the-chapter-why-are-ai-agent-platforms-even-though-they-are-close-to-the-decision-moment-and-architected-around-llms-still-unable-to-serve-as-a-context-graph">4. According to the chapter, why are AI agent platforms — even though they are close to the decision moment and architected around LLMs — still unable to serve as a context graph?<a class="headerlink" href="#4-according-to-the-chapter-why-are-ai-agent-platforms-even-though-they-are-close-to-the-decision-moment-and-architected-around-llms-still-unable-to-serve-as-a-context-graph" title="Permanent link">¶</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>Because they execute tasks forward and typically capture only audit-style logs rather than structured, queryable decision-trace graphs; and because they orchestrate over systems of record they do not own, leaving a system-of-record gap</li>
+<li>Because they cannot call any APIs</li>
+<li>Because LLMs are not allowed in agent platforms</li>
+<li>Because they require RDF triplestores</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>A</strong>. The chapter cites both the execution-path limit (logs vs. structured graphs) and the system-of-record gap. The other options misstate platform capabilities.</p>
+<p><strong>Concept Tested:</strong> AI Agent Execution Path</p>
+</details>
+<hr>
+<h4 id="5-what-is-the-integration-tax-that-the-chapter-describes">5. What is the integration tax that the chapter describes?<a class="headerlink" href="#5-what-is-the-integration-tax-that-the-chapter-describes" title="Permanent link">¶</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>A tariff on cross-border data transfers</li>
+<li>A subscription fee charged by graph database vendors</li>
+<li>The accumulated cost of building context graph capability on top of existing systems — including custom data model extensions, write-back APIs, graph query layers, freshness metadata, and lifecycle management — paid again at every upgrade, API change, and migration</li>
+<li>A penalty applied by regulators for using legacy systems</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. The integration tax is the chapter's term for the recurring engineering cost of retrofitting context-graph capability onto incumbent platforms. The other options describe unrelated charges.</p>
+<p><strong>Concept Tested:</strong> Integration Tax</p>
+</details>
+<hr>
+<h4 id="6-a-crm-holds-customer-relationship-data-an-erp-holds-transaction-data-an-itsm-holds-incident-data-according-to-the-chapter-why-does-cross-silo-decision-context-like-a-customer-escalation-linked-to-a-production-incident-and-a-contract-modification-almost-never-get-recorded-in-any-single-one-of-these-systems">6. A CRM holds customer relationship data; an ERP holds transaction data; an ITSM holds incident data. According to the chapter, why does cross-silo decision context — like a customer escalation linked to a production incident and a contract modification — almost never get recorded in any single one of these systems?<a class="headerlink" href="#6-a-crm-holds-customer-relationship-data-an-erp-holds-transaction-data-an-itsm-holds-incident-data-according-to-the-chapter-why-does-cross-silo-decision-context-like-a-customer-escalation-linked-to-a-production-incident-and-a-contract-modification-almost-never-get-recorded-in-any-single-one-of-these-systems" title="Permanent link">¶</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>Because each system is its own silo, with no canonical entity link or write API for decisions that span silos, and the cross-silo decision is owned by no single platform — making a purpose-built context graph the natural place to record it</li>
+<li>Because cross-silo data is illegal to combine</li>
+<li>Because the LLM cannot process more than one source at a time</li>
+<li>Because differential privacy forbids cross-silo joins</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>A</strong>. The chapter explains exactly this: data silos cannot record cross-silo decisions because no silo owns them. The other options misstate technical or legal constraints.</p>
+<p><strong>Concept Tested:</strong> Data Silo</p>
+</details>
+<hr>
+<h4 id="7-the-chapter-argues-that-a-purpose-built-context-graph-has-a-write-path-advantage-what-does-this-advantage-allow-it-to-do">7. The chapter argues that a purpose-built context graph has a "write-path advantage." What does this advantage allow it to do?<a class="headerlink" href="#7-the-chapter-argues-that-a-purpose-built-context-graph-has-a-write-path-advantage-what-does-this-advantage-allow-it-to-do" title="Permanent link">¶</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>Bypass all access control checks</li>
+<li>Replace the CRM, ERP, and ITSM systems entirely</li>
+<li>Receive decision trace write-backs from any source (agents, humans, integrated systems) and instrument any decision point in any workflow, without needing to replace the systems that record the operational outcomes</li>
+<li>Encrypt all decision content automatically</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. The write-path advantage is the ability to capture decision traces from anywhere without owning the system of record. The other options misstate the advantage.</p>
+<p><strong>Concept Tested:</strong> Write-Path Advantage</p>
+</details>
+<hr>
+<h4 id="8-the-chapter-argues-that-the-value-of-a-context-graph-grows-with-the-number-of-decision-traces-it-contains-creating-an-accumulation-dynamic-which-strategic-implication-follows-most-directly">8. The chapter argues that the value of a context graph grows with the number of decision traces it contains, creating an accumulation dynamic. Which strategic implication follows most directly?<a class="headerlink" href="#8-the-chapter-argues-that-the-value-of-a-context-graph-grows-with-the-number-of-decision-traces-it-contains-creating-an-accumulation-dynamic-which-strategic-implication-follows-most-directly" title="Permanent link">¶</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>Starting early — and instrumenting high-volume decision workflows first — creates a compounding competitive moat that late-starting competitors cannot easily close, because precedent depth itself becomes the differentiator</li>
+<li>The system should be evaluated after one week of operation and discarded if precedent coverage is low</li>
+<li>Only one decision workflow should ever be instrumented</li>
+<li>The context graph should be replaced annually to keep it fresh</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>A</strong>. The chapter's strategic argument is exactly this: early start plus high-volume workflows compound to create a durable moat. The other options reflect the "valley of disappointment" misjudgment the chapter warns against.</p>
+<p><strong>Concept Tested:</strong> Competitive Moat</p>
+</details>
+<hr>
+<h4 id="9-an-enterprise-team-is-evaluating-whether-to-extend-its-existing-relational-data-warehouse-to-serve-precedent-chain-queries-for-an-llm-agent-which-architectural-mismatch-is-the-most-fundamental-obstacle-according-to-the-chapter">9. An enterprise team is evaluating whether to extend its existing relational data warehouse to serve precedent-chain queries for an LLM agent. Which architectural mismatch is the most fundamental obstacle, according to the chapter?<a class="headerlink" href="#9-an-enterprise-team-is-evaluating-whether-to-extend-its-existing-relational-data-warehouse-to-serve-precedent-chain-queries-for-an-llm-agent-which-architectural-mismatch-is-the-most-fundamental-obstacle-according-to-the-chapter" title="Permanent link">¶</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>The warehouse cannot store decimal values</li>
+<li>Multi-hop precedent traversal requires graph-native storage to be performant; on a relational warehouse it requires recursive CTEs or application-layer recursion whose latency accumulates with every hop, making sub-second context retrieval impractical</li>
+<li>The warehouse cannot accept JSON input</li>
+<li>The warehouse requires DBA approval for every query</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. The chapter highlights graph-native storage as one of the four structural advantages of a purpose-built context graph; relational warehouses cannot match it without rebuilding the storage layer. The other options misstate warehouse limitations.</p>
+<p><strong>Concept Tested:</strong> Read-Path Limitation</p>
+</details>
+<hr>
+<h4 id="10-a-cto-argues-we-already-have-a-crm-that-records-every-customer-interaction-why-add-a-separate-context-graph-based-on-the-chapter-which-is-the-most-defensible-structural-counter-argument">10. A CTO argues "we already have a CRM that records every customer interaction — why add a separate context graph?" Based on the chapter, which is the most defensible structural counter-argument?<a class="headerlink" href="#10-a-cto-argues-we-already-have-a-crm-that-records-every-customer-interaction-why-add-a-separate-context-graph-based-on-the-chapter-which-is-the-most-defensible-structural-counter-argument" title="Permanent link">¶</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>CRM systems are too expensive to extend, so a context graph is always cheaper</li>
+<li>The CRM cannot store more than 1,000 customers</li>
+<li>The CRM does not allow Cypher queries</li>
+<li>The CRM is built around current-state records and a relational schema for transactional performance; meeting context-graph requirements (real-time trace capture, graph-native traversal, cross-silo linking, temporal versioning) would force fundamental redesign of its data layer — and even then it would still not own the cross-silo decisions that span CRM, ERP, and ITSM</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>D</strong>. The chapter's structural analysis is exactly this: rational CRM design conflicts with context-graph requirements, and cross-silo decisions are owned by no single system. The other options either misstate facts or are economic side issues rather than structural arguments.</p>
+<p><strong>Concept Tested:</strong> Incumbent Architecture Constraint</p>
+</details>
+<hr>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Content">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Content
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../references/" class="md-footer__link md-footer__link--next" aria-label="Next: Annotated References">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Annotated References
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2026 Dan Mccreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.action.edit", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../../js/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

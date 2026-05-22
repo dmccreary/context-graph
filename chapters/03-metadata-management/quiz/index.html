@@ -1,0 +1,2525 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An interactive intelligent textbook on the contact graph and how the contact graphs helps organization use LLMs cost effectively">
+      
+      
+        <meta name="author" content="Dan Mccreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/context-graph/chapters/03-metadata-management/quiz/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../references/">
+      
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Quiz - Context Graph</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../../css/mascot.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-7RZYM87NB1"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-7RZYM87NB1",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-7RZYM87NB1",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta property="og:type" content="website">
+      
+        <meta property="og:title" content="Quiz - Context Graph">
+      
+        <meta property="og:description" content="An interactive intelligent textbook on the contact graph and how the contact graphs helps organization use LLMs cost effectively">
+      
+        <meta property="og:image" content="https://dmccreary.github.io/context-graph/assets/images/social/chapters/03-metadata-management/quiz.png">
+      
+        <meta property="og:image:type" content="image/png">
+      
+        <meta property="og:image:width" content="1200">
+      
+        <meta property="og:image:height" content="630">
+      
+        <meta property="og:url" content="https://dmccreary.github.io/context-graph/chapters/03-metadata-management/quiz/">
+      
+        <meta name="twitter:card" content="summary_large_image">
+      
+        <meta name="twitter:title" content="Quiz - Context Graph">
+      
+        <meta name="twitter:description" content="An interactive intelligent textbook on the contact graph and how the contact graphs helps organization use LLMs cost effectively">
+      
+        <meta name="twitter:image" content="https://dmccreary.github.io/context-graph/assets/images/social/chapters/03-metadata-management/quiz.png">
+      
+    
+    
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#quiz-metadata-management-and-data-governance" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Context Graph" class="md-header__button md-logo" aria-label="Context Graph" data-md-component="logo">
+      
+  <img src="../../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Context Graph
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Quiz
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/context-graph" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Context Graph" class="md-nav__button md-logo" aria-label="Context Graph" data-md-component="logo">
+      
+  <img src="../../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    Context Graph
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/context-graph" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../01-knowledge-graphs-lpg/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    1. Knowledge Graphs and LPGs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../02-semantic-layers/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    2. Semantic Layers
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    3. Metadata Management
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            3. Metadata Management
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Quiz
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Quiz
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-is-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. What is metadata?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-which-type-of-metadata-answers-the-question-what-does-this-field-mean-in-business-terms-and-who-owns-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Which type of metadata answers the question "what does this field mean in business terms, and who owns it?"
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-which-data-quality-dimension-measures-whether-the-same-fact-is-represented-the-same-way-across-all-systems-that-store-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Which data quality dimension measures whether the same fact is represented the same way across all systems that store it?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-in-a-data-governance-model-what-is-the-role-of-a-data-steward" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. In a data governance model, what is the role of a data steward?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-what-is-the-main-difference-between-passive-metadata-cataloging-and-active-metadata-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. What is the main difference between passive metadata cataloging and active metadata management?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-a-customer-dataset-is-classified-as-restricted-but-only-two-of-its-forty-columns-salary-ssn-actually-carry-sensitive-values-according-to-the-chapter-what-is-the-recommended-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. A customer dataset is classified as Restricted, but only two of its forty columns (salary, SSN) actually carry sensitive values. According to the chapter, what is the recommended approach?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-an-llm-agent-requests-data-from-a-sensitive-dataset-through-a-context-graph-mediated-retrieval-pipeline-what-is-the-intended-role-of-the-context-graph-in-this-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. An LLM agent requests data from a sensitive dataset through a context-graph-mediated retrieval pipeline. What is the intended role of the context graph in this request?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-a-data-analyst-needs-to-find-purchasing-patterns-from-a-customer-table-but-does-not-need-to-see-individual-names-or-phone-numbers-which-technique-replaces-sensitive-values-with-structurally-preserving-substitutes-such-as-xxx-xxx-1234-while-remaining-reversible-for-privileged-processes" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. A data analyst needs to find purchasing patterns from a customer table but does not need to see individual names or phone numbers. Which technique replaces sensitive values with structurally-preserving substitutes (such as XXX-XXX-1234) while remaining reversible for privileged processes?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-why-is-differential-privacy-useful-even-when-an-attacker-has-access-only-to-aggregate-query-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Why is differential privacy useful even when an attacker has access only to aggregate query results?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-which-statement-best-describes-the-relationship-between-a-data-governance-framework-and-a-context-graph-used-to-ground-llm-retrieval" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Which statement best describes the relationship between a data governance framework and a context graph used to ground LLM retrieval?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Annotated References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../04-enterprise-knowledge-graphs/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    4. Enterprise Knowledge Graphs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../05-graph-theory-algorithms/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    5. Graph Theory and Algorithms
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../06-metadata-registries/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    6. Metadata Registries
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../07-process-mining-lineage/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    7. Process Mining and Lineage
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../08-context-problem/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    8. The Context Problem
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../09-context-graph-definition/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    9. What a Context Graph Is
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../10-llm-ai-foundations/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    10. LLM and AI Foundations
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../11-decision-traces/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    11. Decision Traces
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../12-incumbent-challenges/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    12. Incumbent Challenges
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../13-graph-data-modeling/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    13. Graph Data Modeling
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../14-llm-integration/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    14. Integrating LLMs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../15-building-deploying/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    15. Building and Deploying
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../16-ai-agent-architecture/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    16. AI Agent Architecture
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../17-enterprise-use-cases/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    17. Enterprise Use Cases
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../18-compliance-explainability/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    18. Compliance and Audit
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../19-market-strategy/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    19. Market Strategy
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../20-organizational-adoption/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    20. Organizational Adoption
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../21-data-engineering/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    21. Data Engineering
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../22-security-vector-search/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    22. Security and Vector Search
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../feature-checklist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feature Checklist
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-is-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. What is metadata?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-which-type-of-metadata-answers-the-question-what-does-this-field-mean-in-business-terms-and-who-owns-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Which type of metadata answers the question "what does this field mean in business terms, and who owns it?"
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-which-data-quality-dimension-measures-whether-the-same-fact-is-represented-the-same-way-across-all-systems-that-store-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Which data quality dimension measures whether the same fact is represented the same way across all systems that store it?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-in-a-data-governance-model-what-is-the-role-of-a-data-steward" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. In a data governance model, what is the role of a data steward?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-what-is-the-main-difference-between-passive-metadata-cataloging-and-active-metadata-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. What is the main difference between passive metadata cataloging and active metadata management?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-a-customer-dataset-is-classified-as-restricted-but-only-two-of-its-forty-columns-salary-ssn-actually-carry-sensitive-values-according-to-the-chapter-what-is-the-recommended-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. A customer dataset is classified as Restricted, but only two of its forty columns (salary, SSN) actually carry sensitive values. According to the chapter, what is the recommended approach?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-an-llm-agent-requests-data-from-a-sensitive-dataset-through-a-context-graph-mediated-retrieval-pipeline-what-is-the-intended-role-of-the-context-graph-in-this-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. An LLM agent requests data from a sensitive dataset through a context-graph-mediated retrieval pipeline. What is the intended role of the context graph in this request?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-a-data-analyst-needs-to-find-purchasing-patterns-from-a-customer-table-but-does-not-need-to-see-individual-names-or-phone-numbers-which-technique-replaces-sensitive-values-with-structurally-preserving-substitutes-such-as-xxx-xxx-1234-while-remaining-reversible-for-privileged-processes" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. A data analyst needs to find purchasing patterns from a customer table but does not need to see individual names or phone numbers. Which technique replaces sensitive values with structurally-preserving substitutes (such as XXX-XXX-1234) while remaining reversible for privileged processes?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-why-is-differential-privacy-useful-even-when-an-attacker-has-access-only-to-aggregate-query-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Why is differential privacy useful even when an attacker has access only to aggregate query results?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-which-statement-best-describes-the-relationship-between-a-data-governance-framework-and-a-context-graph-used-to-ground-llm-retrieval" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Which statement best describes the relationship between a data governance framework and a context graph used to ground LLM retrieval?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/context-graph/blob/main/docs/chapters/03-metadata-management/quiz.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+    </a>
+  
+  
+
+
+<h1 id="quiz-metadata-management-and-data-governance">Quiz: Metadata Management and Data Governance<a class="headerlink" href="#quiz-metadata-management-and-data-governance" title="Permanent link">¶</a></h1>
+<p>Test your understanding of the metadata types, quality dimensions, stewardship roles, and protective techniques that make enterprise data trustworthy for AI systems.</p>
+<hr>
+<h4 id="1-what-is-metadata">1. What is metadata?<a class="headerlink" href="#1-what-is-metadata" title="Permanent link">¶</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>The actual values stored inside a database column</li>
+<li>The encryption key used to protect a sensitive dataset</li>
+<li>Structured information that describes other data — its meaning, origin, quality, ownership, and permissible uses</li>
+<li>A compressed serialization format for transporting graph data</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. Metadata is the structured information <em>about</em> other data. It captures meaning, origin, quality, ownership, and how the data may be used. Option A confuses data with metadata. Option B describes a security artifact, not metadata. Option D describes a serialization format. Only C matches the chapter's definition.</p>
+<p><strong>Concept Tested:</strong> Metadata</p>
+</details>
+<hr>
+<h4 id="2-which-type-of-metadata-answers-the-question-what-does-this-field-mean-in-business-terms-and-who-owns-it">2. Which type of metadata answers the question "what does this field mean in business terms, and who owns it?"<a class="headerlink" href="#2-which-type-of-metadata-answers-the-question-what-does-this-field-mean-in-business-terms-and-who-owns-it" title="Permanent link">¶</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>Technical metadata</li>
+<li>Business metadata</li>
+<li>Operational metadata</li>
+<li>Anonymized metadata</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. Business metadata captures semantic meaning, ownership, permissible values, and business-concept relationships. Technical metadata (A) describes physical structure such as data types and indexes. Operational metadata (C) records dynamic state like freshness and usage. "Anonymized metadata" (D) is not a category defined in this chapter.</p>
+<p><strong>Concept Tested:</strong> Business Metadata</p>
+</details>
+<hr>
+<h4 id="3-which-data-quality-dimension-measures-whether-the-same-fact-is-represented-the-same-way-across-all-systems-that-store-it">3. Which data quality dimension measures whether the same fact is represented the same way across all systems that store it?<a class="headerlink" href="#3-which-data-quality-dimension-measures-whether-the-same-fact-is-represented-the-same-way-across-all-systems-that-store-it" title="Permanent link">¶</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>Data completeness</li>
+<li>Data accuracy</li>
+<li>Data consistency</li>
+<li>Data timeliness</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. Data consistency asks whether the same fact appears identically across every system holding it — for example, whether the CRM and billing system agree on a contract start date. Completeness (A) is about presence of values. Accuracy (B) is about correctness against real-world truth. Timeliness (D) is about freshness. Only consistency is about cross-system agreement.</p>
+<p><strong>Concept Tested:</strong> Data Consistency</p>
+</details>
+<hr>
+<h4 id="4-in-a-data-governance-model-what-is-the-role-of-a-data-steward">4. In a data governance model, what is the role of a data steward?<a class="headerlink" href="#4-in-a-data-governance-model-what-is-the-role-of-a-data-steward" title="Permanent link">¶</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>The executive who is ultimately accountable for what a dataset means</li>
+<li>The cross-functional body that sets enterprise-wide data policy</li>
+<li>The upstream system that generates the data records</li>
+<li>The person who does the hands-on work of maintaining metadata quality — reviewing definitions, investigating quality alerts, coordinating with producers</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>D</strong>. The data steward performs the day-to-day operational work of maintaining metadata. Option A describes the data owner. Option B describes the governance board. Option C describes the data producer. Stewardship and ownership are complementary: the owner sets policy, the steward executes it.</p>
+<p><strong>Concept Tested:</strong> Data Stewardship</p>
+</details>
+<hr>
+<h4 id="5-what-is-the-main-difference-between-passive-metadata-cataloging-and-active-metadata-management">5. What is the main difference between passive metadata cataloging and active metadata management?<a class="headerlink" href="#5-what-is-the-main-difference-between-passive-metadata-cataloging-and-active-metadata-management" title="Permanent link">¶</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>Passive cataloging continuously monitors data infrastructure; active management is a one-time documentation project</li>
+<li>Passive cataloging collects metadata once and relies on humans to update it, while active management continuously monitors infrastructure and propagates changes automatically</li>
+<li>Passive cataloging uses graph databases; active management uses relational databases</li>
+<li>There is no functional difference between the two approaches</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. Passive cataloging treats metadata as a one-time documentation effort that humans maintain, leading to inevitable staleness. Active management uses continuous monitoring, automated discovery, and propagation. Option A reverses the two. Option C invents a database distinction. Option D ignores the substantial reliability gap that matters for AI systems consuming the metadata.</p>
+<p><strong>Concept Tested:</strong> Active Metadata Management</p>
+</details>
+<hr>
+<h4 id="6-a-customer-dataset-is-classified-as-restricted-but-only-two-of-its-forty-columns-salary-ssn-actually-carry-sensitive-values-according-to-the-chapter-what-is-the-recommended-approach">6. A customer dataset is classified as Restricted, but only two of its forty columns (salary, SSN) actually carry sensitive values. According to the chapter, what is the recommended approach?<a class="headerlink" href="#6-a-customer-dataset-is-classified-as-restricted-but-only-two-of-its-forty-columns-salary-ssn-actually-carry-sensitive-values-according-to-the-chapter-what-is-the-recommended-approach" title="Permanent link">¶</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>Classify all forty columns as Restricted to be safe</li>
+<li>Move the two sensitive columns to a separate physical table and leave the rest unclassified</li>
+<li>Apply column-level tags so the sensitive columns are protected while legitimate consumers can still retrieve the other thirty-eight non-sensitive columns</li>
+<li>Encrypt the entire table at rest and grant blanket access to all forty columns</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. Tagging at the column level is the recommended granularity — it enables column-level access control so sensitive fields remain protected without locking legitimate consumers out of the non-sensitive ones. Option A is the over-classification mistake the chapter warns against. Option B is disruptive and unnecessary. Option D defeats the purpose of classification entirely.</p>
+<p><strong>Concept Tested:</strong> Metadata Tagging</p>
+</details>
+<hr>
+<h4 id="7-an-llm-agent-requests-data-from-a-sensitive-dataset-through-a-context-graph-mediated-retrieval-pipeline-what-is-the-intended-role-of-the-context-graph-in-this-request">7. An LLM agent requests data from a sensitive dataset through a context-graph-mediated retrieval pipeline. What is the intended role of the context graph in this request?<a class="headerlink" href="#7-an-llm-agent-requests-data-from-a-sensitive-dataset-through-a-context-graph-mediated-retrieval-pipeline-what-is-the-intended-role-of-the-context-graph-in-this-request" title="Permanent link">¶</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>To evaluate the agent's identity, the resource's classification, and the access control policy in a single traversal — returning only the authorized subset (or rejecting the request)</li>
+<li>To encrypt the data before it leaves the agent's machine</li>
+<li>To rewrite the agent's query into Cypher syntax automatically</li>
+<li>To replace the underlying database with a vector index</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>A</strong>. The context graph serves as a policy enforcement point: it evaluates identity, classification, and access policy together in one traversal and either returns the authorized subset or rejects the request. Option B describes encryption, which is a different layer. Option C describes a query-translation utility. Option D misstates what a context graph does.</p>
+<p><strong>Concept Tested:</strong> Access Control</p>
+</details>
+<hr>
+<h4 id="8-a-data-analyst-needs-to-find-purchasing-patterns-from-a-customer-table-but-does-not-need-to-see-individual-names-or-phone-numbers-which-technique-replaces-sensitive-values-with-structurally-preserving-substitutes-such-as-xxx-xxx-1234-while-remaining-reversible-for-privileged-processes">8. A data analyst needs to find purchasing patterns from a customer table but does not need to see individual names or phone numbers. Which technique replaces sensitive values with structurally-preserving substitutes (such as <code>XXX-XXX-1234</code>) while remaining reversible for privileged processes?<a class="headerlink" href="#8-a-data-analyst-needs-to-find-purchasing-patterns-from-a-customer-table-but-does-not-need-to-see-individual-names-or-phone-numbers-which-technique-replaces-sensitive-values-with-structurally-preserving-substitutes-such-as-xxx-xxx-1234-while-remaining-reversible-for-privileged-processes" title="Permanent link">¶</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>Data anonymization</li>
+<li>Differential privacy</li>
+<li>Access control</li>
+<li>Data masking</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>D</strong>. Data masking replaces sensitive values with substitutes that preserve structural properties and is typically reversible. Anonymization (A) is stronger and intended to be irreversible. Differential privacy (B) protects aggregates by adding noise, not individual values. Access control (C) governs <em>who</em> can see data, not how values are transformed.</p>
+<p><strong>Concept Tested:</strong> Data Masking</p>
+</details>
+<hr>
+<h4 id="9-why-is-differential-privacy-useful-even-when-an-attacker-has-access-only-to-aggregate-query-results">9. Why is differential privacy useful even when an attacker has access only to aggregate query results?<a class="headerlink" href="#9-why-is-differential-privacy-useful-even-when-an-attacker-has-access-only-to-aggregate-query-results" title="Permanent link">¶</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>It encrypts the database files at rest so attackers cannot read them</li>
+<li>It prevents the database from returning more than ten rows per query</li>
+<li>It adds carefully calibrated random noise so that an attacker cannot infer any individual's data, even if they already know almost everyone else's</li>
+<li>It removes all personally identifiable columns from query results</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. Differential privacy adds noise calibrated by the epsilon privacy budget so the output distribution changes only slightly when any individual is added or removed. This blocks the algebraic-subtraction attack on aggregates. Encryption (A) is unrelated. Row limits (B) do not prevent inference attacks. Stripping PII columns (D) does not protect against re-identification via aggregates.</p>
+<p><strong>Concept Tested:</strong> Differential Privacy</p>
+</details>
+<hr>
+<h4 id="10-which-statement-best-describes-the-relationship-between-a-data-governance-framework-and-a-context-graph-used-to-ground-llm-retrieval">10. Which statement best describes the relationship between a data governance framework and a context graph used to ground LLM retrieval?<a class="headerlink" href="#10-which-statement-best-describes-the-relationship-between-a-data-governance-framework-and-a-context-graph-used-to-ground-llm-retrieval" title="Permanent link">¶</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>The context graph replaces the governance framework — once a graph exists, governance is no longer needed</li>
+<li>The governance framework populates the context graph with accurate, current metadata; the context graph is the runtime infrastructure that lets LLMs ask and answer governance questions</li>
+<li>The governance framework only applies to data warehouses; context graphs only apply to vector stores</li>
+<li>They are unrelated — governance is an organizational concern, while context graphs are purely a technical optimization</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. The governance framework supplies the policies, roles, and processes that populate the context graph; the context graph is the runtime substrate that lets LLMs evaluate ownership, classification, freshness, and quality at retrieval time. Option A inverts the dependency. Option C arbitrarily restricts both. Option D ignores the chapter's central argument that they are tightly coupled.</p>
+<p><strong>Concept Tested:</strong> Data Governance Framework</p>
+</details>
+<hr>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Content">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Content
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../references/" class="md-footer__link md-footer__link--next" aria-label="Next: Annotated References">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Annotated References
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2026 Dan Mccreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.action.edit", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../../js/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

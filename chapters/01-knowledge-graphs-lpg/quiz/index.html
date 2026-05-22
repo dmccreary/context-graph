@@ -1,0 +1,2525 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An interactive intelligent textbook on the contact graph and how the contact graphs helps organization use LLMs cost effectively">
+      
+      
+        <meta name="author" content="Dan Mccreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/context-graph/chapters/01-knowledge-graphs-lpg/quiz/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../references/">
+      
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Quiz - Context Graph</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../../css/mascot.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-7RZYM87NB1"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-7RZYM87NB1",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-7RZYM87NB1",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta property="og:type" content="website">
+      
+        <meta property="og:title" content="Quiz - Context Graph">
+      
+        <meta property="og:description" content="An interactive intelligent textbook on the contact graph and how the contact graphs helps organization use LLMs cost effectively">
+      
+        <meta property="og:image" content="https://dmccreary.github.io/context-graph/assets/images/social/chapters/01-knowledge-graphs-lpg/quiz.png">
+      
+        <meta property="og:image:type" content="image/png">
+      
+        <meta property="og:image:width" content="1200">
+      
+        <meta property="og:image:height" content="630">
+      
+        <meta property="og:url" content="https://dmccreary.github.io/context-graph/chapters/01-knowledge-graphs-lpg/quiz/">
+      
+        <meta name="twitter:card" content="summary_large_image">
+      
+        <meta name="twitter:title" content="Quiz - Context Graph">
+      
+        <meta name="twitter:description" content="An interactive intelligent textbook on the contact graph and how the contact graphs helps organization use LLMs cost effectively">
+      
+        <meta name="twitter:image" content="https://dmccreary.github.io/context-graph/assets/images/social/chapters/01-knowledge-graphs-lpg/quiz.png">
+      
+    
+    
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#quiz-knowledge-graphs-and-labeled-property-graphs" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Context Graph" class="md-header__button md-logo" aria-label="Context Graph" data-md-component="logo">
+      
+  <img src="../../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Context Graph
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Quiz
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/context-graph" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Context Graph" class="md-nav__button md-logo" aria-label="Context Graph" data-md-component="logo">
+      
+  <img src="../../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    Context Graph
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/context-graph" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    1. Knowledge Graphs and LPGs
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            1. Knowledge Graphs and LPGs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Quiz
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Quiz
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-are-the-two-primitive-types-from-which-every-graph-is-constructed" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. What are the two primitive types from which every graph is constructed?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-which-statement-best-defines-a-node-label-in-the-lpg-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Which statement best defines a node label in the LPG model?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-in-a-labeled-property-graph-where-do-edge-properties-live" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. In a Labeled Property Graph, where do edge properties live?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-what-is-index-free-adjacency" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. What is index-free adjacency?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-why-is-the-closed-world-assumption-important-for-enterprise-context-graphs" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Why is the closed world assumption important for enterprise context graphs?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-which-cypher-pattern-correctly-matches-every-supplier-that-supplies-a-product-stocked-in-a-warehouse" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Which Cypher pattern correctly matches every Supplier that supplies a Product stocked in a Warehouse?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-a-compliance-officer-asks-for-the-complete-sequence-of-approvals-including-approver-names-and-timestamps-that-authorized-a-2m-contract-which-graph-operation-produces-this-answer" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. A compliance officer asks for "the complete sequence of approvals — including approver names and timestamps — that authorized a $2M contract." Which graph operation produces this answer?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-why-does-rdf-struggle-to-scale-for-enterprise-multi-hop-queries-with-edge-attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Why does RDF struggle to scale for enterprise multi-hop queries with edge attributes?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-how-do-knowledge-graphs-and-vector-stores-differ-in-the-type-of-question-they-best-answer" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. How do knowledge graphs and vector stores differ in the type of question they best answer?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-an-enterprise-team-is-choosing-a-serialization-format-to-export-an-lpg-into-a-modern-rest-based-data-pipeline-that-already-processes-json-which-format-is-the-natural-choice" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. An enterprise team is choosing a serialization format to export an LPG into a modern REST-based data pipeline that already processes JSON. Which format is the natural choice?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Annotated References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../02-semantic-layers/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    2. Semantic Layers
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../03-metadata-management/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    3. Metadata Management
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../04-enterprise-knowledge-graphs/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    4. Enterprise Knowledge Graphs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../05-graph-theory-algorithms/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    5. Graph Theory and Algorithms
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../06-metadata-registries/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    6. Metadata Registries
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../07-process-mining-lineage/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    7. Process Mining and Lineage
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../08-context-problem/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    8. The Context Problem
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../09-context-graph-definition/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    9. What a Context Graph Is
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../10-llm-ai-foundations/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    10. LLM and AI Foundations
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../11-decision-traces/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    11. Decision Traces
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../12-incumbent-challenges/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    12. Incumbent Challenges
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../13-graph-data-modeling/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    13. Graph Data Modeling
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../14-llm-integration/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    14. Integrating LLMs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../15-building-deploying/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    15. Building and Deploying
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../16-ai-agent-architecture/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    16. AI Agent Architecture
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../17-enterprise-use-cases/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    17. Enterprise Use Cases
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../18-compliance-explainability/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    18. Compliance and Audit
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../19-market-strategy/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    19. Market Strategy
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../20-organizational-adoption/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    20. Organizational Adoption
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../21-data-engineering/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    21. Data Engineering
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../22-security-vector-search/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    22. Security and Vector Search
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../feature-checklist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feature Checklist
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-are-the-two-primitive-types-from-which-every-graph-is-constructed" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. What are the two primitive types from which every graph is constructed?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-which-statement-best-defines-a-node-label-in-the-lpg-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Which statement best defines a node label in the LPG model?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-in-a-labeled-property-graph-where-do-edge-properties-live" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. In a Labeled Property Graph, where do edge properties live?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-what-is-index-free-adjacency" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. What is index-free adjacency?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-why-is-the-closed-world-assumption-important-for-enterprise-context-graphs" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Why is the closed world assumption important for enterprise context graphs?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-which-cypher-pattern-correctly-matches-every-supplier-that-supplies-a-product-stocked-in-a-warehouse" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Which Cypher pattern correctly matches every Supplier that supplies a Product stocked in a Warehouse?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-a-compliance-officer-asks-for-the-complete-sequence-of-approvals-including-approver-names-and-timestamps-that-authorized-a-2m-contract-which-graph-operation-produces-this-answer" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. A compliance officer asks for "the complete sequence of approvals — including approver names and timestamps — that authorized a $2M contract." Which graph operation produces this answer?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-why-does-rdf-struggle-to-scale-for-enterprise-multi-hop-queries-with-edge-attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Why does RDF struggle to scale for enterprise multi-hop queries with edge attributes?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-how-do-knowledge-graphs-and-vector-stores-differ-in-the-type-of-question-they-best-answer" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. How do knowledge graphs and vector stores differ in the type of question they best answer?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-an-enterprise-team-is-choosing-a-serialization-format-to-export-an-lpg-into-a-modern-rest-based-data-pipeline-that-already-processes-json-which-format-is-the-natural-choice" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. An enterprise team is choosing a serialization format to export an LPG into a modern REST-based data pipeline that already processes JSON. Which format is the natural choice?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/context-graph/blob/main/docs/chapters/01-knowledge-graphs-lpg/quiz.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+    </a>
+  
+  
+
+
+<h1 id="quiz-knowledge-graphs-and-labeled-property-graphs">Quiz: Knowledge Graphs and Labeled Property Graphs<a class="headerlink" href="#quiz-knowledge-graphs-and-labeled-property-graphs" title="Permanent link">¶</a></h1>
+<p>Test your understanding of the Labeled Property Graph model, its core vocabulary, and how it compares to RDF, relational, and vector store alternatives with these review questions.</p>
+<hr>
+<h4 id="1-what-are-the-two-primitive-types-from-which-every-graph-is-constructed">1. What are the two primitive types from which every graph is constructed?<a class="headerlink" href="#1-what-are-the-two-primitive-types-from-which-every-graph-is-constructed" title="Permanent link">¶</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>Nodes and edges</li>
+<li>Tables and columns</li>
+<li>Triples and predicates</li>
+<li>Vectors and embeddings</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>A</strong>. Every graph consists of exactly two primitives: nodes (entities with identity) and edges (directed relationships between nodes). Tables and columns describe the relational model. Triples and predicates describe RDF. Vectors and embeddings describe vector stores. Only nodes and edges form the structural foundation of the Labeled Property Graph model that this book builds on.</p>
+<p><strong>Concept Tested:</strong> Node and Edge</p>
+</details>
+<hr>
+<h4 id="2-which-statement-best-defines-a-node-label-in-the-lpg-model">2. Which statement best defines a node label in the LPG model?<a class="headerlink" href="#2-which-statement-best-defines-a-node-label-in-the-lpg-model" title="Permanent link">¶</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>A unique identifier that distinguishes one node from every other node in the graph</li>
+<li>A category tag attached to a node that communicates its semantic role and enables efficient filtering</li>
+<li>A pointer that stores the physical address of the node's neighbors</li>
+<li>A property whose value must be drawn from a fixed enumeration declared in the schema</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. A node label is a category tag (such as <code>Supplier</code> or <code>Order</code>) that communicates the semantic role of the node and lets the database scan only nodes of that type rather than the entire graph. Unique identifiers are separate properties, not labels. Physical pointers are a storage-engine concept (index-free adjacency). Enumerations are schema constraints on property values, not labels themselves.</p>
+<p><strong>Concept Tested:</strong> Node Label</p>
+</details>
+<hr>
+<h4 id="3-in-a-labeled-property-graph-where-do-edge-properties-live">3. In a Labeled Property Graph, where do edge properties live?<a class="headerlink" href="#3-in-a-labeled-property-graph-where-do-edge-properties-live" title="Permanent link">¶</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>In a separate junction table joined to the edge at query time</li>
+<li>In a reified blank-node structure attached to the relationship</li>
+<li>Directly on the edge itself as first-class key-value attributes</li>
+<li>Only on the two endpoint nodes, never on the edge</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. The LPG model treats edge properties as first-class key-value attributes that live directly on the edge object. This means a query that traverses the edge can retrieve its properties in the same step. Junction tables are the relational analogue. Blank-node reification is the RDF workaround for the fact that plain triples cannot carry properties. Storing relationship attributes only on endpoint nodes would lose the semantic association.</p>
+<p><strong>Concept Tested:</strong> Graph Property</p>
+</details>
+<hr>
+<h4 id="4-what-is-index-free-adjacency">4. What is index-free adjacency?<a class="headerlink" href="#4-what-is-index-free-adjacency" title="Permanent link">¶</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>A schema design that eliminates the need for any indexes in the database</li>
+<li>A storage architecture where edges are physical pointers to endpoint nodes, making each hop a constant-time pointer dereference</li>
+<li>A query optimization that caches join results across multiple sessions</li>
+<li>A property of vector stores that allows approximate nearest-neighbor search without a search tree</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. Index-free adjacency means relationships are stored as direct physical pointers to their endpoint nodes, so following an edge costs the same regardless of graph size. Native graph databases still use indexes to locate entry-point nodes; the term refers specifically to edge traversal, not to a database with no indexes at all. The other options describe unrelated mechanisms.</p>
+<p><strong>Concept Tested:</strong> Graph Database</p>
+</details>
+<hr>
+<h4 id="5-why-is-the-closed-world-assumption-important-for-enterprise-context-graphs">5. Why is the closed world assumption important for enterprise context graphs?<a class="headerlink" href="#5-why-is-the-closed-world-assumption-important-for-enterprise-context-graphs" title="Permanent link">¶</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>It allows multiple autonomous knowledge graphs to be merged without conflict</li>
+<li>It guarantees that every node in the graph carries at least one label</li>
+<li>It ensures that a "not found" query result can be safely interpreted as "not true," enabling reliable automated decisions</li>
+<li>It forces all queries to scan the entire graph before returning a negative result</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. Under the closed world assumption, the absence of a fact means the fact is false — so a compliance query that returns no matching approval can be treated as "not approved." This is essential for automated decision systems. Option A actually describes the open world assumption of RDF. The other options misstate what the assumption does.</p>
+<p><strong>Concept Tested:</strong> Closed World Assumption</p>
+</details>
+<hr>
+<h4 id="6-which-cypher-pattern-correctly-matches-every-supplier-that-supplies-a-product-stocked-in-a-warehouse">6. Which Cypher pattern correctly matches every Supplier that supplies a Product stocked in a Warehouse?<a class="headerlink" href="#6-which-cypher-pattern-correctly-matches-every-supplier-that-supplies-a-product-stocked-in-a-warehouse" title="Permanent link">¶</a></h4>
+<div class="upper-alpha">
+<ol>
+<li><code>SELECT * FROM Supplier JOIN Product JOIN Warehouse</code></li>
+<li><code>MATCH (s:Supplier)-[:SUPPLIES]-&gt;(p:Product)&lt;-[:STOCKS]-(w:Warehouse) RETURN s, p, w</code></li>
+<li><code>FIND Supplier WHERE EXISTS Product WHERE EXISTS Warehouse</code></li>
+<li><code>&lt;Supplier&gt; &lt;supplies&gt; &lt;Product&gt; . &lt;Warehouse&gt; &lt;stocks&gt; &lt;Product&gt;</code></li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. Cypher uses ASCII-art notation — parentheses for nodes, brackets for edge types, and arrows for direction. The pattern reads "a Supplier supplies a Product that is stocked by a Warehouse." Option A is SQL. Option C is invented pseudo-syntax. Option D is SPARQL/RDF triple notation, not Cypher. Only Cypher expresses the multi-hop pattern as a single readable path.</p>
+<p><strong>Concept Tested:</strong> Cypher Query Language</p>
+</details>
+<hr>
+<h4 id="7-a-compliance-officer-asks-for-the-complete-sequence-of-approvals-including-approver-names-and-timestamps-that-authorized-a-2m-contract-which-graph-operation-produces-this-answer">7. A compliance officer asks for "the complete sequence of approvals — including approver names and timestamps — that authorized a $2M contract." Which graph operation produces this answer?<a class="headerlink" href="#7-a-compliance-officer-asks-for-the-complete-sequence-of-approvals-including-approver-names-and-timestamps-that-authorized-a-2m-contract-which-graph-operation-produces-this-answer" title="Permanent link">¶</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>A graph algorithm such as PageRank</li>
+<li>A single-node lookup using a property index</li>
+<li>A path query that returns the ordered sequence of nodes and edges between two endpoints</li>
+<li>A vector similarity search across approval documents</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. The answer required is not a set of matching nodes but the path itself — the ordered chain of approval edges with their properties. Cypher's variable-length path syntax returns this naturally. PageRank computes node influence, not chains. A single-node lookup cannot reconstruct a multi-step chain. Vector similarity finds semantically related text but not causal sequences.</p>
+<p><strong>Concept Tested:</strong> Path Query</p>
+</details>
+<hr>
+<h4 id="8-why-does-rdf-struggle-to-scale-for-enterprise-multi-hop-queries-with-edge-attributes">8. Why does RDF struggle to scale for enterprise multi-hop queries with edge attributes?<a class="headerlink" href="#8-why-does-rdf-struggle-to-scale-for-enterprise-multi-hop-queries-with-edge-attributes" title="Permanent link">¶</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>SPARQL cannot express any joins between triples</li>
+<li>RDF cannot be serialized for transport between systems</li>
+<li>RDF stores can only hold a few thousand triples before performance collapses</li>
+<li>Plain RDF triples have no properties, so every edge attribute requires reification into multiple additional triples and a blank node</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>D</strong>. Plain RDF triples are subject-predicate-object only — they have no slot for properties on the relationship. Encoding even one edge attribute like <code>lead_time_days: 14</code> requires reifying the relationship into four or more triples plus a blank node, producing verbose graphs that are slow to store and query at scale. SPARQL does support joins, RDF has multiple serialization formats, and RDF stores scale to tens of millions of triples — well beyond a few thousand.</p>
+<p><strong>Concept Tested:</strong> RDF Lacks Scalability</p>
+</details>
+<hr>
+<h4 id="9-how-do-knowledge-graphs-and-vector-stores-differ-in-the-type-of-question-they-best-answer">9. How do knowledge graphs and vector stores differ in the type of question they best answer?<a class="headerlink" href="#9-how-do-knowledge-graphs-and-vector-stores-differ-in-the-type-of-question-they-best-answer" title="Permanent link">¶</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>Knowledge graphs answer structural and causal questions; vector stores answer semantic-similarity questions</li>
+<li>Knowledge graphs answer semantic-similarity questions; vector stores answer structural-relationship questions</li>
+<li>Both answer the same questions, but vector stores are always faster</li>
+<li>Knowledge graphs only store text; vector stores only store numbers</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>A</strong>. Knowledge graphs encode explicit structural and causal relationships — useful for traversals, audits, and "why" questions. Vector stores index high-dimensional embeddings and find conceptually similar items even when keywords differ. Option B reverses the two. Option C ignores that they answer fundamentally different question types. Option D is incorrect — both can encode many data types. The two technologies are complementary, not competitive.</p>
+<p><strong>Concept Tested:</strong> Graph vs Vector Store</p>
+</details>
+<hr>
+<h4 id="10-an-enterprise-team-is-choosing-a-serialization-format-to-export-an-lpg-into-a-modern-rest-based-data-pipeline-that-already-processes-json-which-format-is-the-natural-choice">10. An enterprise team is choosing a serialization format to export an LPG into a modern REST-based data pipeline that already processes JSON. Which format is the natural choice?<a class="headerlink" href="#10-an-enterprise-team-is-choosing-a-serialization-format-to-export-an-lpg-into-a-modern-rest-based-data-pipeline-that-already-processes-json-which-format-is-the-natural-choice" title="Permanent link">¶</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>GraphML, because XML is more human-readable than JSON</li>
+<li>SPARQL, because it is the standard graph interchange language</li>
+<li>CSV, because every graph can be flattened to rows</li>
+<li>GraphSON, because it is JSON-based and integrates naturally with JSON-native pipelines</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>D</strong>. GraphSON is a JSON-based serialization format that fits naturally into JSON-native pipelines and is supported by major LPG databases. GraphML is XML-based and better suited to XML-native tooling. SPARQL is a query language, not a serialization format. CSV cannot natively express edge properties or multi-label nodes without lossy flattening.</p>
+<p><strong>Concept Tested:</strong> GraphSON</p>
+</details>
+<hr>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Content">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Content
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../references/" class="md-footer__link md-footer__link--next" aria-label="Next: Annotated References">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Annotated References
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2026 Dan Mccreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.action.edit", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../../js/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

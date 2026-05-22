@@ -1,0 +1,2525 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An interactive intelligent textbook on the contact graph and how the contact graphs helps organization use LLMs cost effectively">
+      
+      
+        <meta name="author" content="Dan Mccreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/context-graph/chapters/08-context-problem/quiz/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../references/">
+      
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Quiz - Context Graph</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../../css/mascot.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-7RZYM87NB1"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-7RZYM87NB1",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-7RZYM87NB1",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta property="og:type" content="website">
+      
+        <meta property="og:title" content="Quiz - Context Graph">
+      
+        <meta property="og:description" content="An interactive intelligent textbook on the contact graph and how the contact graphs helps organization use LLMs cost effectively">
+      
+        <meta property="og:image" content="https://dmccreary.github.io/context-graph/assets/images/social/chapters/08-context-problem/quiz.png">
+      
+        <meta property="og:image:type" content="image/png">
+      
+        <meta property="og:image:width" content="1200">
+      
+        <meta property="og:image:height" content="630">
+      
+        <meta property="og:url" content="https://dmccreary.github.io/context-graph/chapters/08-context-problem/quiz/">
+      
+        <meta name="twitter:card" content="summary_large_image">
+      
+        <meta name="twitter:title" content="Quiz - Context Graph">
+      
+        <meta name="twitter:description" content="An interactive intelligent textbook on the contact graph and how the contact graphs helps organization use LLMs cost effectively">
+      
+        <meta name="twitter:image" content="https://dmccreary.github.io/context-graph/assets/images/social/chapters/08-context-problem/quiz.png">
+      
+    
+    
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#quiz-the-context-problem-and-rag-limitations" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Context Graph" class="md-header__button md-logo" aria-label="Context Graph" data-md-component="logo">
+      
+  <img src="../../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Context Graph
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Quiz
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/context-graph" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Context Graph" class="md-nav__button md-logo" aria-label="Context Graph" data-md-component="logo">
+      
+  <img src="../../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    Context Graph
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/context-graph" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../01-knowledge-graphs-lpg/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    1. Knowledge Graphs and LPGs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../02-semantic-layers/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    2. Semantic Layers
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../03-metadata-management/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    3. Metadata Management
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../04-enterprise-knowledge-graphs/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    4. Enterprise Knowledge Graphs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../05-graph-theory-algorithms/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    5. Graph Theory and Algorithms
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../06-metadata-registries/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    6. Metadata Registries
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../07-process-mining-lineage/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    7. Process Mining and Lineage
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_9" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    8. The Context Problem
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_9" id="__nav_4_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_9">
+            <span class="md-nav__icon md-icon"></span>
+            8. The Context Problem
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Quiz
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Quiz
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-which-best-describes-the-llm-context-window" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Which best describes the LLM context window?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-what-does-the-chapter-mean-by-grounding-an-llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. What does the chapter mean by "grounding" an LLM?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-a-rag-pipeline-retrieves-the-most-semantically-similar-documents-to-the-users-query-which-of-the-following-is-a-rag-limitation-called-out-in-the-chapter" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. A RAG pipeline retrieves the most semantically similar documents to the user's query. Which of the following is a RAG limitation called out in the chapter?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-a-pricing-policy-assistant-confidently-quotes-a-discount-tier-that-was-changed-six-months-ago-which-failure-mode-is-this" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. A pricing-policy assistant confidently quotes a discount tier that was changed six months ago. Which failure mode is this?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-why-does-the-chapter-argue-that-hallucination-from-partial-context-is-systematic-rather-than-random" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Why does the chapter argue that hallucination from partial context is systematic rather than random?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-a-customer-support-llm-correctly-recalls-written-policies-but-consistently-misses-the-unwritten-rule-that-this-particular-customer-always-needs-a-human-review-on-orders-above-100000-even-though-policy-only-requires-it-above-250000-which-type-of-knowledge-does-the-llm-lack" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. A customer-support LLM correctly recalls written policies but consistently misses the unwritten rule that "this particular customer always needs a human review on orders above $100,000, even though policy only requires it above $250,000." Which type of knowledge does the LLM lack?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-a-retrieval-system-pulls-50-marginally-relevant-documents-into-the-context-window-so-the-llm-has-plenty-of-background-the-models-answers-begin-to-drift-toward-generic-averages-and-miss-the-specific-exception-case-the-user-asked-about-what-failure-mode-is-this" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. A retrieval system pulls 50 marginally relevant documents into the context window so the LLM "has plenty of background." The model's answers begin to drift toward generic averages and miss the specific exception case the user asked about. What failure mode is this?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-according-to-the-chapter-which-is-an-example-of-dynamic-knowledge-that-needs-current-state-retrieval-rather-than-pre-built-embeddings" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. According to the chapter, which is an example of dynamic knowledge that needs current-state retrieval rather than pre-built embeddings?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-an-llm-is-asked-to-recommend-an-exception-decision-it-retrieves-four-document-excerpts-customer-revenue-history-from-crm-contract-terms-from-contract-management-payment-behavior-from-billing-and-an-open-support-escalation-but-answers-as-if-they-describe-four-different-customers-which-failure-mode-is-at-play-and-which-property-is-missing" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. An LLM is asked to recommend an exception decision. It retrieves four document excerpts — customer revenue history from CRM, contract terms from contract management, payment behavior from billing, and an open support escalation — but answers as if they describe four different customers. Which failure mode is at play, and which property is missing?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-a-team-is-choosing-between-a-expanding-their-rag-index-to-cover-more-documents-and-b-building-a-context-graph-alongside-rag-they-want-to-address-all-four-missing-layers-exception-logic-historical-precedents-cross-system-synthesis-and-out-of-band-approval-chains-which-is-the-most-defensible-choice-according-to-the-chapter" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. A team is choosing between (a) expanding their RAG index to cover more documents and (b) building a context graph alongside RAG. They want to address all four missing layers — exception logic, historical precedents, cross-system synthesis, and out-of-band approval chains. Which is the most defensible choice according to the chapter?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Annotated References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../09-context-graph-definition/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    9. What a Context Graph Is
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../10-llm-ai-foundations/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    10. LLM and AI Foundations
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../11-decision-traces/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    11. Decision Traces
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../12-incumbent-challenges/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    12. Incumbent Challenges
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../13-graph-data-modeling/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    13. Graph Data Modeling
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../14-llm-integration/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    14. Integrating LLMs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../15-building-deploying/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    15. Building and Deploying
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../16-ai-agent-architecture/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    16. AI Agent Architecture
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../17-enterprise-use-cases/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    17. Enterprise Use Cases
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../18-compliance-explainability/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    18. Compliance and Audit
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../19-market-strategy/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    19. Market Strategy
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../20-organizational-adoption/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    20. Organizational Adoption
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../21-data-engineering/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    21. Data Engineering
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../22-security-vector-search/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    22. Security and Vector Search
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../feature-checklist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feature Checklist
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-which-best-describes-the-llm-context-window" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Which best describes the LLM context window?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-what-does-the-chapter-mean-by-grounding-an-llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. What does the chapter mean by "grounding" an LLM?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-a-rag-pipeline-retrieves-the-most-semantically-similar-documents-to-the-users-query-which-of-the-following-is-a-rag-limitation-called-out-in-the-chapter" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. A RAG pipeline retrieves the most semantically similar documents to the user's query. Which of the following is a RAG limitation called out in the chapter?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-a-pricing-policy-assistant-confidently-quotes-a-discount-tier-that-was-changed-six-months-ago-which-failure-mode-is-this" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. A pricing-policy assistant confidently quotes a discount tier that was changed six months ago. Which failure mode is this?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-why-does-the-chapter-argue-that-hallucination-from-partial-context-is-systematic-rather-than-random" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Why does the chapter argue that hallucination from partial context is systematic rather than random?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-a-customer-support-llm-correctly-recalls-written-policies-but-consistently-misses-the-unwritten-rule-that-this-particular-customer-always-needs-a-human-review-on-orders-above-100000-even-though-policy-only-requires-it-above-250000-which-type-of-knowledge-does-the-llm-lack" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. A customer-support LLM correctly recalls written policies but consistently misses the unwritten rule that "this particular customer always needs a human review on orders above $100,000, even though policy only requires it above $250,000." Which type of knowledge does the LLM lack?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-a-retrieval-system-pulls-50-marginally-relevant-documents-into-the-context-window-so-the-llm-has-plenty-of-background-the-models-answers-begin-to-drift-toward-generic-averages-and-miss-the-specific-exception-case-the-user-asked-about-what-failure-mode-is-this" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. A retrieval system pulls 50 marginally relevant documents into the context window so the LLM "has plenty of background." The model's answers begin to drift toward generic averages and miss the specific exception case the user asked about. What failure mode is this?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-according-to-the-chapter-which-is-an-example-of-dynamic-knowledge-that-needs-current-state-retrieval-rather-than-pre-built-embeddings" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. According to the chapter, which is an example of dynamic knowledge that needs current-state retrieval rather than pre-built embeddings?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-an-llm-is-asked-to-recommend-an-exception-decision-it-retrieves-four-document-excerpts-customer-revenue-history-from-crm-contract-terms-from-contract-management-payment-behavior-from-billing-and-an-open-support-escalation-but-answers-as-if-they-describe-four-different-customers-which-failure-mode-is-at-play-and-which-property-is-missing" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. An LLM is asked to recommend an exception decision. It retrieves four document excerpts — customer revenue history from CRM, contract terms from contract management, payment behavior from billing, and an open support escalation — but answers as if they describe four different customers. Which failure mode is at play, and which property is missing?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-a-team-is-choosing-between-a-expanding-their-rag-index-to-cover-more-documents-and-b-building-a-context-graph-alongside-rag-they-want-to-address-all-four-missing-layers-exception-logic-historical-precedents-cross-system-synthesis-and-out-of-band-approval-chains-which-is-the-most-defensible-choice-according-to-the-chapter" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. A team is choosing between (a) expanding their RAG index to cover more documents and (b) building a context graph alongside RAG. They want to address all four missing layers — exception logic, historical precedents, cross-system synthesis, and out-of-band approval chains. Which is the most defensible choice according to the chapter?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/context-graph/blob/main/docs/chapters/08-context-problem/quiz.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+    </a>
+  
+  
+
+
+<h1 id="quiz-the-context-problem-and-rag-limitations">Quiz: The Context Problem and RAG Limitations<a class="headerlink" href="#quiz-the-context-problem-and-rag-limitations" title="Permanent link">¶</a></h1>
+<p>Test your understanding of why LLMs fail at enterprise tasks even with sophisticated data infrastructure, the limits of RAG, the four missing knowledge layers, and how context graphs address each failure mode.</p>
+<hr>
+<h4 id="1-which-best-describes-the-llm-context-window">1. Which best describes the LLM context window?<a class="headerlink" href="#1-which-best-describes-the-llm-context-window" title="Permanent link">¶</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>Long-term memory that accumulates facts across sessions</li>
+<li>A region of model weights that gets updated during inference</li>
+<li>Working memory: the maximum input sequence the model can process in a single inference call, with no persistence between calls</li>
+<li>A vector index of all documents in the enterprise data lake</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. The context window is per-call working memory — when the call ends, it is empty. It is not long-term memory (A), not part of model weights (B), and not a document index (D). Misunderstanding this is the source of many bad enterprise AI architecture decisions.</p>
+<p><strong>Concept Tested:</strong> LLM Context Window</p>
+</details>
+<hr>
+<h4 id="2-what-does-the-chapter-mean-by-grounding-an-llm">2. What does the chapter mean by "grounding" an LLM?<a class="headerlink" href="#2-what-does-the-chapter-mean-by-grounding-an-llm" title="Permanent link">¶</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>Fine-tuning the model on proprietary documents</li>
+<li>Reducing the model's temperature parameter to zero</li>
+<li>Encrypting the model weights to prevent extraction</li>
+<li>Injecting relevant, accurate, current organizational context into the context window so the model reasons from verified facts rather than training-data generalizations</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>D</strong>. Grounding is the practice of supplying verified organizational context at inference time so the model is constrained to those facts. Fine-tuning (A), temperature (B), and weight encryption (C) are unrelated techniques.</p>
+<p><strong>Concept Tested:</strong> Grounding</p>
+</details>
+<hr>
+<h4 id="3-a-rag-pipeline-retrieves-the-most-semantically-similar-documents-to-the-users-query-which-of-the-following-is-a-rag-limitation-called-out-in-the-chapter">3. A RAG pipeline retrieves the most semantically similar documents to the user's query. Which of the following is a RAG limitation called out in the chapter?<a class="headerlink" href="#3-a-rag-pipeline-retrieves-the-most-semantically-similar-documents-to-the-users-query-which-of-the-following-is-a-rag-limitation-called-out-in-the-chapter" title="Permanent link">¶</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>RAG cannot return more than five documents per query</li>
+<li>RAG retrieves documents but not the decision context — the why, by whom, under what circumstances, or whether the decision was later overturned</li>
+<li>RAG cannot be used with embedding models</li>
+<li>RAG always over-counts the most recent document</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. The chapter highlights this as the core RAG limitation: documents record what was decided but rarely the surrounding decision context. The other options misstate RAG behavior.</p>
+<p><strong>Concept Tested:</strong> RAG Limitations</p>
+</details>
+<hr>
+<h4 id="4-a-pricing-policy-assistant-confidently-quotes-a-discount-tier-that-was-changed-six-months-ago-which-failure-mode-is-this">4. A pricing-policy assistant confidently quotes a discount tier that was changed six months ago. Which failure mode is this?<a class="headerlink" href="#4-a-pricing-policy-assistant-confidently-quotes-a-discount-tier-that-was-changed-six-months-ago-which-failure-mode-is-this" title="Permanent link">¶</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>Knowledge staleness — the retrieval surfaced an older document whose embedding was still highly similar, and there was no freshness metadata to flag that a newer version exists</li>
+<li>Schema drift</li>
+<li>Context poisoning by adversarial injection</li>
+<li>Differential privacy noise</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>A</strong>. Knowledge staleness is exactly this pattern: older documents may be retrieved with high similarity, and without freshness annotation the LLM treats them as authoritative. Schema drift (B) is a metadata problem. Adversarial injection (C) implies a malicious document. Differential privacy noise (D) is unrelated.</p>
+<p><strong>Concept Tested:</strong> Knowledge Staleness</p>
+</details>
+<hr>
+<h4 id="5-why-does-the-chapter-argue-that-hallucination-from-partial-context-is-systematic-rather-than-random">5. Why does the chapter argue that hallucination from partial context is systematic rather than random?<a class="headerlink" href="#5-why-does-the-chapter-argue-that-hallucination-from-partial-context-is-systematic-rather-than-random" title="Permanent link">¶</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>Because the model will systematically hallucinate in the same direction for any query that exercises the same retrieval gap, filling missing context with training-data patterns</li>
+<li>Because hallucinations only occur on weekends</li>
+<li>Because hallucinations are caused by hardware bit-flips</li>
+<li>Because hallucination is unrelated to the retrieved context</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>A</strong>. The missing context failure mode is predictable: identical retrieval gaps produce identical fill-in behaviors. The other options describe non-causes that the chapter does not discuss.</p>
+<p><strong>Concept Tested:</strong> Hallucination</p>
+</details>
+<hr>
+<h4 id="6-a-customer-support-llm-correctly-recalls-written-policies-but-consistently-misses-the-unwritten-rule-that-this-particular-customer-always-needs-a-human-review-on-orders-above-100000-even-though-policy-only-requires-it-above-250000-which-type-of-knowledge-does-the-llm-lack">6. A customer-support LLM correctly recalls written policies but consistently misses the unwritten rule that "this particular customer always needs a human review on orders above $100,000, even though policy only requires it above $250,000." Which type of knowledge does the LLM lack?<a class="headerlink" href="#6-a-customer-support-llm-correctly-recalls-written-policies-but-consistently-misses-the-unwritten-rule-that-this-particular-customer-always-needs-a-human-review-on-orders-above-100000-even-though-policy-only-requires-it-above-250000-which-type-of-knowledge-does-the-llm-lack" title="Permanent link">¶</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>Tacit knowledge — the rule lives in experienced practitioners' heads and in patterns of past decisions, but is not written in any policy document a RAG system can retrieve</li>
+<li>Static regulatory knowledge</li>
+<li>Differential privacy budgets</li>
+<li>SKOS thesaurus entries</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>A</strong>. Tacit knowledge is exactly this: rules that live in expert heads and in decision patterns, never written down for a document retriever to find. The other options describe categories of knowledge that are not the issue here.</p>
+<p><strong>Concept Tested:</strong> Tacit Knowledge</p>
+</details>
+<hr>
+<h4 id="7-a-retrieval-system-pulls-50-marginally-relevant-documents-into-the-context-window-so-the-llm-has-plenty-of-background-the-models-answers-begin-to-drift-toward-generic-averages-and-miss-the-specific-exception-case-the-user-asked-about-what-failure-mode-is-this">7. A retrieval system pulls 50 marginally relevant documents into the context window so the LLM "has plenty of background." The model's answers begin to drift toward generic averages and miss the specific exception case the user asked about. What failure mode is this?<a class="headerlink" href="#7-a-retrieval-system-pulls-50-marginally-relevant-documents-into-the-context-window-so-the-llm-has-plenty-of-background-the-models-answers-begin-to-drift-toward-generic-averages-and-miss-the-specific-exception-case-the-user-asked-about-what-failure-mode-is-this" title="Permanent link">¶</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>Over-retrieval context poisoning — a context window so full of marginally relevant documents that the truly relevant information is diluted and the model's attention drifts toward common-case patterns</li>
+<li>Missing provenance</li>
+<li>Index-free adjacency failure</li>
+<li>Stale edge detection failure</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>A</strong>. Over-retrieval poisoning is the specific failure mode the chapter describes: too much marginally-relevant content dilutes the truly relevant signal. Missing provenance (B), index-free adjacency (C), and stale-edge detection (D) are different concerns.</p>
+<p><strong>Concept Tested:</strong> Context Poisoning</p>
+</details>
+<hr>
+<h4 id="8-according-to-the-chapter-which-is-an-example-of-dynamic-knowledge-that-needs-current-state-retrieval-rather-than-pre-built-embeddings">8. According to the chapter, which is an example of dynamic knowledge that needs current-state retrieval rather than pre-built embeddings?<a class="headerlink" href="#8-according-to-the-chapter-which-is-an-example-of-dynamic-knowledge-that-needs-current-state-retrieval-rather-than-pre-built-embeddings" title="Permanent link">¶</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>The text of a regulatory requirement that has not changed in five years</li>
+<li>The current approval status of an open exception request</li>
+<li>The historical definition of an accounting standard from 1998</li>
+<li>The specification of a product line that has been discontinued</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. Dynamic knowledge is information whose currency is critical, like the approval status of an open request — it changes frequently and a stale cached snapshot misleads. The other options describe static knowledge that RAG handles well.</p>
+<p><strong>Concept Tested:</strong> Static vs Dynamic Knowledge</p>
+</details>
+<hr>
+<h4 id="9-an-llm-is-asked-to-recommend-an-exception-decision-it-retrieves-four-document-excerpts-customer-revenue-history-from-crm-contract-terms-from-contract-management-payment-behavior-from-billing-and-an-open-support-escalation-but-answers-as-if-they-describe-four-different-customers-which-failure-mode-is-at-play-and-which-property-is-missing">9. An LLM is asked to recommend an exception decision. It retrieves four document excerpts — customer revenue history from CRM, contract terms from contract management, payment behavior from billing, and an open support escalation — but answers as if they describe four different customers. Which failure mode is at play, and which property is missing?<a class="headerlink" href="#9-an-llm-is-asked-to-recommend-an-exception-decision-it-retrieves-four-document-excerpts-customer-revenue-history-from-crm-contract-terms-from-contract-management-payment-behavior-from-billing-and-an-open-support-escalation-but-answers-as-if-they-describe-four-different-customers-which-failure-mode-is-at-play-and-which-property-is-missing" title="Permanent link">¶</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>Context completeness is missing — the retrieval system pulled individually similar documents but did not follow the relationship chain that connects them all to the same canonical customer entity</li>
+<li>Schema drift in the contract management system</li>
+<li>Open world assumption error in the CRM</li>
+<li>PageRank score miscalibration</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>A</strong>. The chapter names this exact gap: individually similar retrieval fails to provide the connected subgraph; context completeness requires following relationships across entity types. The other options describe unrelated issues.</p>
+<p><strong>Concept Tested:</strong> Context Completeness</p>
+</details>
+<hr>
+<h4 id="10-a-team-is-choosing-between-a-expanding-their-rag-index-to-cover-more-documents-and-b-building-a-context-graph-alongside-rag-they-want-to-address-all-four-missing-layers-exception-logic-historical-precedents-cross-system-synthesis-and-out-of-band-approval-chains-which-is-the-most-defensible-choice-according-to-the-chapter">10. A team is choosing between (a) expanding their RAG index to cover more documents and (b) building a context graph alongside RAG. They want to address all four missing layers — exception logic, historical precedents, cross-system synthesis, and out-of-band approval chains. Which is the most defensible choice according to the chapter?<a class="headerlink" href="#10-a-team-is-choosing-between-a-expanding-their-rag-index-to-cover-more-documents-and-b-building-a-context-graph-alongside-rag-they-want-to-address-all-four-missing-layers-exception-logic-historical-precedents-cross-system-synthesis-and-out-of-band-approval-chains-which-is-the-most-defensible-choice-according-to-the-chapter" title="Permanent link">¶</a></h4>
+<div class="upper-alpha">
+<ol>
+<li>Expand the RAG index, because more documents will eventually cover all four layers</li>
+<li>Replace RAG with a vector store using larger embedding dimensions</li>
+<li>Drop both RAG and graphs and rely on the LLM's training data</li>
+<li>Build a context graph alongside RAG — RAG handles document retrieval for static knowledge, while the context graph captures the organizational intelligence (precedents, decision history, cross-system synthesis) that document retrieval structurally cannot capture</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>D</strong>. The chapter argues explicitly that context graphs extend rather than replace RAG, and that the four missing layers are structural gaps in document retrieval that more documents cannot close. Larger embeddings (B) and reliance on training data (C) fail for the same structural reason.</p>
+<p><strong>Concept Tested:</strong> Organizational Knowledge Gap</p>
+</details>
+<hr>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Content">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Content
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../references/" class="md-footer__link md-footer__link--next" aria-label="Next: Annotated References">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Annotated References
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2026 Dan Mccreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.action.edit", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../../js/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
