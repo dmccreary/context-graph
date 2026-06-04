@@ -333,3 +333,5 @@ By the end of this chapter, you should be able to:
 !!! mascot-celebration "Chapter 5: Complete!"
     <img src="../../img/mascot/celebration.png" class="mascot-admonition-img" alt="Nexus celebrating">
     Excellent work, graph builder. You now have both the structural vocabulary (from Chapters 1-4) and the algorithmic toolbox (Chapter 5) to reason seriously about enterprise knowledge graphs. Chapter 6 takes us to metadata registries — the formal standards for defining what every data field in the enterprise means, down to the last property. Think of it as the grammar book for the graph's vocabulary. Let's trace the why!
+
+[See Annotated References](./references.md)

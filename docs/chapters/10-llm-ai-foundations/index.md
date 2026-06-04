@@ -274,3 +274,5 @@ By the end of this chapter, you should be able to:
 !!! mascot-celebration "Chapter 10: Complete!"
     <img src="../../img/mascot/celebration.png" class="mascot-admonition-img" alt="Nexus celebrating">
     You are now fluent in the core mechanics of LLMs — and you can connect every mechanic to a specific design decision in context graph integration. Chapter 11 turns to decision traces in detail: the anatomy, the four information layers they capture, and the schema patterns that make them both human-readable and machine-queryable. The payoff for understanding decision traces well is that you will be able to design them for any enterprise domain from scratch. Let's trace the why!
+
+[See Annotated References](./references.md)

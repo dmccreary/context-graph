@@ -465,3 +465,5 @@ This chapter has established the LPG vocabulary that every subsequent chapter bu
 !!! mascot-celebration "Chapter 1 Complete!"
     <img src="../../img/mascot/celebration.png" class="mascot-admonition-img" alt="Nexus celebrating">
     You now hold the full LPG vocabulary: nodes, edges, labels, types, properties, schema, Cypher, GQL, traversal, path queries, indexes, and algorithms. You've seen why native graph storage beats relational databases at multi-hop traversal, why RDF's open world assumption is a liability in closed enterprise systems, and why vector stores and knowledge graphs answer fundamentally different questions. That is a rigorous foundation. Chapter 2 scales this model up to the enterprise level — multiple source systems, entity resolution across heterogeneous data, and federated graph architectures. Every node tells a story. Let's trace the why!
+
+[See Annotated References](./references.md)

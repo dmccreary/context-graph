@@ -301,3 +301,5 @@ By the end of this chapter, you should be able to:
 !!! mascot-celebration "Chapter 4: Complete!"
     <img src="../../img/mascot/celebration.png" class="mascot-admonition-img" alt="Nexus celebrating">
     You now understand the architecture of a production enterprise knowledge graph — from canonical entity resolution through domain subgraphs, governance processes, and billion-edge scaling. Chapter 5 adds the algorithms that make these graphs useful for analysis: shortest paths, centrality, community detection, and the other tools that turn a connected data structure into a reasoning engine. The graph is built; now we learn to compute over it. Let's trace the why!
+
+[See Annotated References](./references.md)

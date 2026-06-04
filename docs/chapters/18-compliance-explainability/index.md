@@ -280,3 +280,5 @@ By the end of this chapter, you should be able to:
 !!! mascot-celebration "Chapter 18: Complete!"
     <img src="../../img/mascot/celebration.png" class="mascot-admonition-img" alt="Nexus celebrating">
     You now understand compliance not as a checklist but as a structural design property. Chapter 19 shifts to market strategy: how to identify the workflows where context graphs create durable competitive advantage, which of three startup strategies (replacement, module, new creation) is best suited to different market positions, and how to evaluate the competitive moats that make context graph businesses defensible. Let's trace the why!
+
+[See Annotated References](./references.md)

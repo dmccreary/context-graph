@@ -447,3 +447,5 @@ By the end of this chapter, you should be able to:
 !!! mascot-celebration "Chapter 3: Complete!"
     <img src="../../img/mascot/celebration.png" class="mascot-admonition-img" alt="Nexus celebrating">
     You now speak governance fluently. Every node in the context graph we're building together has a metadata story — who owns it, how fresh it is, what classification it carries, and what quality rules it passes. Chapter 4 takes us to enterprise knowledge graphs at scale, where all of this governance infrastructure meets the full complexity of a real organization's data landscape. The connections are about to get a lot more interesting. Let's trace the why!
+
+[See Annotated References](./references.md)

@@ -313,3 +313,5 @@ By the end of this chapter, you should be able to:
 !!! mascot-celebration "Chapter 9: Complete!"
     <img src="../../img/mascot/celebration.png" class="mascot-admonition-img" alt="Nexus celebrating">
     The context graph is defined. You now have a precise schema, a clear architectural position, and a concrete understanding of how it differs from everything else in the enterprise data stack. Chapter 10 asks a different question: why are the incumbent data platforms — data warehouses, existing knowledge graphs, AI agent startups — unable to provide this capability? The answer involves structural incentives, not just technical gaps, and it matters for understanding where context graphs create durable competitive advantage. Let's trace the why!
+
+[See Annotated References](./references.md)

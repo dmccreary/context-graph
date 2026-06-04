@@ -282,3 +282,5 @@ By the end of this chapter, you should be able to:
 !!! mascot-celebration "Chapter 8: Complete!"
     <img src="../../img/mascot/celebration.png" class="mascot-admonition-img" alt="Nexus celebrating">
     You now understand the problem at the heart of this book, precisely and completely. The failure is not random — it is structural, and it has a structural solution. Chapter 9 defines that solution: the context graph. After seven chapters of foundation, you are finally ready to see exactly what it is, how it extends the enterprise knowledge graph, and what properties it must have to close the gaps we just named. Let's trace the why!
+
+[See Annotated References](./references.md)

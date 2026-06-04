@@ -290,3 +290,5 @@ By the end of this chapter, you should be able to:
 !!! mascot-celebration "Chapter 16: Complete!"
     <img src="../../img/mascot/celebration.png" class="mascot-admonition-img" alt="Nexus celebrating">
     The agent architecture is complete. You now have the full picture: context graphs as long-term memory, agents as the readers and writers of that memory, and graduated autonomy as the trust-building mechanism. Chapter 17 brings this to life with specific enterprise use cases — finance, sales, engineering, legal, and customer success — showing exactly what context graph deployments look like in each domain. Let's trace the why!
+
+[See Annotated References](./references.md)

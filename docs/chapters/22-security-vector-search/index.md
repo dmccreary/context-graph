@@ -459,3 +459,5 @@ Finally, the **Context Graph ROI Model** quantifies value across decision speed 
 !!! mascot-celebration "Chapter 22: Complete — And So Is the Book!"
     <img src="../../img/mascot/celebration.png" class="mascot-admonition-img" alt="Nexus celebrating">
     You have completed the full journey through "Context Graph: How Organizations Use LLMs Cost Effectively." From the foundational concepts of knowledge graphs and semantic layers, through the technical architecture of decision traces and LLM integration, to the organizational adoption and security foundations that make context graphs production-ready — you now hold a complete framework for understanding, designing, and deploying context graph systems. Nexus's work here is done. Yours is just beginning. Build wisely, trace everything, and may your decisions always have the context they deserve.
+
+[See Annotated References](./references.md)

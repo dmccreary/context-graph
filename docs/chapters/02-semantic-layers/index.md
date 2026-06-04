@@ -370,3 +370,5 @@ This chapter covered the infrastructure that turns a raw data lake into a querya
 !!! mascot-celebration "Chapter 2 Done — That Was a Lot of Infrastructure!"
     <img src="../../img/mascot/celebration.png" class="mascot-admonition-img" alt="Nexus celebrating">
     You have now seen the full stack beneath a context graph: data lakes that store everything, lakehouses that make storage queryable, and semantic layers that make storage *meaningful*. You understand why undocumented joins are dangerous, why naming standards matter more than they sound, and why vocabulary alignment is the unglamorous prerequisite for everything AI-powered that comes after. Chapter 3 moves to metadata management — the discipline that keeps all of this trustworthy over time. The graph is taking shape. Let's trace the why!
+
+[See Annotated References](./references.md)

@@ -452,3 +452,5 @@ Finally, **Context Graph Observability** — monitoring infrastructure, data qua
 !!! mascot-celebration "Chapter 21: Complete!"
     <img src="../../img/mascot/celebration.png" class="mascot-admonition-img" alt="Nexus celebrating">
     You now understand the full data engineering stack that keeps context graphs accurate, fresh, and observable. The final chapter — Chapter 22 — explores security and vector search: how to protect sensitive decision data with fine-grained access control, how to combine vector similarity search with graph traversal for the most powerful retrieval patterns, and how to evaluate and monitor the security posture of a production context graph deployment. The last piece of the architecture. Let's trace the security boundary!
+
+[See Annotated References](./references.md)

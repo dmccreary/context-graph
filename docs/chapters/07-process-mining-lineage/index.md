@@ -332,3 +332,5 @@ By the end of this chapter, you should be able to:
 !!! mascot-celebration "Chapter 7: Complete!"
     <img src="../../img/mascot/celebration.png" class="mascot-admonition-img" alt="Nexus celebrating">
     Outstanding work. You now understand the three dimensions of organizational memory: what entities exist (knowledge graph), what they mean (metadata and registries), and what happened over time (process mining, lineage, and provenance). Chapter 8 brings this all together at the core question of the book: why do LLMs fail at enterprise tasks even when all this infrastructure is in place? The context problem is next. Let's trace the why!
+
+[See Annotated References](./references.md)

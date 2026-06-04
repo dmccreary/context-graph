@@ -26,28 +26,94 @@ nav:
 
   - Chapters:
       - List of Chapters: chapters/index.md
-      - 1. Knowledge Graphs and LPGs: chapters/01-knowledge-graphs-lpg/index.md
-      - 2. Semantic Layers: chapters/02-semantic-layers/index.md
-      - 3. Metadata Management: chapters/03-metadata-management/index.md
-      - 4. Enterprise Knowledge Graphs: chapters/04-enterprise-knowledge-graphs/index.md
-      - 5. Graph Theory and Algorithms: chapters/05-graph-theory-algorithms/index.md
-      - 6. Metadata Registries: chapters/06-metadata-registries/index.md
-      - 7. Process Mining and Lineage: chapters/07-process-mining-lineage/index.md
-      - 8. The Context Problem: chapters/08-context-problem/index.md
-      - 9. What a Context Graph Is: chapters/09-context-graph-definition/index.md
-      - 10. LLM and AI Foundations: chapters/10-llm-ai-foundations/index.md
-      - 11. Decision Traces: chapters/11-decision-traces/index.md
-      - 12. Incumbent Challenges: chapters/12-incumbent-challenges/index.md
-      - 13. Graph Data Modeling: chapters/13-graph-data-modeling/index.md
-      - 14. Integrating LLMs: chapters/14-llm-integration/index.md
-      - 15. Building and Deploying: chapters/15-building-deploying/index.md
-      - 16. AI Agent Architecture: chapters/16-ai-agent-architecture/index.md
-      - 17. Enterprise Use Cases: chapters/17-enterprise-use-cases/index.md
-      - 18. Compliance and Audit: chapters/18-compliance-explainability/index.md
-      - 19. Market Strategy: chapters/19-market-strategy/index.md
-      - 20. Organizational Adoption: chapters/20-organizational-adoption/index.md
-      - 21. Data Engineering: chapters/21-data-engineering/index.md
-      - 22. Security and Vector Search: chapters/22-security-vector-search/index.md
+      - 1. Knowledge Graphs and LPGs:
+          - Content: chapters/01-knowledge-graphs-lpg/index.md
+          - Quiz: chapters/01-knowledge-graphs-lpg/quiz.md
+          - Annotated References: chapters/01-knowledge-graphs-lpg/references.md
+      - 2. Semantic Layers:
+          - Content: chapters/02-semantic-layers/index.md
+          - Quiz: chapters/02-semantic-layers/quiz.md
+          - Annotated References: chapters/02-semantic-layers/references.md
+      - 3. Metadata Management:
+          - Content: chapters/03-metadata-management/index.md
+          - Quiz: chapters/03-metadata-management/quiz.md
+          - Annotated References: chapters/03-metadata-management/references.md
+      - 4. Enterprise Knowledge Graphs:
+          - Content: chapters/04-enterprise-knowledge-graphs/index.md
+          - Quiz: chapters/04-enterprise-knowledge-graphs/quiz.md
+          - Annotated References: chapters/04-enterprise-knowledge-graphs/references.md
+      - 5. Graph Theory and Algorithms:
+          - Content: chapters/05-graph-theory-algorithms/index.md
+          - Quiz: chapters/05-graph-theory-algorithms/quiz.md
+          - Annotated References: chapters/05-graph-theory-algorithms/references.md
+      - 6. Metadata Registries:
+          - Content: chapters/06-metadata-registries/index.md
+          - Quiz: chapters/06-metadata-registries/quiz.md
+          - Annotated References: chapters/06-metadata-registries/references.md
+      - 7. Process Mining and Lineage:
+          - Content: chapters/07-process-mining-lineage/index.md
+          - Quiz: chapters/07-process-mining-lineage/quiz.md
+          - Annotated References: chapters/07-process-mining-lineage/references.md
+      - 8. The Context Problem:
+          - Content: chapters/08-context-problem/index.md
+          - Quiz: chapters/08-context-problem/quiz.md
+          - Annotated References: chapters/08-context-problem/references.md
+      - 9. What a Context Graph Is:
+          - Content: chapters/09-context-graph-definition/index.md
+          - Quiz: chapters/09-context-graph-definition/quiz.md
+          - Annotated References: chapters/09-context-graph-definition/references.md
+      - 10. LLM and AI Foundations:
+          - Content: chapters/10-llm-ai-foundations/index.md
+          - Quiz: chapters/10-llm-ai-foundations/quiz.md
+          - Annotated References: chapters/10-llm-ai-foundations/references.md
+      - 11. Decision Traces:
+          - Content: chapters/11-decision-traces/index.md
+          - Quiz: chapters/11-decision-traces/quiz.md
+          - Annotated References: chapters/11-decision-traces/references.md
+      - 12. Incumbent Challenges:
+          - Content: chapters/12-incumbent-challenges/index.md
+          - Quiz: chapters/12-incumbent-challenges/quiz.md
+          - Annotated References: chapters/12-incumbent-challenges/references.md
+      - 13. Graph Data Modeling:
+          - Content: chapters/13-graph-data-modeling/index.md
+          - Quiz: chapters/13-graph-data-modeling/quiz.md
+          - Annotated References: chapters/13-graph-data-modeling/references.md
+      - 14. Integrating LLMs:
+          - Content: chapters/14-llm-integration/index.md
+          - Quiz: chapters/14-llm-integration/quiz.md
+          - Annotated References: chapters/14-llm-integration/references.md
+      - 15. Building and Deploying:
+          - Content: chapters/15-building-deploying/index.md
+          - Quiz: chapters/15-building-deploying/quiz.md
+          - Annotated References: chapters/15-building-deploying/references.md
+      - 16. AI Agent Architecture:
+          - Content: chapters/16-ai-agent-architecture/index.md
+          - Quiz: chapters/16-ai-agent-architecture/quiz.md
+          - Annotated References: chapters/16-ai-agent-architecture/references.md
+      - 17. Enterprise Use Cases:
+          - Content: chapters/17-enterprise-use-cases/index.md
+          - Quiz: chapters/17-enterprise-use-cases/quiz.md
+          - Annotated References: chapters/17-enterprise-use-cases/references.md
+      - 18. Compliance and Audit:
+          - Content: chapters/18-compliance-explainability/index.md
+          - Quiz: chapters/18-compliance-explainability/quiz.md
+          - Annotated References: chapters/18-compliance-explainability/references.md
+      - 19. Market Strategy:
+          - Content: chapters/19-market-strategy/index.md
+          - Quiz: chapters/19-market-strategy/quiz.md
+          - Annotated References: chapters/19-market-strategy/references.md
+      - 20. Organizational Adoption:
+          - Content: chapters/20-organizational-adoption/index.md
+          - Quiz: chapters/20-organizational-adoption/quiz.md
+          - Annotated References: chapters/20-organizational-adoption/references.md
+      - 21. Data Engineering:
+          - Content: chapters/21-data-engineering/index.md
+          - Quiz: chapters/21-data-engineering/quiz.md
+          - Annotated References: chapters/21-data-engineering/references.md
+      - 22. Security and Vector Search:
+          - Content: chapters/22-security-vector-search/index.md
+          - Quiz: chapters/22-security-vector-search/quiz.md
+          - Annotated References: chapters/22-security-vector-search/references.md
 
   - Learning Graph:
       - Introduction: learning-graph/index.md
@@ -59,6 +125,7 @@ nav:
       - Mascot Style Guide: learning-graph/mascot-test.md
       - FAQ Quality Report: learning-graph/faq-quality-report.md
       - FAQ Coverage Gaps: learning-graph/faq-coverage-gaps.md
+      - Quiz Generation Report: learning-graph/quiz-generation-report.md
 
   - FAQ: faq.md
   - Glossary: glossary.md
@@ -111,6 +178,7 @@ nav:
       - Audit Trail Architecture: sims/audit-trail-architecture/index.md
       - Compliance Lifecycle: sims/compliance-lifecycle/index.md
 
+  - Feature Checklist: feature-checklist.md
   - License: license.md
   - Contact: contact.md
 
@@ -185,6 +253,9 @@ markdown_extensions:
       generic: true
       inline_syntax: ['round']
       block_syntax: ['dollar', 'square']
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
 # Custom CSS — file is created by init-textbook
 extra_css:
@@ -204,6 +275,8 @@ exclude_docs: |
   **/image-prompts*.md
   **/cover-prompt.md
   **/TODO.md
+  img/mascot/character-sheet.md
+  learning-graph/index-template.md
 
 # Rebuild on changes during `mkdocs serve`
 watch:

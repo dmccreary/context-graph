@@ -509,3 +509,5 @@ Competitive analysis reveals four threat categories — incumbent vendors, AI pl
 !!! mascot-celebration "Chapter 19: Complete!"
     <img src="../../img/mascot/celebration.png" class="mascot-admonition-img" alt="Nexus celebrating">
     You now hold a complete framework for market entry: which strategy fits which market conditions, how to score and select a beachhead workflow, and how to build a defensible competitive position through decision trace accumulation. Chapter 20 shifts from market strategy to organizational adoption — how to identify the first internal workflow champions, navigate change management, measure decision quality improvement over time, and roll out graduated autonomy in a way that builds trust rather than resistance. Let's trace the adoption path!
+
+[See Annotated References](./references.md)

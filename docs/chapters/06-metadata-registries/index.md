@@ -334,3 +334,5 @@ By the end of this chapter, you should be able to:
 !!! mascot-celebration "Chapter 6: Complete!"
     <img src="../../img/mascot/celebration.png" class="mascot-admonition-img" alt="Nexus celebrating">
     You now have a precise vocabulary for precise data. The ISO 11179 framework might have sounded bureaucratic at first, but you have seen why it is essential: without formal data definitions, enterprise AI makes confident claims from ambiguous inputs. Chapter 7 takes us from static metadata to dynamic process: how organizations record what actually happened — process mining, data lineage, and provenance — the living history of enterprise activity. Let's trace the why!
+
+[See Annotated References](./references.md)

@@ -265,3 +265,5 @@ By the end of this chapter, you should be able to:
 !!! mascot-celebration "Chapter 17: Complete!"
     <img src="../../img/mascot/celebration.png" class="mascot-admonition-img" alt="Nexus celebrating">
     Excellent work. You have now seen context graphs at work across eight enterprise domains. Chapter 18 addresses the regulatory and governance dimension: how context graphs provide searchable audit trails, meet explainability requirements, satisfy data retention obligations, and support compliance-by-design rather than compliance-as-a-retrofit. Let's trace the why!
+
+[See Annotated References](./references.md)

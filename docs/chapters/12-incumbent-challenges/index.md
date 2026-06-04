@@ -199,3 +199,5 @@ By the end of this chapter, you should be able to:
 !!! mascot-celebration "Chapter 12: Complete!"
     <img src="../../img/mascot/celebration.png" class="mascot-admonition-img" alt="Nexus celebrating">
     Excellent analytical work. You can now make a principled case for why context graphs require purpose-built infrastructure rather than bolt-on extensions. Chapter 13 moves from analysis to design: the detailed graph data modeling patterns that make a context graph implementation technically sound — temporal modeling, schema design for organizational knowledge, and the specific patterns that handle the most common enterprise decision types. Let's trace the why!
+
+[See Annotated References](./references.md)

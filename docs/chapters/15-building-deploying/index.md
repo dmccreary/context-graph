@@ -272,3 +272,5 @@ By the end of this chapter, you should be able to:
 !!! mascot-celebration "Chapter 15: Complete!"
     <img src="../../img/mascot/celebration.png" class="mascot-admonition-img" alt="Nexus celebrating">
     You now have the complete production engineering playbook. The context graph is designed, modeled, integrated, and deployable. Chapter 16 zooms out to the agent architecture level — how AI agents use the context graph as their long-term memory, how the write-back loop creates a self-improving system, and how graduated autonomy enables organizations to trust AI agents with progressively more consequential decisions. Let's trace the why!
+
+[See Annotated References](./references.md)

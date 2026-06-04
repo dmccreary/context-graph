@@ -331,3 +331,5 @@ By the end of this chapter, you should be able to:
 !!! mascot-celebration "Chapter 11: Complete!"
     <img src="../../img/mascot/celebration.png" class="mascot-admonition-img" alt="Nexus celebrating">
     You now have a complete implementation blueprint for decision traces — every node, every edge, every property that matters. Chapter 12 shifts our lens from the solution to the landscape: why do the incumbents — legacy platforms, data warehouse players, and AI agent startups — struggle to build what you just designed? The structural analysis in Chapter 12 is what makes context graphs a durable competitive position rather than just a feature on an existing product. Let's trace the why!
+
+[See Annotated References](./references.md)

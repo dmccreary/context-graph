@@ -529,3 +529,5 @@ Together, these elements form the governance and adoption framework that determi
 !!! mascot-celebration "Chapter 20: Complete!"
     <img src="../../img/mascot/celebration.png" class="mascot-admonition-img" alt="Nexus celebrating">
     You now have the full organizational toolkit for context graph adoption — from first workflow selection through Center of Excellence formation. Chapter 21 shifts to the data engineering foundations that make context graphs operational at scale: how to design the ingestion pipelines, transformation logic, and data quality checks that keep the graph accurate, fresh, and trustworthy. The infrastructure that makes the organizational adoption possible. Let's trace the data pipeline!
+
+[See Annotated References](./references.md)

@@ -1,9 +1,9 @@
 ---
 title: 'Context Graph: How Organizations Use LLMs Cost Effectively'
 description: 'An interactive intelligent textbook on context graphs — enterprise graph data structures that get the right content into an LLM prompt in the fewest tokens.'
-image: /context-graph/img/cover.png
-og:image: /context-graph/img/cover.png
-twitter:image: /context-graph/img/cover.png
+image: /img/cover.png
+og:image: /img/cover.png
+twitter:image: /img/cover.png
 hide:
   - toc
 ---

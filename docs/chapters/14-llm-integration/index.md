@@ -291,3 +291,5 @@ By the end of this chapter, you should be able to:
 !!! mascot-celebration "Chapter 14: Complete!"
     <img src="../../img/mascot/celebration.png" class="mascot-admonition-img" alt="Nexus celebrating">
     The integration stack is assembled. You can now retrieve, rank, filter, budget, and validate context from a graph to an LLM. Chapter 15 shows how to build the full system — storage, ingestion pipelines, APIs, and deployment patterns for taking a context graph from prototype to production. The engineering complexity is real, but the patterns are proven. Let's trace the why!
+
+[See Annotated References](./references.md)

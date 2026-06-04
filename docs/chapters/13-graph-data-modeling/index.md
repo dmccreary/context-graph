@@ -291,3 +291,5 @@ By the end of this chapter, you should be able to:
 !!! mascot-celebration "Chapter 13: Complete!"
     <img src="../../img/mascot/celebration.png" class="mascot-admonition-img" alt="Nexus celebrating">
     Bitemporal modeling is one of those concepts that seems complicated until it clicks — and then you can't imagine modeling time any other way. You now have the complete data modeling toolkit for a production context graph. Chapter 14 shows how to connect this context graph to LLMs: retrieval patterns, relevance ranking, token-budget management, and the write-back loop that makes AI agents improve over time. Let's trace the why!
+
+[See Annotated References](./references.md)
