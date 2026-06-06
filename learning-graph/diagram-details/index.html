@@ -1,0 +1,3291 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An interactive intelligent textbook on the contact graph and how the contact graphs helps organization use LLMs cost effectively">
+      
+      
+        <meta name="author" content="Dan Mccreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/context-graph/learning-graph/diagram-details/">
+      
+      
+        <link rel="prev" href="../chapter-metrics/">
+      
+      
+        <link rel="next" href="../diagram-table/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Diagram and MicroSim Details - Context Graph</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-7RZYM87NB1"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-7RZYM87NB1",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-7RZYM87NB1",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta property="og:type" content="website">
+      
+        <meta property="og:title" content="Diagram and MicroSim Details - Context Graph">
+      
+        <meta property="og:description" content="An interactive intelligent textbook on the contact graph and how the contact graphs helps organization use LLMs cost effectively">
+      
+        <meta property="og:image" content="https://dmccreary.github.io/context-graph/assets/images/social/learning-graph/diagram-details.png">
+      
+        <meta property="og:image:type" content="image/png">
+      
+        <meta property="og:image:width" content="1200">
+      
+        <meta property="og:image:height" content="630">
+      
+        <meta property="og:url" content="https://dmccreary.github.io/context-graph/learning-graph/diagram-details/">
+      
+        <meta name="twitter:card" content="summary_large_image">
+      
+        <meta name="twitter:title" content="Diagram and MicroSim Details - Context Graph">
+      
+        <meta name="twitter:description" content="An interactive intelligent textbook on the contact graph and how the contact graphs helps organization use LLMs cost effectively">
+      
+        <meta name="twitter:image" content="https://dmccreary.github.io/context-graph/assets/images/social/learning-graph/diagram-details.png">
+      
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#diagram-and-microsim-details" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Context Graph" class="md-header__button md-logo" aria-label="Context Graph" data-md-component="logo">
+      
+  <img src="../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Context Graph
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Diagram and MicroSim Details
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/context-graph" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Context Graph" class="md-nav__button md-logo" aria-label="Context Graph" data-md-component="logo">
+      
+  <img src="../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    Context Graph
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/context-graph" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../chapters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Learning Graph
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../course-description-assessment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description Assessment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concept-list/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Concept Enumeration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concept-taxonomy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Concept Taxonomy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quality-metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Graph Quality Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../taxonomy-distribution/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Taxonomy Distribution
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mascot-test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mascot Style Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq-quality-report/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ Quality Report
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq-coverage-gaps/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ Coverage Gaps
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quiz-generation-report/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quiz Generation Report
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../book-metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Book Metrics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter-metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter Metrics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Diagram and MicroSim Details
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Diagram and MicroSim Details
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-1-knowledge-graphs-lpg" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 1: Knowledge Graphs Lpg
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 1: Knowledge Graphs Lpg">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-model-comparison-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Model Comparison Explorer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graph-traversal-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph Traversal Explorer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interactive-lpg-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interactive LPG Explorer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-hop-query-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-Hop Query Performance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-2-semantic-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 2: Semantic Layers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 2: Semantic Layers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#query-federation-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Query Federation Flow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#semantic-consistency-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Semantic Consistency Explorer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#semantic-layer-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Semantic Layer Architecture
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-3-metadata-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 3: Metadata Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 3: Metadata Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#differential-privacy-noise-mechanism-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Differential Privacy Noise Mechanism Explorer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#governance-framework-concept-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      Governance Framework Concept Map
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#governance-role-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Governance Role Graph
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadata-catalog-to-context-graph-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metadata Catalog to Context Graph Flow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#three-metadata-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Three Metadata Layers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-4-enterprise-knowledge-graphs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 4: Enterprise Knowledge Graphs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 4: Enterprise Knowledge Graphs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#graph-etl-pipeline-stages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph ETL Pipeline Stages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hub-and-spoke-vs-federated-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hub-and-Spoke vs. Federated Architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#taxonomy-vs-ontology-in-a-product-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Taxonomy vs. Ontology in a Product Graph
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-5-graph-theory-algorithms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 5: Graph Theory Algorithms
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 5: Graph Theory Algorithms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#information-extraction-pipeline-to-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Information Extraction Pipeline to Graph
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#knowledge-graph-embedding-space-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Knowledge Graph Embedding Space Explorer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pagerank-visualization-on-a-small-supplier-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      PageRank Visualization on a Small Supplier Graph
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-6-metadata-registries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 6: Metadata Registries
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 6: Metadata Registries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#iso-11179-component-hierarchy" class="md-nav__link">
+    <span class="md-ellipsis">
+      ISO 11179 Component Hierarchy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registry-api-retrieval-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Registry API Retrieval Flow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registry-vs-catalog-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Registry vs. Catalog Architecture
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-7-process-mining-lineage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 7: Process Mining Lineage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 7: Process Mining Lineage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#event-sourcing-architecture-for-context-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Event Sourcing Architecture for Context Graph
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lineage-vs-provenance-in-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lineage vs. Provenance in Context
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#process-discovery-from-event-log-to-process-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process Discovery — From Event Log to Process Graph
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-8-context-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 8: Context Problem
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 8: Context Problem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#context-failure-mode-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context Failure Mode Explorer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-four-missing-layers-why-rag-is-not-enough" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Four Missing Layers — Why RAG Is Not Enough
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-9-context-graph-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 9: Context Graph Definition
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 9: Context Graph Definition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#context-graph-schema-core-node-and-edge-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context Graph Schema — Core Node and Edge Types
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#five-complementary-knowledge-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Five Complementary Knowledge Layers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-10-llm-ai-foundations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 10: Llm Ai Foundations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 10: Llm Ai Foundations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#evaluation-pipeline-for-context-graph-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evaluation Pipeline for Context Graph Systems
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prompt-anatomy-for-context-graph-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prompt Anatomy for Context Graph Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-11-decision-traces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 11: Decision Traces
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 11: Decision Traces">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#complete-decision-trace-lpg-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Complete Decision Trace LPG Schema
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#precedent-chain-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      Precedent Chain Pattern
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-12-incumbent-challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 12: Incumbent Challenges
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 12: Incumbent Challenges">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#structural-gap-analysis-incumbent-systems-vs-context-graph-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structural Gap Analysis — Incumbent Systems vs. Context Graph Requirements
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-13-graph-data-modeling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 13: Graph Data Modeling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 13: Graph Data Modeling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bitemporal-modeling-two-time-dimensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bitemporal Modeling — Two Time Dimensions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subgraph-extraction-for-llm-context-assembly" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subgraph Extraction for LLM Context Assembly
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-14-llm-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 14: Llm Integration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 14: Llm Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#context-window-budget-visualizer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context Window Budget Visualizer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hybrid-retrieval-and-reranking-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hybrid Retrieval and Reranking Pipeline
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-15-building-deploying" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 15: Building Deploying
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 15: Building Deploying">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ingestion-pipeline-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ingestion Pipeline Architecture
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-16-ai-agent-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 16: Ai Agent Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 16: Ai Agent Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agent-memory-architecture-and-write-back-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      Agent Memory Architecture and Write-Back Loop
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graduated-autonomy-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graduated Autonomy Model
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-17-enterprise-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 17: Enterprise Use Cases
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 17: Enterprise Use Cases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cross-domain-use-case-decision-trace-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cross-Domain Use Case Decision Trace Comparison
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#engineering-incident-context-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Engineering Incident Context Graph
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-18-compliance-explainability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 18: Compliance Explainability
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 18: Compliance Explainability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#audit-trail-architecture-in-a-context-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Audit Trail Architecture in a Context Graph
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compliance-lifecycle-for-a-context-graph-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compliance Lifecycle for a Context Graph System
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-19-market-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 19: Market Strategy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 19: Market Strategy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#go-to-market-motion-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Go-To-Market Motion Architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#three-startup-strategies-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      Three Startup Strategies Comparison
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-20-organizational-adoption" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 20: Organizational Adoption
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 20: Organizational Adoption">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#change-management-phases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Change Management Phases
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-21-data-engineering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 21: Data Engineering
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 21: Data Engineering">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-mesh-for-context-graphs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Mesh for Context Graphs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-22-security-vector-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 22: Security Vector Search
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 22: Security Vector Search">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#attribute-based-access-control-in-context-graphs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Attribute-Based Access Control in Context Graphs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diagram-table/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagram and MicroSim Table
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../feature-checklist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feature Checklist
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-1-knowledge-graphs-lpg" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 1: Knowledge Graphs Lpg
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 1: Knowledge Graphs Lpg">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-model-comparison-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Model Comparison Explorer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graph-traversal-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph Traversal Explorer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interactive-lpg-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interactive LPG Explorer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-hop-query-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-Hop Query Performance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-2-semantic-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 2: Semantic Layers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 2: Semantic Layers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#query-federation-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Query Federation Flow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#semantic-consistency-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Semantic Consistency Explorer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#semantic-layer-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Semantic Layer Architecture
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-3-metadata-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 3: Metadata Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 3: Metadata Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#differential-privacy-noise-mechanism-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Differential Privacy Noise Mechanism Explorer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#governance-framework-concept-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      Governance Framework Concept Map
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#governance-role-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Governance Role Graph
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadata-catalog-to-context-graph-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metadata Catalog to Context Graph Flow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#three-metadata-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Three Metadata Layers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-4-enterprise-knowledge-graphs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 4: Enterprise Knowledge Graphs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 4: Enterprise Knowledge Graphs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#graph-etl-pipeline-stages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph ETL Pipeline Stages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hub-and-spoke-vs-federated-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hub-and-Spoke vs. Federated Architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#taxonomy-vs-ontology-in-a-product-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Taxonomy vs. Ontology in a Product Graph
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-5-graph-theory-algorithms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 5: Graph Theory Algorithms
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 5: Graph Theory Algorithms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#information-extraction-pipeline-to-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Information Extraction Pipeline to Graph
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#knowledge-graph-embedding-space-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Knowledge Graph Embedding Space Explorer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pagerank-visualization-on-a-small-supplier-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      PageRank Visualization on a Small Supplier Graph
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-6-metadata-registries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 6: Metadata Registries
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 6: Metadata Registries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#iso-11179-component-hierarchy" class="md-nav__link">
+    <span class="md-ellipsis">
+      ISO 11179 Component Hierarchy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registry-api-retrieval-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Registry API Retrieval Flow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registry-vs-catalog-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Registry vs. Catalog Architecture
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-7-process-mining-lineage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 7: Process Mining Lineage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 7: Process Mining Lineage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#event-sourcing-architecture-for-context-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Event Sourcing Architecture for Context Graph
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lineage-vs-provenance-in-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lineage vs. Provenance in Context
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#process-discovery-from-event-log-to-process-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process Discovery — From Event Log to Process Graph
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-8-context-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 8: Context Problem
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 8: Context Problem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#context-failure-mode-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context Failure Mode Explorer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-four-missing-layers-why-rag-is-not-enough" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Four Missing Layers — Why RAG Is Not Enough
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-9-context-graph-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 9: Context Graph Definition
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 9: Context Graph Definition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#context-graph-schema-core-node-and-edge-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context Graph Schema — Core Node and Edge Types
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#five-complementary-knowledge-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Five Complementary Knowledge Layers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-10-llm-ai-foundations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 10: Llm Ai Foundations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 10: Llm Ai Foundations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#evaluation-pipeline-for-context-graph-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evaluation Pipeline for Context Graph Systems
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prompt-anatomy-for-context-graph-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prompt Anatomy for Context Graph Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-11-decision-traces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 11: Decision Traces
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 11: Decision Traces">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#complete-decision-trace-lpg-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Complete Decision Trace LPG Schema
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#precedent-chain-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      Precedent Chain Pattern
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-12-incumbent-challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 12: Incumbent Challenges
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 12: Incumbent Challenges">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#structural-gap-analysis-incumbent-systems-vs-context-graph-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structural Gap Analysis — Incumbent Systems vs. Context Graph Requirements
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-13-graph-data-modeling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 13: Graph Data Modeling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 13: Graph Data Modeling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bitemporal-modeling-two-time-dimensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bitemporal Modeling — Two Time Dimensions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subgraph-extraction-for-llm-context-assembly" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subgraph Extraction for LLM Context Assembly
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-14-llm-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 14: Llm Integration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 14: Llm Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#context-window-budget-visualizer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context Window Budget Visualizer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hybrid-retrieval-and-reranking-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hybrid Retrieval and Reranking Pipeline
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-15-building-deploying" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 15: Building Deploying
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 15: Building Deploying">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ingestion-pipeline-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ingestion Pipeline Architecture
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-16-ai-agent-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 16: Ai Agent Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 16: Ai Agent Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agent-memory-architecture-and-write-back-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      Agent Memory Architecture and Write-Back Loop
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graduated-autonomy-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graduated Autonomy Model
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-17-enterprise-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 17: Enterprise Use Cases
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 17: Enterprise Use Cases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cross-domain-use-case-decision-trace-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cross-Domain Use Case Decision Trace Comparison
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#engineering-incident-context-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Engineering Incident Context Graph
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-18-compliance-explainability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 18: Compliance Explainability
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 18: Compliance Explainability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#audit-trail-architecture-in-a-context-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Audit Trail Architecture in a Context Graph
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compliance-lifecycle-for-a-context-graph-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compliance Lifecycle for a Context Graph System
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-19-market-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 19: Market Strategy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 19: Market Strategy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#go-to-market-motion-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Go-To-Market Motion Architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#three-startup-strategies-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      Three Startup Strategies Comparison
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-20-organizational-adoption" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 20: Organizational Adoption
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 20: Organizational Adoption">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#change-management-phases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Change Management Phases
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-21-data-engineering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 21: Data Engineering
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 21: Data Engineering">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-mesh-for-context-graphs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Mesh for Context Graphs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-22-security-vector-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter 22: Security Vector Search
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 22: Security Vector Search">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#attribute-based-access-control-in-context-graphs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Attribute-Based Access Control in Context Graphs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/context-graph/blob/main/docs/learning-graph/diagram-details.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+    </a>
+  
+  
+
+
+<h1 id="diagram-and-microsim-details">Diagram and MicroSim Details<a class="headerlink" href="#diagram-and-microsim-details" title="Permanent link">¶</a></h1>
+<p><strong>Total Visual Elements:</strong> 49
+<strong>Diagrams:</strong> 23
+<strong>MicroSims:</strong> 20</p>
+<h2 id="chapter-1-knowledge-graphs-lpg">Chapter 1: Knowledge Graphs Lpg<a class="headerlink" href="#chapter-1-knowledge-graphs-lpg" title="Permanent link">¶</a></h2>
+<p><strong>Total elements:</strong> 4</p>
+<h3 id="data-model-comparison-explorer"><a href="../../chapters/01-knowledge-graphs-lpg/#diagram-data-model-comparison-explorer">Data Model Comparison Explorer</a><a class="headerlink" href="#data-model-comparison-explorer" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 2</li>
+<li><strong>Difficulty:</strong> Hard</li>
+</ul>
+<h3 id="graph-traversal-explorer"><a href="../../chapters/01-knowledge-graphs-lpg/#diagram-graph-traversal-explorer">Graph Traversal Explorer</a><a class="headerlink" href="#graph-traversal-explorer" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 12</li>
+<li><strong>Difficulty:</strong> Hard</li>
+</ul>
+<h3 id="interactive-lpg-explorer"><a href="../../chapters/01-knowledge-graphs-lpg/#diagram-interactive-lpg-explorer">Interactive LPG Explorer</a><a class="headerlink" href="#interactive-lpg-explorer" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Unknown</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 5</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<h3 id="multi-hop-query-performance"><a href="../../chapters/01-knowledge-graphs-lpg/#diagram-multi-hop-query-performance">Multi-Hop Query Performance</a><a class="headerlink" href="#multi-hop-query-performance" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Unknown</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 3</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<h2 id="chapter-2-semantic-layers">Chapter 2: Semantic Layers<a class="headerlink" href="#chapter-2-semantic-layers" title="Permanent link">¶</a></h2>
+<p><strong>Total elements:</strong> 3</p>
+<h3 id="query-federation-flow"><a href="../../chapters/02-semantic-layers/#diagram-query-federation-flow">Query Federation Flow</a><a class="headerlink" href="#query-federation-flow" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 3</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<h3 id="semantic-consistency-explorer"><a href="../../chapters/02-semantic-layers/#diagram-semantic-consistency-explorer">Semantic Consistency Explorer</a><a class="headerlink" href="#semantic-consistency-explorer" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 13</li>
+<li><strong>Difficulty:</strong> Hard</li>
+</ul>
+<h3 id="semantic-layer-architecture"><a href="../../chapters/02-semantic-layers/#diagram-semantic-layer-architecture">Semantic Layer Architecture</a><a class="headerlink" href="#semantic-layer-architecture" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 1</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<h2 id="chapter-3-metadata-management">Chapter 3: Metadata Management<a class="headerlink" href="#chapter-3-metadata-management" title="Permanent link">¶</a></h2>
+<p><strong>Total elements:</strong> 5</p>
+<h3 id="differential-privacy-noise-mechanism-explorer"><a href="../../chapters/03-metadata-management/#diagram-differential-privacy-noise-mechanism-explorer">Differential Privacy Noise Mechanism Explorer</a><a class="headerlink" href="#differential-privacy-noise-mechanism-explorer" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 7</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<h3 id="governance-framework-concept-map"><a href="../../chapters/03-metadata-management/#diagram-governance-framework-concept-map">Governance Framework Concept Map</a><a class="headerlink" href="#governance-framework-concept-map" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Unknown</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 6</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<h3 id="governance-role-graph"><a href="../../chapters/03-metadata-management/#diagram-governance-role-graph">Governance Role Graph</a><a class="headerlink" href="#governance-role-graph" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Unknown</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 1</li>
+<li><strong>Difficulty:</strong> Easy</li>
+</ul>
+<h3 id="metadata-catalog-to-context-graph-flow"><a href="../../chapters/03-metadata-management/#diagram-metadata-catalog-to-context-graph-flow">Metadata Catalog to Context Graph Flow</a><a class="headerlink" href="#metadata-catalog-to-context-graph-flow" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 10</li>
+<li><strong>Difficulty:</strong> Hard</li>
+</ul>
+<h3 id="three-metadata-layers"><a href="../../chapters/03-metadata-management/#diagram-three-metadata-layers">Three Metadata Layers</a><a class="headerlink" href="#three-metadata-layers" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Diagram</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 3</li>
+<li><strong>Difficulty:</strong> Easy</li>
+</ul>
+<h2 id="chapter-4-enterprise-knowledge-graphs">Chapter 4: Enterprise Knowledge Graphs<a class="headerlink" href="#chapter-4-enterprise-knowledge-graphs" title="Permanent link">¶</a></h2>
+<p><strong>Total elements:</strong> 3</p>
+<h3 id="graph-etl-pipeline-stages"><a href="../../chapters/04-enterprise-knowledge-graphs/#diagram-graph-etl-pipeline-stages">Graph ETL Pipeline Stages</a><a class="headerlink" href="#graph-etl-pipeline-stages" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 5</li>
+<li><strong>Difficulty:</strong> Hard</li>
+</ul>
+<h3 id="hub-and-spoke-vs-federated-architecture"><a href="../../chapters/04-enterprise-knowledge-graphs/#diagram-hub-and-spoke-vs-federated-architecture">Hub-and-Spoke vs. Federated Architecture</a><a class="headerlink" href="#hub-and-spoke-vs-federated-architecture" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Diagram</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 7</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<h3 id="taxonomy-vs-ontology-in-a-product-graph"><a href="../../chapters/04-enterprise-knowledge-graphs/#diagram-taxonomy-vs-ontology-in-a-product-graph">Taxonomy vs. Ontology in a Product Graph</a><a class="headerlink" href="#taxonomy-vs-ontology-in-a-product-graph" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Diagram</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 5</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<h2 id="chapter-5-graph-theory-algorithms">Chapter 5: Graph Theory Algorithms<a class="headerlink" href="#chapter-5-graph-theory-algorithms" title="Permanent link">¶</a></h2>
+<p><strong>Total elements:</strong> 3</p>
+<h3 id="information-extraction-pipeline-to-graph"><a href="../../chapters/05-graph-theory-algorithms/#diagram-information-extraction-pipeline-to-graph">Information Extraction Pipeline to Graph</a><a class="headerlink" href="#information-extraction-pipeline-to-graph" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 9</li>
+<li><strong>Difficulty:</strong> Hard</li>
+</ul>
+<h3 id="knowledge-graph-embedding-space-explorer"><a href="../../chapters/05-graph-theory-algorithms/#diagram-knowledge-graph-embedding-space-explorer">Knowledge Graph Embedding Space Explorer</a><a class="headerlink" href="#knowledge-graph-embedding-space-explorer" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 3</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<h3 id="pagerank-visualization-on-a-small-supplier-graph"><a href="../../chapters/05-graph-theory-algorithms/#diagram-pagerank-visualization-on-a-small-supplier-graph">PageRank Visualization on a Small Supplier Graph</a><a class="headerlink" href="#pagerank-visualization-on-a-small-supplier-graph" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 6</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<h2 id="chapter-6-metadata-registries">Chapter 6: Metadata Registries<a class="headerlink" href="#chapter-6-metadata-registries" title="Permanent link">¶</a></h2>
+<p><strong>Total elements:</strong> 3</p>
+<h3 id="iso-11179-component-hierarchy"><a href="../../chapters/06-metadata-registries/#diagram-iso-11179-component-hierarchy">ISO 11179 Component Hierarchy</a><a class="headerlink" href="#iso-11179-component-hierarchy" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Diagram</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 2</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<h3 id="registry-api-retrieval-flow"><a href="../../chapters/06-metadata-registries/#diagram-registry-api-retrieval-flow">Registry API Retrieval Flow</a><a class="headerlink" href="#registry-api-retrieval-flow" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 10</li>
+<li><strong>Difficulty:</strong> Hard</li>
+</ul>
+<h3 id="registry-vs-catalog-architecture"><a href="../../chapters/06-metadata-registries/#diagram-registry-vs-catalog-architecture">Registry vs. Catalog Architecture</a><a class="headerlink" href="#registry-vs-catalog-architecture" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Diagram</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 6</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<h2 id="chapter-7-process-mining-lineage">Chapter 7: Process Mining Lineage<a class="headerlink" href="#chapter-7-process-mining-lineage" title="Permanent link">¶</a></h2>
+<p><strong>Total elements:</strong> 3</p>
+<h3 id="event-sourcing-architecture-for-context-graph"><a href="../../chapters/07-process-mining-lineage/#diagram-event-sourcing-architecture-for-context-graph">Event Sourcing Architecture for Context Graph</a><a class="headerlink" href="#event-sourcing-architecture-for-context-graph" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<h3 id="lineage-vs-provenance-in-context"><a href="../../chapters/07-process-mining-lineage/#diagram-lineage-vs-provenance-in-context">Lineage vs. Provenance in Context</a><a class="headerlink" href="#lineage-vs-provenance-in-context" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Unknown</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 2</li>
+<li><strong>Difficulty:</strong> Easy</li>
+</ul>
+<h3 id="process-discovery-from-event-log-to-process-graph"><a href="../../chapters/07-process-mining-lineage/#diagram-process-discovery-—-from-event-log-to-process-graph">Process Discovery — From Event Log to Process Graph</a><a class="headerlink" href="#process-discovery-from-event-log-to-process-graph" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 8</li>
+<li><strong>Difficulty:</strong> Very Hard</li>
+</ul>
+<h2 id="chapter-8-context-problem">Chapter 8: Context Problem<a class="headerlink" href="#chapter-8-context-problem" title="Permanent link">¶</a></h2>
+<p><strong>Total elements:</strong> 2</p>
+<h3 id="context-failure-mode-explorer"><a href="../../chapters/08-context-problem/#diagram-context-failure-mode-explorer">Context Failure Mode Explorer</a><a class="headerlink" href="#context-failure-mode-explorer" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 7</li>
+<li><strong>Difficulty:</strong> Hard</li>
+</ul>
+<h3 id="the-four-missing-layers-why-rag-is-not-enough"><a href="../../chapters/08-context-problem/#diagram-the-four-missing-layers-—-why-rag-is-not-enough">The Four Missing Layers — Why RAG Is Not Enough</a><a class="headerlink" href="#the-four-missing-layers-why-rag-is-not-enough" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 5</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<h2 id="chapter-9-context-graph-definition">Chapter 9: Context Graph Definition<a class="headerlink" href="#chapter-9-context-graph-definition" title="Permanent link">¶</a></h2>
+<p><strong>Total elements:</strong> 2</p>
+<h3 id="context-graph-schema-core-node-and-edge-types"><a href="../../chapters/09-context-graph-definition/#diagram-context-graph-schema-—-core-node-and-edge-types">Context Graph Schema — Core Node and Edge Types</a><a class="headerlink" href="#context-graph-schema-core-node-and-edge-types" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Diagram</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Easy</li>
+</ul>
+<h3 id="five-complementary-knowledge-layers"><a href="../../chapters/09-context-graph-definition/#diagram-five-complementary-knowledge-layers">Five Complementary Knowledge Layers</a><a class="headerlink" href="#five-complementary-knowledge-layers" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Diagram</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Easy</li>
+</ul>
+<h2 id="chapter-10-llm-ai-foundations">Chapter 10: Llm Ai Foundations<a class="headerlink" href="#chapter-10-llm-ai-foundations" title="Permanent link">¶</a></h2>
+<p><strong>Total elements:</strong> 2</p>
+<h3 id="evaluation-pipeline-for-context-graph-systems"><a href="../../chapters/10-llm-ai-foundations/#diagram-evaluation-pipeline-for-context-graph-systems">Evaluation Pipeline for Context Graph Systems</a><a class="headerlink" href="#evaluation-pipeline-for-context-graph-systems" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Diagram</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Easy</li>
+</ul>
+<h3 id="prompt-anatomy-for-context-graph-integration"><a href="../../chapters/10-llm-ai-foundations/#diagram-prompt-anatomy-for-context-graph-integration">Prompt Anatomy for Context Graph Integration</a><a class="headerlink" href="#prompt-anatomy-for-context-graph-integration" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 10</li>
+<li><strong>Difficulty:</strong> Hard</li>
+</ul>
+<h2 id="chapter-11-decision-traces">Chapter 11: Decision Traces<a class="headerlink" href="#chapter-11-decision-traces" title="Permanent link">¶</a></h2>
+<p><strong>Total elements:</strong> 2</p>
+<h3 id="complete-decision-trace-lpg-schema"><a href="../../chapters/11-decision-traces/#diagram-complete-decision-trace-lpg-schema">Complete Decision Trace LPG Schema</a><a class="headerlink" href="#complete-decision-trace-lpg-schema" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Diagram</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Easy</li>
+</ul>
+<h3 id="precedent-chain-pattern"><a href="../../chapters/11-decision-traces/#diagram-precedent-chain-pattern">Precedent Chain Pattern</a><a class="headerlink" href="#precedent-chain-pattern" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Unknown</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 5</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<h2 id="chapter-12-incumbent-challenges">Chapter 12: Incumbent Challenges<a class="headerlink" href="#chapter-12-incumbent-challenges" title="Permanent link">¶</a></h2>
+<p><strong>Total elements:</strong> 1</p>
+<h3 id="structural-gap-analysis-incumbent-systems-vs-context-graph-requirements"><a href="../../chapters/12-incumbent-challenges/#diagram-structural-gap-analysis-—-incumbent-systems-vs-context-graph-requirements">Structural Gap Analysis — Incumbent Systems vs. Context Graph Requirements</a><a class="headerlink" href="#structural-gap-analysis-incumbent-systems-vs-context-graph-requirements" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Diagram</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Easy</li>
+</ul>
+<h2 id="chapter-13-graph-data-modeling">Chapter 13: Graph Data Modeling<a class="headerlink" href="#chapter-13-graph-data-modeling" title="Permanent link">¶</a></h2>
+<p><strong>Total elements:</strong> 2</p>
+<h3 id="bitemporal-modeling-two-time-dimensions"><a href="../../chapters/13-graph-data-modeling/#diagram-bitemporal-modeling-—-two-time-dimensions">Bitemporal Modeling — Two Time Dimensions</a><a class="headerlink" href="#bitemporal-modeling-two-time-dimensions" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 6</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<h3 id="subgraph-extraction-for-llm-context-assembly"><a href="../../chapters/13-graph-data-modeling/#diagram-subgraph-extraction-for-llm-context-assembly">Subgraph Extraction for LLM Context Assembly</a><a class="headerlink" href="#subgraph-extraction-for-llm-context-assembly" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Diagram</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 9</li>
+<li><strong>Difficulty:</strong> Hard</li>
+</ul>
+<h2 id="chapter-14-llm-integration">Chapter 14: Llm Integration<a class="headerlink" href="#chapter-14-llm-integration" title="Permanent link">¶</a></h2>
+<p><strong>Total elements:</strong> 2</p>
+<h3 id="context-window-budget-visualizer"><a href="../../chapters/14-llm-integration/#diagram-context-window-budget-visualizer">Context Window Budget Visualizer</a><a class="headerlink" href="#context-window-budget-visualizer" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 6</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<h3 id="hybrid-retrieval-and-reranking-pipeline"><a href="../../chapters/14-llm-integration/#diagram-hybrid-retrieval-and-reranking-pipeline">Hybrid Retrieval and Reranking Pipeline</a><a class="headerlink" href="#hybrid-retrieval-and-reranking-pipeline" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 6</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<h2 id="chapter-15-building-deploying">Chapter 15: Building Deploying<a class="headerlink" href="#chapter-15-building-deploying" title="Permanent link">¶</a></h2>
+<p><strong>Total elements:</strong> 1</p>
+<h3 id="ingestion-pipeline-architecture"><a href="../../chapters/15-building-deploying/#diagram-ingestion-pipeline-architecture">Ingestion Pipeline Architecture</a><a class="headerlink" href="#ingestion-pipeline-architecture" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Diagram</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Easy</li>
+</ul>
+<h2 id="chapter-16-ai-agent-architecture">Chapter 16: Ai Agent Architecture<a class="headerlink" href="#chapter-16-ai-agent-architecture" title="Permanent link">¶</a></h2>
+<p><strong>Total elements:</strong> 2</p>
+<h3 id="agent-memory-architecture-and-write-back-loop"><a href="../../chapters/16-ai-agent-architecture/#diagram-agent-memory-architecture-and-write-back-loop">Agent Memory Architecture and Write-Back Loop</a><a class="headerlink" href="#agent-memory-architecture-and-write-back-loop" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Diagram</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Easy</li>
+</ul>
+<h3 id="graduated-autonomy-model"><a href="../../chapters/16-ai-agent-architecture/#diagram-graduated-autonomy-model">Graduated Autonomy Model</a><a class="headerlink" href="#graduated-autonomy-model" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Diagram</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Easy</li>
+</ul>
+<h2 id="chapter-17-enterprise-use-cases">Chapter 17: Enterprise Use Cases<a class="headerlink" href="#chapter-17-enterprise-use-cases" title="Permanent link">¶</a></h2>
+<p><strong>Total elements:</strong> 2</p>
+<h3 id="cross-domain-use-case-decision-trace-comparison"><a href="../../chapters/17-enterprise-use-cases/#diagram-cross-domain-use-case-decision-trace-comparison">Cross-Domain Use Case Decision Trace Comparison</a><a class="headerlink" href="#cross-domain-use-case-decision-trace-comparison" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Diagram</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 1</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<h3 id="engineering-incident-context-graph"><a href="../../chapters/17-enterprise-use-cases/#diagram-engineering-incident-context-graph">Engineering Incident Context Graph</a><a class="headerlink" href="#engineering-incident-context-graph" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Diagram</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Easy</li>
+</ul>
+<h2 id="chapter-18-compliance-explainability">Chapter 18: Compliance Explainability<a class="headerlink" href="#chapter-18-compliance-explainability" title="Permanent link">¶</a></h2>
+<p><strong>Total elements:</strong> 2</p>
+<h3 id="audit-trail-architecture-in-a-context-graph"><a href="../../chapters/18-compliance-explainability/#diagram-audit-trail-architecture-in-a-context-graph">Audit Trail Architecture in a Context Graph</a><a class="headerlink" href="#audit-trail-architecture-in-a-context-graph" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Diagram</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 1</li>
+<li><strong>Difficulty:</strong> Easy</li>
+</ul>
+<h3 id="compliance-lifecycle-for-a-context-graph-system"><a href="../../chapters/18-compliance-explainability/#diagram-compliance-lifecycle-for-a-context-graph-system">Compliance Lifecycle for a Context Graph System</a><a class="headerlink" href="#compliance-lifecycle-for-a-context-graph-system" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Status:</strong> Specified</li>
+<li><strong>Type:</strong> Diagram</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 1</li>
+<li><strong>Difficulty:</strong> Easy</li>
+</ul>
+<h2 id="chapter-19-market-strategy">Chapter 19: Market Strategy<a class="headerlink" href="#chapter-19-market-strategy" title="Permanent link">¶</a></h2>
+<p><strong>Total elements:</strong> 2</p>
+<h3 id="go-to-market-motion-architecture"><a href="../../chapters/19-market-strategy/#diagram-go-to-market-motion-architecture&lt;-summary&gt;">Go-To-Market Motion Architecture</a><a class="headerlink" href="#go-to-market-motion-architecture" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Type:</strong> Diagram</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Easy</li>
+</ul>
+<h3 id="three-startup-strategies-comparison"><a href="../../chapters/19-market-strategy/#diagram-three-startup-strategies-comparison&lt;-summary&gt;">Three Startup Strategies Comparison</a><a class="headerlink" href="#three-startup-strategies-comparison" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Type:</strong> Diagram</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Easy</li>
+</ul>
+<h2 id="chapter-20-organizational-adoption">Chapter 20: Organizational Adoption<a class="headerlink" href="#chapter-20-organizational-adoption" title="Permanent link">¶</a></h2>
+<p><strong>Total elements:</strong> 1</p>
+<h3 id="change-management-phases"><a href="../../chapters/20-organizational-adoption/#diagram-change-management-phases&lt;-summary&gt;">Change Management Phases</a><a class="headerlink" href="#change-management-phases" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Type:</strong> Diagram</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Easy</li>
+</ul>
+<h2 id="chapter-21-data-engineering">Chapter 21: Data Engineering<a class="headerlink" href="#chapter-21-data-engineering" title="Permanent link">¶</a></h2>
+<p><strong>Total elements:</strong> 1</p>
+<h3 id="data-mesh-for-context-graphs"><a href="../../chapters/21-data-engineering/#diagram-data-mesh-for-context-graphs&lt;-summary&gt;">Data Mesh for Context Graphs</a><a class="headerlink" href="#data-mesh-for-context-graphs" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Type:</strong> Diagram</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Easy</li>
+</ul>
+<h2 id="chapter-22-security-vector-search">Chapter 22: Security Vector Search<a class="headerlink" href="#chapter-22-security-vector-search" title="Permanent link">¶</a></h2>
+<p><strong>Total elements:</strong> 1</p>
+<h3 id="attribute-based-access-control-in-context-graphs"><a href="../../chapters/22-security-vector-search/#diagram-attribute-based-access-control-in-context-graphs&lt;-summary&gt;">Attribute-Based Access Control in Context Graphs</a><a class="headerlink" href="#attribute-based-access-control-in-context-graphs" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Type:</strong> Diagram</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Easy</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../chapter-metrics/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Chapter Metrics">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Chapter Metrics
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../diagram-table/" class="md-footer__link md-footer__link--next" aria-label="Next: Diagram and MicroSim Table">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Diagram and MicroSim Table
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2026 Dan Mccreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.action.edit", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
