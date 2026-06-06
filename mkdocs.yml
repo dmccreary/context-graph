@@ -126,7 +126,11 @@ nav:
       - FAQ Quality Report: learning-graph/faq-quality-report.md
       - FAQ Coverage Gaps: learning-graph/faq-coverage-gaps.md
       - Quiz Generation Report: learning-graph/quiz-generation-report.md
-
+      - learning-graph/book-metrics.md
+      - learning-graph/chapter-metrics.md
+      - learning-graph/diagram-details.md
+      - learning-graph/diagram-table.md
+  
   - FAQ: faq.md
   - Glossary: glossary.md
 
