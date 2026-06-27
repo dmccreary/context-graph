@@ -1,0 +1,1692 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A step-by-step analysis of how Anthropic's Claude tag feature — invoking Claude by mentioning it inside any enterprise chat tool — depends on an enterprise knowledge graph to get the right text into the context window with minimum tokens and maximum quality.">
+      
+      
+        <meta name="author" content="Dan Mccreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/context-graph/appendicies/tag-announcement/">
+      
+      
+        <link rel="prev" href="../../glossary/">
+      
+      
+        <link rel="next" href="../../sims/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Appendix: Claude Tag and the Context Graph - Context Graph</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-7RZYM87NB1"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-7RZYM87NB1",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-7RZYM87NB1",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta property="og:type" content="website">
+      
+        <meta property="og:title" content="Appendix: Claude Tag and the Context Graph - Context Graph">
+      
+        <meta property="og:description" content="A step-by-step analysis of how Anthropic's Claude tag feature — invoking Claude by mentioning it inside any enterprise chat tool — depends on an enterprise knowledge graph to get the right text into the context window with minimum tokens and maximum quality.">
+      
+        <meta property="og:image" content="https://dmccreary.github.io/context-graph/assets/images/social/appendicies/tag-announcement.png">
+      
+        <meta property="og:image:type" content="image/png">
+      
+        <meta property="og:image:width" content="1200">
+      
+        <meta property="og:image:height" content="630">
+      
+        <meta property="og:url" content="https://dmccreary.github.io/context-graph/appendicies/tag-announcement/">
+      
+        <meta name="twitter:card" content="summary_large_image">
+      
+        <meta name="twitter:title" content="Appendix: Claude Tag and the Context Graph - Context Graph">
+      
+        <meta name="twitter:description" content="A step-by-step analysis of how Anthropic's Claude tag feature — invoking Claude by mentioning it inside any enterprise chat tool — depends on an enterprise knowledge graph to get the right text into the context window with minimum tokens and maximum quality.">
+      
+        <meta name="twitter:image" content="https://dmccreary.github.io/context-graph/assets/images/social/appendicies/tag-announcement.png">
+      
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#appendix-claude-tag-and-the-context-graph" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Context Graph" class="md-header__button md-logo" aria-label="Context Graph" data-md-component="logo">
+      
+  <img src="../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Context Graph
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Appendix: Claude Tag and the Context Graph
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/context-graph" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Context Graph" class="md-nav__button md-logo" aria-label="Context Graph" data-md-component="logo">
+      
+  <img src="../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    Context Graph
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/context-graph" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Course Description
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../chapters/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Chapters
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Learning Graph
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FAQ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Appendices
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Appendices
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Claude Tag and the Context Graph
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Claude Tag and the Context Graph
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-tag-is-a-pointer-into-the-knowledge-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Tag Is a Pointer Into the Knowledge Graph
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-tag-to-answer-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Tag-to-Answer Pipeline
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Tag-to-Answer Pipeline">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-capture-the-tag-event" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Capture the Tag Event
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-resolve-entities-and-intent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Resolve Entities and Intent
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-extract-the-right-subgraph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Extract the Right Subgraph
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-budget-and-assemble-the-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Budget and Assemble the Context
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-generate-the-grounded-answer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5: Generate the Grounded Answer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6-write-the-conversation-back" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 6: Write the Conversation Back
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#from-one-answer-to-an-autonomous-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      From One Answer to an Autonomous Project
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-latency-budget-why-milliseconds-is-a-requirement" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Latency Budget: Why "Milliseconds" Is a Requirement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#token-efficiency-the-tag-makes-the-books-thesis-unavoidable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Token Efficiency: The Tag Makes the Book's Thesis Unavoidable
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#one-tag-every-chat-tool-the-graph-as-the-unifying-substrate" class="md-nav__link">
+    <span class="md-ellipsis">
+      One Tag, Every Chat Tool: The Graph as the Unifying Substrate
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#personal-notes-become-organizational-memory-the-integrated-pkg" class="md-nav__link">
+    <span class="md-ellipsis">
+      Personal Notes Become Organizational Memory: The Integrated PKG
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-flywheel-every-tag-writes-back" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Flywheel: Every Tag Writes Back
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-this-means-for-context-architects" class="md-nav__link">
+    <span class="md-ellipsis">
+      What This Means for Context Architects
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    MicroSims
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../feature-checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Feature Checklist
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    License
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contact
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-tag-is-a-pointer-into-the-knowledge-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Tag Is a Pointer Into the Knowledge Graph
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-tag-to-answer-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Tag-to-Answer Pipeline
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Tag-to-Answer Pipeline">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-capture-the-tag-event" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Capture the Tag Event
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-resolve-entities-and-intent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Resolve Entities and Intent
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-extract-the-right-subgraph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Extract the Right Subgraph
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-budget-and-assemble-the-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Budget and Assemble the Context
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-generate-the-grounded-answer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5: Generate the Grounded Answer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6-write-the-conversation-back" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 6: Write the Conversation Back
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#from-one-answer-to-an-autonomous-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      From One Answer to an Autonomous Project
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-latency-budget-why-milliseconds-is-a-requirement" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Latency Budget: Why "Milliseconds" Is a Requirement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#token-efficiency-the-tag-makes-the-books-thesis-unavoidable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Token Efficiency: The Tag Makes the Book's Thesis Unavoidable
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#one-tag-every-chat-tool-the-graph-as-the-unifying-substrate" class="md-nav__link">
+    <span class="md-ellipsis">
+      One Tag, Every Chat Tool: The Graph as the Unifying Substrate
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#personal-notes-become-organizational-memory-the-integrated-pkg" class="md-nav__link">
+    <span class="md-ellipsis">
+      Personal Notes Become Organizational Memory: The Integrated PKG
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-flywheel-every-tag-writes-back" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Flywheel: Every Tag Writes Back
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-this-means-for-context-architects" class="md-nav__link">
+    <span class="md-ellipsis">
+      What This Means for Context Architects
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/dmccreary/context-graph/blob/main/docs/appendicies/tag-announcement.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+    </a>
+  
+  
+
+
+<h1 id="appendix-claude-tag-and-the-context-graph">Appendix: Claude Tag and the Context Graph<a class="headerlink" href="#appendix-claude-tag-and-the-context-graph" title="Permanent link">¶</a></h1>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">¶</a></h2>
+<p>Anthropic's <strong>Claude Tag</strong> lets a person pull Claude into a workspace conversation simply by mentioning it — <code>@Claude</code> — where it joins as a working team member that can break a request into stages and carry it out. Launched first on Slack, the feature points toward a future where Claude can be tagged across every enterprise chat surface. This appendix analyzes, step by step, what has to happen behind that mention for the result to be both accurate and token-efficient, and shows why an enterprise knowledge graph with millisecond, scale-out query performance is the component that makes it work.</p>
+<hr>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">One keystroke, the whole enterprise behind it.</p>
+<p><img src="../../img/mascot/welcome.png" class="mascot-admonition-img" alt="Nexus waves welcome">
+Welcome to the appendix where everything in this book gets put to a real-world test. Someone types <code>@Claude</code> in a chat thread and expects a grounded answer in seconds. Where does that answer come from? Let's trace the why!</p>
+</div>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">¶</a></h2>
+<p>A new capability changes the shape of a problem. <strong>Claude Tag</strong> is one of those changes. Anthropic describes it plainly: "Claude can join as a team member. Grant Claude access to selected channels, and connect it to whichever tools, data—and even codebases—you choose." Anyone in a channel can tag <code>@Claude</code> and delegate a task, and Claude will "break its task down into stages and then work through them in turn, using the tools it has access to" — sometimes answering in seconds, sometimes "pursuing a project autonomously over hours or days." It launched first on Slack, in beta for Enterprise and Team customers, running on Claude Opus 4.8.</p>
+<p>Two design choices in the announcement matter enormously for this book. First, Claude <em>learns</em>: it "builds more context about the work" so it "doesn't need to explain things from scratch over and over," and it can draw on "other Slack channels and data sources." Second, administrators hold the reins: they "specify which tools and information the model should have access to, in which channels," run "separate Claude identities for different uses" with isolated memory scopes, "set limits for token spend," and "view a log of everything that @Claude has done." A persistent, learning agent governed by per-channel permissions and an explicit token budget is, almost line for line, the system this book has been describing.</p>
+<p>This appendix takes that real feature and extends it along two axes the book cares about — both stated here as deliberate assumptions, not current fact. <strong>First</strong>, that tagging eventually reaches <em>every</em> enterprise chat surface: Slack today, and Microsoft Teams, Messenger, and whatever comes next tomorrow. <strong>Second</strong>, that the organization has done the work this book argues for, placing <strong>all</strong> of its knowledge — down to individual employees' personal notes — into an enterprise knowledge graph. Neither is true at launch. Both are where the architecture points.</p>
+<p>Under those assumptions, the tag becomes the single most important entry point into enterprise AI — the place where a human, mid-conversation, hands Claude a task. And it is where the central problem of this book shows up in its purest form: the request arrives with crystal-clear <em>intent</em> and almost no <em>context</em>. Closing that gap, in milliseconds, with the fewest possible tokens, is what a context graph is for. (Source: Anthropic, <a href="https://www.anthropic.com/news/introducing-claude-tag"><em>Introducing Claude Tag</em></a>.)</p>
+<h2 id="the-tag-is-a-pointer-into-the-knowledge-graph">The Tag Is a Pointer Into the Knowledge Graph<a class="headerlink" href="#the-tag-is-a-pointer-into-the-knowledge-graph" title="Permanent link">¶</a></h2>
+<p>Start with what a tag actually contains. When someone writes <code>@Claude — can we give Acme the Q4 discount again?</code> the message carries a precise question, the identity of the person asking, the thread it lives in, and the list of people in that thread. What it does <em>not</em> carry is everything needed to answer well: who Acme is as a customer, the current pricing policy and its version, the three times this discount was approved before, who approved them, and whether finance later flagged any of those approvals as a precedent it did not want repeated.</p>
+<p>In other words, a tag is a <strong>pointer</strong>. It points at entities, decisions, and history that live elsewhere in the organization. The text in the thread is the address; the enterprise knowledge graph is the memory that the address dereferences to. This is the same lesson from <a href="../../chapters/08-context-problem/">Chapter 8: The Context Problem</a> — the model is capable, but only as grounded as the context it is handed.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">A tag is high-signal and low-context — by design.</p>
+<p><img src="../../img/mascot/thinking.png" class="mascot-admonition-img" alt="Nexus thinking">
+The tag is the highest-signal, lowest-context event in enterprise software. It tells you <em>exactly</em> what someone wants and almost nothing they need to get it. That asymmetry is the whole opportunity: a small, precise pointer that a graph can expand into precisely the right context — and nothing more.</p>
+</div>
+<h2 id="the-tag-to-answer-pipeline">The Tag-to-Answer Pipeline<a class="headerlink" href="#the-tag-to-answer-pipeline" title="Permanent link">¶</a></h2>
+<p>The work between the tag and the reply is a pipeline of six steps. Most of it is retrieval, and most of the retrieval is a graph traversal. We will walk each step, then return to the two properties that decide whether the pipeline succeeds: latency and token efficiency.</p>
+<h3 id="step-1-capture-the-tag-event">Step 1: Capture the Tag Event<a class="headerlink" href="#step-1-capture-the-tag-event" title="Permanent link">¶</a></h3>
+<p>Each chat surface fires an event when Claude is mentioned — Slack today, others as the feature expands. The shapes differ — one platform delivers a mention through an events API, another through a bot-activity payload, a third through a messaging webhook — but the meaningful content is the same everywhere: the message text, the author's identity, the thread or channel, and the participants. A thin adapter per tool normalizes these into a single canonical <strong>tag event</strong>. Everything downstream is tool-agnostic, because everything downstream targets the knowledge graph rather than the chat tool. This is the architectural seam that lets one retrieval system serve every chat surface at once.</p>
+<h3 id="step-2-resolve-entities-and-intent">Step 2: Resolve Entities and Intent<a class="headerlink" href="#step-2-resolve-entities-and-intent" title="Permanent link">¶</a></h3>
+<p>This is the step that quietly decides the quality of everything after it. The system reads the message — and a small window of recent thread history — and extracts two things: the <strong>entities</strong> the conversation is about and the <strong>intent</strong> of the question. "Acme" must resolve to a canonical customer node, not a string. "The Q4 discount" must resolve to a pricing-exception decision type. "Again" must be recognized as a signal that precedents exist. The asker, too, resolves to an identity with a specific permission set.</p>
+<p>Resolving names and phrases to canonical node identifiers is exactly the job the enterprise knowledge graph was built for, drawing on the canonical entity registry from <a href="../../chapters/04-enterprise-knowledge-graphs/">Chapter 4</a> and <a href="../../chapters/06-metadata-registries/">Chapter 6</a>. Get this step right and the traversal that follows lands on the correct subgraph. Get it wrong and every later step is precise retrieval of the wrong thing.</p>
+<div class="admonition mascot-encourage">
+<p class="admonition-title">Entity resolution is the hard part — and it is solvable.</p>
+<p><img src="../../img/mascot/encouraging.png" class="mascot-admonition-img" alt="Nexus encouraging">
+If this step feels like the load-bearing wall, that is because it is. The good news: resolving messy human language to canonical graph nodes is a well-studied problem, and the graph itself is the tool that solves it. Aliases, abbreviations, and "the usual customer" all become edges and properties the resolver can lean on.</p>
+</div>
+<h3 id="step-3-extract-the-right-subgraph">Step 3: Extract the Right Subgraph<a class="headerlink" href="#step-3-extract-the-right-subgraph" title="Permanent link">¶</a></h3>
+<p>With canonical entity IDs in hand, the system issues a parameterized, multi-hop traversal — the <strong>context graph read path</strong> from <a href="../../chapters/09-context-graph-definition/">Chapter 9</a>. Starting at the Acme customer node, it follows edges to the relevant decision traces, then on to the actors who approved them, the version-correct policies that governed them, and the precedents they cited. The traversal returns a compact subgraph: the slice of organizational memory that this specific question needs.</p>
+<p>The art here is restraint. The graph could return thousands of connected nodes; the answer needs perhaps a dozen. A good extraction is ruthless about relevance, because every node it keeps will cost tokens in the next step. The simulation below makes the selection visible — the full enterprise graph on the left, and on the right the small subgraph that actually travels onward to the model.</p>
+<iframe src="../../sims/subgraph-extraction/main.html" width="100%" height="602px" scrolling="no"></iframe>
+
+<p><em>Subgraph extraction for LLM context assembly — the full graph (left) versus the compact, relevant slice that is retrieved (right). <a href="../../sims/subgraph-extraction/">Open the MicroSim</a>.</em></p>
+<h3 id="step-4-budget-and-assemble-the-context">Step 4: Budget and Assemble the Context<a class="headerlink" href="#step-4-budget-and-assemble-the-context" title="Permanent link">¶</a></h3>
+<p>The retrieved subgraph is still a graph. The model needs prose. In this step the system ranks the retrieved nodes by relevance — recency, how often a precedent has been cited, similarity to the question, and how closely each decision matches the entity at hand — and then serializes the top results into a dense, structured block of text. That block is fitted to a <strong>context budget</strong>: a fixed allocation of tokens that must also leave room for the system prompt, the question, and the model's answer. We analyze that budget in detail two sections from now.</p>
+<h3 id="step-5-generate-the-grounded-answer">Step 5: Generate the Grounded Answer<a class="headerlink" href="#step-5-generate-the-grounded-answer" title="Permanent link">¶</a></h3>
+<p>Claude now reasons over a small, high-signal context block and replies in the thread. Because the context was assembled from identifiable graph nodes, the answer can cite them — "approved twice in the last year; the Q2 approval carried a no-recurrence condition" — so the humans in the thread can verify the reasoning rather than trust it blindly. Grounded, checkable answers are what turn a tag from a novelty into something a team relies on.</p>
+<h3 id="step-6-write-the-conversation-back">Step 6: Write the Conversation Back<a class="headerlink" href="#step-6-write-the-conversation-back" title="Permanent link">¶</a></h3>
+<p>The pipeline does not end at the reply. The conversation that just happened <em>is</em> a decision in the making, and the <strong>write path</strong> can capture it as a new decision trace — anchored to the same Acme entity, with the thread participants as actors and the thread itself as provenance. This is the flywheel, and it is important enough that it gets its own section below. For now, note only that step 6 feeds step 3 of every future tag.</p>
+<p>The diagram-free version of the whole pipeline fits in a single table. Prose first, then the summary: each row is one step, what it produces, and which system does the heavy lifting.</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>What happens</th>
+<th>Primary system</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Capture</td>
+<td>Normalize the mention into a canonical tag event</td>
+<td>Chat-tool adapter</td>
+</tr>
+<tr>
+<td>2. Resolve</td>
+<td>Map names and intent to canonical node IDs and a permission set</td>
+<td>Knowledge graph + resolver</td>
+</tr>
+<tr>
+<td>3. Extract</td>
+<td>Traverse from entities to traces, actors, policies, precedents</td>
+<td>Scale-out graph database</td>
+</tr>
+<tr>
+<td>4. Assemble</td>
+<td>Rank, compress, and serialize the subgraph to fit the token budget</td>
+<td>Retrieval / context layer</td>
+</tr>
+<tr>
+<td>5. Generate</td>
+<td>Reason over the compact context and reply with citations</td>
+<td>Claude</td>
+</tr>
+<tr>
+<td>6. Write back</td>
+<td>Record the conversation as a new decision trace</td>
+<td>Context graph write path</td>
+</tr>
+</tbody>
+</table>
+<h2 id="from-one-answer-to-an-autonomous-project">From One Answer to an Autonomous Project<a class="headerlink" href="#from-one-answer-to-an-autonomous-project" title="Permanent link">¶</a></h2>
+<p>The pipeline above describes a single turn: one tag, one reply. But the announcement is explicit that Claude Tag is a <em>team member</em>, not a search box. Tag it with a larger request and it will "break its task down into stages and then work through them in turn," even "[scheduling] tasks for itself, pursuing a project autonomously over hours or days." That changes the analysis in one important way: the six-step pipeline is not run once — it runs at the <strong>retrieval step of every iteration of an agent loop</strong>, the structure from <a href="../../chapters/16-ai-agent-architecture/">Chapter 16: AI Agent Architecture</a>.</p>
+<p>This is where the announcement's emphasis on <em>learning</em> lands directly on this book's thesis. An agent that "builds more context about the work" needs somewhere to put that context. The product gives each agent "isolated memory scopes"; the enterprise knowledge graph is the ideal substrate for those scopes, because graph memory is both queryable — the agent can ask precise questions of its own past — and shareable under access control, so what one agent learns can inform another when policy allows. The diagram below shows that memory architecture and the write-back loop that keeps it current.</p>
+<iframe src="../../sims/agent-memory-architecture/main.html" width="100%" height="602px" scrolling="no"></iframe>
+
+<p><em>Agent memory architecture and the write-back loop. <a href="../../sims/agent-memory-architecture/">Open the MicroSim</a>.</em> The book also models how much autonomy to grant such an agent in the <a href="../../sims/graduated-autonomy-model/">Graduated Autonomy Model</a> — directly relevant to a tag that can act over days.</p>
+<p>Two consequences follow, and they set up the next two sections. Because the loop may run dozens of times, <strong>token efficiency compounds</strong>: a retrieval step that wastes thirty thousand tokens is annoying once and ruinous fifty times over. And because much of the work is asynchronous, <strong>latency matters differently</strong> for a quick reply than for a multi-hour project. We take each in turn.</p>
+<h2 id="the-latency-budget-why-milliseconds-is-a-requirement">The Latency Budget: Why "Milliseconds" Is a Requirement<a class="headerlink" href="#the-latency-budget-why-milliseconds-is-a-requirement" title="Permanent link">¶</a></h2>
+<p>Chat is synchronous and social. When you tag a human colleague, you expect a reply in seconds. Tag Claude in front of your team and the same expectation holds — a two-second pause feels natural, a ten-second pause feels broken, and a thirty-second pause means people stop tagging. The tag turns query latency from an engineering nicety into a hard product requirement.</p>
+<p>That requirement bites hardest on the <strong>synchronous</strong> tags — the quick questions a team fires off mid-discussion and waits on. For the <strong>asynchronous</strong> projects Claude pursues over hours or days, a few seconds of retrieval per step is invisible to the human. But even there, per-step latency sets the <em>throughput</em> of the agent loop: shave each iteration's retrieval from three seconds to fifty milliseconds and the agent completes far more reasoning steps in the same wall-clock hour. Fast retrieval is a user-experience requirement for quick tags and a productivity multiplier for long-running ones.</p>
+<p>Walk the budget and a clear picture emerges. The numbers below are illustrative, but their <em>relative</em> sizes are the point. Generation dominates what the user feels; everything else has to disappear into the gaps.</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Operation</th>
+<th>Typical latency</th>
+<th>On the critical path?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Tag event capture and transport</td>
+<td>100–300 ms</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Entity and intent resolution</td>
+<td>50–200 ms</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Subgraph extraction (scale-out graph)</td>
+<td>5–50 ms</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Rank and assemble context</td>
+<td>50–200 ms</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>5</td>
+<td>LLM generation</td>
+<td>1–4 s</td>
+<td>Yes — dominant</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Decision-trace write-back</td>
+<td>asynchronous</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p>The entire retrieval path — steps 2 through 4 — adds up to well under half a second <em>when the graph answers in milliseconds</em>. That is the scale-out property this book keeps returning to (<a href="../../chapters/05-graph-theory-algorithms/">Chapter 5</a>): a native graph database can follow a multi-hop path across an enormous graph in single-digit milliseconds, because traversal is a pointer-chase, not a pile of joins.</p>
+<p>Now swap that property out. Suppose the context were instead gathered by querying the live source systems at tag-time — federating across CRM, ERP, and a ticketing system the moment someone hits send. Step 3 stops being 5–50 milliseconds and becomes seconds, because each source is queried over the network, under load, with its own latency. The retrieval path now rivals generation itself, and the reply lands after the conversation has moved on.</p>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Materialize ahead of time; traverse at tag-time.</p>
+<p><img src="../../img/mascot/tip.png" class="mascot-admonition-img" alt="Nexus offering a tip">
+The fix is to do the expensive work <em>before</em> anyone tags. Continuously ingest source systems into the knowledge graph — via change-data-capture and event streams, the pipelines from <a href="../../chapters/21-data-engineering/">Chapter 21</a> — so that at tag-time the path is a single fast traversal of one substrate. The tag's latency budget is the strongest argument in this book for materializing knowledge into the graph instead of federating live.</p>
+</div>
+<h2 id="token-efficiency-the-tag-makes-the-books-thesis-unavoidable">Token Efficiency: The Tag Makes the Book's Thesis Unavoidable<a class="headerlink" href="#token-efficiency-the-tag-makes-the-books-thesis-unavoidable" title="Permanent link">¶</a></h2>
+<p>Here is where the tag and this book's core thesis meet head-on. There is an obvious, lazy way to give Claude context for a tag: dump the channel scrollback into the context window and let the model sort it out. It is easy to build, and it is wrong on every axis that matters.</p>
+<p>This is not an abstract concern in Claude Tag — it is a dial on the admin panel. Administrators "set limits for token spend" per agent, which makes token efficiency the difference between an agent that stays useful all day and one that hits its budget cap by mid-morning. Every token the retrieval layer wastes on noise is a token the agent cannot spend on reasoning. And in the agentic loop from the previous section, that waste multiplies by the number of iterations.</p>
+<p>A busy channel's recent history can run to tens of thousands of tokens, and almost all of it is irrelevant to the question — other people's tangents, yesterday's standup, a lunch poll. It is also <em>stale and incomplete</em>: the actual contract terms, the policy version in force, and the prior approvals do not live in the chat at all. They live in systems. So the lazy approach pays a fortune in tokens to deliver noise, and still misses the facts. Large, noisy contexts also degrade answer quality — the model's attention is diluted across thousands of irrelevant tokens, the well-documented "needle in a haystack" failure.</p>
+<p>The context-graph approach inverts this. It spends a few hundred tokens of retrieval effort to deliver a few hundred tokens of pure signal. The contrast is stark enough to tabulate. The prose has made the case; the table reinforces the magnitudes.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Naive "dump the thread"</th>
+<th>Context-graph retrieval</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Channel scrollback</td>
+<td>~40,000 tokens</td>
+<td>0 (not needed)</td>
+</tr>
+<tr>
+<td>Resolved entity summaries</td>
+<td>—</td>
+<td>~300 tokens</td>
+</tr>
+<tr>
+<td>Top decision traces (3–5)</td>
+<td>buried, if present</td>
+<td>~800 tokens</td>
+</tr>
+<tr>
+<td>Version-correct policy excerpt</td>
+<td>usually absent</td>
+<td>~200 tokens</td>
+</tr>
+<tr>
+<td>Authorized personal notes</td>
+<td>absent</td>
+<td>~200 tokens</td>
+</tr>
+<tr>
+<td><strong>Total context delivered</strong></td>
+<td><strong>~40,000 tokens of noise</strong></td>
+<td><strong>~1,500 tokens of signal</strong></td>
+</tr>
+<tr>
+<td>Answer quality</td>
+<td>low — facts missing, attention diluted</td>
+<td>high — exact facts, cited</td>
+</tr>
+<tr>
+<td>Per-tag cost and latency</td>
+<td>high</td>
+<td>low</td>
+</tr>
+</tbody>
+</table>
+<p>Roughly twenty times fewer tokens, and a <em>better</em> answer — not a trade-off between cost and quality but a case where the cheap path is also the good path. That is the whole argument of this book, compressed into one interaction. The simulation below lets you feel the constraint directly: a fixed context window, and a set of components competing for it. Push the retrieved-context slice up and watch what you must surrender elsewhere.</p>
+<iframe src="../../sims/context-budget-visualizer/main.html" width="100%" height="622px" scrolling="no"></iframe>
+
+<p><em>The context window budget visualizer — allocate a fixed token budget across components and observe the trade-offs. <a href="../../sims/context-budget-visualizer/">Open the MicroSim</a>.</em> See <a href="../../chapters/14-llm-integration/">Chapter 14: Integrating LLMs</a> for the full treatment of context budgeting.</p>
+<h2 id="one-tag-every-chat-tool-the-graph-as-the-unifying-substrate">One Tag, Every Chat Tool: The Graph as the Unifying Substrate<a class="headerlink" href="#one-tag-every-chat-tool-the-graph-as-the-unifying-substrate" title="Permanent link">¶</a></h2>
+<p>Today Claude Tag lives on Slack, and even there the integration story is already real: admins "connect it to whichever tools, data—and even codebases—you choose." The book's contribution is to name the optimal thing to connect — a context graph — and to look one step ahead, to when the same tag works on Teams, Messenger, and the rest. That end state hides a real architectural choice. Naively, supporting many chat tools <em>and</em> many source systems means building a connector for every pairing: Slack-to-CRM, Teams-to-CRM, Slack-to-ERP, and so on. With <em>N</em> chat tools and <em>M</em> source systems, that is N×M integrations, and it grows worse with every tool the company adopts.</p>
+<p>The enterprise knowledge graph collapses that explosion. Each chat tool connects once, to the graph. Each source system connects once, to the graph. The result is N+M integrations against a single semantic substrate — the hub-and-spoke pattern this book favors over point-to-point sprawl. The chat tool becomes nothing more than the surface where the conversation happens; the graph is where the knowledge lives. Tag Claude in Slack or in Teams and the entity resolution and subgraph extraction are identical, because both hit the same hub.</p>
+<p>To make the (anticipated) "works everywhere" claim concrete without pretending the tools are identical, the table maps each surface to its mention mechanism — Slack live today, the others on the trajectory. The point of the table is the last column: everything converges on one canonical event.</p>
+<table>
+<thead>
+<tr>
+<th>Chat tool</th>
+<th>Where you tag</th>
+<th>Delivery mechanism (illustrative)</th>
+<th>Normalized to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Slack <em>(live today)</em></td>
+<td><code>@Claude</code> in a channel or thread</td>
+<td>Events API mention</td>
+<td>Canonical tag event</td>
+</tr>
+<tr>
+<td>Microsoft Teams <em>(anticipated)</em></td>
+<td><code>@Claude</code> in a chat or channel</td>
+<td>Bot-activity payload</td>
+<td>Canonical tag event</td>
+</tr>
+<tr>
+<td>Messenger / Workplace <em>(anticipated)</em></td>
+<td><code>@Claude</code> in a conversation</td>
+<td>Messaging webhook</td>
+<td>Canonical tag event</td>
+</tr>
+<tr>
+<td>Future tool</td>
+<td><code>@</code>-mention or slash command</td>
+<td>Adapter</td>
+<td>Canonical tag event</td>
+</tr>
+</tbody>
+</table>
+<p>Under the hood, that convergence is a federation problem: one question, decomposed against many sources. The difference in the graph approach is <em>when</em> the decomposition happens — at ingestion time, not at tag-time. The flow below shows a federation engine splitting one business question across separate systems and reassembling the answer; picture the graph doing that work continuously in the background so the tag-time path stays a single fast traversal.</p>
+<iframe src="../../sims/query-federation-flow/main.html" width="100%" height="582px" scrolling="no"></iframe>
+
+<p><em>Query federation flow — one business question decomposed across multiple source systems and rejoined. <a href="../../sims/query-federation-flow/">Open the MicroSim</a>.</em></p>
+<h2 id="personal-notes-become-organizational-memory-the-integrated-pkg">Personal Notes Become Organizational Memory: The Integrated PKG<a class="headerlink" href="#personal-notes-become-organizational-memory-the-integrated-pkg" title="Permanent link">¶</a></h2>
+<p>The boldest assumption in this analysis is that <em>all</em> enterprise knowledge lives in the graph — including the personal note-taking tools where so much real context actually hides. This is the last mile, and it is where the tag earns its keep.</p>
+<p>The most decisive context for a decision is often the least formal. "I spoke with Acme's CFO last week; they are price-sensitive right now because of a budget freeze" is the kind of sentence that changes an answer entirely — and it lives in one person's notes, invisible to every system of record. When personal notes are nodes in the graph, with their authorship and relationships intact, a tag can surface that sentence at the moment it matters. The knowledge that used to walk out the door when an employee left becomes durable, queryable organizational memory.</p>
+<p>This last mile has a name and a body of work behind it. A <strong>personal knowledge graph (PKG)</strong> is a graph of a single person's own knowledge — their notes, contacts, projects, and half-formed ideas — and it is the structured successor to today's note-taking tools. Connect a PKG to the organization's graph and it becomes an <strong>integrated personal knowledge graph (IPKG)</strong>: individual knowledge made available to enterprise workflows under governance. The integration is treated in depth in the companion chapter <em><a href="https://digital-library.theiet.org/doi/abs/10.1049/PBPC063E_ch14">Integrating Personal Knowledge Graphs into the Enterprise</a></em>, which organizes the work into four parts — background, challenges, steps, and security. An IPKG is precisely what a tag dereferences when the decisive context lives in someone's private graph rather than in a system of record.</p>
+<p>The challenges that chapter raises are the same ones the tag pipeline must solve. An individual's notes call the customer "Acme," "the Acme folks," or just "them"; the enterprise graph calls it <code>ENT-00441872</code>. Reconciling those informal personal entities with canonical enterprise ones is exactly the entity-resolution step from earlier in this appendix — now run against private data. And the line between what an IPKG <em>shares</em> and what it keeps <em>private</em> is not a detail to bolt on at the end; it is the load-bearing design decision, which is why that chapter gives security a part of its own.</p>
+<p>The chapter frames the entire effort with one hypothesis: "IPKGs will allow users of PKGs to create more valuable and helpful knowledge than if note-taking is done with siloed tools." A tag is where that value is finally collected — the moment siloed personal knowledge is put to work in a shared decision. But the chapter is honest about the tension underneath: personal capture wants to be <em>free-form</em> — no rules, fast, low structure — while enterprise reuse wants <em>structure</em> — typed, queryable, consistent. Its bridge is light-touch typing at capture time, an instance of Jim Hendler's "a little semantics goes a long way," where an editor's autocomplete turns <code>[[</code> into a link to an existing concept, <code>@</code> into a reference to a colleague, and a glossary prefix like <code>g:</code> into an approved business term. That is entity resolution performed <em>as the note is written</em> — assistance the chapter says must land in roughly 100 milliseconds to feel like help rather than lag, the very threshold the tag's own retrieval has to meet. Notes captured that way already point at canonical nodes, so the tag's retrieval-time resolution from Step 2 starts half-solved. An IPKG does not merely store personal knowledge; it pre-links it to the enterprise graph.</p>
+<p>That power comes with an obligation, and it is not optional.</p>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Two permission models meet at the tag — reconcile them.</p>
+<p><img src="../../img/mascot/warning.png" class="mascot-admonition-img" alt="Nexus raising a careful warning">
+Claude Tag governs access at the <em>channel</em> level — admins choose which tools and data each Claude identity may reach, with isolated memory scopes. Personal notes are governed at the <em>individual</em> level. When one graph holds both, retrieval must enforce <strong>vertex-level role-based access control (RBAC)</strong> — the access model from <a href="../../chapters/09-context-graph-definition/">Chapter 9</a> and <a href="../../chapters/03-metadata-management/">Chapter 3</a>, and the one the PKG chapter calls essential for high-stakes graphs — so a channel-scoped agent never surfaces a note its tagger could not see. Bind permissions to <em>roles and named groups, never to individuals</em>, or the rules collapse the first time someone changes teams. A tag must never become the side channel that leaks restricted context into a public thread.</p>
+</div>
+<h2 id="the-flywheel-every-tag-writes-back">The Flywheel: Every Tag Writes Back<a class="headerlink" href="#the-flywheel-every-tag-writes-back" title="Permanent link">¶</a></h2>
+<p>Return to step 6, because it is what makes the whole system improve over time. When the team acts on Claude's answer, the resolved conversation is recorded as a new decision trace — the same structure defined in <a href="../../chapters/11-decision-traces/">Chapter 11</a>: what was decided, by whom, when, citing which precedents, under which policy. It is anchored to the same entities the tag resolved, so it is instantly discoverable by the next traversal.</p>
+<p>This closes a loop that compounds. Today's tagged conversation becomes tomorrow's retrieved precedent. The third time someone asks about Acme's Q4 discount, the answer is grounded partly in the <em>first two times they asked Claude</em> — captured automatically, at the moment of decision, instead of evaporating into chat history. Each tag both reads from and writes to the graph, so the organization's memory grows denser and more useful with use rather than decaying. A graph that gets smarter every time it is consulted is the opposite of tribal knowledge that thins with every resignation.</p>
+<p>There is a guardrail here too: write-back must be authenticated and bounded, or a manipulated conversation could poison the memory other agents rely on. The security treatment in <a href="../../chapters/22-security-vector-search/">Chapter 22</a> — agent authentication, sandboxed writes, and protection against prompt injection — applies directly to the tag write path. Capture is a feature; <em>unverified</em> capture is a liability.</p>
+<p>The product already supplies the scaffolding. "Separate Claude identities for different uses" give each agent an authenticatable principal — the precondition for trustworthy write-back. And the admin's ability to "view a log of everything that @Claude has done" is, in this book's vocabulary, a decision-trace audit trail by another name: the <a href="../../chapters/18-compliance-explainability/">Chapter 18</a> compliance story arriving as a shipped product feature.</p>
+<p>Writing back is also a <em>migration</em>, and the PKG chapter flags precisely what makes migration hard. When knowledge moves from a private graph into a shared one, links that worked in private can break, because the shared graph may have no access to the private concepts they pointed at. The chapter even anticipates the tag's write-back as a future capability — "Publish this subgraph to the corporate ontology server for review" — while warning that the private-to-public merge has "no easy answers." A tag's write-back should therefore <em>stage</em> new traces for review rather than silently merge them, and flag broken links rather than fabricate their targets. Organizational memory is only ever as trustworthy as the weakest write that entered it.</p>
+<h2 id="what-this-means-for-context-architects">What This Means for Context Architects<a class="headerlink" href="#what-this-means-for-context-architects" title="Permanent link">¶</a></h2>
+<p>The tag feature is a small interface over a large idea. A person mentions Claude, and in the seconds that follow, the organization's knowledge has to find its way into a context window — accurately, cheaply, and fast enough to feel like a conversation. Strip the feature down and it is a demand for exactly the capability this book has been building toward.</p>
+<p>By the end of this appendix, you should be able to:</p>
+<ul>
+<li>Explain why a <strong>tag</strong> is a high-signal, low-context pointer, and why the enterprise knowledge graph is what that pointer dereferences to</li>
+<li>Walk the <strong>six-step tag-to-answer pipeline</strong> from event capture to decision-trace write-back, and name the system responsible for each step</li>
+<li>Explain why Claude Tag's <strong>agentic loop</strong> — breaking a task into stages and running autonomously over hours or days — multiplies the value of fast, compact retrieval at every iteration</li>
+<li>Argue from the <strong>latency budget</strong> why millisecond, scale-out graph traversal is a product requirement for synchronous chat — and why materializing knowledge into the graph beats federating live at tag-time</li>
+<li>Quantify the <strong>token-efficiency</strong> gap between dumping channel scrollback and extracting a compact subgraph, and explain why the cheap path is also the higher-quality one</li>
+<li>Describe how one graph turns <strong>N×M</strong> chat-tool-to-source integrations into <strong>N+M</strong>, making "tag works everywhere" an architecture rather than a pile of connectors</li>
+<li>Explain how an <strong>integrated personal knowledge graph (IPKG)</strong> turns free-form personal note-taking into typed, access-controlled organizational memory that a tag can surface — and why binding permissions to roles rather than individuals is what lets it scale</li>
+<li>Map Claude Tag's real admin controls — per-channel access, separate identities, isolated memory scopes, token-spend limits, and full audit logs — onto the book's models for access control, agent identity, and decision-trace auditing</li>
+<li>Describe the <strong>write-back flywheel</strong> by which every tagged conversation becomes a future precedent, and the security guardrails that keep that loop trustworthy</li>
+</ul>
+<details class="question">
+<summary>Quick Check</summary>
+<p>A sales rep tags Claude in a Teams thread: "@Claude — should we extend Globex the same payment terms we gave them last quarter?" Trace what the pipeline does, from the tag event to the reply, and name where the enterprise knowledge graph's scale-out, millisecond query performance is doing the decisive work.</p>
+<p><em>(Answer: Step 1 — the Teams adapter normalizes the mention into a canonical tag event with the rep's identity and the thread participants. Step 2 — "Globex" resolves to a canonical customer node, "payment terms" to a terms-decision type, "last quarter" to a recency filter and a hint that precedents exist; the rep resolves to a permission set. Step 3 — a multi-hop traversal from the Globex node collects the prior payment-terms decision traces, their approvers, the version-correct terms policy, and any cited precedents; the scale-out graph returns this subgraph in milliseconds, keeping the retrieval path well under generation latency. Step 4 — rank and serialize the subgraph into ~1,000–1,500 tokens of signal, filtered to what the rep is authorized to see. Step 5 — Claude replies with a grounded, cited recommendation. Step 6 — the resolved decision is written back as a new trace anchored to Globex, available to the next tag. The decisive graph work is Step 3: turning a vague question into the exact relevant slice of organizational memory fast enough to feel conversational.)</em></p>
+</details>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">You just connected the whole book to a single keystroke.</p>
+<p><img src="../../img/mascot/celebration.png" class="mascot-admonition-img" alt="Nexus celebrating">
+Every layer in this book — entity resolution, subgraph extraction, context budgeting, decision traces, access control, scale-out performance — showed up in the few seconds between a tag and a reply. That is the payoff: when the architecture is right, a person just mentions Claude, and the organization answers. Connect the dots — then ask why!</p>
+</div>
+<hr>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">¶</a></h2>
+<ol>
+<li>
+<p>Anthropic. <em>Introducing Claude Tag.</em> 2026. <a href="https://www.anthropic.com/news/introducing-claude-tag">https://www.anthropic.com/news/introducing-claude-tag</a> (accessed 2026-06-26). Quoted passages on channels, task staging, autonomous operation, learning, memory scopes, token-spend limits, and activity logging are drawn from this announcement.</p>
+</li>
+<li>
+<p>McCreary, Dan. "Integrating Personal Knowledge Graphs into the Enterprise." Chapter 14 in <em>Personal Knowledge Graphs (PKGs): Methodology, Tools and Applications</em>, edited by Sanju Tiwari, François Scharffe, Fernando Ortiz-Rodríguez, and Manas Gaur, 305–323. Stevenage, UK: Institution of Engineering and Technology, 2023. ISBN 9781839537011. DOI <a href="https://digital-library.theiet.org/doi/abs/10.1049/PBPC063E_ch14">10.1049/PBPC063E_ch14</a>. Introduces the <em>integrated personal knowledge graph (IPKG)</em>, frames it with the hypothesis that integrated PKGs produce more valuable knowledge than siloed tools, and organizes the work into background, challenges, steps, and security — arguing that vertex-level RBAC bound to roles rather than individuals is what makes enterprise integration scale.</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../../glossary/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Glossary">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Glossary
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../sims/" class="md-footer__link md-footer__link--next" aria-label="Next: List of MicroSims">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                List of MicroSims
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2026 Dan Mccreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.action.edit", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../js/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
