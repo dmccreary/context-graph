@@ -131,8 +131,10 @@ nav:
       - learning-graph/diagram-details.md
       - learning-graph/diagram-table.md
   
-  - FAQ: faq.md
-  - Glossary: glossary.md
+
+
+  - Appendices:
+      - Claude Tag and the Context Graph: appendicies/tag-announcement.md
 
   - MicroSims:
       - List of MicroSims: sims/index.md
@@ -183,6 +185,8 @@ nav:
       - Compliance Lifecycle: sims/compliance-lifecycle/index.md
 
   - Feature Checklist: feature-checklist.md
+  - FAQ: faq.md
+  - Glossary: glossary.md
   - License: license.md
   - Contact: contact.md
 
