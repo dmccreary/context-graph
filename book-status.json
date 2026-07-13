@@ -1,0 +1,491 @@
+{
+  "project": {
+    "title": "Context Graph",
+    "subtitle": "Auto-scanned intelligent textbook",
+    "author": "Dan Mccreary",
+    "costPerMTokens": 15,
+    "sessionBudget": {
+      "pro": 900000,
+      "max": 3500000
+    }
+  },
+  "sections": {
+    "scaffold": {
+      "status": "published",
+      "tokensTarget": 2000,
+      "tokensDone": 2000
+    },
+    "course-description": {
+      "status": "published",
+      "tokensTarget": 4000,
+      "tokensDone": 2256
+    },
+    "learning-graph": {
+      "status": "published",
+      "tokensTarget": 20000,
+      "tokensDone": 20000
+    },
+    "chapter-structure": {
+      "status": "published",
+      "tokensTarget": 15000,
+      "tokensDone": 15000
+    },
+    "chapter-content": {
+      "countLabel": "22 chapters",
+      "children": [
+        {
+          "n": 1,
+          "title": "Chapter 1: Knowledge Graphs and Labeled Property Graphs",
+          "status": "published",
+          "tokens": 10000
+        },
+        {
+          "n": 2,
+          "title": "Chapter 2: Semantic Layers for Data Lakes",
+          "status": "published",
+          "tokens": 10000
+        },
+        {
+          "n": 3,
+          "title": "Chapter 3: Metadata Management and Data Governance",
+          "status": "published",
+          "tokens": 10000
+        },
+        {
+          "n": 4,
+          "title": "Chapter 4: Enterprise Knowledge Graphs \u2014 Core Patterns",
+          "status": "published",
+          "tokens": 10000
+        },
+        {
+          "n": 5,
+          "title": "Chapter 5: Graph Theory, Algorithms, and Advanced Enterprise KG",
+          "status": "published",
+          "tokens": 10000
+        },
+        {
+          "n": 6,
+          "title": "Chapter 6: Metadata Registries and ISO 11179",
+          "status": "published",
+          "tokens": 10000
+        },
+        {
+          "n": 7,
+          "title": "Chapter 7: Process Mining, Data Lineage, and Provenance",
+          "status": "published",
+          "tokens": 10000
+        },
+        {
+          "n": 8,
+          "title": "Chapter 8: The Context Problem and RAG Limitations",
+          "status": "published",
+          "tokens": 10000
+        },
+        {
+          "n": 9,
+          "title": "Chapter 9: What a Context Graph Is",
+          "status": "published",
+          "tokens": 10000
+        },
+        {
+          "n": 10,
+          "title": "Chapter 10: LLM and AI Foundations",
+          "status": "published",
+          "tokens": 10000
+        },
+        {
+          "n": 11,
+          "title": "Chapter 11: Decision Traces: Anatomy and LPG Patterns",
+          "status": "published",
+          "tokens": 10000
+        },
+        {
+          "n": 12,
+          "title": "Chapter 12: Incumbent Challenges in Building Context Systems",
+          "status": "published",
+          "tokens": 10000
+        },
+        {
+          "n": 13,
+          "title": "Chapter 13: Graph Data Modeling for Context",
+          "status": "published",
+          "tokens": 10000
+        },
+        {
+          "n": 14,
+          "title": "Chapter 14: Integrating LLMs with Context Graphs",
+          "status": "published",
+          "tokens": 10000
+        },
+        {
+          "n": 15,
+          "title": "Chapter 15: Building and Deploying Context Graph Systems",
+          "status": "published",
+          "tokens": 10000
+        },
+        {
+          "n": 16,
+          "title": "Chapter 16: AI Agent Architecture",
+          "status": "published",
+          "tokens": 10000
+        },
+        {
+          "n": 17,
+          "title": "Chapter 17: Enterprise Use Cases",
+          "status": "published",
+          "tokens": 10000
+        },
+        {
+          "n": 18,
+          "title": "Chapter 18: Compliance, Explainability, and Audit",
+          "status": "published",
+          "tokens": 10000
+        },
+        {
+          "n": 19,
+          "title": "Chapter 19: Market Strategy and Startup Approaches",
+          "status": "published",
+          "tokens": 10000
+        },
+        {
+          "n": 20,
+          "title": "Chapter 20: Organizational Adoption and Governance",
+          "status": "published",
+          "tokens": 10760
+        },
+        {
+          "n": 21,
+          "title": "Chapter 21: Data Engineering and Infrastructure",
+          "status": "published",
+          "tokens": 10000
+        },
+        {
+          "n": 22,
+          "title": "Chapter 22: Security, Privacy, and Vector Search",
+          "status": "published",
+          "tokens": 10000
+        }
+      ]
+    },
+    "chapter-images": {
+      "status": "published",
+      "tokensTarget": 8000,
+      "tokensDone": 8000
+    },
+    "microsims": {
+      "countLabel": "45 simulations",
+      "children": [
+        {
+          "n": 1,
+          "title": "Agent Memory Architecture and Write-Back Loop",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 2,
+          "title": "Audit Trail Architecture in a Context Graph",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 3,
+          "title": "Bitemporal Modeling \u2014 Two Time Dimensions",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 4,
+          "title": "Metadata Catalog to Context Graph Flow",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 5,
+          "title": "Compliance Lifecycle for a Context Graph System",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 6,
+          "title": "Context Window Budget Visualizer",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 7,
+          "title": "Context Failure Mode Explorer",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 8,
+          "title": "Context Graph Schema \u2014 Core Node and Edge Types",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 9,
+          "title": "Cross-Domain Use Case Decision Trace Comparison",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 10,
+          "title": "Data Model Comparison Explorer",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 11,
+          "title": "Complete Decision Trace LPG Schema",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 12,
+          "title": "Differential Privacy Noise Mechanism Explorer",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 13,
+          "title": "Event Sourcing Architecture for Context Graph",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 14,
+          "title": "Five Complementary Knowledge Layers",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 15,
+          "title": "The Four Missing Layers \u2014 Why RAG Is Not Enough",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 16,
+          "title": "Governance Framework Concept Map",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 17,
+          "title": "Governance Role Graph",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 18,
+          "title": "Graduated Autonomy Model",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 19,
+          "title": "Graph ETL Pipeline Stages",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 20,
+          "title": "Graph Traversal Explorer",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 21,
+          "title": "Graph Viewer",
+          "status": "drafted",
+          "tokens": 5000
+        },
+        {
+          "n": 22,
+          "title": "Hub-and-Spoke vs. Federated Architecture",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 23,
+          "title": "Hybrid Retrieval and Reranking Pipeline",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 24,
+          "title": "Information Extraction Pipeline to Graph",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 25,
+          "title": "Engineering Incident Context Graph",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 26,
+          "title": "Structural Gap Analysis \u2014 Incumbent Systems vs. Context Graph Requirements",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 27,
+          "title": "Ingestion Pipeline Architecture",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 28,
+          "title": "ISO 11179 Component Hierarchy",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 29,
+          "title": "Knowledge Graph Embedding Space Explorer",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 30,
+          "title": "Lineage vs. Provenance in Context",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 31,
+          "title": "Evaluation Pipeline for Context Graph Systems",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 32,
+          "title": "Interactive LPG Explorer",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 33,
+          "title": "Multi-Hop Query Performance",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 34,
+          "title": "PageRank Visualization on a Small Supplier Graph",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 35,
+          "title": "Precedent Chain Pattern",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 36,
+          "title": "Process Discovery \u2014 From Event Log to Process Graph",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 37,
+          "title": "Prompt Anatomy for Context Graph Integration",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 38,
+          "title": "Query Federation Flow",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 39,
+          "title": "Registry API Retrieval Flow",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 40,
+          "title": "Registry vs. Catalog Architecture",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 41,
+          "title": "Semantic Consistency Explorer",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 42,
+          "title": "Semantic Layer Architecture",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 43,
+          "title": "Subgraph Extraction for LLM Context Assembly",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 44,
+          "title": "Taxonomy vs. Ontology in a Product Graph",
+          "status": "published",
+          "tokens": 5000
+        },
+        {
+          "n": 45,
+          "title": "Three Metadata Layers",
+          "status": "published",
+          "tokens": 5000
+        }
+      ]
+    },
+    "glossary": {
+      "status": "published",
+      "tokensTarget": 62001,
+      "tokensDone": 62001
+    },
+    "faq": {
+      "status": "published",
+      "tokensTarget": 12151,
+      "tokensDone": 12151
+    },
+    "quiz": {
+      "status": "published",
+      "tokensTarget": 38670,
+      "tokensDone": 38670
+    },
+    "reference": {
+      "status": "published",
+      "tokensTarget": 20000,
+      "tokensDone": 11926
+    },
+    "teachers-guide": {
+      "status": "not-started",
+      "tokensTarget": 15000,
+      "tokensDone": 0
+    },
+    "book-metrics": {
+      "status": "published",
+      "tokensTarget": 2000,
+      "tokensDone": 2000
+    },
+    "publish": {
+      "status": "published",
+      "tokensTarget": 10000,
+      "tokensDone": 10000
+    },
+    "stories": {
+      "status": "not-started",
+      "tokensTarget": 30000,
+      "tokensDone": 0
+    }
+  }
+}
