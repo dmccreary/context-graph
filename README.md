@@ -4,7 +4,7 @@
 [![Material for MkDocs](https://img.shields.io/badge/Material%20for%20MkDocs-526CFE?logo=materialformkdocs)](https://squidfunk.github.io/mkdocs-material/)
 [![GitHub Pages](https://img.shields.io/badge/View%20on-GitHub%20Pages-blue?logo=github)](https://dmccreary.github.io/context-graph/)
 [![Built with Claude Code](https://img.shields.io/badge/Built%20with-Claude%20Code-DA7857?logo=anthropic)](https://claude.ai/code)
-[![Uses Claude Skills](https://img.shields.io/badge/Uses-Claude%20Skills-DA7857?logo=anthropic)](https://github.com/dmccreary/claude-skills)
+[![Uses Claude Skills](https://img.shields.io/badge/Uses-Claude%20Skills-DA7857?logo=anthropic)](https://github.com/dmccreary/ibook-skills)
 [![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![p5.js](https://img.shields.io/badge/p5.js-ED225D?logo=p5.js&logoColor=white)](https://p5js.org/)
@@ -225,7 +225,7 @@ This project stands on the shoulders of many open-source communities:
   generation, quality analysis, and book-management scripts.
 - **[Claude Code](https://claude.ai/code)** by Anthropic — AI-assisted
   authoring and skill orchestration.
-- **[Claude Skills](https://github.com/dmccreary/claude-skills)** — The
+- **[Claude Skills](https://github.com/dmccreary/ibook-skills)** — The
   reusable skill library used to generate chapters, MicroSims, the
   learning graph, the glossary, FAQs, and references.
 - **[GitHub Pages](https://pages.github.com/)** — Free hosting for the
