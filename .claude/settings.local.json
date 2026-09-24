@@ -14,7 +14,8 @@
       "Read(//Users/dan/.claude/skills/ibook-skills/src/image-generation/**)",
       "Read(//Users/dan/Documents/ws/ibook-skills/src/image-generation/**)",
       "Bash(~/Documents/ws/ibook-skills/src/image-generation/generate-cover.sh --local-prompt)",
-      "Bash(curl -s -o /Users/dan/Documents/ws/context-graph/docs/img/dan-headshot-small.png https://dmccreary.github.io/dmccreary/img/dan-headshot-small.png)"
+      "Bash(curl -s -o /Users/dan/Documents/ws/context-graph/docs/img/dan-headshot-small.png https://dmccreary.github.io/dmccreary/img/dan-headshot-small.png)",
+      "WebSearch"
     ]
   }
 }
